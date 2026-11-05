@@ -23,12 +23,14 @@ public sealed class MainWindow:Window {
     private readonly TextBlock fingerprint=new(){TextWrapping=TextWrapping.Wrap,IsTextSelectionEnabled=true};
     private readonly StackPanel form=new(){Spacing=12,Padding=new Thickness(24),MaxWidth=900};
     private readonly ContentControl controls=new();
+    private readonly ScrollViewer scroll=new();
     private readonly StackPanel local=new(){Spacing=12};
     private readonly SecretStore secure=new();
     private LinkClient? client;
     private TextGenerationClient? ai;
     private string? aiKey,configuration,lastView;
     private readonly Dictionary<string,string> sessionDrafts=new();
+    private readonly Dictionary<string,FrameworkElement> visibleCards=new();
     private Process? runtime;
     private bool busy,active=true;
     public MainWindow(){
@@ -38,13 +40,17 @@ public sealed class MainWindow:Window {
         form.Children.Insert(14,Button("网关模型生成草稿",()=>ModelDraft(false)));form.Children.Insert(15,Button("查询原模型任务",()=>ModelDraft(true)));
         form.Children.Add(Button("导出脱敏诊断",ExportDiagnostics));
         form.Children.Insert(11,Button("重新申请已失效的配对",Reapply));
-        targets.SelectionChanged+=async(_,_)=>await Run(async()=>{if(client is not null&&targets.SelectedItem is Device d&&spaces.SelectedItem is string s)fingerprint.Text="本客户端指纹\n"+await client.FingerprintAsync(s,d.Id);});
-        controls.Content=form;Content=new ScrollViewer{Content=controls};Activated+=(_,args)=>active=args.WindowActivationState!=WindowActivationState.Deactivated;
+        endpoint.TextChanged+=(_,_)=>{token.Password="";client?.Dispose();client=null;ai=null;spaces.ItemsSource=null;ClearTargets();result.Text="网关地址已更改，请重新连接；原任务保留在原网关。";};
+        spaces.SelectionChanged+=(_,_)=>ClearTargets();
+        targets.SelectionChanged+=async(_,_)=>{ClearTargetFields();await Run(async()=>{if(client is not null&&targets.SelectedItem is Device d&&spaces.SelectedItem is string s)fingerprint.Text="本客户端指纹\n"+await client.FingerprintAsync(s,d.Id);});};
+        controls.Content=form;scroll.Content=controls;Content=scroll;scroll.ViewChanged+=(_,_)=>ReportVisibleCards();Activated+=(_,args)=>{active=args.WindowActivationState!=WindowActivationState.Deactivated;if(active)ReportVisibleCards();};
         Closed+=(_,_)=>{if(runtime is{HasExited:false})runtime.Kill();runtime?.Dispose();client?.Dispose();};
     }
     private Button Button(string label,Func<Task> action){var button=new Button{Content=label};button.Click+=async(_,_)=>await Run(action);return button;}
+    private void ClearTargetFields(){fingerprint.Text="";session.Text="";revision.Text="1";contentId.Text="";cancelId.Text="";aiKey=null;}
+    private void ClearTargets(){targets.ItemsSource=null;ClearTargetFields();}
     private async Task Run(Func<Task> action){if(busy)return;busy=true;controls.IsEnabled=false;try{await action();}catch(Exception error){result.Text=error is GatewayException gateway?gateway.Code:error.Message;}finally{controls.IsEnabled=true;busy=false;}}
-    private async Task Connect(){var next=new LinkClient(endpoint.Text,secure);if(token.Password.Length==0)await next.Gateway.RestoreAsync();else await next.Gateway.LoginAsync(token.Password);token.Password="";client?.Dispose();client=next;ai=new(next.Gateway,secure);aiKey=null;spaces.ItemsSource=await next.Gateway.SpacesAsync();targets.ItemsSource=null;result.Text="已连接，请明确选择空间并刷新。";}
+    private async Task Connect(){client?.Dispose();client=null;ai=null;spaces.ItemsSource=null;ClearTargets();var next=new LinkClient(endpoint.Text,secure);try{if(token.Password.Length==0)await next.Gateway.RestoreAsync();else await next.Gateway.LoginAsync(token.Password);}catch{next.Dispose();throw;}token.Password="";client=next;ai=new(next.Gateway,secure);aiKey=null;spaces.ItemsSource=await next.Gateway.SpacesAsync();result.Text="已连接，请明确选择空间并刷新。";}
     private async Task Refresh(){if(client is null||spaces.SelectedItem is not string space)throw new InvalidOperationException("select_space_first");var snapshot=await client.SnapshotAsync(space);targets.ItemsSource=snapshot.Devices.Where(d=>snapshot.Models[d.ModelRevision]?["model_id"]?.GetValue<string>()=="urn:limelink:model:desktop:1").ToArray();result.Text="已读取真实终端能力。";}
     private void Show(CommandReceipt receipt){var response=LinkClient.Response(receipt);result.Text=receipt.Status+"\n"+receipt.Id+"\n"+response?.ToJsonString();var value=response?["value"];if(value?["revision"] is JsonValue number)revision.Text=number.GetValue<long>().ToString();if(value?["text"] is JsonValue text)draft.Text=text.GetValue<string>();if(receipt.Document["request"]?["operation"]?["value"]?["kind"]?.GetValue<string>()=="card")cancelId.Text=value?["id"]?.GetValue<string>()??"";}
     private async Task Reapply(){
@@ -86,7 +92,7 @@ public sealed class MainWindow:Window {
         _=Task.Run(async()=>{while(await process.StandardError.ReadLineAsync() is not null){}});
         result.Text="本机设备通道正在连接。";
     }
-    private Task StopRuntime(){if(runtime is{HasExited:false})runtime.Kill();runtime?.Dispose();runtime=null;lastView=null;local.Children.Clear();return Task.CompletedTask;}
+    private Task StopRuntime(){if(runtime is{HasExited:false})runtime.Kill();runtime?.Dispose();runtime=null;lastView=null;visibleCards.Clear();local.Children.Clear();return Task.CompletedTask;}
     private async Task ExportDiagnostics(){
         if(configuration is null)throw new InvalidOperationException("start_runtime_first");
         var picker=new FileSavePicker{SuggestedFileName="LimeLink-diagnostics"};picker.FileTypeChoices.Add("JSON",new List<string>{".json"});WinRT.Interop.InitializeWithWindow.Initialize(picker,WinRT.Interop.WindowNative.GetWindowHandle(this));var file=await picker.PickSaveFileAsync();if(file is null)return;
@@ -94,9 +100,15 @@ public sealed class MainWindow:Window {
         using var process=Process.Start(start)??throw new InvalidOperationException("diagnostics_failed");var output=await process.StandardOutput.ReadToEndAsync();await process.WaitForExitAsync();if(process.ExitCode!=0||output.Length>100_000)throw new InvalidOperationException("diagnostics_failed");await File.WriteAllTextAsync(file.Path,output);result.Text="已导出计数与版本；不含正文、身份或凭据。";
     }
     private void SendLocal(string type,string id,long? revision=null,string? text=null){var frame=new JsonObject{{"type",type},{"id",id}};if(revision is not null)frame["revision"]=revision;if(text is not null)frame["text"]=text;runtime?.StandardInput.WriteLine(frame.ToJsonString());runtime?.StandardInput.Flush();}
+    private void ReportVisibleCards(){foreach(var card in visibleCards)ReportPresented(card.Key,card.Value);}
+    private void ReportPresented(string id,FrameworkElement block){
+        if(!active||!block.IsLoaded||block.ActualWidth<=0||block.ActualHeight<=0)return;
+        var bounds=block.TransformToVisual(scroll).TransformBounds(new Windows.Foundation.Rect(0,0,block.ActualWidth,block.ActualHeight));
+        if(bounds.Bottom>0&&bounds.Top<scroll.ActualHeight&&bounds.Right>0&&bounds.Left<scroll.ActualWidth)SendLocal("presented",id);
+    }
     private void Render(JsonObject? frame){
         if(frame?["type"]?.GetValue<string>()=="error"){result.Text="本机操作未完成："+frame["code"]?.GetValue<string>();return;}
-        if(frame?["type"]?.GetValue<string>()!="view")return;var view=frame.ToJsonString();if(lastView==view)return;lastView=view;local.Children.Clear();
+        if(frame?["type"]?.GetValue<string>()!="view")return;var view=frame.ToJsonString();if(lastView==view)return;lastView=view;visibleCards.Clear();local.Children.Clear();
         foreach(var peer in frame["peers"]!.AsArray()){
             var id=peer!["id"]!.GetValue<string>();var state=peer["state"]!.GetValue<string>();
             local.Children.Add(new TextBlock{Text=peer["name"]!.GetValue<string>()+" · "+state+"\n"+peer["fingerprint"]!.GetValue<string>(),TextWrapping=TextWrapping.Wrap,IsTextSelectionEnabled=true});
@@ -106,7 +118,7 @@ public sealed class MainWindow:Window {
         foreach(var card in frame["cards"]!.AsArray()){
             if(card!["state"]!.GetValue<string>() is not("queued" or "presented"))continue;
             var id=card["id"]!.GetValue<string>();var block=new TextBlock{Text=card["text"]!.GetValue<string>(),TextWrapping=TextWrapping.Wrap,IsTextSelectionEnabled=true};
-            block.Loaded+=(_,_)=>{if(active)SendLocal("presented",id);};local.Children.Add(block);
+            if(card["state"]!.GetValue<string>()=="queued"){visibleCards[id]=block;block.Loaded+=(_,_)=>ReportPresented(id,block);block.SizeChanged+=(_,_)=>ReportPresented(id,block);}local.Children.Add(block);
         }
         foreach(var item in frame["contents"]!.AsArray())local.Children.Add(new TextBlock{Text=item!["stale"]!.GetValue<bool>()?"内容已过期":item["text"]!.GetValue<string>(),TextWrapping=TextWrapping.Wrap});
         foreach(var item in frame["sessions"]!.AsArray()){

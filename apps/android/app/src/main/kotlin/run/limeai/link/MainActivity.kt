@@ -48,14 +48,19 @@ class Workbench(application:Application):AndroidViewModel(application) {
     private var client:LinkClient?=null
     private var ai:TextGenerationClient?=null
     private var aiKey:String?=null
+    private fun clearTargetFields(){fingerprint="";session="";revision="1";content="";cancel="";aiKey=null}
+    private fun clearTargets(){devices=emptyList();target="";clearTargetFields()}
+    fun editEndpoint(value:String){if(busy||endpoint==value)return;endpoint=value;token="";client=null;ai=null;spaces=emptyList();space="";clearTargets();pending=false;message="网关地址已更改，请重新连接；原任务保留在原网关。"}
+    fun selectSpace(value:String){if(busy||space==value)return;space=value;clearTargets()}
     fun run(work:suspend()->Unit){if(busy)return;busy=true;viewModelScope.launch{try{work()}catch(error:Exception){message=(error as? GatewayException)?.displayMessage?:error.message?:"操作未完成"}finally{pending=try{client?.pending()!=null}catch(_:Exception){true};busy=false}}}
     fun connect()=run{
+        client=null;ai=null;spaces=emptyList();space="";clearTargets()
         val next=LinkClient(endpoint,storage)
         if(token.isBlank())next.restore()else next.login(token)
         token="";client=next;ai=TextGenerationClient(next.gateway,storage);spaces=next.spaces().map{it.spaceId};devices=emptyList();target="";pending=next.pending()!=null;message="已连接，请选择空间并刷新。"
     }
-    fun refresh()=run{val c=checkNotNull(client);val snapshot=c.snapshot(space);devices=snapshot.devices.filter{snapshot.models[it.modelRevision]?.modelId=="urn:limelink:model:desktop:1"};message="发现 ${devices.size} 个终端"}
-    fun select(id:String)=run{target=id;fingerprint=checkNotNull(client).fingerprint(space,id)}
+    fun refresh()=run{val c=checkNotNull(client);val snapshot=c.snapshot(space);target="";clearTargetFields();devices=snapshot.devices.filter{snapshot.models[it.modelRevision]?.modelId=="urn:limelink:model:desktop:1"};message="发现 ${devices.size} 个终端"}
+    fun select(id:String)=run{target=id;clearTargetFields();fingerprint=checkNotNull(client).fingerprint(space,id)}
     private fun show(command:Command){
         val response=LinkClient.response(command);message=command.statusText+"\n"+command.commandId+"\n"+(response?.toString()?:"")
         val value=response?.get("value") as? JsonObject
@@ -83,7 +88,7 @@ class Workbench(application:Application):AndroidViewModel(application) {
     }
     fun resolve()=run{show(checkNotNull(client).resolve())}
     fun finish()=run{checkNotNull(client).finish();pending=false;message="原结果已核实，可以继续。"}
-    fun logout()=run{client?.logout();client=null;ai=null;spaces=emptyList();devices=emptyList();fingerprint="";message="已退出，未核实任务保留在安全存储。"}
+    fun logout()=run{client?.logout();client=null;ai=null;space="";clearTargets();spaces=emptyList();message="已退出，未核实任务保留在安全存储。"}
     fun modelDraft(resolve:Boolean)=run{
         val model=checkNotNull(ai);val capabilities=model.capabilities(space)
         check(capabilities.configured){"网关未配置文字模型"}
@@ -108,10 +113,10 @@ class MainActivity:ComponentActivity(){
         LazyColumn(Modifier.fillMaxSize().padding(horizontal=20.dp),verticalArrangement=Arrangement.spacedBy(12.dp),contentPadding=PaddingValues(vertical=24.dp)){
             item{Text("LimeLink 柠联",style=MaterialTheme.typography.headlineMedium);Text("手机的灵感，电脑接着做。")}
             item{Text("连接 LimeIoT 网关",style=MaterialTheme.typography.titleLarge)}
-            item{OutlinedTextField(model.endpoint,{model.endpoint=it},label={Text("HTTPS 网关地址")},modifier=Modifier.fillMaxWidth(),enabled=!model.busy)}
+            item{OutlinedTextField(model.endpoint,model::editEndpoint,label={Text("HTTPS 网关地址")},modifier=Modifier.fillMaxWidth(),enabled=!model.busy)}
             item{OutlinedTextField(model.token,{model.token=it},label={Text("所有者凭据，留空恢复会话")},visualTransformation=PasswordVisualTransformation(),modifier=Modifier.fillMaxWidth(),enabled=!model.busy)}
             item{Row{Button(model::connect,enabled=!model.busy){Text("连接")};TextButton(model::logout,enabled=!model.busy){Text("退出")}}}
-            items(model.spaces){space->Row{RadioButton(model.space==space,{model.space=space});Text(space)}}
+            items(model.spaces){space->Row{RadioButton(model.space==space,{model.selectSpace(space)},enabled=!model.busy);Text(space)}}
             item{Button(model::refresh,enabled=!model.busy){Text("刷新电脑与能力")}}
             items(model.devices){device->Row{RadioButton(model.target==device.deviceId,{model.select(device.deviceId)},enabled=!model.busy);Text(device.deviceId+if(device.ready)" · 在线" else " · 离线")}}
             item{OutlinedTextField(model.name,{model.name=it},label={Text("本客户端名称")},modifier=Modifier.fillMaxWidth());Text("本客户端指纹\n"+model.fingerprint,style=MaterialTheme.typography.bodySmall)}

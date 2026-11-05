@@ -8,9 +8,9 @@ import UIKit
 #endif
 
 @MainActor public final class WorkbenchModel: ObservableObject {
-    @Published public var endpoint = ""
+    @Published public var endpoint = "" {didSet{if endpoint != oldValue{token="";if client != nil{clearConnection()}}}}
     @Published public var token = ""
-    @Published public var space = ""
+    @Published public var space = "" {didSet{if space != oldValue{clearTargets()}}}
     @Published public var spaces: [String] = []
     @Published public var devices: [Device] = []
     @Published public var target = ""
@@ -29,6 +29,9 @@ import UIKit
     private let secure = SecureStore()
     private var ai: TextGenerationClient?
     private var aiKey: String?
+    private func clearTargetFields(){fingerprint="";sessionID="";revision=1;contentID="";cancelID="";aiKey=nil;modelNotice=""}
+    private func clearTargets(){devices=[];target="";clearTargetFields()}
+    private func clearConnection(){client=nil;ai=nil;spaces=[];space="";clearTargets();hasPending=false;result="网关地址已更改，请重新连接。原任务保留在原网关的安全存储记录中。"}
     public init() {
         endpoint=ProcessInfo.processInfo.environment["LIMELINK_ENDPOINT"] ?? UserDefaults.standard.string(forKey:"limelink.endpoint") ?? ""
         #if os(iOS)
@@ -39,10 +42,15 @@ import UIKit
     }
     public func run(_ work:@escaping @MainActor () async throws -> Void) {
         guard !busy else { return };busy=true
-        Task { defer{busy=false};do{try await work()}catch{result=(error as? GatewayError)?.message ?? error.localizedDescription} }
+        Task {
+            defer{busy=false}
+            do{try await work()}catch{result=(error as? GatewayError)?.message ?? error.localizedDescription}
+            if let client{do{hasPending=try await client.pending() != nil}catch{hasPending=true}}else{hasPending=false}
+        }
     }
     public func connect() {
         run {
+            self.clearConnection()
             let client=try LinkClient(endpoint:self.endpoint,store:self.secure,development:ProcessInfo.processInfo.environment["LIMELINK_DEVELOPMENT"]=="1")
             if self.token.isEmpty {try await client.restore()}else{try await client.login(token:self.token)}
             self.token="";self.client=client
@@ -58,11 +66,13 @@ import UIKit
         run {
             guard let client=self.client,!self.space.isEmpty else{throw LinkError("select_space_first")}
             let snapshot=try await client.snapshot(space:self.space)
+            self.target="";self.clearTargetFields()
             self.devices=snapshot.devices.filter{snapshot.models[$0.modelRevision]?.modelId=="urn:limelink:model:desktop:1"}
             self.result="发现 \(self.devices.count) 个 LimeLink 终端；离线端不可提交。"
         }
     }
     public func selectTarget() {
+        clearTargetFields()
         run {guard let client=self.client,!self.target.isEmpty else{return};self.fingerprint=try await client.fingerprint(space:self.space,device:self.target)}
     }
     public func action(_ kind:String,reapply:Bool = false) {
@@ -106,7 +116,7 @@ import UIKit
     }
     public func resolve() {run{guard let client=self.client else{return};try self.show(await client.resolve())}}
     public func finish() {run{guard let client=self.client else{return};try await client.acknowledgeResolved();self.hasPending=false;self.result="原结果已核实，可以发起下一项操作。"}}
-    public func logout() {run{try await self.client?.logout();self.client=nil;self.ai=nil;self.devices=[];self.spaces=[];self.fingerprint="";self.result="已退出。未核实记录和配对身份保留在系统安全存储。"}}
+    public func logout() {run{try await self.client?.logout();self.client=nil;self.ai=nil;self.space="";self.clearTargets();self.spaces=[];self.result="已退出。未核实记录和配对身份保留在系统安全存储。"}}
     public func generateDraft(resolve:Bool = false) {
         run {
             guard let ai=self.ai,!self.space.isEmpty else{throw LinkError("connect_first")}
