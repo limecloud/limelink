@@ -1,71 +1,77 @@
 {
   "status": "deployed-and-verified",
-  "verified_at": "2026-11-05T10:26:27.550689+00:00",
+  "verified_at": "2026-11-05T12:01:59.190914+00:00",
   "url": "https://link.limeai.run",
   "worker": "limelink-website",
-  "version_id": "2ee16660-f351-4ab3-a430-70826b35010d",
-  "scope": "静态宣传站；非产品 App、网关或硬件发布",
+  "version_id": "118903bb-767a-4180-90c9-efb0d59214ea",
+  "scope": "静态宣传站与当前文档；非原生 App、网关或硬件发行",
   "source": {
-    "head": "5382998479914b1ad7ead06127d3533dd8c70157",
-    "worktree": "dirty-with-untracked-implementation",
-    "git_commit_created": false,
-    "git_push_performed": false
+    "head": "9c886409a3b752c0aa01b4ae308998b76a84de54",
+    "worktree": "website-local-verification-evidence-updated",
+    "site_code_committed": true
   },
   "browser_verification": {
     "target": "production",
     "passed": 7,
     "failed": 0,
     "report": "docs/evidence/website-browser.json",
-    "version_id": "7565fb0a-a0f2-4b25-9664-507291b17178",
-    "final_release_note": "最终发布仅更新文档、证据和审核截图，网站源码与资源沿用已通过生产浏览器检查的版本；最终发布另做 HTTPS、图像和下载包摘要核验。"
+    "version_id": "118903bb-767a-4180-90c9-efb0d59214ea"
   },
   "http_probes": [
     {
       "path": "/",
       "status": 200,
       "content_type": "text/html",
-      "bytes": 21082,
-      "sha256": "c0a2dc046b330df252be965f74376ed2f8c7539366dcb391752e1875018d4ee9",
+      "bytes": 20804,
+      "sha256": "5e49df112cc8dbf796a21f0273b0d607c8f802e577291f0d2f5b8d396d95f264",
       "server": "cloudflare"
     },
     {
       "path": "/scenes/",
       "status": 200,
       "content_type": "text/html",
-      "bytes": 29499,
-      "sha256": "21fefd5de08978514c5658f14e05b5c58cc383a8e2eafb7959a6a3b6e0925979",
+      "bytes": 29135,
+      "sha256": "fbd69fd16207736b07ed029197e55514b37490e10f378c1713dcbea6390190a6",
       "server": "cloudflare"
     },
     {
       "path": "/brand/",
       "status": 200,
       "content_type": "text/html",
-      "bytes": 8325,
-      "sha256": "6a80a9004ac1cfdf1718e66aa978ff2403d88d8521244bf726a260dfebac7d28",
+      "bytes": 7961,
+      "sha256": "243fc14c97d1017568460c080aa71eea128550079ec39e5a8a6445da0ee4ae37",
       "server": "cloudflare"
     },
     {
       "path": "/docs/",
       "status": 200,
       "content_type": "text/html",
-      "bytes": 15583,
-      "sha256": "af28b4e3c6c97edb14bedeaf0c8856d8f19e4369d4fca8702a6f2d121acf6e88",
+      "bytes": 15845,
+      "sha256": "cc105d9938ccf0b7b9c821b17672666dba8edff6cc41a55c1d9a6cf00d4163dd",
       "server": "cloudflare"
     },
     {
-      "path": "/docs/05-system-architecture/",
+      "path": "/docs/07-pairing-and-authorization/",
       "status": 200,
       "content_type": "text/html",
-      "bytes": 11912,
-      "sha256": "82bec139f67b63d456d3a45a1a21f9a8b1371010c71d5a25bccdfc83be079308",
+      "bytes": 12727,
+      "sha256": "75dd7e225a9cee64e358f8c91dd519e9a3fe5b62441eb551d6324a6a55ca16fa",
       "server": "cloudflare"
     },
     {
-      "path": "/docs/28-website-and-deployment/",
+      "path": "/docs/29-implementation-and-verification/",
       "status": 200,
       "content_type": "text/html",
-      "bytes": 12130,
-      "sha256": "47c5aa9eb6c011d5b692c20b5cc637458ef7794a6f923eb612797a5b5cc1785d",
+      "bytes": 15655,
+      "sha256": "898254e29ba7e75ff8091513be603e0623151436b25e2ea7d6ed59c5e3a40e9d",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/resources/docs/status.json",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 2660,
+      "sha256": "70875d51442f008527e65400420679bb33af7befaf9ed1804dbfc7d31006ad91",
       "server": "cloudflare"
     },
     {
@@ -104,29 +110,17 @@
       "path": "/sitemap.xml",
       "status": 200,
       "content_type": "application/xml",
-      "bytes": 3140,
-      "sha256": "8a29862f1ac7e6ee747aba1edc815b70faf4177d7201edf66a18e4efa720a853",
-      "server": "cloudflare"
-    },
-    {
-      "path": "/resources/docs/evidence/documentation-verification.json",
-      "status": 200,
-      "content_type": "application/json",
-      "bytes": 260,
-      "sha256": "73c7630341a438a71f9e9581b32343b38e0e6a401150d2a55a2fd35ecc28c4eb",
-      "server": "cloudflare"
-    },
-    {
-      "path": "/resources/docs/evidence/website-browser.json",
-      "status": 200,
-      "content_type": "application/json",
-      "bytes": 4636,
-      "sha256": "66f1f0c09058ef3d8461183ade23ca90e4e8f8bef5e301200650e21d1ba3926b",
+      "bytes": 3302,
+      "sha256": "b6dd884fb9033a5697b7f73f09476848d625cd1b15d4265185aa642c31222e53",
       "server": "cloudflare"
     },
     {
       "path": "/not-a-real-page/",
-      "status": 404
+      "status": 404,
+      "content_type": "text/html",
+      "bytes": 4952,
+      "sha256": "3113209beb0179000605c5fca175c90905d1441d825af5b9d1ba3e4e8af14229",
+      "server": "cloudflare"
     }
   ],
   "artifact_fingerprints": [
@@ -140,35 +134,26 @@
     },
     {
       "path": "site/dist/index.html",
-      "sha256": "dd47ccf5de0e56f9979fb6cde6ba38c563182f0f1dea0d127493e6d00c2e6bcf"
+      "sha256": "5e49df112cc8dbf796a21f0273b0d607c8f802e577291f0d2f5b8d396d95f264"
     },
     {
-      "path": "site/dist/scenes/index.html",
-      "sha256": "0274fee23ba1285c705a69a3a7ba32dd0ea49665eef759ee69f7a46b48b7b545"
-    },
-    {
-      "path": "site/dist/brand/index.html",
-      "sha256": "4c08ad59d89fdc5b292eb89ed12377a681e1e16e4263a31c986bcb3f1952a365"
-    },
-    {
-      "path": "site/dist/docs/index.html",
-      "sha256": "45ba7a412945b0bfed34175dbae502cdc71a2ea3fd595efbf949f42ef8d9c3cc"
+      "path": "site/dist/docs/07-pairing-and-authorization/index.html",
+      "sha256": "75dd7e225a9cee64e358f8c91dd519e9a3fe5b62441eb551d6324a6a55ca16fa"
     },
     {
       "path": "site/dist/brand/limelink-brand-kit.zip",
       "sha256": "0af791656db11460130e141e6e86500c65be84b07e4caaa62dfec2491b76ba5f"
     }
   ],
-  "publication_note": "站内公开记录表示此次构建前已核验发布；最终发布版本在本地证据更新，不为自引用重复发布。",
-  "product_runtime_verified": false,
   "build": {
-    "files": 369,
-    "bytes": 53129488,
-    "manifest_sha256": "937d7957ee792fcb02dbe0054054c40307180883f18078949bc49c4bbc39302e",
-    "html_pages": 72,
-    "local_links": 3213,
+    "files": 384,
+    "bytes": 53263720,
+    "manifest_sha256": "4c1ed163d0c4ed7aefd50a55f246c7580c62e49852dd7ab471ee47ad1b1e7a40",
+    "html_pages": 77,
+    "local_links": 3471,
     "scene_images": 28,
     "errors": []
   },
-  "published_evidence_version": "7565fb0a-a0f2-4b25-9664-507291b17178"
+  "publication_note": "此次发布包含本地浏览器核验记录；生产核验与新截图在发布之后写入仓库，不为自引用重复部署。线上证据是构建时快照。",
+  "product_runtime_verified": false
 }

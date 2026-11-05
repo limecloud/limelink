@@ -20,6 +20,7 @@
 
 | 文件 | 实际证明与限制 |
 | --- | --- |
+| [native-ci.json](native-ci.json) | GitHub 的四端构建与 Linux 集成结果，绑定实际 commit；不代表真机或发行签名 |
 | [native-validation.json](native-validation.json) | 五项本机构建/核心检查的退出码、范围、源码与日志摘要；不是真机 |
 | [iot-runtime-mtls-integration.json](iot-runtime-mtls-integration.json) | 固定 IoT 与 Rust 实际 HTTP/MQTT/mTLS；批准、呈现和手机由软件夹具驱动 |
 | [macos-native-ui.json](macos-native-ui.json) | 真实 macOS 窗口批准、卡片呈现及会话编辑；手机仍为 Node 签名夹具 |
