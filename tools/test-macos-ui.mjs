@@ -13,6 +13,7 @@ const root=resolve(import.meta.dirname,'..'),iot=resolve(process.argv[index+1]);
 const {startActionStack,commandResult}=await import(pathToFileURL(join(iot,'tests/helpers/actions.mjs')));
 const {stop,until,freePort}=await import(pathToFileURL(join(iot,'tools/dev-stack.mjs')));
 await mkdir(join(root,'.dev'),{recursive:true});const directory=await mkdtemp(join(root,'.dev/native-ui-'));
+await writeFile(join(root,'.dev/macos-ui-finish'),'pending');
 const exec=promisify(execFile);const openssl=(...args)=>exec('openssl',args,{cwd:directory,maxBuffer:100000});
 await openssl('req','-x509','-newkey','rsa:2048','-nodes','-keyout','ca.key','-out','ca.crt','-days','2','-subj','/CN=LimeLink-native-isolated-CA');
 for(const [name,cn,usage]of[['server','localhost','serverAuth'],['device','device-lamp','clientAuth']]){

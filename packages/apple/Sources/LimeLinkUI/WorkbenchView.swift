@@ -30,7 +30,7 @@ public struct WorkbenchView:View {
                 Section("3 · 草稿与明确发送") {
                     TextEditor(text:$model.text).frame(minHeight:120).privacySensitive().accessibilityLabel("纯文本草稿")
                     Text("\(model.text.utf8.count) / 2048 字节；仅按纯文本展示，不执行其中的指令。").font(.caption)
-                    HStack{Button("确认发送到所选电脑"){voice.stop();model.action("card")};Button(voice.recording ? "停止录音" : "语音草稿"){if voice.recording{voice.stop()}else{voice.start{model.text=$0}}}}
+                    HStack{Button("确认发送到所选电脑"){voice.stop();model.action("card")};Button(voice.recording || voice.starting ? "停止录音" : "语音草稿"){if voice.recording || voice.starting{voice.stop()}else{voice.start{model.text=$0}}}}
                     Text(voice.message).font(.footnote).foregroundStyle(.secondary)
                     HStack{Button("通过网关生成草稿"){model.generateDraft()};Button("查询原模型任务"){model.generateDraft(resolve:true)}}
                     Text("模型调用会把当前草稿发送到网关已配置的提供方；生成不会触发设备操作。" + model.modelNotice).font(.footnote)

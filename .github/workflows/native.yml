@@ -75,12 +75,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: sudo apt-get update && sudo apt-get install -y mosquitto
+      - run: python3 .dev/iot-source/tools/bootstrap-broker.py
       - run: cargo test --manifest-path runtime/Cargo.toml --locked
       - run: cargo build --manifest-path .dev/iot-source/Cargo.toml --locked --bin limeiot-gateway --bin limeiot-model-validator --bin limeiot-simulator
       - run: node tools/test-iot-link.mjs --iot-root .dev/iot-source --mtls
         env:
-          LIMEIOT_MOSQUITTO: /usr/sbin/mosquitto
+          LIMEIOT_MOSQUITTO: ${{ github.workspace }}/.dev/iot-source/.dev/tools/mosquitto-build/src/mosquitto
           LIMEIOT_TEST_TARGET_DIR: ${{ github.workspace }}/.dev/iot-source/target/debug
       - uses: actions/upload-artifact@v4
         with:
