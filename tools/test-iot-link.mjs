@@ -28,7 +28,14 @@ if(mtls){
   deviceTls={ca:join(directory,'ca.crt'),certificate:join(directory,'device.crt'),private_key:join(directory,'device.key')};
 }
 await mkdir(join(root,'.dev'),{recursive:true});
-const stack=await startActionStack({directory:await mkdtemp(join(root,'.dev/link-integration-')),modelPath:join(root,'contracts/desktop.json'),brokerTls});
+const directory=await mkdtemp(join(root,'.dev/link-integration-'));
+let stack;
+try{stack=await startActionStack({directory,modelPath:join(root,'contracts/desktop.json'),brokerTls});}
+catch(error){
+  // 仅输出隔离栈进程日志，不输出配置、环境或证书材料。
+  for(const name of ['broker','gateway']){try{console.error(name+': '+(await readFile(join(directory,name+'.log'),'utf8')).slice(-4000));}catch{}}
+  throw error;
+}
 try{
   await stop(stack.lamp);
   const device=(await stack.request('/api/v1/spaces/space-demo/devices/device-lamp')).value;
