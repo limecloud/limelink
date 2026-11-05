@@ -22,3 +22,4 @@ apps/windows/**/bin/
 apps/windows/**/obj/
 apps/ios/xcuserdata/
 **/.DS_Store
+!/site/package-lock.json

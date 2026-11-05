@@ -37,6 +37,7 @@ public sealed class MainWindow:Window {
         foreach(var element in new UIElement[]{endpoint,token,Button("连接 / 恢复会话",Connect),spaces,Button("刷新电脑与真实能力",Refresh),targets,name,fingerprint,Button("请求配对",()=>Action("pair")),Button("检查配对及展示状态",()=>Action("status")),draft,Button("确认发送到所选电脑",()=>Action("card")),Button("系统语音草稿",Dictate),result,Button("查询原请求",Resolve),Button("完成已核实记录",Finish),cancelId,Button("请求取消待展示卡片",()=>Action("cancel")),session,revision,Button("从草稿建立会话",()=>Action("session_create")),Button("取得 30 秒输入资格",()=>Action("session_claim")),Button("提交草稿修订",()=>Action("session_write")),Button("释放输入资格",()=>Action("session_release")),contentId,Button("安装纯文本内容（1小时）",()=>Action("content_put")),Button("移除所选内容",()=>Action("content_remove")),Button("撤销此客户端协同",()=>Action("revoke")),Button("退出用户会话",Logout),new TextBlock{Text="本机执行端",FontSize=24},Button("选择设备配置并启动",StartRuntime),Button("停止本机执行端",StopRuntime),local,new TextBlock{Text="系统语音服务可能处理录音；语音只生成草稿。模型服务通过网关配置，不会自动获得设备执行权。",TextWrapping=TextWrapping.Wrap}})form.Children.Add(element);
         form.Children.Insert(14,Button("网关模型生成草稿",()=>ModelDraft(false)));form.Children.Insert(15,Button("查询原模型任务",()=>ModelDraft(true)));
         form.Children.Add(Button("导出脱敏诊断",ExportDiagnostics));
+        form.Children.Insert(11,Button("重新申请已失效的配对",Reapply));
         targets.SelectionChanged+=async(_,_)=>await Run(async()=>{if(client is not null&&targets.SelectedItem is Device d&&spaces.SelectedItem is string s)fingerprint.Text="本客户端指纹\n"+await client.FingerprintAsync(s,d.Id);});
         controls.Content=form;Content=new ScrollViewer{Content=controls};Activated+=(_,args)=>active=args.WindowActivationState!=WindowActivationState.Deactivated;
         Closed+=(_,_)=>{if(runtime is{HasExited:false})runtime.Kill();runtime?.Dispose();client?.Dispose();};
@@ -46,7 +47,11 @@ public sealed class MainWindow:Window {
     private async Task Connect(){var next=new LinkClient(endpoint.Text,secure);if(token.Password.Length==0)await next.Gateway.RestoreAsync();else await next.Gateway.LoginAsync(token.Password);token.Password="";client?.Dispose();client=next;ai=new(next.Gateway,secure);aiKey=null;spaces.ItemsSource=await next.Gateway.SpacesAsync();targets.ItemsSource=null;result.Text="已连接，请明确选择空间并刷新。";}
     private async Task Refresh(){if(client is null||spaces.SelectedItem is not string space)throw new InvalidOperationException("select_space_first");var snapshot=await client.SnapshotAsync(space);targets.ItemsSource=snapshot.Devices.Where(d=>snapshot.Models[d.ModelRevision]?["model_id"]?.GetValue<string>()=="urn:limelink:model:desktop:1").ToArray();result.Text="已读取真实终端能力。";}
     private void Show(CommandReceipt receipt){var response=LinkClient.Response(receipt);result.Text=receipt.Status+"\n"+receipt.Id+"\n"+response?.ToJsonString();var value=response?["value"];if(value?["revision"] is JsonValue number)revision.Text=number.GetValue<long>().ToString();if(value?["text"] is JsonValue text)draft.Text=text.GetValue<string>();if(receipt.Document["request"]?["operation"]?["value"]?["kind"]?.GetValue<string>()=="card")cancelId.Text=value?["id"]?.GetValue<string>()??"";}
-    private async Task Action(string kind){
+    private async Task Reapply(){
+        var dialog=new ContentDialog{XamlRoot=Content.XamlRoot,Title="重新申请所选电脑的协同？",Content="仅对过期、拒绝或撤销的关系生效；清除旧会话与内容后，电脑必须再次批准。先核实所有未完成请求。",PrimaryButtonText="清除并重新申请",CloseButtonText="取消",DefaultButton=ContentDialogButton.Close};
+        if(await dialog.ShowAsync()==ContentDialogResult.Primary)await Action("pair",true);
+    }
+    private async Task Action(string kind,bool reapply=false){
         if(client is null||spaces.SelectedItem is not string space||targets.SelectedItem is not Device device)throw new InvalidOperationException("select_target_first");
         JsonObject payload=kind switch{
             "pair"=>new(){{"name",name.Text}},"card"=>new(){{"text",draft.Text},{"ttl",3600}},"cancel"=>new(){{"id",cancelId.Text}},
@@ -56,6 +61,7 @@ public sealed class MainWindow:Window {
             "content_put"=>new(){{"id",contentId.Text.Length==0?(contentId.Text=Guid.NewGuid().ToString()):contentId.Text},{"text",draft.Text},{"ttl",3600},{"sha256",LinkIdentity.Hash(draft.Text)}},
             "content_remove"=>new(){{"id",contentId.Text}},_=>new()
         };
+        if(kind=="pair"&&reapply)payload["reapply"]=true;
         var command=await client.PerformAsync(space,device,kind,payload);
         for(var i=0;i<20&&command.Status is "accepted" or "dispatched";i++){await Task.Delay(200);command=await client.ResolveAsync();}Show(command);
     }

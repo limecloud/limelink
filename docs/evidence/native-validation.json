@@ -5,18 +5,18 @@
       "status": "passed",
       "exit_code": 0,
       "scope": "运行时存储、签名与协同状态；无原生 UI",
-      "started_at": "2026-11-05T11:31:25.657964+00:00",
-      "finished_at": "2026-11-05T11:31:26.356574+00:00",
+      "started_at": "2026-11-05T11:54:53.818037+00:00",
+      "finished_at": "2026-11-05T11:54:57.994609+00:00",
       "sdk_revision": "313090d6b53e28d6e5ad1eaa28d29b8d7c479119",
       "sources": {
         "contracts/iot-sdk.lock.json": "2d34cd36840696e8198c9427778779489f37726ce4ce03db8f2c46cc85bc6603",
         "runtime/Cargo.lock": "1893fa56859022cab8a681c8f9bc4ef2871a768dd1e50f29e1c6f866a83963e1",
         "runtime/Cargo.toml": "d38e52d755ab5e3b1cf5c8464236833f73e7eca31ed756c4e51d95a3b858bbd1",
-        "runtime/src/lib.rs": "844c9c83fac55760c9db9ff22e6ab55b5ecda8df63bef080d93ba0e46a9c21d8",
+        "runtime/src/lib.rs": "dd145e9f634cb2779c8cc977e680ddd82f4e889889b9062ede1aec6294c6516c",
         "runtime/src/main.rs": "0781921cf684c7dc752a066420ce2f7168842f97a299bc991bff2984d2e33de0",
-        "runtime/tests/collaboration.rs": "36edd3703f136942dc5b2c6b8304a10f6c549b9e6517afaf600c3bbf5afdf3ec"
+        "runtime/tests/collaboration.rs": "473af7887a7b58efdf4925cc1ccb3cae91638ba0b6b9fcc9f044025d991d179a"
       },
-      "log_sha256": "b8769f8a38b6b28ef785a00bec11ba65d145ed8658270d1b649f455e7c42965c"
+      "log_sha256": "b5ec59fe77ebe60f79609ad809072686ef583275f9282885f312464801444383"
     },
     "apple": {
       "status": "passed",
@@ -38,8 +38,8 @@
       "status": "passed",
       "exit_code": 0,
       "scope": "macOS release 构建与临时签名；非公证发行",
-      "started_at": "2026-11-05T11:44:47.961037+00:00",
-      "finished_at": "2026-11-05T11:44:56.710942+00:00",
+      "started_at": "2026-11-05T11:54:58.143625+00:00",
+      "finished_at": "2026-11-05T11:55:10.019654+00:00",
       "sdk_revision": "313090d6b53e28d6e5ad1eaa28d29b8d7c479119",
       "sources": {
         "Package.swift": "408595e2662238a92cbf1159abda66a14671f71f604d44443d611a080edd0195",
@@ -49,28 +49,28 @@
         "packages/apple/Sources/LimeLinkCore/LinkClient.swift": "2a4e724713552c2b56357d0b6a9cfc56b120aebe546fed10515ca84463735d20",
         "packages/apple/Sources/LimeLinkCore/SecureStore.swift": "38b3a589ef466cce173a66dfa59ac6f9250ef9034206864f0491c20f1f54cf1d",
         "packages/apple/Sources/LimeLinkUI/VoiceDraft.swift": "df71860f18bbe58d91a930cb31ae8cec6cdc9f9fd0d05d8636bf4cf2cfb6ff04",
-        "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift": "dcf08f6b5b26ed9f0031a45b58d3d6d4d08174aeb723196c26a3cd0c8b31ce6e",
-        "packages/apple/Sources/LimeLinkUI/WorkbenchView.swift": "983cd8143a247d10b841ce01af97e10c3d39ab7a8ce05ef33597f3cb379f6bf7",
+        "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift": "675d8023724ab44d1f62aee6561ee6ffed3d6873c6506f12e1d7a5991955d696",
+        "packages/apple/Sources/LimeLinkUI/WorkbenchView.swift": "13ee00e7be68ec4035ff2789adc23d28d306a0a0356d3c1a6f4e1b0866db680f",
         "runtime/Cargo.lock": "1893fa56859022cab8a681c8f9bc4ef2871a768dd1e50f29e1c6f866a83963e1",
         "runtime/Cargo.toml": "d38e52d755ab5e3b1cf5c8464236833f73e7eca31ed756c4e51d95a3b858bbd1",
-        "runtime/src/lib.rs": "844c9c83fac55760c9db9ff22e6ab55b5ecda8df63bef080d93ba0e46a9c21d8",
+        "runtime/src/lib.rs": "dd145e9f634cb2779c8cc977e680ddd82f4e889889b9062ede1aec6294c6516c",
         "runtime/src/main.rs": "0781921cf684c7dc752a066420ce2f7168842f97a299bc991bff2984d2e33de0",
-        "runtime/tests/collaboration.rs": "36edd3703f136942dc5b2c6b8304a10f6c549b9e6517afaf600c3bbf5afdf3ec",
+        "runtime/tests/collaboration.rs": "473af7887a7b58efdf4925cc1ccb3cae91638ba0b6b9fcc9f044025d991d179a",
         "tools/package-macos.py": "fbe36621a2826d81eb7e8f4639ab96ac8e8236dad0530e45ee96e72b90af55f7"
       },
-      "log_sha256": "7f44997ce9e937dbb8068867f400002d251ecae3a96672f528324cf32811d9ed"
+      "log_sha256": "a8befcc25da9447bb82e1420c63629aaa3aaaf84541edaaf613231f778a4c5ef"
     },
     "android": {
       "status": "passed",
       "exit_code": 0,
       "scope": "Android Core 检查与调试 APK；非真机",
-      "started_at": "2026-11-05T11:41:43.303821+00:00",
-      "finished_at": "2026-11-05T11:42:03.193087+00:00",
+      "started_at": "2026-11-05T11:55:10.069887+00:00",
+      "finished_at": "2026-11-05T11:55:28.304596+00:00",
       "sdk_revision": "313090d6b53e28d6e5ad1eaa28d29b8d7c479119",
       "sources": {
         "apps/android/app/build.gradle.kts": "0de4aa4ba49a98156ac4831d6cff920c4debede927ddb56e48eaeb2151358305",
         "apps/android/app/src/main/AndroidManifest.xml": "3ae0b6372e597c20d40af8e4a68d83097fdde6b3978189e35b6b4ce227693125",
-        "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt": "6917d51886d17e834cbbc183126f512c0ff9b0326436b6ab74187c5f6a809ad3",
+        "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt": "656afd6169cf027fc5c8425cdac7ac0ab863469caa5e6755ec2cc623cc7124d8",
         "apps/android/app/src/main/kotlin/run/limeai/link/SecureStore.kt": "2cc3627fb12502c170e535d0668c51edc43d227bc1464f96c491c336b76f4426",
         "apps/android/app/src/main/res/drawable/ic_launcher_background.png": "c1a20899386c2d076dc6163caa6b0713661ada2a80d42fdf8cbcc32638462cf3",
         "apps/android/app/src/main/res/drawable/ic_launcher_foreground.png": "58dd349233fe730a82f445b852e2858dd3fc7c84ddc69cd218ad164dfc4ae43f",
@@ -93,7 +93,7 @@
         "apps/android/settings.gradle.kts": "2886f34dd6383bae6606e2a3afeb22e5b49efce68510f6b2854cb0d334943e97",
         "contracts/iot-sdk.lock.json": "2d34cd36840696e8198c9427778779489f37726ce4ce03db8f2c46cc85bc6603"
       },
-      "log_sha256": "268bbdfe99de5bd20b8e836415bdd6b7a806aa3f525f3c9d7306932e81875673"
+      "log_sha256": "f416bf25b657e22db6d8c1ae01e489a36ce1596ace701e39367e6f8330f2b9dd"
     },
     "dotnet": {
       "status": "passed",

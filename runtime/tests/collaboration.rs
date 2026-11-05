@@ -75,3 +75,49 @@ fn paired(s:&mut Store,k:&EcdsaKeyPair,c:&str){assert_eq!(execute(s,k,c,"pair",j
  assert_eq!(s.view(103).unwrap()["cards"][0]["text"],"private-body");
  drop(s);std::fs::remove_dir_all(directory).unwrap();
 }
+
+#[test]fn reapply_is_explicit_and_never_extends_live_approval(){
+ let mut s=store();let k=key();let c=uuid::Uuid::new_v4().to_string();
+ execute(&mut s,&k,&c,"pair",json!({"name":"原名称"}),100);
+ let live=execute(&mut s,&k,&c,"pair",json!({"name":"新名称","reapply":true}),200);
+ assert_eq!(live["value"]["expires_at"],220);assert_eq!(s.view(200).unwrap()["peers"][0]["name"],"原名称");
+ assert_eq!(execute(&mut s,&k,&c,"pair",json!({"name":"手机"}),221)["value"]["state"],"expired");
+ let retry=execute(&mut s,&k,&c,"pair",json!({"name":"重新申请","reapply":true}),222);
+ assert_eq!(retry["value"]["state"],"pending");assert_eq!(retry["value"]["expires_at"],342);
+ assert_eq!(execute(&mut s,&k,&c,"card",json!({"text":"still blocked","ttl":60}),223)["error"],"pairing_not_approved");
+ s.approve(&c,true,224).unwrap();
+ assert_eq!(execute(&mut s,&k,&c,"pair",json!({"name":"不能降级","reapply":true}),225)["value"]["state"],"approved");
+ assert_eq!(s.view(225).unwrap()["peers"][0]["name"],"重新申请");
+}
+
+#[test]fn reapply_after_rejection_preserves_original_denial_and_identity(){
+ let mut s=store();let k=key();let c=uuid::Uuid::new_v4().to_string();
+ execute(&mut s,&k,&c,"pair",json!({"name":"手机"}),100);s.approve(&c,false,101).unwrap();
+ let e=input(&k,&c,"card",json!({"text":"original denied","ttl":60}),102);
+ let denied=s.execute("denied-before-reapply",&e,SPACE,DEVICE,REV,102).unwrap();
+ assert_eq!(response(denied.clone())["error"],"pairing_not_approved");
+ assert_eq!(execute(&mut s,&key(),&c,"pair",json!({"name":"冒名","reapply":true}),103)["error"],"identity_conflict");
+ assert_eq!(execute(&mut s,&k,&c,"pair",json!({"name":"手机"}),104)["value"]["state"],"rejected");
+ assert_eq!(execute(&mut s,&k,&c,"pair",json!({"name":"手机","reapply":true}),105)["value"]["state"],"pending");
+ s.approve(&c,true,106).unwrap();
+ assert_eq!(s.execute("denied-before-reapply",&e,SPACE,DEVICE,REV,107).unwrap(),denied);
+ assert!(s.view(107).unwrap()["cards"].as_array().unwrap().is_empty());
+}
+
+#[test]fn reapply_does_not_resurrect_old_sessions_or_other_peers_content(){
+ let mut s=store();let k=key();let c=uuid::Uuid::new_v4().to_string();let other=uuid::Uuid::new_v4().to_string();
+ paired(&mut s,&k,&c);paired(&mut s,&k,&other);
+ for(client,id)in [(&c,"old"),(&other,"other")]{
+  execute(&mut s,&k,client,"session_create",json!({"id":id,"text":"draft","ttl":200}),102);
+  execute(&mut s,&k,client,"content_put",json!({"id":id,"text":"note","sha256":limelink_runtime::hash(b"note"),"ttl":200}),103);
+ }
+ execute(&mut s,&k,&c,"card",json!({"text":"cancelled","ttl":60}),104);
+ s.local_session("old",1,"session_claim",None,105).unwrap();s.revoke(&c).unwrap();
+ assert_eq!(execute(&mut s,&k,&c,"pair",json!({"name":"手机"}),106)["value"]["state"],"revoked");
+ assert_eq!(execute(&mut s,&k,&c,"pair",json!({"name":"手机","reapply":true}),107)["value"]["state"],"pending");
+ s.approve(&c,true,108).unwrap();
+ assert_eq!(execute(&mut s,&k,&c,"session_claim",json!({"id":"old","revision":2}),109)["error"],"session_not_found");
+ let view=s.view(109).unwrap();assert_eq!(view["cards"][0]["state"],"cancelled");
+ assert_eq!(view["sessions"].as_array().unwrap().len(),1);assert_eq!(view["sessions"][0]["id"],"other");
+ assert_eq!(view["contents"].as_array().unwrap().len(),1);assert_eq!(view["contents"][0]["id"],"other");
+}

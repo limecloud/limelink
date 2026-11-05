@@ -73,7 +73,7 @@
       "evidence": [
         "docs/evidence/iot-runtime-mtls-integration.json"
       ],
-      "limits": "已实现120秒失效；二维码和重配管理缺失"
+      "limits": "120秒失效与明确重配已实现；二维码、跨账号和完整真机流程未验收"
     },
     {
       "requirement": "FR-007",

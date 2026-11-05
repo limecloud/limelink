@@ -65,12 +65,12 @@ import UIKit
     public func selectTarget() {
         run {guard let client=self.client,!self.target.isEmpty else{return};self.fingerprint=try await client.fingerprint(space:self.space,device:self.target)}
     }
-    public func action(_ kind:String) {
+    public func action(_ kind:String,reapply:Bool = false) {
         run {
             guard let client=self.client,let device=self.devices.first(where:{$0.id==self.target}) else{throw LinkError("select_target_first")}
             let payload:JSONValue
             switch kind {
-            case "pair":payload = .object(["name":.string(self.name)])
+            case "pair":payload = .object(reapply ? ["name":.string(self.name),"reapply":.bool(true)] : ["name":.string(self.name)])
             case "card":payload = .object(["text":.string(self.text),"ttl":.integer(3600)])
             case "cancel":payload = .object(["id":.string(self.cancelID)])
             case "session_create":

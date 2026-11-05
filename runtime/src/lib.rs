@@ -43,7 +43,7 @@ impl Exchange {
     }
 }
 
-#[derive(Deserialize)] #[serde(deny_unknown_fields)] struct Pair { name: String }
+#[derive(Deserialize)] #[serde(deny_unknown_fields)] struct Pair { name: String, #[serde(default)] reapply: bool }
 #[derive(Deserialize)] #[serde(deny_unknown_fields)] struct Card { text: String, ttl: i64 }
 #[derive(Deserialize)] #[serde(deny_unknown_fields)] struct Target { id: String }
 #[derive(Deserialize)] #[serde(deny_unknown_fields)] struct SessionCreate { id: String, text: String, ttl: i64 }
@@ -102,7 +102,18 @@ impl Store {
         if let Some((key, _, _)) = &peer { if key != &input.public_key { return Err("identity_conflict".into()); } }
         if input.kind == "pair" {
             let pair: Pair = parse(&input.payload)?; bounded(&pair.name,64)?;
-            if let Some((_,state,deadline)) = peer { return Ok(json!({"state":if state=="pending" && deadline<=now {"expired"} else {&state},"client_id":input.client_id})); }
+            if let Some((_,state,deadline)) = peer {
+                let inactive=state!="approved" && (state!="pending" || deadline<=now);
+                if !pair.reapply || !inactive {
+                    return Ok(json!({"state":if state=="pending" && deadline<=now {"expired"} else {&state},"client_id":input.client_id,"expires_at":deadline,"fingerprint":hash(input.public_key.as_bytes())}));
+                }
+                // 明确重配建立新批准周期，不复活旧会话或内容；历史回执保持原事实。
+                storage(tx.execute("UPDATE cards SET state='cancelled' WHERE client=? AND state='queued'",[&input.client_id]))?;
+                storage(tx.execute("DELETE FROM sessions WHERE client=?",[&input.client_id]))?;
+                storage(tx.execute("DELETE FROM contents WHERE client=?",[&input.client_id]))?;
+                storage(tx.execute("UPDATE peers SET name=?,state='pending',deadline=? WHERE id=?",params![pair.name,now+120,input.client_id]))?;
+                return Ok(json!({"state":"pending","client_id":input.client_id,"expires_at":now+120,"fingerprint":hash(input.public_key.as_bytes())}));
+            }
             let count:i64=storage(tx.query_row("SELECT count(*) FROM peers",[],|r|r.get(0)))?;
             if count>=16 { return Err("pairing_capacity".into()); }
             storage(tx.execute("INSERT INTO peers VALUES(?,?,?,'pending',?)", params![input.client_id,input.public_key,pair.name,now+120]))?;

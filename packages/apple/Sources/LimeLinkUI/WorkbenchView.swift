@@ -4,6 +4,7 @@ import LimeLinkCore
 public struct WorkbenchView:View {
     @StateObject private var model=WorkbenchModel()
     @StateObject private var voice=VoiceDraft()
+    @State private var confirmingReapply=false
     @Environment(\.scenePhase) private var scenePhase
     public init(){}
     public var body:some View {
@@ -25,6 +26,10 @@ public struct WorkbenchView:View {
                     TextField("本客户端名称",text:$model.name)
                     if !model.fingerprint.isEmpty{Text("本客户端指纹\n" + model.fingerprint).font(.caption.monospaced()).textSelection(.enabled)}
                     HStack{Button("请求配对"){model.action("pair")};Button("检查配对和展示状态"){model.action("status")}}
+                    Button("重新申请已失效的配对"){confirmingReapply=true}
+                        .confirmationDialog("重新申请所选电脑的协同？",isPresented:$confirmingReapply,titleVisibility:.visible){
+                            Button("清除旧会话与内容并重新申请",role:.destructive){model.action("pair",reapply:true)}
+                        }message:{Text("仅对过期、拒绝或撤销的关系生效；旧会话与内容将清除，电脑必须再次批准。先核实所有未完成请求。")}
                     Text("在电脑本机核对名称、指纹和目标后批准。配对请求 120 秒有效。").font(.footnote).foregroundStyle(.secondary)
                 }
                 Section("3 · 草稿与明确发送") {

@@ -86,13 +86,22 @@ try{
   await submit('content_put',{id:'note',text:'今日专注',sha256:hash('今日专注'),ttl:60});await until(()=>view.contents.some(c=>c.id==='note'));
   await submit('content_remove',{id:'note'});await until(()=>view.contents.length===0);
   agent.stdin.write(JSON.stringify({type:'revoke',id:client})+'\n');await until(()=>view.peers.some(p=>p.state==='revoked'));
-  assert.equal((await submit('card',{text:'revoked',ttl:60})).response.error,'pairing_not_approved');
+  const denied=await submit('card',{text:'revoked',ttl:60});assert.equal(denied.response.error,'pairing_not_approved');
+  assert.equal((await submit('pair',{name:'隔离手机客户端'})).response.value.state,'revoked');
+  assert.equal((await submit('pair',{name:'明确重新申请',reapply:true})).response.value.state,'pending');
+  assert.equal((await submit('card',{text:'not approved again',ttl:60})).response.error,'pairing_not_approved');
+  await until(()=>view.peers.some(p=>p.id===client&&p.state==='pending'));
+  agent.stdin.write(JSON.stringify({type:'approve',id:client})+'\n');
+  await until(()=>view.peers.some(p=>p.id===client&&p.state==='approved'));
+  assert.equal((await submit('session_claim',{id:'cross-screen-session',revision:8})).response.error,'session_not_found');
+  assert.equal((await submit('card',{},denied.request)).response.error,'pairing_not_approved');
+  assert.equal((await submit('card',{text:'明确批准后的新卡片',ttl:60})).response.ok,true);
   const sdk=JSON.parse(await readFile(join(root,'contracts/iot-sdk.lock.json'),'utf8'));
   const files=['runtime/src/lib.rs','runtime/src/main.rs','runtime/Cargo.lock','contracts/desktop.json','tools/test-iot-link.mjs'];
   const sources=Object.fromEntries(await Promise.all(files.map(async file=>[file,hash(await readFile(join(root,file)))])));
   const binaryDirectory=process.env.LIMEIOT_TEST_TARGET_DIR??join(iot,'target/debug');
   const binaries=Object.fromEntries(await Promise.all(['limeiot-gateway','limeiot-model-validator','limeiot-simulator'].map(async file=>[file,hash(await readFile(join(binaryDirectory,file)))])));
   binaries['limelink-runtime']=hash(await readFile(join(root,'runtime/target/debug/limelink-runtime')));
-  const report={scope:'隔离真实 IoT HTTP/MQTT 与 Rust 本机运行时；软件批准/呈现夹具',passed:true,verified_at:new Date().toISOString(),sdk_revision:sdk.head,sdk_worktree_overlay:sdk.worktree_overlay,sources,binaries,device_model_revision:device.model_revision,pairing:true,explicit_approval:true,signature:true,original_command_recovery:true,duplicate_no_second_card:true,submission_and_presentation_separate:true,session_cas:true,desktop_session_handoff:true,content_hash_and_remove:true,revocation:true,native_ui:false,physical_phone:false,device_mtls:mtls};
+  const report={scope:'隔离真实 IoT HTTP/MQTT 与 Rust 本机运行时；软件批准/呈现夹具',passed:true,verified_at:new Date().toISOString(),sdk_revision:sdk.head,sdk_worktree_overlay:sdk.worktree_overlay,sources,binaries,device_model_revision:device.model_revision,pairing:true,explicit_approval:true,signature:true,original_command_recovery:true,duplicate_no_second_card:true,submission_and_presentation_separate:true,session_cas:true,desktop_session_handoff:true,content_hash_and_remove:true,revocation:true,explicit_reapply:true,reapply_does_not_resurrect_old_session:true,native_ui:false,physical_phone:false,device_mtls:mtls};
   await mkdir(join(root,'docs/evidence'),{recursive:true});await writeFile(join(root,'docs/evidence/'+(mtls?'iot-runtime-mtls-integration.json':'iot-runtime-integration.json')),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
 }finally{await stack.close();}

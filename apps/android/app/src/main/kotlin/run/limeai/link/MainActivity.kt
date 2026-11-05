@@ -63,11 +63,11 @@ class Workbench(application:Application):AndroidViewModel(application) {
         value?.get("text")?.jsonPrimitive?.content?.let{text=it}
         if(command.request.operation.value.jsonObject["kind"]?.jsonPrimitive?.content=="card")value?.get("id")?.jsonPrimitive?.content?.let{cancel=it}
     }
-    fun action(kind:String)=run{
+    fun action(kind:String,reapply:Boolean=false)=run{
         val c=checkNotNull(client);val device=devices.singleOrNull{it.deviceId==target}?:error("请先选择电脑")
         val payload=buildJsonObject{
             when(kind){
-                "pair"->put("name",name)
+                "pair"->{put("name",name);if(reapply)put("reapply",true)}
                 "card"->{put("text",text);put("ttl",3600)}
                 "cancel"->put("id",cancel)
                 "session_create"->{if(session.isBlank())session=UUID.randomUUID().toString();put("id",session);put("text",text);put("ttl",3600)}
@@ -99,6 +99,8 @@ class MainActivity:ComponentActivity(){
     override fun onCreate(savedInstanceState:Bundle?){super.onCreate(savedInstanceState);setContent{MaterialTheme(colorScheme=lightColorScheme(primary=androidx.compose.ui.graphics.Color(0xFF41672B))){WorkbenchScreen()}}}
 }
 @Composable private fun WorkbenchScreen(model:Workbench=viewModel()){
+    var confirmingReapply by remember{mutableStateOf(false)}
+    if(confirmingReapply)AlertDialog(onDismissRequest={confirmingReapply=false},title={Text("重新申请所选电脑的协同？")},text={Text("仅对过期、拒绝或撤销的关系生效；清除旧会话与内容后，电脑必须再次批准。先核实所有未完成请求。")},confirmButton={TextButton({confirmingReapply=false;model.action("pair",reapply=true)}){Text("清除并重新申请")}},dismissButton={TextButton({confirmingReapply=false}){Text("取消")}})
     val voice=rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()){result->if(result.resultCode==Activity.RESULT_OK){result.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.firstOrNull()?.let{model.text=it}}}
     val context=androidx.compose.ui.platform.LocalContext.current
     fun launchVoice(){try{voice.launch(Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM).putExtra(RecognizerIntent.EXTRA_LANGUAGE,"zh-CN").putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,1))}catch(_:Exception){model.message="未安装系统语音识别服务，可以直接输入草稿。"}}
@@ -114,6 +116,7 @@ class MainActivity:ComponentActivity(){
             items(model.devices){device->Row{RadioButton(model.target==device.deviceId,{model.select(device.deviceId)},enabled=!model.busy);Text(device.deviceId+if(device.ready)" · 在线" else " · 离线")}}
             item{OutlinedTextField(model.name,{model.name=it},label={Text("本客户端名称")},modifier=Modifier.fillMaxWidth());Text("本客户端指纹\n"+model.fingerprint,style=MaterialTheme.typography.bodySmall)}
             item{Row{Button({model.action("pair")},enabled=!model.busy&&!model.pending){Text("请求配对")};TextButton({model.action("status")},enabled=!model.busy&&!model.pending){Text("检查配对状态")}};Text("请在电脑本机核对并批准，120 秒内有效。")}
+            item{TextButton({confirmingReapply=true},enabled=!model.busy&&!model.pending){Text("重新申请已失效的配对")}}
             item{OutlinedTextField(model.text,{model.text=it},label={Text("纯文本草稿")},minLines=5,modifier=Modifier.fillMaxWidth(),enabled=!model.busy)}
             item{Text("${model.text.toByteArray().size} / 2048 字节");Button({model.action("card")},enabled=!model.busy&&!model.pending){Text("确认发送到所选电脑")};TextButton(::launchVoice,enabled=!model.busy){Text("系统语音草稿")};Text("系统语音服务可能处理录音；识别结果只进入草稿。",style=MaterialTheme.typography.bodySmall)}
             item{Text("网关模型将处理当前草稿，提供方由网关配置；生成不会触发设备操作。");Row{Button({model.modelDraft(false)},enabled=!model.busy){Text("生成草稿")};TextButton({model.modelDraft(true)},enabled=!model.busy){Text("查询原模型任务")}}}
