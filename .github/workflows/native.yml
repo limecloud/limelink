@@ -12,7 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/prepare-iot
-      - run: swift run -j 4 LinkChecks
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tools/test-cloud-clients.mjs --platform apple
       - run: python3 tools/package-macos.py
       - run: ditto -c -k --keepParent .dev/artifacts/LimeLink.app .dev/artifacts/LimeLink-macos-development.zip
       - uses: actions/upload-artifact@v4
@@ -48,6 +51,10 @@ jobs:
           gradle-version: '8.14'
       - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
       - run: sh apps/android/gradlew --no-daemon -p apps/android :core:test :app:assembleDebug
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tools/test-cloud-clients.mjs --platform android
       - uses: actions/upload-artifact@v4
         with:
           name: android-development
@@ -61,7 +68,10 @@ jobs:
         with:
           dotnet-version: '10.0.x'
       - run: dotnet run --project .dev/iot-source/packages/dotnet/LimeIoT.Client.Checks
-      - run: dotnet run --project apps/windows/LimeLink.Core.Checks
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tools/test-cloud-clients.mjs --platform dotnet
       - run: ./tools/package-windows.ps1
       - uses: actions/upload-artifact@v4
         with:

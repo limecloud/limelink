@@ -1,8 +1,8 @@
 {
   "passed": true,
-  "verified_at": "2026-11-05T11:28:01.593Z",
+  "verified_at": "2026-11-05T13:02:34.810Z",
   "scope": "macOS 本机批准、原生卡片实际呈现及会话编辑；手机为 Node 签名夹具",
-  "sdk_revision": "313090d6b53e28d6e5ad1eaa28d29b8d7c479119",
+  "sdk_revision": "e01581888d8be168481b85242c5835864674df3e",
   "native_ui": true,
   "physical_phone": false,
   "user_https_ui": false,
@@ -10,6 +10,6 @@
   "approval_via_native_window": true,
   "presentation_via_native_window": true,
   "desktop_session_handoff": true,
-  "app_binary_sha256": "c60792672f899d2f886a66f22c70aab423473f67cb72218b8529892d157d833c",
-  "runtime_binary_sha256": "7e130130b4288eb2fb788bd8a3bef09abe6cdb100a2ba3d85d1b6668d51056e0"
+  "app_binary_sha256": "28d82ea3eefe7059fd36f7cecd8490e3fcab34244f9a1c7e85d0567c9dae2cd0",
+  "runtime_binary_sha256": "280f016ea1f775587f69049d7cb9d62728de944d0dfd7d35ea1466887b8c9971"
 }

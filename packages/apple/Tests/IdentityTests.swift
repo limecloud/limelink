@@ -71,6 +71,7 @@ private func recoveryChecks()async throws{
         try IdentityTests().testSignatureBindsTargetAndPayload()
         try IdentityTests().testPayloadBoundAndIndependentIdentities()
         try await recoveryChecks()
+        try await cloudConsumerChecks()
         print("{\"passed\":true,\"groups\":4,\"signature_target_binding\":true,\"payload_budget\":true,\"response_loss_get_only\":true,\"storage_failure_zero_post\":true}")
     }
 }

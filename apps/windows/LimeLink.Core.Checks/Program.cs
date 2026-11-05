@@ -10,4 +10,6 @@ if(!verifier.VerifyData(Encoding.UTF8.GetBytes(message),signature,HashAlgorithmN
 if(verifier.VerifyData(Encoding.UTF8.GetBytes(message.Replace("desktop-a","desktop-b",StringComparison.Ordinal)),signature,HashAlgorithmName.SHA256,DSASignatureFormat.Rfc3279DerSequence))throw new Exception("target not bound");
 try{identity.Exchange("s","d","r","card",new string('x',4097));throw new Exception("budget bypass");}catch(InvalidOperationException error)when(error.Message=="payload_too_large"){}
 await RecoveryChecks.Run();
-Console.WriteLine("{\"passed\":true,\"groups\":8,\"p256_der_signature\":true,\"target_binding\":true,\"payload_budget\":true,\"response_loss_get_only\":true,\"storage_failure_zero_post\":true,\"windows_ui\":false}");
+await CloudChecks.Run();
+await CloudLiveChecks.Run();
+Console.WriteLine("{\"passed\":true,\"groups\":16,\"p256_der_signature\":true,\"target_binding\":true,\"payload_budget\":true,\"response_loss_get_only\":true,\"storage_failure_zero_post\":true,\"cloud_product_contract\":true,\"windows_ui\":false}");

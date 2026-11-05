@@ -277,7 +277,7 @@
     {
       "id": "FR-021",
       "title": "受限云入口",
-      "status": "planned",
+      "status": "partial",
       "phase": "P3",
       "documents": [
         "DOC-05",

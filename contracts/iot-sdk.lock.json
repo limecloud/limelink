@@ -1,6 +1,6 @@
 {
   "repository": "https://github.com/limecloud/iot",
-  "head": "313090d6b53e28d6e5ad1eaa28d29b8d7c479119",
+  "head": "e01581888d8be168481b85242c5835864674df3e",
   "worktree_overlay": false,
   "files": [
     {
@@ -40,7 +40,7 @@
     },
     {
       "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/ControlClient.kt",
-      "sha256": "167c5d44cd39a90e7fba792be0a384be5563c274835cbda7f57ac36394c739f4",
+      "sha256": "27bd3d7eba378abf07ba38b4f1e45079be3d7b8b34b0f1f7b1def6912c361836",
       "matches_head": true
     },
     {
@@ -220,7 +220,7 @@
     },
     {
       "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/ControlClientTest.kt",
-      "sha256": "79f6dc66a00e4d21cd99caba5bab904fccba68b4e28bf68c57d4c1d038799ddc",
+      "sha256": "667a05a745acd972256de2ef75fdfd969f81ff63e54273389ab6d8886aeee66b",
       "matches_head": true
     },
     {
@@ -360,7 +360,7 @@
     },
     {
       "path": "apps/ios/Sources/LimeIoTKit/ControlClient.swift",
-      "sha256": "9571a177d9d7f79f70a1eaad4f4ba17507f9b18491fc390bc9d5348d93195213",
+      "sha256": "814f7a02c742285e14799a3c99df07c6aad5d10f5a3c0af0415b2ca08084ebce",
       "matches_head": true
     },
     {
@@ -515,7 +515,7 @@
     },
     {
       "path": "apps/ios/Tests/LimeIoTKitTests/ControlClientChecks.swift",
-      "sha256": "44e801d2641e8f1acff98f4b14e525e6c4e40793d0f000919ea223de6abbe3dd",
+      "sha256": "8a3fb67e01ab9f94f22cd6060073bf71eedcea817a4409bc4432b109dd3360b1",
       "matches_head": true
     },
     {
@@ -599,6 +599,16 @@
       "matches_head": true
     },
     {
+      "path": "packages/dotnet/LimeIoT.Client/ControlClient.cs",
+      "sha256": "7473e5805c82e6c6d515dbec54621f1892c33504c493182ba7f10908ca16e4c9",
+      "matches_head": true
+    },
+    {
+      "path": "packages/dotnet/LimeIoT.Client/ControlModels.cs",
+      "sha256": "b2e46359f95010b4e43fe9b29f29b6c6d6a40fe802d15c4d43492e708335dd33",
+      "matches_head": true
+    },
+    {
       "path": "packages/dotnet/LimeIoT.Client/GatewayClient.cs",
       "sha256": "bed25f6e4326afa62621a9309ec4cca989df71ddc563f3abad64c9ad136e4130",
       "matches_head": true
@@ -610,7 +620,7 @@
     },
     {
       "path": "packages/dotnet/LimeIoT.Client/README.md",
-      "sha256": "d8653b2e2abb195bcad47f58330ca79d03085465f054c15fda8478863d5e74aa",
+      "sha256": "e1ef165bf48fdd4116499a4608075a82a1ac8525b3787401b1d4b1fa2a718bdd",
       "matches_head": true
     },
     {

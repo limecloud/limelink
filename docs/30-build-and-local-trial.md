@@ -64,3 +64,11 @@ node "tools/test-iot-link.mjs" --iot-root ".dev/iot-source" --mtls
 测试自动创建本仓库 `.dev/` 下的独立临时空间、数据库、凭据和短期 CA，使用本机回环端口，不接触现有家庭或生产网关。mTLS 检查通过不代表 HTTPS 用户界面或真机验证通过。
 
 macOS 可另运行 `tools/test-macos-ui.mjs --iot-root .dev/iot-source`，通过真正窗口批准并编辑测试会话；手机仍是软件夹具。测试提示在 `.dev/macos-ui-progress.json`；操作完成后写入 `.dev/macos-ui-finish` 内容 `done` 关闭隔离栈。脚本不会替你通过本机私有 stdin 批准。
+
+## 产品云核心检查
+
+固定 SDK 后运行 `node tools/test-cloud-clients.mjs`，需要 Swift、JDK 21 和 .NET 10；通过 `--dotnet <可执行文件路径>` 指定 .NET。可以用 `--platform apple`、`--platform android` 或 `--platform dotnet` 单独验证，Android 仍使用进程级 JAVA_HOME/ANDROID_HOME。
+
+脚本先核对导出的 SDK 与 lock，再启动独立的回环 HTTP 夹具。它验证真实产品库的本地空间签名、原请求恢复、404 不重发及跨空间阻塞；输出 `.dev/cloud-clients-*.json`，含输入摘要和明确的 fixture/native_app/hardware 边界。常规 Android Core 检查未启动夹具时会跳过这条专项，用脚本运行才实际验收它。CI 三个宿主 job 均执行对应专项；iOS 另做模拟器编译。
+
+实际 IoT 云协议的 HTTPS/WSS/MQTT 联调仍由固定上游 `tools/test-control.mjs --native-clients` 执行；显式提供 LIMEIOT_DOTNET 可加入 .NET 属性/动作旅程，需先按上游说明构建运行时与 Console/Admin。网页专项 `--control-web` 分开使用独立临时数据库，避免合并旅程累计超过正式每账号 16 空间上限。产品工作台的云入口和完整跨网流程尚未交付，不能把上述库检查当作 App 云功能试用说明。

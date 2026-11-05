@@ -17,11 +17,23 @@
 
 ## IoT 配合与依赖
 
-平台补丁提交为 `313090d6b53e28d6e5ad1eaa28d29b8d7c479119`，包含 Swift/Kotlin 显式空间 API 及通用 .NET 本地客户端。产品通过 [SDK 锁](../contracts/iot-sdk.lock.json)记录精确修订和 123 个消费文件摘要，`worktree_overlay=false`。导出工具默认读取固定 Git 对象，不消费来源目录中的未提交文件，不依赖相邻目录名称。
+平台补丁提交为 `e01581888d8be168481b85242c5835864674df3e`，包含 Swift/Kotlin 显式空间 API、四平台原生云授权合同和通用 .NET 本地/云客户端。产品通过 [SDK 锁](../contracts/iot-sdk.lock.json)记录精确修订和 125 个消费文件摘要，`worktree_overlay=false`。导出工具默认读取固定 Git 对象，不消费来源目录中的未提交文件，不依赖相邻目录名称。
 
 通用身份、模型、命令和文字服务归 IoT。本产品没有复制网关核心，也没有创建 `/link/*` 私有 HTTP 后台。产品协同通过 `action.invoke` 调用 [desktop.json](../contracts/desktop.json) 中的 `link.exchange`。设备 mTLS 身份与用户 Cookie 会话分离。
 
 网关部署、设备入网/证书签发继续使用该修订的 IoT 管理流程。当前产品 App 接收管理员提供的设备配置；自主 CSR 入网向导、二维码配对和跨账号委派尚未实现。
+
+## 受限云核心与本轮 IoT 配合
+
+IoT 已将原生授权平台扩展为 iOS/Android/macOS/Windows，并补齐 .NET 10 云客户端；没有另建产品身份或命令协议。上游 [阶段证据](https://github.com/limecloud/iot/blob/e01581888d8be168481b85242c5835864674df3e/docs/evidence/2026-11-05-native-desktop-cloud.json)记录 Go race/vet、18 组 .NET 检查、Swift/Kotlin 检查、7 项原生联合检查及独立 10 项网页检查。三种 SDK 的六个属性/动作旅程使用临时 MySQL、HTTPS/WSS、MQTT 模拟设备和浏览器明确批准，覆盖丢响应、控制面重启、同键恢复及子会话退出；不代表正式云提供方或目标系统 App 验收。
+
+产品新增 Apple（供 macOS/iOS 共用）、Kotlin、.NET `CloudLinkClient`，直接消费固定 SDK。适配器核对当前主体、唯一有效网关、scope、设备页的绑定 revision 和当前模型；签名使用网关的 **local_space_id**，云空间只用于平台路由。产品身份按 origin、主体、云空间、网关、本地空间和设备隔离，避免换账号或重新绑定后复用旧签名身份。
+
+恢复先读取当前主体所有空间中的原操作；未知/已尝试记录阻止换目标再次提交。查询不要求当前仍选中原空间或原设备仍在线；404 不补发。准备后取消保留未发送记录，SDK 仅允许明确放弃未发送或终态记录。动作只沿现有 `link.exchange` 模型进入同一本地命令账本。
+
+[产品云核心证据](evidence/cloud-clients.json)来自三种真实库消费同一 HTTP 夹具，逐端独立验证本地空间签名、丢响应后重建客户端、原键 404 只查询、跨空间未知记录阻塞；.NET 另覆盖换主体/本地空间隔离、绑定变化、身份保存失败零提交、准备后取消和分页游标有界。本轮五类本机构建/回归和固定新修订的真实 HTTP/MQTT/mTLS 本地产品回归已通过。
+
+**原生工作台尚未接入云登录和路由选择。** 此阶段交付平台能力和产品核心，不是手机到电脑的完整云界面旅程；云模型、ASR、媒体中继也未因此获得支持。FR-021 保持部分完成，完整云产品、四端系统生命周期及正式云环境仍需独立验收。
 
 ## 正式的本地产品合同
 

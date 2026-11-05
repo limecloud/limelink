@@ -251,10 +251,16 @@
     },
     {
       "requirement": "FR-021",
-      "status": "planned",
-      "sources": [],
-      "evidence": [],
-      "limits": "受限云入口尚未在产品接入"
+      "status": "partial",
+      "sources": [
+        "packages/apple/Sources/LimeLinkCore/CloudLinkClient.swift",
+        "apps/android/core/src/main/kotlin/run/limeai/link/core/CloudLinkClient.kt",
+        "apps/windows/LimeLink.Core/CloudLinkClient.cs"
+      ],
+      "evidence": [
+        "docs/evidence/cloud-clients.json"
+      ],
+      "limits": "平台与三种产品云核心已有；原生工作台云入口、正式云和完整跨网撤销旅程未验收"
     },
     {
       "requirement": "FR-022",

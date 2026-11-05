@@ -46,7 +46,8 @@
       "evidence": [
         "docs/evidence/native-validation.json",
         "docs/evidence/iot-runtime-mtls-integration.json",
-        "docs/evidence/macos-native-ui.json"
+        "docs/evidence/macos-native-ui.json",
+        "docs/evidence/cloud-clients.json"
       ]
     },
     {
@@ -100,7 +101,7 @@
   },
   "upstream": {
     "repository": "https://github.com/limecloud/iot",
-    "revision": "313090d6b53e28d6e5ad1eaa28d29b8d7c479119",
+    "revision": "e01581888d8be168481b85242c5835864674df3e",
     "worktree_overlay": false
   }
 }

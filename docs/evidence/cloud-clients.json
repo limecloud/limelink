@@ -1,0 +1,150 @@
+{
+  "passed": true,
+  "sdk_revision": "e01581888d8be168481b85242c5835864674df3e",
+  "fixture": true,
+  "official_cloud": false,
+  "native_app": false,
+  "hardware": false,
+  "results": [
+    {
+      "target": "apple",
+      "passed": true,
+      "cloud_fixture": true,
+      "posts": 1,
+      "original_queries": 2,
+      "local_space_signature": true,
+      "hardware": false,
+      "native_app": false,
+      "sources": [
+        {
+          "path": "contracts/iot-sdk.lock.json",
+          "sha256": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3"
+        },
+        {
+          "path": "tools/test-cloud-clients.mjs",
+          "sha256": "eb102caa6c1838dd89b6353d5ec32163416e96c55f02dd9c1ad01179c9135b8d"
+        },
+        {
+          "path": "packages/apple/Sources/LimeLinkCore/CloudLinkClient.swift",
+          "sha256": "98951d8ff351d11ebfb529e8ccd8c3102706ed58f82140170c3ebe988e295375"
+        },
+        {
+          "path": "packages/apple/Sources/LimeLinkCore/SecureStore.swift",
+          "sha256": "38b3a589ef466cce173a66dfa59ac6f9250ef9034206864f0491c20f1f54cf1d"
+        },
+        {
+          "path": "packages/apple/Tests/CloudChecks.swift",
+          "sha256": "13b2d6aaf4989f70e5432f964b5a1947e803a88b511ac9c288cd88f6c7d89f41"
+        },
+        {
+          "path": "packages/apple/Tests/IdentityTests.swift",
+          "sha256": "0a14b140c26111641cfcdb294a163b9c961d1606ce05177a29b70d7e6a04069b"
+        },
+        {
+          "path": "Package.swift",
+          "sha256": "408595e2662238a92cbf1159abda66a14671f71f604d44443d611a080edd0195"
+        }
+      ],
+      "log_sha256": "f78369fbb611c2c060a3ef99d7255498049792b7e8b156d6c8a602014728db5c"
+    },
+    {
+      "target": "android",
+      "passed": true,
+      "cloud_fixture": true,
+      "posts": 1,
+      "original_queries": 2,
+      "local_space_signature": true,
+      "hardware": false,
+      "native_app": false,
+      "sources": [
+        {
+          "path": "contracts/iot-sdk.lock.json",
+          "sha256": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3"
+        },
+        {
+          "path": "tools/test-cloud-clients.mjs",
+          "sha256": "eb102caa6c1838dd89b6353d5ec32163416e96c55f02dd9c1ad01179c9135b8d"
+        },
+        {
+          "path": "apps/android/core/src/main/kotlin/run/limeai/link/core/CloudLinkClient.kt",
+          "sha256": "2ecd3f6db6d4866805aa74f09c7a3178fa4f2d2fb4280009e5dac2a2c6e966ba"
+        },
+        {
+          "path": "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt",
+          "sha256": "d5855e8e73580a3c053f1e7259bbe9ac18abb7d0837758f470e808ef127b7d19"
+        },
+        {
+          "path": "apps/android/core/src/test/kotlin/run/limeai/link/core/CloudLinkClientTest.kt",
+          "sha256": "5fbdebdbf68f92b5c8163157347bd3cf37249c4f77cbc6b80559decb60e2db28"
+        },
+        {
+          "path": "apps/android/core/build.gradle.kts",
+          "sha256": "1ea1aa2fc5247ab8285d6167f47165ceb734f36766e1f4e63a6d760eb0e34afc"
+        }
+      ],
+      "log_sha256": "a9dc85dc7f9504812e260b21c28d058e43788740a29a2b459fa8bb27aaa100e3"
+    },
+    {
+      "target": "dotnet",
+      "passed": true,
+      "cloud_fixture": true,
+      "posts": 1,
+      "original_queries": 2,
+      "local_space_signature": true,
+      "hardware": false,
+      "native_app": false,
+      "sources": [
+        {
+          "path": "contracts/iot-sdk.lock.json",
+          "sha256": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3"
+        },
+        {
+          "path": "tools/test-cloud-clients.mjs",
+          "sha256": "eb102caa6c1838dd89b6353d5ec32163416e96c55f02dd9c1ad01179c9135b8d"
+        },
+        {
+          "path": "apps/windows/LimeLink.Core/CloudLinkClient.cs",
+          "sha256": "d86b5e964a3d7aa756b1382474626cebdb1e8ee0a4c6ff08e7ea8514181a10d3"
+        },
+        {
+          "path": "apps/windows/LimeLink.Core/LinkClient.cs",
+          "sha256": "a766b2e7f9ba82338bbb430b98810d2313e203a77451f4f3eb58fac45eba340e"
+        },
+        {
+          "path": "apps/windows/LimeLink.Core.Checks/Program.cs",
+          "sha256": "e2b6479e30f1db680cd27a337cd99f332ae4d7da5947c6622bc5cd9f87e218ff"
+        },
+        {
+          "path": "apps/windows/LimeLink.Core.Checks/CloudChecks.cs",
+          "sha256": "e91e8a423288410e128e5437009b8102aaa9c7ae02f626642e5736670271d0fe"
+        },
+        {
+          "path": "apps/windows/LimeLink.Core.Checks/CloudLiveChecks.cs",
+          "sha256": "67da3c3c88a9c612007cf69c959a4ba3fe5546dc48c9c7b896624784c297e795"
+        }
+      ],
+      "log_sha256": "ef4af11a9e6fd2634b92728880aebe92879c6d17c860cc3366e1c22f7ad9fec6"
+    }
+  ],
+  "sources": {
+    "contracts/iot-sdk.lock.json": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3",
+    "tools/test-cloud-clients.mjs": "eb102caa6c1838dd89b6353d5ec32163416e96c55f02dd9c1ad01179c9135b8d",
+    "packages/apple/Sources/LimeLinkCore/CloudLinkClient.swift": "98951d8ff351d11ebfb529e8ccd8c3102706ed58f82140170c3ebe988e295375",
+    "packages/apple/Sources/LimeLinkCore/SecureStore.swift": "38b3a589ef466cce173a66dfa59ac6f9250ef9034206864f0491c20f1f54cf1d",
+    "packages/apple/Tests/CloudChecks.swift": "13b2d6aaf4989f70e5432f964b5a1947e803a88b511ac9c288cd88f6c7d89f41",
+    "packages/apple/Tests/IdentityTests.swift": "0a14b140c26111641cfcdb294a163b9c961d1606ce05177a29b70d7e6a04069b",
+    "Package.swift": "408595e2662238a92cbf1159abda66a14671f71f604d44443d611a080edd0195",
+    "apps/android/core/src/main/kotlin/run/limeai/link/core/CloudLinkClient.kt": "2ecd3f6db6d4866805aa74f09c7a3178fa4f2d2fb4280009e5dac2a2c6e966ba",
+    "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt": "d5855e8e73580a3c053f1e7259bbe9ac18abb7d0837758f470e808ef127b7d19",
+    "apps/android/core/src/test/kotlin/run/limeai/link/core/CloudLinkClientTest.kt": "5fbdebdbf68f92b5c8163157347bd3cf37249c4f77cbc6b80559decb60e2db28",
+    "apps/android/core/build.gradle.kts": "1ea1aa2fc5247ab8285d6167f47165ceb734f36766e1f4e63a6d760eb0e34afc",
+    "apps/windows/LimeLink.Core/CloudLinkClient.cs": "d86b5e964a3d7aa756b1382474626cebdb1e8ee0a4c6ff08e7ea8514181a10d3",
+    "apps/windows/LimeLink.Core/LinkClient.cs": "a766b2e7f9ba82338bbb430b98810d2313e203a77451f4f3eb58fac45eba340e",
+    "apps/windows/LimeLink.Core.Checks/Program.cs": "e2b6479e30f1db680cd27a337cd99f332ae4d7da5947c6622bc5cd9f87e218ff",
+    "apps/windows/LimeLink.Core.Checks/CloudChecks.cs": "e91e8a423288410e128e5437009b8102aaa9c7ae02f626642e5736670271d0fe",
+    "apps/windows/LimeLink.Core.Checks/CloudLiveChecks.cs": "67da3c3c88a9c612007cf69c959a4ba3fe5546dc48c9c7b896624784c297e795"
+  },
+  "scope": "三种 LimeLink 产品云核心消费同一 HTTP 夹具；非原生云 UI 或真实跨网产品旅程",
+  "as_of": "2026-11-05",
+  "upstream_evidence": "https://github.com/limecloud/iot/blob/e01581888d8be168481b85242c5835864674df3e/docs/evidence/2026-11-05-native-desktop-cloud.json"
+}

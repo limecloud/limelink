@@ -1,8 +1,8 @@
 {
   "scope": "隔离真实 IoT HTTP/MQTT 与 Rust 本机运行时；软件批准/呈现夹具",
   "passed": true,
-  "verified_at": "2026-11-05T11:56:02.058Z",
-  "sdk_revision": "313090d6b53e28d6e5ad1eaa28d29b8d7c479119",
+  "verified_at": "2026-11-05T12:56:13.953Z",
+  "sdk_revision": "e01581888d8be168481b85242c5835864674df3e",
   "sdk_worktree_overlay": false,
   "sources": {
     "runtime/src/lib.rs": "dd145e9f634cb2779c8cc977e680ddd82f4e889889b9062ede1aec6294c6516c",
@@ -12,9 +12,9 @@
     "tools/test-iot-link.mjs": "129bb11085b90922f958f4c25032c239da97db936ea1cdf21eef5c0016bcc8dd"
   },
   "binaries": {
-    "limeiot-gateway": "f8936979c0198d74bcaa18249207d2aafaf8aef7d266ed5f6f08b91b20d2661e",
-    "limeiot-model-validator": "c0765a1043260598ea0afbafa16e59f5f4e656d903d3bd21fb303146bf826e7d",
-    "limeiot-simulator": "566084f226a5069b05a7960359f684c78e24b7fef9edf9dec33794c63ee00418",
+    "limeiot-gateway": "055f25c6067684e8e724b7cf14cd8b1dfaffa74cdff60350c5e3e465a628a2a2",
+    "limeiot-model-validator": "90bc5cf9580b3589b17b9f05dabe4afdab6fac2e66e955c75c2def83c964e70e",
+    "limeiot-simulator": "bba46fc2b2da3b17312e386dbd81548f00141fe9197628ae64ce3799da3f932d",
     "limelink-runtime": "5b0965b1e69863a37cbbf598e2e90f5556e3ea476b21eedf7b378c0f83059ba4"
   },
   "device_model_revision": "sha256:8c8d0ddd4bbcb4e4463f16c27a8a60714c4e287da8621b4fddba672b6b44be65",
