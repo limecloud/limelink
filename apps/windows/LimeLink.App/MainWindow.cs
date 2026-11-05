@@ -9,6 +9,12 @@ using LimeLink.Core;
 
 namespace LimeLink.App;
 public sealed class MainWindow:Window {
+    private readonly ComboBox route=new(){Header="连接入口",ItemsSource=new[]{"本地 LimeIoT 网关","LimeIoT 云控制面"},SelectedIndex=0,HorizontalAlignment=HorizontalAlignment.Stretch};
+    private readonly StackPanel cloudControls=new(){Spacing=8,Visibility=Visibility.Collapsed};
+    private readonly TextBlock authorizationView=new(){TextWrapping=TextWrapping.Wrap,IsTextSelectionEnabled=true};
+    private readonly TextBlock cloudIdentity=new(){TextWrapping=TextWrapping.Wrap};
+    private readonly ComboBox records=new(){Header="当前账号全部空间的原操作",DisplayMemberPath="Label",HorizontalAlignment=HorizontalAlignment.Stretch,Visibility=Visibility.Collapsed};
+    private sealed record RecordItem(ControlCommandRecord Record,string Label);
     private readonly TextBox endpoint=new(){Header="LimeIoT 网关 HTTPS 地址"};
     private readonly PasswordBox token=new(){Header="所有者凭据（留空恢复会话）"};
     private readonly ComboBox spaces=new(){Header="明确选择空间",HorizontalAlignment=HorizontalAlignment.Stretch};
@@ -27,6 +33,13 @@ public sealed class MainWindow:Window {
     private readonly StackPanel local=new(){Spacing=12};
     private readonly SecretStore secure=new();
     private LinkClient? client;
+    private CloudLinkClient? cloud;
+    private CloudLinkSnapshot? cloudSnapshot;
+    private NativeLogin? authorization;
+    private long nextPoll;
+    private bool cloudMode;
+    private CancellationTokenSource? work;
+    private CancellationToken Cancellation=>work?.Token??CancellationToken.None;
     private TextGenerationClient? ai;
     private string? aiKey,configuration,lastView;
     private readonly Dictionary<string,string> sessionDrafts=new();
@@ -36,29 +49,57 @@ public sealed class MainWindow:Window {
     public MainWindow(){
         Title="LimeLink 柠联";
         form.Children.Add(new TextBlock{Text="LimeLink 柠联",FontSize=30});form.Children.Add(new TextBlock{Text="手机的灵感，电脑接着做。"});
+        cloudControls.Children.Add(Button("发起 / 恢复原授权",BeginCloud));cloudControls.Children.Add(authorizationView);
+        cloudControls.Children.Add(Button("打开系统浏览器核对并批准",OpenAuthorization));cloudControls.Children.Add(Button("查询授权结果",PollCloud));cloudControls.Children.Add(Button("取消原授权",CancelCloud));cloudControls.Children.Add(cloudIdentity);
+        cloudControls.Children.Add(new TextBlock{Text="云入口只消费正式设备命令合同。授权由浏览器明确批准；云模型和媒体转发尚未提供。",TextWrapping=TextWrapping.Wrap});
         foreach(var element in new UIElement[]{endpoint,token,Button("连接 / 恢复会话",Connect),spaces,Button("刷新电脑与真实能力",Refresh),targets,name,fingerprint,Button("请求配对",()=>Action("pair")),Button("检查配对及展示状态",()=>Action("status")),draft,Button("确认发送到所选电脑",()=>Action("card")),Button("系统语音草稿",Dictate),result,Button("查询原请求",Resolve),Button("完成已核实记录",Finish),cancelId,Button("请求取消待展示卡片",()=>Action("cancel")),session,revision,Button("从草稿建立会话",()=>Action("session_create")),Button("取得 30 秒输入资格",()=>Action("session_claim")),Button("提交草稿修订",()=>Action("session_write")),Button("释放输入资格",()=>Action("session_release")),contentId,Button("安装纯文本内容（1小时）",()=>Action("content_put")),Button("移除所选内容",()=>Action("content_remove")),Button("撤销此客户端协同",()=>Action("revoke")),Button("退出用户会话",Logout),new TextBlock{Text="本机执行端",FontSize=24},Button("选择设备配置并启动",StartRuntime),Button("停止本机执行端",StopRuntime),local,new TextBlock{Text="系统语音服务可能处理录音；语音只生成草稿。模型服务通过网关配置，不会自动获得设备执行权。",TextWrapping=TextWrapping.Wrap}})form.Children.Add(element);
-        form.Children.Insert(14,Button("网关模型生成草稿",()=>ModelDraft(false)));form.Children.Insert(15,Button("查询原模型任务",()=>ModelDraft(true)));
+        var modelCommands=new StackPanel{Spacing=8};modelCommands.Children.Add(Button("网关模型生成草稿",()=>ModelDraft(false)));modelCommands.Children.Add(Button("查询原模型任务",()=>ModelDraft(true)));form.Children.Insert(form.Children.IndexOf(result),modelCommands);
         form.Children.Add(Button("导出脱敏诊断",ExportDiagnostics));
         form.Children.Insert(11,Button("重新申请已失效的配对",Reapply));
-        endpoint.TextChanged+=(_,_)=>{token.Password="";client?.Dispose();client=null;ai=null;spaces.ItemsSource=null;ClearTargets();result.Text="网关地址已更改，请重新连接；原任务保留在原网关。";};
-        spaces.SelectionChanged+=(_,_)=>ClearTargets();
-        targets.SelectionChanged+=async(_,_)=>{ClearTargetFields();await Run(async()=>{if(client is not null&&targets.SelectedItem is Device d&&spaces.SelectedItem is string s)fingerprint.Text="本客户端指纹\n"+await client.FingerprintAsync(s,d.Id);});};
-        controls.Content=form;scroll.Content=controls;Content=scroll;scroll.ViewChanged+=(_,_)=>ReportVisibleCards();Activated+=(_,args)=>{active=args.WindowActivationState!=WindowActivationState.Deactivated;if(active)ReportVisibleCards();};
-        Closed+=(_,_)=>{if(runtime is{HasExited:false})runtime.Kill();runtime?.Dispose();client?.Dispose();};
+        form.Children.Insert(2,route);form.Children.Insert(4,cloudControls);form.Children.Insert(form.Children.IndexOf(result)+1,records);
+        var reconcile=Button("核对原网关回执",()=>Resolve(true));reconcile.Visibility=Visibility.Collapsed;form.Children.Insert(form.Children.IndexOf(records)+1,reconcile);
+        endpoint.TextChanged+=(_,_)=>ResetRoute();
+        route.SelectionChanged+=(_,_)=>{cloudMode=route.SelectedIndex==1;ResetRoute();endpoint.Text="";endpoint.Header=cloudMode?"LimeIoT 控制面 HTTPS 地址":"LimeIoT 网关 HTTPS 地址";token.Visibility=modelCommands.Visibility=cloudMode?Visibility.Collapsed:Visibility.Visible;cloudControls.Visibility=records.Visibility=reconcile.Visibility=cloudMode?Visibility.Visible:Visibility.Collapsed;};
+        spaces.SelectionChanged+=(_,_)=>{ClearTargets();cloudSnapshot=null;cloudIdentity.Text="";};
+        targets.SelectionChanged+=async(_,_)=>{ClearTargetFields();await Run(async()=>{if(targets.SelectedItem is not Device d||spaces.SelectedItem is not string s)return;var value=cloudMode?await Cloud().FingerprintAsync(d.Id,Cancellation):client is not null?await client.FingerprintAsync(s,d.Id):"";Cancellation.ThrowIfCancellationRequested();fingerprint.Text="本客户端指纹\n"+value;});};
+        controls.Content=form;scroll.Content=controls;Content=scroll;scroll.ViewChanged+=(_,_)=>ReportVisibleCards();Activated+=(_,args)=>{active=args.WindowActivationState!=WindowActivationState.Deactivated;if(active)ReportVisibleCards();else if(cloudMode)PauseCloud();};
+        Closed+=(_,_)=>{work?.Cancel();if(runtime is{HasExited:false})runtime.Kill();runtime?.Dispose();client?.Dispose();cloud?.Dispose();};
     }
     private Button Button(string label,Func<Task> action){var button=new Button{Content=label};button.Click+=async(_,_)=>await Run(action);return button;}
     private void ClearTargetFields(){fingerprint.Text="";session.Text="";revision.Text="1";contentId.Text="";cancelId.Text="";aiKey=null;}
     private void ClearTargets(){targets.ItemsSource=null;ClearTargetFields();}
-    private async Task Run(Func<Task> action){if(busy)return;busy=true;controls.IsEnabled=false;try{await action();}catch(Exception error){result.Text=error is GatewayException gateway?gateway.Code:error.Message;}finally{controls.IsEnabled=true;busy=false;}}
-    private async Task Connect(){client?.Dispose();client=null;ai=null;spaces.ItemsSource=null;ClearTargets();var next=new LinkClient(endpoint.Text,secure);try{if(token.Password.Length==0)await next.Gateway.RestoreAsync();else await next.Gateway.LoginAsync(token.Password);}catch{next.Dispose();throw;}token.Password="";client=next;ai=new(next.Gateway,secure);aiKey=null;spaces.ItemsSource=await next.Gateway.SpacesAsync();result.Text="已连接，请明确选择空间并刷新。";}
-    private async Task Refresh(){if(client is null||spaces.SelectedItem is not string space)throw new InvalidOperationException("select_space_first");var snapshot=await client.SnapshotAsync(space);targets.ItemsSource=snapshot.Devices.Where(d=>snapshot.Models[d.ModelRevision]?["model_id"]?.GetValue<string>()=="urn:limelink:model:desktop:1").ToArray();result.Text="已读取真实终端能力。";}
+    private void PauseCloud(){work?.Cancel();ClearTargets();cloudSnapshot=null;authorization=null;authorizationView.Text="";cloudIdentity.Text="";}
+    private void ResetRoute(){work?.Cancel();token.Password="";client?.Dispose();cloud?.Dispose();client=null;cloud=null;ai=null;spaces.ItemsSource=null;ClearTargets();cloudSnapshot=null;records.ItemsSource=null;authorization=null;authorizationView.Text="";cloudIdentity.Text="";draft.Text="";result.Text="连接入口已更改，请恢复会话或明确发起授权；原操作保留在原入口。";}
+    private CloudLinkClient Cloud()=>cloud??=new(endpoint.Text,secure);
+    private async Task Run(Func<Task> action){
+        if(busy)return;busy=true;controls.IsEnabled=false;work=new();
+        try{await action();Cancellation.ThrowIfCancellationRequested();}
+        catch(OperationCanceledException){ }
+        catch(Exception error){if(!Cancellation.IsCancellationRequested){if(error is GatewayException{Code:"unauthenticated"}){spaces.ItemsSource=null;ClearTargets();cloudSnapshot=null;records.ItemsSource=null;cloudIdentity.Text="";draft.Text="";}result.Text=error is GatewayException gateway?gateway.Code:error.Message;}}
+        finally{
+            if(cloudMode&&cloud is not null&&!Cancellation.IsCancellationRequested){try{var saved=await cloud.RecordsAsync(Cancellation);Cancellation.ThrowIfCancellationRequested();var key=(records.SelectedItem as RecordItem)?.Record.Id;records.ItemsSource=saved.Select(r=>new RecordItem(r,string.Join(" · ",r.Reference.SpaceId,r.Reference.Request.DeviceId,r.IsPrepared?"尚未提交":r.Result?.Status??r.Rejection??"未知",r.Id[..8]))).ToArray();records.SelectedItem=(records.ItemsSource as RecordItem[])?.FirstOrDefault(r=>r.Record.Id==key);}catch(OperationCanceledException){}catch(Exception error){result.Text+="\n原记录读取未完成："+error.Message;}}
+            work.Dispose();work=null;controls.IsEnabled=true;busy=false;
+        }
+    }
+    private async Task LoadCloud(){var c=Cloud();var current=await c.Control.RestoreSessionAsync(Cancellation);var available=await c.Control.SpacesAsync(Cancellation);Cancellation.ThrowIfCancellationRequested();spaces.ItemsSource=null;ClearTargets();cloudSnapshot=null;spaces.ItemsSource=available.Select(s=>s.SpaceId).ToArray();authorization=null;authorizationView.Text="";cloudIdentity.Text="当前账号："+current.Principal.Name+" · "+current.Principal.PrincipalId;draft.Text="";result.Text="云会话已恢复，请明确选择空间并刷新；原操作可独立查询。";}
+    private async Task BeginCloud(){var login=await Cloud().Control.BeginAuthorizationAsync("windows",Cancellation);Cancellation.ThrowIfCancellationRequested();authorization=login;nextPoll=Environment.TickCount64+login.IntervalSeconds*1000L;authorizationView.Text="授权码："+login.UserCode+"\n到期："+login.ExpiresAt;result.Text="在系统浏览器核对授权码、平台和账号后批准。回到应用后明确恢复原授权并查询。";}
+    private async Task OpenAuthorization(){if(authorization is null)throw new InvalidOperationException("begin_or_resume_authorization_first");await Windows.System.Launcher.LaunchUriAsync(new Uri(authorization.VerificationUri));}
+    private async Task PollCloud(){if(authorization is null||Environment.TickCount64<nextPoll)throw new InvalidOperationException("resume_authorization_and_wait_interval");nextPoll=Environment.TickCount64+authorization.IntervalSeconds*1000L;var response=await Cloud().Control.PollAuthorizationAsync(Cancellation);Cancellation.ThrowIfCancellationRequested();if(response.Status=="approved")await LoadCloud();else result.Text="授权状态："+response.Status;}
+    private async Task CancelCloud(){await Cloud().Control.CancelAuthorizationAsync(Cancellation);Cancellation.ThrowIfCancellationRequested();authorization=null;authorizationView.Text="";result.Text="原授权已取消。";}
+    private async Task Connect(){if(cloudMode){await LoadCloud();return;}client?.Dispose();client=null;ai=null;spaces.ItemsSource=null;ClearTargets();var next=new LinkClient(endpoint.Text,secure);try{if(token.Password.Length==0)await next.Gateway.RestoreAsync();else await next.Gateway.LoginAsync(token.Password);}catch{next.Dispose();throw;}token.Password="";client=next;ai=new(next.Gateway,secure);aiKey=null;spaces.ItemsSource=await next.Gateway.SpacesAsync();result.Text="已连接，请明确选择空间并刷新。";}
+    private async Task Refresh(){
+        if(spaces.SelectedItem is not string space)throw new InvalidOperationException("select_space_first");ClearTargets();
+        if(cloudMode){var snapshot=await Cloud().SnapshotAsync(space,Cancellation);Cancellation.ThrowIfCancellationRequested();cloudSnapshot=snapshot;targets.ItemsSource=snapshot.Devices.Where(d=>snapshot.Models[d.ModelRevision]?["model_id"]?.GetValue<string>()=="urn:limelink:model:desktop:1").ToArray();cloudIdentity.Text=string.Join(" · ",snapshot.Principal,snapshot.Gateway.GatewayId,snapshot.Gateway.LocalSpaceId,snapshot.Gateway.Revision);}
+        else{if(client is null)throw new InvalidOperationException("connect_first");var snapshot=await client.SnapshotAsync(space);targets.ItemsSource=snapshot.Devices.Where(d=>snapshot.Models[d.ModelRevision]?["model_id"]?.GetValue<string>()=="urn:limelink:model:desktop:1").ToArray();}
+        result.Text="已读取真实终端能力，请核对目标与指纹。";
+    }
     private void Show(CommandReceipt receipt){var response=LinkClient.Response(receipt);result.Text=receipt.Status+"\n"+receipt.Id+"\n"+response?.ToJsonString();var value=response?["value"];if(value?["revision"] is JsonValue number)revision.Text=number.GetValue<long>().ToString();if(value?["text"] is JsonValue text)draft.Text=text.GetValue<string>();if(receipt.Document["request"]?["operation"]?["value"]?["kind"]?.GetValue<string>()=="card")cancelId.Text=value?["id"]?.GetValue<string>()??"";}
     private async Task Reapply(){
         var dialog=new ContentDialog{XamlRoot=Content.XamlRoot,Title="重新申请所选电脑的协同？",Content="仅对过期、拒绝或撤销的关系生效；清除旧会话与内容后，电脑必须再次批准。先核实所有未完成请求。",PrimaryButtonText="清除并重新申请",CloseButtonText="取消",DefaultButton=ContentDialogButton.Close};
         if(await dialog.ShowAsync()==ContentDialogResult.Primary)await Action("pair",true);
     }
     private async Task Action(string kind,bool reapply=false){
-        if(client is null||spaces.SelectedItem is not string space||targets.SelectedItem is not Device device)throw new InvalidOperationException("select_target_first");
+        if(spaces.SelectedItem is not string space||targets.SelectedItem is not Device device)throw new InvalidOperationException("select_target_first");
         JsonObject payload=kind switch{
             "pair"=>new(){{"name",name.Text}},"card"=>new(){{"text",draft.Text},{"ttl",3600}},"cancel"=>new(){{"id",cancelId.Text}},
             "session_create"=>new(){{"id",session.Text.Length==0?(session.Text=Guid.NewGuid().ToString()):session.Text},{"text",draft.Text},{"ttl",3600}},
@@ -68,12 +109,21 @@ public sealed class MainWindow:Window {
             "content_remove"=>new(){{"id",contentId.Text}},_=>new()
         };
         if(kind=="pair"&&reapply)payload["reapply"]=true;
+        if(cloudMode){var record=await Cloud().PerformAsync(space,device,kind,payload,Cancellation);Cancellation.ThrowIfCancellationRequested();ShowCloud(record);return;}
+        if(client is null)throw new InvalidOperationException("connect_first");
         var command=await client.PerformAsync(space,device,kind,payload);
         for(var i=0;i<20&&command.Status is "accepted" or "dispatched";i++){await Task.Delay(200);command=await client.ResolveAsync();}Show(command);
     }
-    private async Task Resolve(){if(client is not null)Show(await client.ResolveAsync());}
-    private async Task Finish(){if(client is not null)await client.FinishAsync();result.Text="原结果已核实，可以继续。";}
-    private async Task Logout(){if(client is not null)await client.Gateway.LogoutAsync();client?.Dispose();client=null;ai=null;aiKey=null;spaces.ItemsSource=null;targets.ItemsSource=null;fingerprint.Text="";result.Text="已退出，未核实任务保留在安全存储。";}
+    private void ShowCloud(ControlCommandRecord record){
+        var response=CloudLinkClient.Response(record);result.Text=string.Join("\n","云原操作："+(record.IsPrepared?"尚未提交":record.Rejection??record.Result?.Status??"未知"),record.Id,response?.ToJsonString());
+        var reference=record.Reference;var selected=cloudSnapshot;
+        if(selected is null||reference.PrincipalId!=selected.Principal||reference.SpaceId!=(spaces.SelectedItem as string)||reference.LocalSpaceId!=selected.Gateway.LocalSpaceId||reference.Request.GatewayId!=selected.Gateway.GatewayId||reference.Request.BindingRevision!=selected.Gateway.Revision||reference.Request.DeviceId!=(targets.SelectedItem as Device)?.Id||reference.Request.ModelRevision!=(targets.SelectedItem as Device)?.ModelRevision)return;
+        var value=response?["value"];if(value?["revision"] is JsonValue number)revision.Text=number.GetValue<long>().ToString();if(value?["text"] is JsonValue text)draft.Text=text.GetValue<string>();if(reference.Request.Operation["value"]?["kind"]?.ToString()=="card")cancelId.Text=value?["id"]?.GetValue<string>()??"";
+    }
+    private async Task Resolve()=>await Resolve(false);
+    private async Task Resolve(bool reconcile){if(cloudMode){var key=(records.SelectedItem as RecordItem)?.Record.Id??throw new InvalidOperationException("select_original_record");var record=await Cloud().ResolveAsync(key,reconcile,Cancellation);Cancellation.ThrowIfCancellationRequested();ShowCloud(record);}else if(client is not null)Show(await client.ResolveAsync());}
+    private async Task Finish(){if(cloudMode){var key=(records.SelectedItem as RecordItem)?.Record.Id??throw new InvalidOperationException("select_original_record");await Cloud().ForgetAsync(key,Cancellation);Cancellation.ThrowIfCancellationRequested();}else if(client is not null)await client.FinishAsync();result.Text="所选记录已完成；未知结果保留，未提交的准备可明确放弃。";}
+    private async Task Logout(){if(cloudMode)await Cloud().LogoutAsync(Cancellation);else if(client is not null)await client.Gateway.LogoutAsync();Cancellation.ThrowIfCancellationRequested();ResetRoute();result.Text="已退出，未核实任务保留在安全存储。";}
     private async Task ModelDraft(bool resolve){
         if(ai is null||spaces.SelectedItem is not string space)throw new InvalidOperationException("connect_and_select_space_first");
         if(!await ai.ConfiguredAsync(space))throw new InvalidOperationException("gateway_text_model_not_configured");

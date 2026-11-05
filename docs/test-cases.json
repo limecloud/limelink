@@ -522,9 +522,10 @@
         "只支持正式合同范围；不把云连通等同授权"
       ],
       "evidence": [
-        "docs/evidence/cloud-clients.json"
+        "docs/evidence/cloud-clients.json",
+        "docs/evidence/native-validation.json"
       ],
-      "verification_note": "三种产品云核心的共享 HTTP 夹具通过；上游 SDK 有真实 HTTPS/WSS/MQTT 证据。原生工作台云入口、正式云和完整跨网/越权产品旅程尚未验收。"
+      "verification_note": "三种产品云核心共享 HTTP 夹具、Apple 实际工作台模型的 7 组授权/路由/恢复/取消检查及 Android 构建通过；上游 SDK 有真实 HTTPS/WSS/MQTT 证据。四端完整目标系统云界面、正式云及完整跨网/越权产品旅程尚未验收。"
     },
     {
       "id": "TC-027",

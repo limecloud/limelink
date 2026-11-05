@@ -9,6 +9,7 @@ let package = Package(
         .target(name:"LimeLinkCore",dependencies:[.product(name:"LimeIoTKit",package:"ios")],path:"packages/apple/Sources/LimeLinkCore"),
         .target(name:"LimeLinkUI",dependencies:["LimeLinkCore",.product(name:"LimeIoTKit",package:"ios")],path:"packages/apple/Sources/LimeLinkUI"),
         .executableTarget(name:"LimeLinkMac",dependencies:["LimeLinkUI","LimeLinkCore"],path:"apps/macos"),
-        .executableTarget(name:"LinkChecks",dependencies:["LimeLinkCore",.product(name:"LimeIoTKit",package:"ios")],path:"packages/apple/Tests")
+        .executableTarget(name:"LinkChecks",dependencies:["LimeLinkCore",.product(name:"LimeIoTKit",package:"ios")],path:"packages/apple/Tests"),
+        .executableTarget(name:"WorkbenchChecks",dependencies:["LimeLinkUI","LimeLinkCore",.product(name:"LimeIoTKit",package:"ios")],path:"packages/apple/WorkbenchTests")
     ]
 )

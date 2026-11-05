@@ -47,7 +47,8 @@
         "docs/evidence/native-validation.json",
         "docs/evidence/iot-runtime-mtls-integration.json",
         "docs/evidence/macos-native-ui.json",
-        "docs/evidence/cloud-clients.json"
+        "docs/evidence/cloud-clients.json",
+        "docs/evidence/cloud-workbench-ui.json"
       ]
     },
     {
@@ -94,7 +95,7 @@
     "blockers": [
       "四端原生/真机与完整旅程验收",
       "二维码、自主入网与完整产品授权",
-      "受限云入口、跨电脑接续及媒体",
+      "完整云界面/跨网验收、跨电脑接续及媒体",
       "历史正文保留与安全清除",
       "签名、安装更新回退、可访问性和性能"
     ]

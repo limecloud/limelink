@@ -42,10 +42,10 @@
         },
         {
           "path": "Package.swift",
-          "sha256": "408595e2662238a92cbf1159abda66a14671f71f604d44443d611a080edd0195"
+          "sha256": "f40f02141e76d38acff763b47283d6311a6dabb47e91cdb4ba1fb8c4f33b39f8"
         }
       ],
-      "log_sha256": "f78369fbb611c2c060a3ef99d7255498049792b7e8b156d6c8a602014728db5c"
+      "log_sha256": "6867a3ece8d74722950bdd297af9ed19af369b2b934b24f312b5078ba9856666"
     },
     {
       "target": "android",
@@ -133,7 +133,7 @@
     "packages/apple/Sources/LimeLinkCore/SecureStore.swift": "38b3a589ef466cce173a66dfa59ac6f9250ef9034206864f0491c20f1f54cf1d",
     "packages/apple/Tests/CloudChecks.swift": "13b2d6aaf4989f70e5432f964b5a1947e803a88b511ac9c288cd88f6c7d89f41",
     "packages/apple/Tests/IdentityTests.swift": "0a14b140c26111641cfcdb294a163b9c961d1606ce05177a29b70d7e6a04069b",
-    "Package.swift": "408595e2662238a92cbf1159abda66a14671f71f604d44443d611a080edd0195",
+    "Package.swift": "f40f02141e76d38acff763b47283d6311a6dabb47e91cdb4ba1fb8c4f33b39f8",
     "apps/android/core/src/main/kotlin/run/limeai/link/core/CloudLinkClient.kt": "2ecd3f6db6d4866805aa74f09c7a3178fa4f2d2fb4280009e5dac2a2c6e966ba",
     "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt": "d5855e8e73580a3c053f1e7259bbe9ac18abb7d0837758f470e808ef127b7d19",
     "apps/android/core/src/test/kotlin/run/limeai/link/core/CloudLinkClientTest.kt": "5fbdebdbf68f92b5c8163157347bd3cf37249c4f77cbc6b80559decb60e2db28",

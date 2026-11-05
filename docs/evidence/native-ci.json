@@ -1,44 +1,44 @@
 {
   "passed": true,
-  "scope": "固定 IoT SDK、四端原生构建和 Linux 真实 MQTT/mTLS 集成；非真机或正式签名发行",
-  "run_url": "https://github.com/limecloud/limelink/actions/runs/42024733770",
-  "head": "0a70696de84f64e476061c7e5c5732da9264aa95",
+  "scope": "固定 IoT SDK、三种产品云核心共享夹具、四端原生构建和 Linux 真实 MQTT/mTLS 集成；此提交尚未含云工作台 UI，非真机或正式签名发行",
+  "run_url": "https://github.com/limecloud/limelink/actions/runs/42032438462",
+  "head": "eeeb7bb6e5f908cbb02ce3b4cfc2e31ac173fb84",
   "jobs": [
     {
-      "name": "android",
+      "name": "windows",
       "conclusion": "success",
-      "startedAt": "2026-11-05T12:09:21Z",
-      "completedAt": "2026-11-05T12:11:27Z",
-      "url": "https://github.com/limecloud/limelink/actions/runs/42024733770/job/127235984455"
+      "startedAt": "2026-11-05T13:03:56Z",
+      "completedAt": "2026-11-05T13:09:10Z",
+      "url": "https://github.com/limecloud/limelink/actions/runs/42032438462/job/127261986088"
     },
     {
       "name": "integration",
       "conclusion": "success",
-      "startedAt": "2026-11-05T12:09:21Z",
-      "completedAt": "2026-11-05T12:11:21Z",
-      "url": "https://github.com/limecloud/limelink/actions/runs/42024733770/job/127235984963"
+      "startedAt": "2026-11-05T13:03:56Z",
+      "completedAt": "2026-11-05T13:06:02Z",
+      "url": "https://github.com/limecloud/limelink/actions/runs/42032438462/job/127261986370"
     },
     {
-      "name": "windows",
+      "name": "android",
       "conclusion": "success",
-      "startedAt": "2026-11-05T12:09:21Z",
-      "completedAt": "2026-11-05T12:14:18Z",
-      "url": "https://github.com/limecloud/limelink/actions/runs/42024733770/job/127235984995"
-    },
-    {
-      "name": "macos",
-      "conclusion": "success",
-      "startedAt": "2026-11-05T12:09:22Z",
-      "completedAt": "2026-11-05T12:12:40Z",
-      "url": "https://github.com/limecloud/limelink/actions/runs/42024733770/job/127235985108"
+      "startedAt": "2026-11-05T13:03:56Z",
+      "completedAt": "2026-11-05T13:06:31Z",
+      "url": "https://github.com/limecloud/limelink/actions/runs/42032438462/job/127261986453"
     },
     {
       "name": "ios",
       "conclusion": "success",
-      "startedAt": "2026-11-05T12:09:22Z",
-      "completedAt": "2026-11-05T12:11:00Z",
-      "url": "https://github.com/limecloud/limelink/actions/runs/42024733770/job/127235985122"
+      "startedAt": "2026-11-05T13:03:57Z",
+      "completedAt": "2026-11-05T13:05:30Z",
+      "url": "https://github.com/limecloud/limelink/actions/runs/42032438462/job/127261986466"
+    },
+    {
+      "name": "macos",
+      "conclusion": "success",
+      "startedAt": "2026-11-05T13:03:57Z",
+      "completedAt": "2026-11-05T13:07:25Z",
+      "url": "https://github.com/limecloud/limelink/actions/runs/42032438462/job/127261986689"
     }
   ],
-  "sdk_revision": "313090d6b53e28d6e5ad1eaa28d29b8d7c479119"
+  "sdk_revision": "e01581888d8be168481b85242c5835864674df3e"
 }

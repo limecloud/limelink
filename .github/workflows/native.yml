@@ -16,6 +16,7 @@ jobs:
         with:
           node-version: '22'
       - run: node tools/test-cloud-clients.mjs --platform apple
+      - run: swift run -j 4 WorkbenchChecks
       - run: python3 tools/package-macos.py
       - run: ditto -c -k --keepParent .dev/artifacts/LimeLink.app .dev/artifacts/LimeLink-macos-development.zip
       - uses: actions/upload-artifact@v4

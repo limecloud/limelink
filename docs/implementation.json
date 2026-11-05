@@ -255,12 +255,18 @@
       "sources": [
         "packages/apple/Sources/LimeLinkCore/CloudLinkClient.swift",
         "apps/android/core/src/main/kotlin/run/limeai/link/core/CloudLinkClient.kt",
-        "apps/windows/LimeLink.Core/CloudLinkClient.cs"
+        "apps/windows/LimeLink.Core/CloudLinkClient.cs",
+        "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift",
+        "packages/apple/Sources/LimeLinkUI/WorkbenchView.swift",
+        "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt",
+        "apps/windows/LimeLink.App/MainWindow.cs"
       ],
       "evidence": [
-        "docs/evidence/cloud-clients.json"
+        "docs/evidence/cloud-clients.json",
+        "docs/evidence/native-validation.json",
+        "docs/evidence/cloud-workbench-ui.json"
       ],
-      "limits": "平台与三种产品云核心已有；原生工作台云入口、正式云和完整跨网撤销旅程未验收"
+      "limits": "四端云工作台源码已接入正式 SDK；Apple 工作台模型 7 组专项及 Android 构建通过；正式云、四端目标系统/真机及完整跨网撤销旅程未验收"
     },
     {
       "requirement": "FR-022",

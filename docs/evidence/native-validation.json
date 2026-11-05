@@ -22,11 +22,11 @@
       "status": "passed",
       "exit_code": 0,
       "scope": "Apple 产品核心检查；非 iOS 构建",
-      "started_at": "2026-11-05T12:54:34.776743+00:00",
-      "finished_at": "2026-11-05T12:54:38.506552+00:00",
+      "started_at": "2026-11-05T13:16:47.733618+00:00",
+      "finished_at": "2026-11-05T13:16:52.287277+00:00",
       "sdk_revision": "e01581888d8be168481b85242c5835864674df3e",
       "sources": {
-        "Package.swift": "408595e2662238a92cbf1159abda66a14671f71f604d44443d611a080edd0195",
+        "Package.swift": "f40f02141e76d38acff763b47283d6311a6dabb47e91cdb4ba1fb8c4f33b39f8",
         "contracts/iot-sdk.lock.json": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3",
         "packages/apple/Sources/LimeLinkCore/CloudLinkClient.swift": "98951d8ff351d11ebfb529e8ccd8c3102706ed58f82140170c3ebe988e295375",
         "packages/apple/Sources/LimeLinkCore/LinkClient.swift": "2a4e724713552c2b56357d0b6a9cfc56b120aebe546fed10515ca84463735d20",
@@ -34,17 +34,17 @@
         "packages/apple/Tests/CloudChecks.swift": "13b2d6aaf4989f70e5432f964b5a1947e803a88b511ac9c288cd88f6c7d89f41",
         "packages/apple/Tests/IdentityTests.swift": "0a14b140c26111641cfcdb294a163b9c961d1606ce05177a29b70d7e6a04069b"
       },
-      "log_sha256": "59203cd853ac1adaf697356215018fe28389d164fbdc11d1311c176d62b368c4"
+      "log_sha256": "fa3c60009e8d7daa20d7d3c707213cdfc17a19ee0affd9e198bb88ecf55585cc"
     },
     "macos": {
       "status": "passed",
       "exit_code": 0,
       "scope": "macOS release 构建与临时签名；非公证发行",
-      "started_at": "2026-11-05T12:54:38.645864+00:00",
-      "finished_at": "2026-11-05T12:55:14.663830+00:00",
+      "started_at": "2026-11-05T13:18:58.430537+00:00",
+      "finished_at": "2026-11-05T13:19:03.789959+00:00",
       "sdk_revision": "e01581888d8be168481b85242c5835864674df3e",
       "sources": {
-        "Package.swift": "408595e2662238a92cbf1159abda66a14671f71f604d44443d611a080edd0195",
+        "Package.swift": "f40f02141e76d38acff763b47283d6311a6dabb47e91cdb4ba1fb8c4f33b39f8",
         "apps/macos/LimeLinkApp.swift": "54f923ab1f0782f49a9a46776620c8eb6b352ec0e6afeec68f3f5dcb6764e7a4",
         "apps/macos/LocalTerminal.swift": "a1bf486260084b7a17fea489bbe46320badf74307c8ed43870131a07574fd4a2",
         "contracts/iot-sdk.lock.json": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3",
@@ -52,8 +52,8 @@
         "packages/apple/Sources/LimeLinkCore/LinkClient.swift": "2a4e724713552c2b56357d0b6a9cfc56b120aebe546fed10515ca84463735d20",
         "packages/apple/Sources/LimeLinkCore/SecureStore.swift": "38b3a589ef466cce173a66dfa59ac6f9250ef9034206864f0491c20f1f54cf1d",
         "packages/apple/Sources/LimeLinkUI/VoiceDraft.swift": "df71860f18bbe58d91a930cb31ae8cec6cdc9f9fd0d05d8636bf4cf2cfb6ff04",
-        "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift": "c1416d65249cdfb8fb0182077c8c11ce7175c509c9070a86832fd187b734433c",
-        "packages/apple/Sources/LimeLinkUI/WorkbenchView.swift": "13ee00e7be68ec4035ff2789adc23d28d306a0a0356d3c1a6f4e1b0866db680f",
+        "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift": "44d1a32de657a4339025ebfef4618bf206b61d843386bfa874784f602953c3e0",
+        "packages/apple/Sources/LimeLinkUI/WorkbenchView.swift": "f3679e058dd9ec17eca7a64cc86770f53083e356771d23292b4fc972789b7308",
         "runtime/Cargo.lock": "1893fa56859022cab8a681c8f9bc4ef2871a768dd1e50f29e1c6f866a83963e1",
         "runtime/Cargo.toml": "d38e52d755ab5e3b1cf5c8464236833f73e7eca31ed756c4e51d95a3b858bbd1",
         "runtime/src/lib.rs": "dd145e9f634cb2779c8cc977e680ddd82f4e889889b9062ede1aec6294c6516c",
@@ -61,19 +61,19 @@
         "runtime/tests/collaboration.rs": "473af7887a7b58efdf4925cc1ccb3cae91638ba0b6b9fcc9f044025d991d179a",
         "tools/package-macos.py": "fbe36621a2826d81eb7e8f4639ab96ac8e8236dad0530e45ee96e72b90af55f7"
       },
-      "log_sha256": "320c0043386e2f78b431e3442a94bbcd981d58952b722b04cba0f997e90a1f6c"
+      "log_sha256": "06f5383742136253eb9bb3a35f06da4ff999e3bf6a4129416b87036c58325037"
     },
     "android": {
       "status": "passed",
       "exit_code": 0,
       "scope": "Android Core 检查与调试 APK；非真机",
-      "started_at": "2026-11-05T12:55:14.720000+00:00",
-      "finished_at": "2026-11-05T12:55:31.813098+00:00",
+      "started_at": "2026-11-05T13:19:03.836902+00:00",
+      "finished_at": "2026-11-05T13:19:23.064842+00:00",
       "sdk_revision": "e01581888d8be168481b85242c5835864674df3e",
       "sources": {
         "apps/android/app/build.gradle.kts": "0de4aa4ba49a98156ac4831d6cff920c4debede927ddb56e48eaeb2151358305",
         "apps/android/app/src/main/AndroidManifest.xml": "3ae0b6372e597c20d40af8e4a68d83097fdde6b3978189e35b6b4ce227693125",
-        "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt": "bdaca2a066eab94dee272aa11604e0e9ae9f4e611f1c3a3116ebe3534a39a264",
+        "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt": "f4c9c2d5576037c4c05404fa40fbcf9210de75d70431090b2c904151ee5b00c4",
         "apps/android/app/src/main/kotlin/run/limeai/link/SecureStore.kt": "2cc3627fb12502c170e535d0668c51edc43d227bc1464f96c491c336b76f4426",
         "apps/android/app/src/main/res/drawable/ic_launcher_background.png": "c1a20899386c2d076dc6163caa6b0713661ada2a80d42fdf8cbcc32638462cf3",
         "apps/android/app/src/main/res/drawable/ic_launcher_foreground.png": "58dd349233fe730a82f445b852e2858dd3fc7c84ddc69cd218ad164dfc4ae43f",
@@ -98,7 +98,7 @@
         "apps/android/settings.gradle.kts": "2886f34dd6383bae6606e2a3afeb22e5b49efce68510f6b2854cb0d334943e97",
         "contracts/iot-sdk.lock.json": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3"
       },
-      "log_sha256": "51d00d5d066cea60b5a620d80a7cdf2c41504a6c8f7dd90633556b3c1bc6113c"
+      "log_sha256": "fe1e55e5712051d229bf8c313e7c1e8345dc63454348eefb5297ab7a35110c84"
     },
     "dotnet": {
       "status": "passed",
@@ -119,6 +119,26 @@
         "contracts/iot-sdk.lock.json": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3"
       },
       "log_sha256": "ef4af11a9e6fd2634b92728880aebe92879c6d17c860cc3366e1c22f7ad9fec6"
+    },
+    "apple-workbench": {
+      "status": "passed",
+      "exit_code": 0,
+      "scope": "Apple 实际工作台模型的授权、路由、原操作与取消检查；非原生窗口或真机",
+      "started_at": "2026-11-05T13:18:51.399355+00:00",
+      "finished_at": "2026-11-05T13:18:58.278018+00:00",
+      "sdk_revision": "e01581888d8be168481b85242c5835864674df3e",
+      "sources": {
+        "Package.swift": "f40f02141e76d38acff763b47283d6311a6dabb47e91cdb4ba1fb8c4f33b39f8",
+        "contracts/iot-sdk.lock.json": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3",
+        "packages/apple/Sources/LimeLinkCore/CloudLinkClient.swift": "98951d8ff351d11ebfb529e8ccd8c3102706ed58f82140170c3ebe988e295375",
+        "packages/apple/Sources/LimeLinkCore/LinkClient.swift": "2a4e724713552c2b56357d0b6a9cfc56b120aebe546fed10515ca84463735d20",
+        "packages/apple/Sources/LimeLinkCore/SecureStore.swift": "38b3a589ef466cce173a66dfa59ac6f9250ef9034206864f0491c20f1f54cf1d",
+        "packages/apple/Sources/LimeLinkUI/VoiceDraft.swift": "df71860f18bbe58d91a930cb31ae8cec6cdc9f9fd0d05d8636bf4cf2cfb6ff04",
+        "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift": "44d1a32de657a4339025ebfef4618bf206b61d843386bfa874784f602953c3e0",
+        "packages/apple/Sources/LimeLinkUI/WorkbenchView.swift": "f3679e058dd9ec17eca7a64cc86770f53083e356771d23292b4fc972789b7308",
+        "packages/apple/WorkbenchTests/WorkbenchChecks.swift": "deff18e2950aaca1999d92020263a5d85f961a3b57ab9343b7ba9d50124d43c3"
+      },
+      "log_sha256": "0cd984d3758616e1abadc7c1684edb628cd371f41aa94cc1ca41ab78fdc47769"
     }
   }
 }

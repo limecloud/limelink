@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "verified_at": "2026-11-05T13:22:11.677136+00:00",
+  "scope": "macOS 真窗口的云入口、字段清理与拒绝非 HTTPS 地址；未访问云服务或领取授权",
+  "native_ui": true,
+  "physical_phone": false,
+  "user_https_ui": false,
+  "cloud_authorization_journey": false,
+  "sdk_revision": "e01581888d8be168481b85242c5835864674df3e",
+  "checks": [
+    "从本地入口切换后显示控制面地址、恢复云会话、发起授权和全部空间原操作选择器",
+    "填写会话/内容后更改控制面地址清除旧字段",
+    "非 HTTPS 控制面地址在发起前被拒绝，界面显示精确 HTTPS 地址提示",
+    "返回本地入口后恢复本地所有者凭据与模型操作入口"
+  ],
+  "app_binary_sha256": "ba77ae534e5c825a9308c9baaeaed59f9262fe3ae3a829ae6b14b2edfef679a1",
+  "sources": {
+    "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift": "44d1a32de657a4339025ebfef4618bf206b61d843386bfa874784f602953c3e0",
+    "packages/apple/Sources/LimeLinkUI/WorkbenchView.swift": "f3679e058dd9ec17eca7a64cc86770f53083e356771d23292b4fc972789b7308",
+    "contracts/iot-sdk.lock.json": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3"
+  },
+  "limits": [
+    "没有输入真实凭据、网络请求或浏览器批准",
+    "Android/Windows 只有构建证据，iOS 界面待目标系统验收"
+  ]
+}

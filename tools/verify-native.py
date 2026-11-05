@@ -11,13 +11,14 @@ import subprocess
 
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
-parser.add_argument("--checks",nargs="+",required=True,choices=["runtime","apple","macos","android","dotnet"])
+parser.add_argument("--checks",nargs="+",required=True,choices=["runtime","apple","apple-workbench","macos","android","dotnet"])
 parser.add_argument("--gradle",default="gradle")
 parser.add_argument("--dotnet",default="dotnet")
 args=parser.parse_args()
 specs={
     "runtime":(["cargo","test","--manifest-path","runtime/Cargo.toml","--locked"],".",["runtime"],"运行时存储、签名与协同状态；无原生 UI"),
     "apple":(["swift","run","-j","4","LinkChecks"],".",["packages/apple/Sources/LimeLinkCore","packages/apple/Tests","Package.swift"],"Apple 产品核心检查；非 iOS 构建"),
+    "apple-workbench":(["swift","run","-j","4","WorkbenchChecks"],".",["packages/apple/Sources","packages/apple/WorkbenchTests","Package.swift"],"Apple 实际工作台模型的授权、路由、原操作与取消检查；非原生窗口或真机"),
     "macos":(["python3","tools/package-macos.py"],".",["packages/apple/Sources","apps/macos","runtime","Package.swift","tools/package-macos.py"],"macOS release 构建与临时签名；非公证发行"),
     "android":([args.gradle,"--no-daemon",":core:test",":app:assembleDebug"],"apps/android",["apps/android"],"Android Core 检查与调试 APK；非真机"),
     "dotnet":([args.dotnet,"run","--project","apps/windows/LimeLink.Core.Checks"],".",["apps/windows/LimeLink.Core","apps/windows/LimeLink.Core.Checks"],"产品 .NET Core；非 WinUI 运行"),

@@ -4,7 +4,7 @@
 
 ![LimeLink 系统职责与未来扩展](assets/system-context.svg)
 
-[Mermaid 源码](diagrams/system-context.mmd)。实线表示目标主链路，虚线表示后续阶段；当前本地 HTTPS 与 MQTT/mTLS 产品链路已取得局部证据，云核心已消费平台 SDK；云工作台及图中的其他后续路径仍需独立交付与验收。
+[Mermaid 源码](diagrams/system-context.mmd)。实线表示目标主链路，虚线表示后续阶段；当前本地 HTTPS 与 MQTT/mTLS 产品链路已取得局部证据，云核心已消费平台 SDK；云工作台已接入显式授权和路由选择，完整跨网及图中的其他后续路径仍需独立验收。
 
 ## 组成与职责
 
