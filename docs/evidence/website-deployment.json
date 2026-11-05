@@ -1,126 +1,213 @@
 {
   "status": "deployed-and-verified",
-  "verified_at": "2026-11-05T12:15:21.058111+00:00",
+  "verified_at": "2026-11-05T13:39:22.330568+00:00",
   "url": "https://link.limeai.run",
   "worker": "limelink-website",
-  "version_id": "8d2e21da-1a00-4c79-9899-15dbc8c34ebc",
+  "version_id": "c011afa2-168f-4522-8fa2-1fd75f362a05",
   "scope": "静态宣传站与当前文档；非原生 App、网关或硬件发行",
   "source": {
-    "head": "0a70696de84f64e476061c7e5c5732da9264aa95",
-    "worktree": "clean-at-build",
-    "site_code_committed": true
+    "head": "ecab0f8de67e4250363716db79873c81daa1911c",
+    "worktree": "documentation-evidence-overlay-at-build",
+    "site_code_committed": true,
+    "overlay_files": [
+      "docs/evidence/native-ci.json"
+    ]
   },
   "browser_verification": {
     "target": "production",
     "passed": 7,
     "failed": 0,
     "report": "docs/evidence/website-browser.json",
-    "version_id": "8d2e21da-1a00-4c79-9899-15dbc8c34ebc"
+    "version_id": "c011afa2-168f-4522-8fa2-1fd75f362a05"
   },
   "http_probes": [
     {
       "path": "/",
       "status": 200,
+      "expected_status": 200,
       "content_type": "text/html",
       "bytes": 20804,
       "sha256": "5e49df112cc8dbf796a21f0273b0d607c8f802e577291f0d2f5b8d396d95f264",
-      "server": "cloudflare"
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
     },
     {
       "path": "/scenes/",
       "status": 200,
+      "expected_status": 200,
       "content_type": "text/html",
       "bytes": 29135,
       "sha256": "fbd69fd16207736b07ed029197e55514b37490e10f378c1713dcbea6390190a6",
-      "server": "cloudflare"
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
     },
     {
       "path": "/brand/",
       "status": 200,
+      "expected_status": 200,
       "content_type": "text/html",
       "bytes": 7961,
       "sha256": "243fc14c97d1017568460c080aa71eea128550079ec39e5a8a6445da0ee4ae37",
-      "server": "cloudflare"
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
     },
     {
       "path": "/docs/",
       "status": 200,
+      "expected_status": 200,
       "content_type": "text/html",
       "bytes": 15845,
       "sha256": "cc105d9938ccf0b7b9c821b17672666dba8edff6cc41a55c1d9a6cf00d4163dd",
-      "server": "cloudflare"
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
     },
     {
       "path": "/docs/07-pairing-and-authorization/",
       "status": 200,
+      "expected_status": 200,
       "content_type": "text/html",
       "bytes": 12727,
       "sha256": "75dd7e225a9cee64e358f8c91dd519e9a3fe5b62441eb551d6324a6a55ca16fa",
-      "server": "cloudflare"
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
     },
     {
       "path": "/docs/29-implementation-and-verification/",
       "status": 200,
+      "expected_status": 200,
       "content_type": "text/html",
-      "bytes": 16306,
-      "sha256": "707e416903b8fd582b815dcc28755bf63f918b0b09886b157c1ce54e23c0553b",
-      "server": "cloudflare"
+      "bytes": 20211,
+      "sha256": "8499de834e07e7f4ffdfb0646f8fc50722d3e42821380050b93dade25725f9aa",
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
     },
     {
       "path": "/resources/docs/status.json",
       "status": 200,
+      "expected_status": 200,
       "content_type": "application/json",
-      "bytes": 2660,
-      "sha256": "6abaca8b91d54c04877193cf23b711a27dcf53e89aef66391daeac17826ea284",
-      "server": "cloudflare"
+      "bytes": 2766,
+      "sha256": "509b9972109184cb54cf99797f5ff742a40c1c97d2f205ef1b05bc88850f99b2",
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
     },
     {
       "path": "/images/ningning-hero.webp",
       "status": 200,
+      "expected_status": 200,
       "content_type": "image/webp",
       "bytes": 44738,
       "sha256": "bf4393d71755ae2f3cda17e4a4772d867725c13e52ac09fdc8782f97ad8fed6f",
-      "server": "cloudflare"
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
     },
     {
       "path": "/images/21-hardware-desk.webp",
       "status": 200,
+      "expected_status": 200,
       "content_type": "image/webp",
       "bytes": 102298,
       "sha256": "69fe5316c572fc98a3189676512f54a5b34f4b0fd18f8db8a35a91b7d911d29e",
-      "server": "cloudflare"
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
     },
     {
       "path": "/brand/limelink-brand-kit.zip",
       "status": 200,
+      "expected_status": 200,
       "content_type": "application/zip",
       "bytes": 636953,
       "sha256": "0af791656db11460130e141e6e86500c65be84b07e4caaa62dfec2491b76ba5f",
-      "server": "cloudflare"
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
     },
     {
       "path": "/robots.txt",
       "status": 200,
+      "expected_status": 200,
       "content_type": "text/plain; charset=utf-8",
       "bytes": 2744,
       "sha256": "64ff2912a4c17a941e9b87304f50f1853a2a7c4f9e46f3db975b8cd97e5ff34a",
-      "server": "cloudflare"
+      "server": "cloudflare",
+      "matches_local_build": false,
+      "passed": true,
+      "edge_transformation": "Cloudflare 托管规则与说明前缀；受管区块结束后的原站 robots.txt 按字节完全相同",
+      "matches_origin_asset": true
     },
     {
       "path": "/sitemap.xml",
       "status": 200,
+      "expected_status": 200,
       "content_type": "application/xml",
       "bytes": 3302,
       "sha256": "b6dd884fb9033a5697b7f73f09476848d625cd1b15d4265185aa642c31222e53",
-      "server": "cloudflare"
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
     },
     {
       "path": "/not-a-real-page/",
       "status": 404,
+      "expected_status": 404,
       "content_type": "text/html",
       "bytes": 4952,
       "sha256": "3113209beb0179000605c5fca175c90905d1441d825af5b9d1ba3e4e8af14229",
-      "server": "cloudflare"
+      "server": "cloudflare",
+      "passed": true
+    },
+    {
+      "path": "/resources/docs/evidence/cloud-workbench-ui.json",
+      "status": 200,
+      "expected_status": 200,
+      "content_type": "application/json",
+      "bytes": 1373,
+      "sha256": "b9c0a389e26cdb53d224cfbfa260ecde20b7e681aa2dccb32082bcf76c257767",
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
+    },
+    {
+      "path": "/resources/docs/evidence/native-validation.json",
+      "status": 200,
+      "expected_status": 200,
+      "content_type": "application/json",
+      "bytes": 11635,
+      "sha256": "29fbe71c52eb816f3d0bc932e6dba442f420d75aeeae147595bbd76678400d85",
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
+    },
+    {
+      "path": "/resources/docs/evidence/native-ci.json",
+      "status": 200,
+      "expected_status": 200,
+      "content_type": "application/json",
+      "bytes": 1730,
+      "sha256": "6e093e188a86989e7bc52274a798f7220f999cb93354c16ed4b573e941c0d150",
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
+    },
+    {
+      "path": "/resources/contracts/iot-sdk.lock.json",
+      "status": 200,
+      "expected_status": 200,
+      "content_type": "application/json",
+      "bytes": 25512,
+      "sha256": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3",
+      "server": "cloudflare",
+      "matches_local_build": true,
+      "passed": true
     }
   ],
   "artifact_fingerprints": [
@@ -141,19 +228,32 @@
       "sha256": "75dd7e225a9cee64e358f8c91dd519e9a3fe5b62441eb551d6324a6a55ca16fa"
     },
     {
+      "path": "site/dist/docs/29-implementation-and-verification/index.html",
+      "sha256": "8499de834e07e7f4ffdfb0646f8fc50722d3e42821380050b93dade25725f9aa"
+    },
+    {
       "path": "site/dist/brand/limelink-brand-kit.zip",
       "sha256": "0af791656db11460130e141e6e86500c65be84b07e4caaa62dfec2491b76ba5f"
+    },
+    {
+      "path": "site/dist/resources/docs/evidence/cloud-workbench-ui.json",
+      "sha256": "b9c0a389e26cdb53d224cfbfa260ecde20b7e681aa2dccb32082bcf76c257767"
     }
   ],
   "build": {
     "html_pages": 77,
-    "local_links": 3473,
+    "local_links": 3479,
     "scene_images": 28,
     "errors": [],
-    "files": 385,
-    "bytes": 53253979,
-    "manifest_sha256": "f995195dfc29a8507c3f02920a4dcaf0334657c8dfef471c7056e9cf382e51f2"
+    "files": 387,
+    "bytes": 53281745,
+    "manifest_sha256": "a8b0d63f0a0608744343d80fdf0b05d8c34ba5184a7e31ba308e6ae141a2eaea",
+    "manifest_format": "按路径排序的 path/sha256/bytes JSON，紧凑格式和 UTF-8"
   },
-  "publication_note": "当前版本构建时工作树干净。发布后将生产检查记录写入仓库，线上资源保留构建时证据快照，不为自引用重复发布。",
-  "product_runtime_verified": false
+  "publication_note": "网站源代码已提交，构建仅覆盖更新的原生 CI 证据。此版本包含云工作台文档及此前的 e8700f6 全绿 CI；取消边界修正的完整 CI 后续记录在仓库。发布后写回验证证据，线上资源保留构建时快照，不为自引用重复部署。",
+  "product_runtime_verified": false,
+  "verification_notes": [
+    "首次 Python 静态探测收到403，路径和原因未确认；未将其标为通过。随后独立 Node 请求完成17项检查。",
+    "robots.txt 含 Cloudflare 托管前缀；保留原始摘要，受管区块结束后按字节核对原站内容，其余15项成功资源按完整字节核对，另有1项预期404。"
+  ]
 }
