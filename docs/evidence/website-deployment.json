@@ -1,13 +1,13 @@
 {
   "status": "deployed-and-verified",
-  "verified_at": "2026-11-05T12:01:59.190914+00:00",
+  "verified_at": "2026-11-05T12:15:21.058111+00:00",
   "url": "https://link.limeai.run",
   "worker": "limelink-website",
-  "version_id": "118903bb-767a-4180-90c9-efb0d59214ea",
+  "version_id": "8d2e21da-1a00-4c79-9899-15dbc8c34ebc",
   "scope": "静态宣传站与当前文档；非原生 App、网关或硬件发行",
   "source": {
-    "head": "9c886409a3b752c0aa01b4ae308998b76a84de54",
-    "worktree": "website-local-verification-evidence-updated",
+    "head": "0a70696de84f64e476061c7e5c5732da9264aa95",
+    "worktree": "clean-at-build",
     "site_code_committed": true
   },
   "browser_verification": {
@@ -15,7 +15,7 @@
     "passed": 7,
     "failed": 0,
     "report": "docs/evidence/website-browser.json",
-    "version_id": "118903bb-767a-4180-90c9-efb0d59214ea"
+    "version_id": "8d2e21da-1a00-4c79-9899-15dbc8c34ebc"
   },
   "http_probes": [
     {
@@ -62,8 +62,8 @@
       "path": "/docs/29-implementation-and-verification/",
       "status": 200,
       "content_type": "text/html",
-      "bytes": 15655,
-      "sha256": "898254e29ba7e75ff8091513be603e0623151436b25e2ea7d6ed59c5e3a40e9d",
+      "bytes": 16306,
+      "sha256": "707e416903b8fd582b815dcc28755bf63f918b0b09886b157c1ce54e23c0553b",
       "server": "cloudflare"
     },
     {
@@ -71,7 +71,7 @@
       "status": 200,
       "content_type": "application/json",
       "bytes": 2660,
-      "sha256": "70875d51442f008527e65400420679bb33af7befaf9ed1804dbfc7d31006ad91",
+      "sha256": "6abaca8b91d54c04877193cf23b711a27dcf53e89aef66391daeac17826ea284",
       "server": "cloudflare"
     },
     {
@@ -146,14 +146,14 @@
     }
   ],
   "build": {
-    "files": 384,
-    "bytes": 53263720,
-    "manifest_sha256": "4c1ed163d0c4ed7aefd50a55f246c7580c62e49852dd7ab471ee47ad1b1e7a40",
     "html_pages": 77,
-    "local_links": 3471,
+    "local_links": 3473,
     "scene_images": 28,
-    "errors": []
+    "errors": [],
+    "files": 385,
+    "bytes": 53253979,
+    "manifest_sha256": "f995195dfc29a8507c3f02920a4dcaf0334657c8dfef471c7056e9cf382e51f2"
   },
-  "publication_note": "此次发布包含本地浏览器核验记录；生产核验与新截图在发布之后写入仓库，不为自引用重复部署。线上证据是构建时快照。",
+  "publication_note": "当前版本构建时工作树干净。发布后将生产检查记录写入仓库，线上资源保留构建时证据快照，不为自引用重复发布。",
   "product_runtime_verified": false
 }

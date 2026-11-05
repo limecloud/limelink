@@ -89,9 +89,9 @@
   },
   "production": {
     "target": "https://link.limeai.run",
-    "version_id": "118903bb-767a-4180-90c9-efb0d59214ea",
-    "started_at": "2026-11-05T11:59:34.968Z",
-    "duration_ms": 26503.745,
+    "version_id": "8d2e21da-1a00-4c79-9899-15dbc8c34ebc",
+    "started_at": "2026-11-05T12:12:59.116Z",
+    "duration_ms": 25531.19,
     "tests": [
       {
         "title": "首页在 390px 下可读、无溢出且图片加载",
@@ -99,7 +99,7 @@
         "runs": [
           {
             "status": "passed",
-            "duration_ms": 2853
+            "duration_ms": 3069
           }
         ]
       },
@@ -109,7 +109,7 @@
         "runs": [
           {
             "status": "passed",
-            "duration_ms": 2404
+            "duration_ms": 2941
           }
         ]
       },
@@ -119,7 +119,7 @@
         "runs": [
           {
             "status": "passed",
-            "duration_ms": 3007
+            "duration_ms": 3379
           }
         ]
       },
@@ -129,7 +129,7 @@
         "runs": [
           {
             "status": "passed",
-            "duration_ms": 771
+            "duration_ms": 963
           }
         ]
       },
@@ -139,7 +139,7 @@
         "runs": [
           {
             "status": "passed",
-            "duration_ms": 2962
+            "duration_ms": 2094
           }
         ]
       },
@@ -149,7 +149,7 @@
         "runs": [
           {
             "status": "passed",
-            "duration_ms": 4500
+            "duration_ms": 2428
           }
         ]
       },
@@ -159,7 +159,7 @@
         "runs": [
           {
             "status": "passed",
-            "duration_ms": 4036
+            "duration_ms": 5032
           }
         ]
       }
@@ -176,7 +176,8 @@
       "sha256": "5fb2d27cb20ddcb5d2abeb24a874951e65d0571a4bf83bdc9a9abf14ff6f97d1",
       "review": "已目视检查当前首屏排版、角色、渐变、端点卡片与原生开发中状态文案",
       "captured_at": "2026-11-05T11:59:34.968Z",
-      "target": "production"
+      "target": "production",
+      "version_id": "118903bb-767a-4180-90c9-efb0d59214ea"
     },
     {
       "path": "docs/evidence/screenshots/website-home-1440.webp",
@@ -184,8 +185,9 @@
       "sha256": "4041e69b68472d56cfbc3ffb556a5e1eb37ca9168abce9366034b4e5df84e41f",
       "review": "已目视检查当前首屏排版、角色、渐变、端点卡片与原生开发中状态文案",
       "captured_at": "2026-11-05T11:59:34.968Z",
-      "target": "production"
+      "target": "production",
+      "version_id": "118903bb-767a-4180-90c9-efb0d59214ea"
     }
   ],
-  "notes": "生产检查与本地检查覆盖同一套 7 项测试。自动可访问性扫描无违规不等同于完整人工无障碍认证。"
+  "notes": "当前生产版本完整通过7项检查。截图取自前一已核验版本，其后只有文档与证据更新，首屏布局未改。自动可访问性检查不等于完整人工认证。"
 }
