@@ -1,0 +1,84 @@
+name: Native clients and IoT integration
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  macos:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/prepare-iot
+      - run: swift run -j 4 LinkChecks
+      - run: python3 tools/package-macos.py
+      - run: ditto -c -k --keepParent .dev/artifacts/LimeLink.app .dev/artifacts/LimeLink-macos-development.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos-development
+          path: .dev/artifacts/LimeLink-macos-development.zip
+  ios:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/prepare-iot
+      - run: xcodebuild -project apps/ios/LimeLink.xcodeproj -scheme LimeLink -configuration Debug -destination 'generic/platform=iOS Simulator' -derivedDataPath .dev/ios-build CODE_SIGNING_ALLOWED=NO build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ios-simulator
+          path: .dev/ios-build/Build/Products/Debug-iphonesimulator/LimeLink.app
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/prepare-iot
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14'
+      - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+      - run: gradle --no-daemon -p apps/android :core:test :app:assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-development
+          path: apps/android/app/build/outputs/apk/debug/*.apk
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/prepare-iot
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - run: dotnet run --project .dev/iot-source/packages/dotnet/LimeIoT.Client.Checks
+      - run: dotnet run --project apps/windows/LimeLink.Core.Checks
+      - run: ./tools/package-windows.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-development
+          path: .dev/artifacts/LimeLink-windows-x64-development.zip
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/prepare-iot
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: sudo apt-get update && sudo apt-get install -y mosquitto
+      - run: cargo test --manifest-path runtime/Cargo.toml --locked
+      - run: cargo build --manifest-path .dev/iot-source/Cargo.toml --locked --bin limeiot-gateway --bin limeiot-model-validator --bin limeiot-simulator
+      - run: node tools/test-iot-link.mjs --iot-root .dev/iot-source --mtls
+        env:
+          LIMEIOT_MOSQUITTO: /usr/sbin/mosquitto
+          LIMEIOT_TEST_TARGET_DIR: ${{ github.workspace }}/.dev/iot-source/target/debug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iot-integration-evidence
+          path: docs/evidence/iot-runtime-mtls-integration.json

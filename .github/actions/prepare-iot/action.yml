@@ -1,0 +1,23 @@
+name: Prepare pinned LimeIoT SDK
+description: Export only the upstream revision recorded in the product lock
+runs:
+  using: composite
+  steps:
+    - id: lock
+      shell: bash
+      run: |
+        python3 - <<'PY'
+        import json,os
+        record=json.load(open('contracts/iot-sdk.lock.json'))
+        assert record['worktree_overlay'] is False
+        with open(os.environ['GITHUB_OUTPUT'],'a') as output:
+            output.write('revision='+record['head']+'\n')
+        PY
+    - uses: actions/checkout@v4
+      with:
+        repository: limecloud/iot
+        ref: ${{ steps.lock.outputs.revision }}
+        path: .dev/iot-source
+        persist-credentials: false
+    - shell: bash
+      run: python3 tools/prepare-sdk.py --source .dev/iot-source

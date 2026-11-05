@@ -1,0 +1,622 @@
+{
+  "repository": "https://github.com/limecloud/iot",
+  "head": "313090d6b53e28d6e5ad1eaa28d29b8d7c479119",
+  "worktree_overlay": false,
+  "files": [
+    {
+      "path": "apps/android/core/build.gradle.kts",
+      "sha256": "8c12a683721b6a417954201d44b1bc963199f73648b6be482c3577c2a54bd831",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/AiCatalog.kt",
+      "sha256": "f63deb8105de6f5de586beaad5221baeb22c38df2b6ddecbd2fb4cdd46d61427",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/CompanionClient.kt",
+      "sha256": "43258c40a3be6284f611e925a45c8016eb68a6321594ca7bdffd1ada79366810",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/CompanionModels.kt",
+      "sha256": "76fd9e8c85d9bf26738eb690e9e7665b1e9dabbba4c7afa38718c0ea877c3387",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/CompositionClient.kt",
+      "sha256": "fa9d764631beb8589074674294a5bbb58ba66bed246c17a5516af96765364c56",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/CompositionModels.kt",
+      "sha256": "cc946825aae1254c9831da03b04e35203ac28e3abcf7112e09108dba5f3fb7e1",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/ConditionEditor.kt",
+      "sha256": "7d3829166fca68f8fa9b8d36c07ff196844fa342f8ebab0ad3581a16de41eb33",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/ControlClient.kt",
+      "sha256": "167c5d44cd39a90e7fba792be0a384be5563c274835cbda7f57ac36394c739f4",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/ControlModels.kt",
+      "sha256": "84d3afabc4c52b617ed8326d1167a83616f7694e8be5927686471901ed1f0f55",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/GatewayClient.kt",
+      "sha256": "6a9d257c3f43f2c3cbc4e049d7bf5f9b41d44139b700925e8eea3209e9397e05",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/IntegerJSON.kt",
+      "sha256": "371e4632f6afe4fa7753bb1413498f5410a981a8ebcd9ab9dc1dade7150e4be7",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/MediaClient.kt",
+      "sha256": "560713b5254a1e153ef1eb0e1ec25ae4c764576fe0a39499c7f9e7865a107f2c",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/MediaModels.kt",
+      "sha256": "495a5fa61abdacd99297015437fd31df6e81a1c056a0a300e6801e8d41c26ec0",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/MediaTargets.kt",
+      "sha256": "c64e7431dd56f1a3c39505d0b0b3acbeab15166cf1705460f0b08ee32318f444",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/Models.kt",
+      "sha256": "0558f480b5e18db54af8b54ab3ead7760d7369952b33098df998b8d705894075",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/ObservationClient.kt",
+      "sha256": "8b21852872c24a25b20930a5f30aedd1eb7154a1390036444eb5ce73aa6cac44",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/ObservationDiscovery.kt",
+      "sha256": "8aeb2f8888a736ac283ff8f7dcbf89b506d5ff55bf986daf74d01ae0d2f14f59",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/ObservationModels.kt",
+      "sha256": "8f6ef4a4cc0f335ed17a29f00d26610c1c412ebc346b8bca96eb2daab68c24c9",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/OtaClient.kt",
+      "sha256": "515599e775d304c5fa82d4f3a7879d7531b0afd469c33aa9eb5ad3ce16678b7b",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/OtaModels.kt",
+      "sha256": "4b5e5d230cba176f09c28ef2ab319a7d5cdf5b9b01293a4829eece5a47d71f48",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/PcmRecording.kt",
+      "sha256": "141ffcf91c3426dc4d48806d84411f2ab208ed8f479d87cddbf278a1640afa52",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/RuleAction.kt",
+      "sha256": "af0ebcda7b806c6491197624247e2af776b1d56b64f9967c4386ef7c5cdd7a46",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/RuleProof.kt",
+      "sha256": "96580e76ef157a810e9d686fd713da37e210b8c36be3f4e9b871fe407668bf8d",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/RuleTrigger.kt",
+      "sha256": "e95dcbb687d2e7a5f1a1ca014cb050ea8cd2e14feb3bc7add8d563c72d6d376b",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/SpeechClient.kt",
+      "sha256": "eb497b640016d87bec1e89e0398be97dac9c0b3a74b109e05d68f3d4add54c21",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/SpeechModels.kt",
+      "sha256": "36feffa133e909955814d15c51aa88a7af423b4fb9ba5a4c4eb2423d583a01b7",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/TextGenerationClient.kt",
+      "sha256": "45f196302d6f1120060444c1d08b9d5770121bd4f03b40212cd0d4dd95216c15",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/TextGenerationModels.kt",
+      "sha256": "8a6ecc217ff20be78abe1519e80a17697f32631fcd027b4bb0763419277f09ba",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/ThresholdEditor.kt",
+      "sha256": "6f18c93200ae93ba940ec5a834443e958556b166712fd31d4966442db44d3912",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/TranscriptionClient.kt",
+      "sha256": "c412d31e10a01e05a076e641f5fb9f98be45cbd59a780e54d1309ae16a6999f4",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/TranscriptionModels.kt",
+      "sha256": "0751eeb4458aebbdb662371393920c9590bd4f4489a8edce95418cefbd32c66f",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/VisionClient.kt",
+      "sha256": "5aa6eaf6edde5dfde48cd0e6b540b5a75abd0022c4dfda6f851d05577e768351",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/VisionModels.kt",
+      "sha256": "9cb872fbd3e70cba4146b91b0b62729cc2ed129762798e256cdb3fcab37be2ae",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/VoiceTurnClient.kt",
+      "sha256": "eff8eeb98fc96393d9be2cf1711346615fe49f7547f98f0b15e1a73303ae1503",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/VoiceTurnModels.kt",
+      "sha256": "8a066cb19e40099041e92b7540e6227fed412c00bc01ac892f1ef567bde81933",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/ZigbeeCommissioning.kt",
+      "sha256": "8637ea597122d24836a7eb972e994a561821ceabdc472dd17a324ec5826b64bb",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/main/resources/limeiot/reading-companion.json",
+      "sha256": "5b915b024e187e5a02bc634eb35d6eab1b9ed77798138a49d6ee785ebc2c532c",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/ActionTest.kt",
+      "sha256": "f1814bbd80d1f678b8e9d5b38d94ed0a5b8e6efeb3fd725faee781a4974591ef",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/CommandRecoveryTest.kt",
+      "sha256": "7803b2ef42197ceb9d483760c683156cd1b911c6e0c23e5d9630064a8b9cc78c",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/CompanionClientTest.kt",
+      "sha256": "9af98aedb28948238e7820864dfd3a626aeb9360ed5dd31d1347830bbbe02c14",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/CompositionClientTest.kt",
+      "sha256": "e14081f245d0d7695270c1f8a87f9386a4904b3cc1b9562a767c0cdee1d2681d",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/CompositionTest.kt",
+      "sha256": "7bc097df7378b54d71de17a1fb654f68718732091c76e0af9404b918f745e1ef",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/ConditionEditorTest.kt",
+      "sha256": "f940dec36d04eb5013d31719f3c68c1b5716d08083f5214a6b8ab789a021c855",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/ControlClientTest.kt",
+      "sha256": "79f6dc66a00e4d21cd99caba5bab904fccba68b4e28bf68c57d4c1d038799ddc",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/ControlTLSTransport.kt",
+      "sha256": "924871f40bc5f559d56413724dcbb7c71a5e8a98157a28eb07fc785dc6a454a8",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/EnvironmentPropertyTest.kt",
+      "sha256": "fbbc2c9712c7ac66c27a2a3ac240d58778d3393b0a2923580c322b923a862fcf",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/GatewayClientTest.kt",
+      "sha256": "225d7365b49fa2ac34ca506d6dee610d01cdd4275df910df108440382e97143e",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/MediaClientTest.kt",
+      "sha256": "7ab2135301cac1dcb30cb42741686b3e9c9c17b2b83e6ea4870abb7932957e03",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/MediaIntegrationTest.kt",
+      "sha256": "24b3b8f45444be5e505794ed18ed4e0c400c484372710f64b5946272dd283f0c",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/MediaTargetTest.kt",
+      "sha256": "5735e230f72910fa15b5cad83eae3918da08119d7fd27a18f8934f78a5242019",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/ObservationClientTest.kt",
+      "sha256": "a880300ab767412d41ec2bf0ad6e9636b267bda9d1e7e5e8c67c22a7857a090c",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/OtaClientTest.kt",
+      "sha256": "201cf954a16eb69b94779c6b9151f9625d29e73b3298a3ed5fc2d4bba13e24ab",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/OtaIntegrationTest.kt",
+      "sha256": "e9c58b8770349e7138dc98d3a329eb3881b695012c48bf79028c28c03a782c6c",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/PcmRecordingTest.kt",
+      "sha256": "1d603bd733965da97cc56726357ea2cf922b3db94948c40c3a241f04f7a99ea0",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/PropertyBridgeJourneyTest.kt",
+      "sha256": "ecced9240894349f6cdedd169eb1a745b61fa550d4d0b0bb60c7b34d9b1cad66",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/RuleActionTest.kt",
+      "sha256": "a252c6a8da2e5fd75d8646a869f16d211e6d55af02ca973f916807fe82d2a09f",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/RuleTriggerTest.kt",
+      "sha256": "8a819c4bd00fb3c30a15379bea3195f3ed2003369078d4ccc81bd0002105ecff",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/SpaceSelectionTest.kt",
+      "sha256": "4638fe5e2f59a124d7a409bae7ebda5291ed8dda5920880e82122882046d8e55",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/SpeechClientTest.kt",
+      "sha256": "d73bb363eb3a2b0b08d67f9f2333ae77f021e55c1c36ef710ca486d2fc4707ca",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/TextGenerationClientTest.kt",
+      "sha256": "14002b2f8bc3be9b766c6c3620ed2482167c701a4a9bde5711c5082a610e8016",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/TranscriptionClientTest.kt",
+      "sha256": "6cec6bd85a9402826a60ddc1b1fccc0677dd8188ee11f55f582ec8a3284fa45e",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/VisionClientTest.kt",
+      "sha256": "45f73e83913e88d92aa86a3d45e0a48e5d3134d2b93bfaca083117fbf257cca0",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/VisionIntegrationTest.kt",
+      "sha256": "7d385b558f1165556c966599d00627438b3842bfe28e4ff9fd141326488204a8",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/VoiceTurnClientTest.kt",
+      "sha256": "299e72d182ab23490a088b6c1ccdd1fe4e81bbaa0f6c25a123e1c02bd623911d",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Package.swift",
+      "sha256": "9ef360ff6379188d643a4db63eafb3a5a06b42397a16c99e4cf5260798dffd97",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/AiCatalog.swift",
+      "sha256": "944403acbc769f9b48551723a7681a6ab301af12ba0c128911db162b91b885f9",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/CompanionClient.swift",
+      "sha256": "0ab671b571dacf906358aac4029287297f32372d2a46465ca8f77585cedeec97",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/CompanionModels.swift",
+      "sha256": "6e3e64f122e302f86e65da1e06538ac47a08aab87cd97aa0da0c5872d820e6ba",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/CompositionClient.swift",
+      "sha256": "209183ab2d1215d340444edce0115915a3716ff8eb827c7f7520e9f7c4a3f6fb",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/CompositionModels.swift",
+      "sha256": "22b112b2fb8fc4741273350a203c8c9af6732f69dba3a561b48fd54a2cb8bac5",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/ConditionEditor.swift",
+      "sha256": "65125d8d4b48c89cb11d24f678427a3a093605ce52aa42f2d7177947c3451cb3",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/ControlClient.swift",
+      "sha256": "9571a177d9d7f79f70a1eaad4f4ba17507f9b18491fc390bc9d5348d93195213",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/ControlModels.swift",
+      "sha256": "a8df897e463a2957c9cd7d907379083dcba2f18abb158066eba9dc5e91f4ed9c",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/GatewayClient.swift",
+      "sha256": "c551ab5b0f8c2b9475cc5f4cb82baed11a71b82cbfb7ca80c07d303a9eab882c",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/IntegerJSON.swift",
+      "sha256": "14adf8bf3094a9c8d7b4386375de5fdc4755701a5139ef2bbffbca0aec5bd582",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/MediaClient.swift",
+      "sha256": "eed94967f247b37fb51d9ff38f6fea1b472e124267de36ef49db70abce9aec3b",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/MediaModels.swift",
+      "sha256": "76a11a908a71972e587429992594a2df442c3708f755751be3a06f2db9e93750",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/MediaTargets.swift",
+      "sha256": "7cfcf3d6d1ba25a3581f4c1b216e1721dd2043621bf5f46b11644baf29c45abb",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/Models.swift",
+      "sha256": "b1663baeefa54e234ccf4dcffc9c7304f8ea2ec443e6d862f52e28869f18ae93",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/ObservationClient.swift",
+      "sha256": "45f1cfc6a6433a83314b9f291cf0bbe6df95e85478d80291e42b5ca4f7b93cec",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/ObservationDiscovery.swift",
+      "sha256": "be2d2565629750edd5030915a8334fa7c59022718c0e5424037522037cbee4dc",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/ObservationModels.swift",
+      "sha256": "3374d8eb3c0bdb5ff32d8a1fee309cbdd28c123595462f4b298ad8c152ab41d2",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/OtaClient.swift",
+      "sha256": "23f473478e49d46a22f8ab78e82169cbedc4d7f66ca3fb97eb3ba210374126cc",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/OtaModels.swift",
+      "sha256": "901cefc5f2a9d8fa00d83f6b62b6b022a4045a15f67da2fcf6773c8e578a04fe",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/PcmRecording.swift",
+      "sha256": "89daf24a04aa646b6e8b920f5cbdec96f1c105beb01b970b5da4cd34318e0e49",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/Resources/reading-companion.json",
+      "sha256": "5b915b024e187e5a02bc634eb35d6eab1b9ed77798138a49d6ee785ebc2c532c",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/RuleProof.swift",
+      "sha256": "bba084d4daefffe6b615bf57d1581779c5282f3d4d2815379b7321bd157a2a7a",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/SpeechClient.swift",
+      "sha256": "8a6f830ae63238e494ed7b1eecd950d23311283f246b75ff7cd42218984438fb",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/SpeechModels.swift",
+      "sha256": "e381153ea156c62380e1f864806d1d6e3353b97242bed932b8d53f7424cdbcea",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/TextGenerationClient.swift",
+      "sha256": "1f1bc18ae72a73bd3bca18a64e20b7898762e1cdc65fde0a9299553bae95f188",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/TextGenerationModels.swift",
+      "sha256": "3d99f83cca64c5682e2620dfbce1283be9187729997143a2ee272a2bb6f4917c",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/ThresholdEditor.swift",
+      "sha256": "6ed77f5e9cae0f20b61d79e652c4ab9c8be10618a7e00200690c7fc8699fca24",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/TranscriptionClient.swift",
+      "sha256": "1ddd02de280099b5cebd1775a067cba083dfafb201a55f6d9c16a639ceff642e",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/TranscriptionModels.swift",
+      "sha256": "7d2e16b61b9dd5b7ca89995092e6f7987e1ddf860c92fa128eeca0e223c67b7f",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/VisionClient.swift",
+      "sha256": "fa43a4104cc347fd6329a0c21bcb89f0bd2b41ec53b31d91eb86ce5a55d56450",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/VisionModels.swift",
+      "sha256": "09512fedcf64df6d00e0ada05ae5a87d34c26e5d842f5662b93b695973bfd299",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/VoiceTurnClient.swift",
+      "sha256": "2d774f3140d598001eafe50eae58cb0777baae8abd24ba2490e6cbe3cd15cf35",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/VoiceTurnModels.swift",
+      "sha256": "418970b41cd48fae457cba9eac118b189a2308b5b6b96f24bcb4e9a3bcc33f4c",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Sources/LimeIoTKit/ZigbeeCommissioning.swift",
+      "sha256": "2e23b1764d3fdd8639aece32cfbba5710f346db0882cee9c9839cea853741194",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/ActionChecks.swift",
+      "sha256": "21edd4ee8b754e8ad3629abbd4788048805fea01bdf357774539b70ec6b7b076",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/CommandRecoveryChecks.swift",
+      "sha256": "c02d6dda924126107f8f829552451e0f7ef42e01d41686bc1ddcccabb026b6ee",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/ConditionChecks.swift",
+      "sha256": "d0c28e72ade7a4dbab59eedfe3f4a1c5a8083f5507393d923b5aaeea6fd2c39d",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/ControlClientChecks.swift",
+      "sha256": "44e801d2641e8f1acff98f4b14e525e6c4e40793d0f000919ea223de6abbe3dd",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/ControlTLSTransport.swift",
+      "sha256": "49383dcfe7d2e0f955d8fec5dca4e7de14dcf3c03efef238d1172ce7dd7581bd",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/EnvironmentChecks.swift",
+      "sha256": "93e5e9a2e688144eb1d5751162d9f90e1ba484ad33a481e885e2872ca3b97a7d",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/GatewayClientTests.swift",
+      "sha256": "83e5799fe44c27d88893c0d0bceed3034d918b8675071b67e459939e0461bed8",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/MediaChecks.swift",
+      "sha256": "979470ed634bff967a41756123150d8fd7fe112b6a3549ad47312918917c25e3",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/MediaTargetChecks.swift",
+      "sha256": "42c25e4990bc1a3857d501a89c726dd241531dd014e7f67829c77c7f5d09fa72",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/ObservationChecks.swift",
+      "sha256": "9b8c3642fafc14454616945e8b0d25c3fcb818875d91e974fe61ed602938a454",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/OtaChecks.swift",
+      "sha256": "1d3466955f20abb22afde2e4504e7444629e3e00f58fa0067d4c4941f858464b",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/PropertyBridgeChecks.swift",
+      "sha256": "6bafa8af2c198cd207760a2a890b20d9415f3c4a304354c2df43b1eab9b4f839",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/RuleActionChecks.swift",
+      "sha256": "5bb7c836a88dfbae74466ac7f5135b8c8b456ce4e07051752ab59de03af0f610",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/ScheduleChecks.swift",
+      "sha256": "2ed57be88e131d6f3705bcbe626b45e93ec53f547cf4e1bcd3d38f8d0c2dc498",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/SpaceSelectionChecks.swift",
+      "sha256": "aa93ab934ad10427288c77b78cbaa07d0608d7c24b37ba302fe8751eddefb095",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/SpeechChecks.swift",
+      "sha256": "178e9d56dd7bebfd4d0d971f5280dec37a2bcdedcb7d058955e49fdf134a8e86",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/ThresholdChecks.swift",
+      "sha256": "e8d5f92bcdc7422052316c0028c76bf836e7ab86b4fc733aa3cc49a533c71d37",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/TranscriptionChecks.swift",
+      "sha256": "450ec6a577a3a3d1762b4da2e9016da6aa61a9f98e8dc79a33d163bbb7a6b35f",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/VisionChecks.swift",
+      "sha256": "a1d375a4da08ab7843b0c64e1c4d9bd1643da3e667054f3fc8ef8932a66b5503",
+      "matches_head": true
+    },
+    {
+      "path": "apps/ios/Tests/LimeIoTKitTests/VisionJourney.swift",
+      "sha256": "0808beb1aa96ea638f4afda26a3b71fcb4e77d93b58d54b538b478784fbc3318",
+      "matches_head": true
+    },
+    {
+      "path": "packages/dotnet/LimeIoT.Client/GatewayClient.cs",
+      "sha256": "bed25f6e4326afa62621a9309ec4cca989df71ddc563f3abad64c9ad136e4130",
+      "matches_head": true
+    },
+    {
+      "path": "packages/dotnet/LimeIoT.Client/LimeIoT.Client.csproj",
+      "sha256": "918a8e18e79ad33d0bfdea54a00ff15fb3a10ed7cca073667476922c6674fbcd",
+      "matches_head": true
+    },
+    {
+      "path": "packages/dotnet/LimeIoT.Client/README.md",
+      "sha256": "d8653b2e2abb195bcad47f58330ca79d03085465f054c15fda8478863d5e74aa",
+      "matches_head": true
+    },
+    {
+      "path": "packages/dotnet/LimeIoT.Client/TextGeneration.cs",
+      "sha256": "89acc2f03be0612b637890272a7f15dd94bbbf16f4c35770f9ecf56be1d8ffd1",
+      "matches_head": true
+    }
+  ]
+}
