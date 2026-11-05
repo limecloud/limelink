@@ -39,11 +39,15 @@ jobs:
           distribution: temurin
           java-version: '21'
       - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          accept-android-sdk-licenses: false
+          log-accepted-android-sdk-licenses: false
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.14'
       - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
-      - run: gradle --no-daemon -p apps/android :core:test :app:assembleDebug
+      - run: apps/android/gradlew --no-daemon -p apps/android :core:test :app:assembleDebug
       - uses: actions/upload-artifact@v4
         with:
           name: android-development
@@ -82,3 +86,8 @@ jobs:
         with:
           name: iot-integration-evidence
           path: docs/evidence/iot-runtime-mtls-integration.json
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: integration-process-logs
+          path: .dev/link-integration-*/*.log

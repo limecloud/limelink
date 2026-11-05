@@ -22,6 +22,7 @@ public sealed class MainWindow:Window {
     private readonly TextBlock result=new(){Text="连接网关后，请选择空间并刷新电脑。",TextWrapping=TextWrapping.Wrap,IsTextSelectionEnabled=true};
     private readonly TextBlock fingerprint=new(){TextWrapping=TextWrapping.Wrap,IsTextSelectionEnabled=true};
     private readonly StackPanel form=new(){Spacing=12,Padding=new Thickness(24),MaxWidth=900};
+    private readonly ContentControl controls=new();
     private readonly StackPanel local=new(){Spacing=12};
     private readonly SecretStore secure=new();
     private LinkClient? client;
@@ -37,11 +38,11 @@ public sealed class MainWindow:Window {
         form.Children.Insert(14,Button("网关模型生成草稿",()=>ModelDraft(false)));form.Children.Insert(15,Button("查询原模型任务",()=>ModelDraft(true)));
         form.Children.Add(Button("导出脱敏诊断",ExportDiagnostics));
         targets.SelectionChanged+=async(_,_)=>await Run(async()=>{if(client is not null&&targets.SelectedItem is Device d&&spaces.SelectedItem is string s)fingerprint.Text="本客户端指纹\n"+await client.FingerprintAsync(s,d.Id);});
-        Content=new ScrollViewer{Content=form};Activated+=(_,args)=>active=args.WindowActivationState!=WindowActivationState.Deactivated;
+        controls.Content=form;Content=new ScrollViewer{Content=controls};Activated+=(_,args)=>active=args.WindowActivationState!=WindowActivationState.Deactivated;
         Closed+=(_,_)=>{if(runtime is{HasExited:false})runtime.Kill();runtime?.Dispose();client?.Dispose();};
     }
     private Button Button(string label,Func<Task> action){var button=new Button{Content=label};button.Click+=async(_,_)=>await Run(action);return button;}
-    private async Task Run(Func<Task> action){if(busy)return;busy=true;form.IsEnabled=false;try{await action();}catch(Exception error){result.Text=error is GatewayException gateway?gateway.Code:error.Message;}finally{form.IsEnabled=true;busy=false;}}
+    private async Task Run(Func<Task> action){if(busy)return;busy=true;controls.IsEnabled=false;try{await action();}catch(Exception error){result.Text=error is GatewayException gateway?gateway.Code:error.Message;}finally{controls.IsEnabled=true;busy=false;}}
     private async Task Connect(){var next=new LinkClient(endpoint.Text,secure);if(token.Password.Length==0)await next.Gateway.RestoreAsync();else await next.Gateway.LoginAsync(token.Password);token.Password="";client?.Dispose();client=next;ai=new(next.Gateway,secure);aiKey=null;spaces.ItemsSource=await next.Gateway.SpacesAsync();targets.ItemsSource=null;result.Text="已连接，请明确选择空间并刷新。";}
     private async Task Refresh(){if(client is null||spaces.SelectedItem is not string space)throw new InvalidOperationException("select_space_first");var snapshot=await client.SnapshotAsync(space);targets.ItemsSource=snapshot.Devices.Where(d=>snapshot.Models[d.ModelRevision]?["model_id"]?.GetValue<string>()=="urn:limelink:model:desktop:1").ToArray();result.Text="已读取真实终端能力。";}
     private void Show(CommandReceipt receipt){var response=LinkClient.Response(receipt);result.Text=receipt.Status+"\n"+receipt.Id+"\n"+response?.ToJsonString();var value=response?["value"];if(value?["revision"] is JsonValue number)revision.Text=number.GetValue<long>().ToString();if(value?["text"] is JsonValue text)draft.Text=text.GetValue<string>();if(receipt.Document["request"]?["operation"]?["value"]?["kind"]?.GetValue<string>()=="card")cancelId.Text=value?["id"]?.GetValue<string>()??"";}
