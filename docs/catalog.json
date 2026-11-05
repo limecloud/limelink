@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "language": "zh-CN",
+  "documents": [
+    {
+      "id": "DOC-00",
+      "path": "docs/00-product-baseline.md",
+      "title": "需求基线与产品边界",
+      "summary": "需求基线与产品边界的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-01",
+      "path": "docs/01-positioning-and-scenarios.md",
+      "title": "产品定位与场景判断",
+      "summary": "产品定位与场景判断的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-02",
+      "path": "docs/02-prd.md",
+      "title": "产品需求 PRD",
+      "summary": "产品需求 PRD的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-03",
+      "path": "docs/03-user-journeys.md",
+      "title": "用户旅程与异常路径",
+      "summary": "用户旅程与异常路径的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-04",
+      "path": "docs/04-information-architecture-ux.md",
+      "title": "信息架构与交互规范",
+      "summary": "信息架构与交互规范的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-05",
+      "path": "docs/05-system-architecture.md",
+      "title": "系统架构",
+      "summary": "系统架构的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-06",
+      "path": "docs/06-domain-model-data.md",
+      "title": "领域对象与数据归属",
+      "summary": "领域对象与数据归属的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-07",
+      "path": "docs/07-pairing-and-authorization.md",
+      "title": "配对、身份与授权",
+      "summary": "配对、身份与授权的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-08",
+      "path": "docs/08-cross-device-sessions.md",
+      "title": "跨端会话与协同",
+      "summary": "跨端会话与协同的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-09",
+      "path": "docs/09-tasks-and-recovery.md",
+      "title": "任务、回执与故障恢复",
+      "summary": "任务、回执与故障恢复的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-10",
+      "path": "docs/10-desktop-architecture.md",
+      "title": "桌面端技术架构",
+      "summary": "桌面端技术架构的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-11",
+      "path": "docs/11-mobile-architecture.md",
+      "title": "手机端技术架构",
+      "summary": "手机端技术架构的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-12",
+      "path": "docs/12-gateway-integration.md",
+      "title": "LimeIoT 接入与上游协作",
+      "summary": "LimeIoT 接入与上游协作的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-13",
+      "path": "docs/13-ai-and-voice.md",
+      "title": "AI、语音与模型接入",
+      "summary": "AI、语音与模型接入的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-14",
+      "path": "docs/14-content-and-widgets.md",
+      "title": "内容、组件与数据展示",
+      "summary": "内容、组件与数据展示的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-15",
+      "path": "docs/15-security-and-privacy.md",
+      "title": "安全与隐私设计",
+      "summary": "安全与隐私设计的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-16",
+      "path": "docs/16-reliability-and-performance.md",
+      "title": "可靠性、性能与观测",
+      "summary": "可靠性、性能与观测的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-17",
+      "path": "docs/17-monorepo-engineering.md",
+      "title": "仓库、模块与工程规范",
+      "summary": "仓库、模块与工程规范的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-18",
+      "path": "docs/18-development-and-integration.md",
+      "title": "开发与集成路线",
+      "summary": "开发与集成路线的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-19",
+      "path": "docs/19-testing-and-acceptance.md",
+      "title": "测试、验收与证据",
+      "summary": "测试、验收与证据的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-20",
+      "path": "docs/20-release-and-operations.md",
+      "title": "发布、运维与支持",
+      "summary": "发布、运维与支持的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-21",
+      "path": "docs/21-roadmap-and-status.md",
+      "title": "实施路线与实际状态",
+      "summary": "实施路线与实际状态的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-22",
+      "path": "docs/22-risks-and-open-decisions.md",
+      "title": "风险与未决事项",
+      "summary": "风险与未决事项的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-23",
+      "path": "docs/23-hardware-terminal-roadmap.md",
+      "title": "未来独立硬件终端",
+      "summary": "未来独立硬件终端的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-24",
+      "path": "docs/24-brand-localization-and-licensing.md",
+      "title": "品牌、国际化与许可",
+      "summary": "品牌、国际化与许可的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-25",
+      "path": "docs/25-reference-research.md",
+      "title": "参考项目研究与借鉴取舍",
+      "summary": "参考项目研究与借鉴取舍的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-26",
+      "path": "docs/26-glossary.md",
+      "title": "术语与易混淆概念",
+      "summary": "术语与易混淆概念的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-27",
+      "path": "docs/27-architecture-decisions.md",
+      "title": "架构决策记录",
+      "summary": "架构决策记录的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-README",
+      "path": "docs/README.md",
+      "title": "LimeLink 文档中心",
+      "summary": "LimeLink 文档中心的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-EVIDENCE-README",
+      "path": "docs/evidence/README.md",
+      "title": "来源与证据边界",
+      "summary": "来源与证据边界的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-EVIDENCE-COVERAGE",
+      "path": "docs/evidence/coverage.md",
+      "title": "覆盖矩阵与待核验问题",
+      "summary": "覆盖矩阵与待核验问题的设计、边界与维护说明"
+    },
+    {
+      "id": "DOC-28",
+      "path": "docs/28-website-and-deployment.md",
+      "title": "宣传站与 Cloudflare 交付",
+      "summary": "宣传站与 Cloudflare 交付的设计、交付边界与维护说明"
+    },
+    {
+      "id": "DOC-BRAND-README",
+      "path": "docs/brand/README.md",
+      "title": "LimeLink 品牌与场景图册",
+      "summary": "LimeLink 品牌与场景图册的设计、交付边界与维护说明"
+    },
+    {
+      "id": "DOC-BRAND-GENERATION",
+      "path": "docs/brand/generation.md",
+      "title": "图像生成、继承与复现",
+      "summary": "图像生成、继承与复现的设计、交付边界与维护说明"
+    },
+    {
+      "id": "DOC-BRAND-IDENTITY",
+      "path": "docs/brand/identity.md",
+      "title": "品牌识别与参考取舍",
+      "summary": "品牌识别与参考取舍的设计、交付边界与维护说明"
+    },
+    {
+      "id": "DOC-BRAND-PHYSICAL-DESIGN",
+      "path": "docs/brand/physical-design.md",
+      "title": "角色物化与未来硬件",
+      "summary": "角色物化与未来硬件的设计、交付边界与维护说明"
+    },
+    {
+      "id": "DOC-BRAND-PLATFORM-ASSETS",
+      "path": "docs/brand/platform-assets.md",
+      "title": "跨端资源交付",
+      "summary": "跨端资源交付的设计、交付边界与维护说明"
+    },
+    {
+      "id": "DOC-BRAND-SCENE-GALLERY",
+      "path": "docs/brand/scene-gallery.md",
+      "title": "完整场景图册",
+      "summary": "完整场景图册的设计、交付边界与维护说明"
+    },
+    {
+      "id": "DOC-BRAND-VI-SPEC",
+      "path": "docs/brand/vi-spec.md",
+      "title": "VI 使用规范",
+      "summary": "VI 使用规范的设计、交付边界与维护说明"
+    },
+    {
+      "id": "DOC-29",
+      "path": "docs/29-implementation-and-verification.md",
+      "title": "实现与验证边界",
+      "summary": "当前实现、正式动作合同、证据范围与发布差距"
+    },
+    {
+      "id": "DOC-30",
+      "path": "docs/30-build-and-local-trial.md",
+      "title": "构建与隔离试用",
+      "summary": "SDK 固定、原生构建和隔离网关联调命令"
+    }
+  ],
+  "reading_routes": {
+    "product": [
+      "DOC-00",
+      "DOC-01",
+      "DOC-02",
+      "DOC-03",
+      "DOC-21",
+      "DOC-22"
+    ],
+    "engineering": [
+      "DOC-05",
+      "DOC-06",
+      "DOC-07",
+      "DOC-09",
+      "DOC-10",
+      "DOC-11",
+      "DOC-12",
+      "DOC-17",
+      "DOC-18"
+    ],
+    "acceptance": [
+      "DOC-02",
+      "DOC-16",
+      "DOC-19",
+      "DOC-20",
+      "DOC-21"
+    ],
+    "brand": [
+      "DOC-24",
+      "DOC-BRAND-README",
+      "DOC-BRAND-IDENTITY",
+      "DOC-BRAND-VI-SPEC",
+      "DOC-BRAND-SCENE-GALLERY",
+      "DOC-28"
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "scope": "隔离真实 IoT HTTP/MQTT 与 Rust 本机运行时；软件批准/呈现夹具",
+  "passed": true,
+  "verified_at": "2026-11-05T11:43:22.143Z",
+  "sdk_revision": "313090d6b53e28d6e5ad1eaa28d29b8d7c479119",
+  "sdk_worktree_overlay": false,
+  "sources": {
+    "runtime/src/lib.rs": "844c9c83fac55760c9db9ff22e6ab55b5ecda8df63bef080d93ba0e46a9c21d8",
+    "runtime/src/main.rs": "0781921cf684c7dc752a066420ce2f7168842f97a299bc991bff2984d2e33de0",
+    "runtime/Cargo.lock": "1893fa56859022cab8a681c8f9bc4ef2871a768dd1e50f29e1c6f866a83963e1",
+    "contracts/desktop.json": "4e8c9c6159cfbf182f40b8e688c22570786a4ae2fa78109c90a530271968d792",
+    "tools/test-iot-link.mjs": "c329459145df2962289a9cf40d195d9e3024516c42daba1057a0a87ac59a74e0"
+  },
+  "binaries": {
+    "limeiot-gateway": "f8936979c0198d74bcaa18249207d2aafaf8aef7d266ed5f6f08b91b20d2661e",
+    "limeiot-model-validator": "c0765a1043260598ea0afbafa16e59f5f4e656d903d3bd21fb303146bf826e7d",
+    "limeiot-simulator": "566084f226a5069b05a7960359f684c78e24b7fef9edf9dec33794c63ee00418",
+    "limelink-runtime": "2445a06815c113677cd33a9a97b1b3c7b1ec7afcaec5c8895d00db31a3edd439"
+  },
+  "device_model_revision": "sha256:8c8d0ddd4bbcb4e4463f16c27a8a60714c4e287da8621b4fddba672b6b44be65",
+  "pairing": true,
+  "explicit_approval": true,
+  "signature": true,
+  "original_command_recovery": true,
+  "duplicate_no_second_card": true,
+  "submission_and_presentation_separate": true,
+  "session_cas": true,
+  "desktop_session_handoff": true,
+  "content_hash_and_remove": true,
+  "revocation": true,
+  "native_ui": false,
+  "physical_phone": false,
+  "device_mtls": true
+}

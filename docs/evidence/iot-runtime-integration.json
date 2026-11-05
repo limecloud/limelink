@@ -1,0 +1,17 @@
+{
+  "scope": "隔离真实 IoT HTTP/MQTT 与 Rust 本机运行时；软件批准/呈现夹具",
+  "passed": true,
+  "device_model_revision": "sha256:8c8d0ddd4bbcb4e4463f16c27a8a60714c4e287da8621b4fddba672b6b44be65",
+  "pairing": true,
+  "explicit_approval": true,
+  "signature": true,
+  "original_command_recovery": true,
+  "duplicate_no_second_card": true,
+  "submission_and_presentation_separate": true,
+  "session_cas": true,
+  "content_hash_and_remove": true,
+  "revocation": true,
+  "native_ui": false,
+  "physical_phone": false,
+  "device_mtls": false
+}

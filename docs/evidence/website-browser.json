@@ -1,0 +1,184 @@
+{
+  "scope": "静态宣传站的本地及生产域名检查；非产品客户端或硬件验收",
+  "browser": "系统 Google Chrome，经 Playwright 1.64.1",
+  "viewports": [
+    390,
+    768,
+    1440
+  ],
+  "local": {
+    "tests": [
+      {
+        "title": "首页在 390px 下可读、无溢出且图片加载",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 2360
+          }
+        ]
+      },
+      {
+        "title": "首页在 768px 下可读、无溢出且图片加载",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 2171
+          }
+        ]
+      },
+      {
+        "title": "首页在 1440px 下可读、无溢出且图片加载",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 3033
+          }
+        ]
+      },
+      {
+        "title": "动效可以暂停且尊重减少动态效果",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 470
+          }
+        ]
+      },
+      {
+        "title": "图册包含 28 张图，分类筛选与深链接可用",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 1327
+          }
+        ]
+      },
+      {
+        "title": "手机菜单、品牌下载和文档搜索可用",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 508
+          }
+        ]
+      },
+      {
+        "title": "核心页面可访问性与错误页",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 1972
+          }
+        ]
+      }
+    ],
+    "passed": 7,
+    "failed": 0,
+    "axe_violations": 0,
+    "target": "http://127.0.0.1:4351"
+  },
+  "production": {
+    "target": "https://link.limeai.run",
+    "version_id": "7565fb0a-a0f2-4b25-9664-507291b17178",
+    "started_at": "2026-11-05T10:21:07.851Z",
+    "duration_ms": 31808,
+    "tests": [
+      {
+        "title": "首页在 390px 下可读、无溢出且图片加载",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 4080
+          }
+        ]
+      },
+      {
+        "title": "首页在 768px 下可读、无溢出且图片加载",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 5492
+          }
+        ]
+      },
+      {
+        "title": "首页在 1440px 下可读、无溢出且图片加载",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 3751
+          }
+        ]
+      },
+      {
+        "title": "动效可以暂停且尊重减少动态效果",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 1493
+          }
+        ]
+      },
+      {
+        "title": "图册包含 28 张图，分类筛选与深链接可用",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 2364
+          }
+        ]
+      },
+      {
+        "title": "手机菜单、品牌下载和文档搜索可用",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 3259
+          }
+        ]
+      },
+      {
+        "title": "核心页面可访问性与错误页",
+        "outcome": "expected",
+        "runs": [
+          {
+            "status": "passed",
+            "duration_ms": 3169
+          }
+        ]
+      }
+    ],
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "axe_violations": 0
+  },
+  "screenshots": [
+    {
+      "path": "docs/evidence/screenshots/website-home-390.webp",
+      "viewport_width": 390,
+      "sha256": "767baac6eabbea50a67ceca3081cc3eb7d22ef9952f0a2229efca9753042b90d",
+      "review": "目视检查首屏排版、角色透明背景、渐变与端点卡片"
+    },
+    {
+      "path": "docs/evidence/screenshots/website-home-1440.webp",
+      "viewport_width": 1440,
+      "sha256": "ebd7edcf3cf717b8af18f05f9df8734dec837f69465aa211836b981866a9bcfb",
+      "review": "目视检查首屏排版、角色透明背景、渐变与端点卡片"
+    }
+  ],
+  "notes": "生产检查与本地检查覆盖同一套 7 项测试。自动可访问性扫描无违规不等同于完整人工无障碍认证。"
+}

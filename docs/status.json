@@ -1,0 +1,106 @@
+{
+  "as_of": "2026-11-05",
+  "runtime_implemented": true,
+  "product_tests_run": true,
+  "phases": [
+    {
+      "id": "P0",
+      "title": "文档与视觉基线",
+      "status": "documented",
+      "depends_on": [],
+      "evidence": []
+    },
+    {
+      "id": "P1",
+      "title": "原生只读切片",
+      "status": "in_progress",
+      "depends_on": [
+        "P0"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json",
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/macos-native-ui.json"
+      ]
+    },
+    {
+      "id": "P2",
+      "title": "配对与文本卡片闭环",
+      "status": "in_progress",
+      "depends_on": [
+        "P1"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json",
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/macos-native-ui.json"
+      ]
+    },
+    {
+      "id": "P3",
+      "title": "接续与受限远程",
+      "status": "in_progress",
+      "depends_on": [
+        "P2"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json",
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/macos-native-ui.json"
+      ]
+    },
+    {
+      "id": "P4",
+      "title": "语音与有界内容",
+      "status": "in_progress",
+      "depends_on": [
+        "P2"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json",
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/macos-native-ui.json"
+      ]
+    },
+    {
+      "id": "P5",
+      "title": "未来硬件立项",
+      "status": "not_started",
+      "depends_on": [
+        "P2"
+      ],
+      "evidence": []
+    }
+  ],
+  "website": {
+    "source": "site",
+    "url": "https://link.limeai.run",
+    "status": "implemented",
+    "validation": "passed",
+    "deployment": "deployed",
+    "worker": "limelink-website",
+    "last_verified_version": "2ee16660-f351-4ab3-a430-70826b35010d"
+  },
+  "visual_assets": {
+    "generated_images": 28,
+    "exported_files": 50,
+    "reviewed": true
+  },
+  "implementation": "docs/implementation.json",
+  "release": {
+    "target": "v0.1.0",
+    "status": "withheld",
+    "blockers": [
+      "四端原生/真机与完整旅程验收",
+      "重配、自主入网与完整产品授权",
+      "受限云入口、跨电脑接续及媒体",
+      "历史正文保留与安全清除",
+      "签名、安装更新回退、可访问性和性能"
+    ]
+  },
+  "upstream": {
+    "repository": "https://github.com/limecloud/iot",
+    "revision": "313090d6b53e28d6e5ad1eaa28d29b8d7c479119",
+    "worktree_overlay": false
+  }
+}

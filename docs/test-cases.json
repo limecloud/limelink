@@ -1,0 +1,558 @@
+{
+  "schema_version": 1,
+  "scope": "完整产品验收计划；局部检查与真实窗口证据分别登记",
+  "test_cases": [
+    {
+      "id": "TC-001",
+      "title": "只读原生桌面切片",
+      "status": "partial",
+      "requirements": [
+        "FR-001",
+        "FR-009"
+      ],
+      "environment": "隔离网关、macOS；Windows 单独执行",
+      "steps": [
+        "从固定 SDK 构建真实 App",
+        "连接并读取能力；退出再进入"
+      ],
+      "expected": [
+        "界面来自真实能力；无副作用；凭据遵循系统存储"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json",
+        "docs/evidence/macos-native-ui.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-002",
+      "title": "手机入口与空间核对",
+      "status": "partial",
+      "requirements": [
+        "FR-002",
+        "FR-003"
+      ],
+      "environment": "隔离网关、iOS/Android 分别执行",
+      "steps": [
+        "连接指定 origin",
+        "切换正确和错误空间并恢复 App"
+      ],
+      "expected": [
+        "明确当前网关和空间；不越权读设备"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-003",
+      "title": "用户与设备身份隔离",
+      "status": "partial",
+      "requirements": [
+        "FR-004",
+        "FR-005",
+        "NFR-001"
+      ],
+      "environment": "网关、两个用户、桌面运行时",
+      "steps": [
+        "注册执行端",
+        "使用其他用户和错误空间访问",
+        "检查设备凭据能否调用所有者操作"
+      ],
+      "expected": [
+        "错误身份拒绝；执行端不持有所有者会话"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/native-validation.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-004",
+      "title": "配对过期与重复扫码",
+      "status": "partial",
+      "requirements": [
+        "FR-006"
+      ],
+      "environment": "可控时钟的配对环境",
+      "steps": [
+        "创建挑战并超时",
+        "重复扫描已消费挑战"
+      ],
+      "expected": [
+        "过期和重复均不创建新关系；保留原状态"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-005",
+      "title": "本机批准与身份核对",
+      "status": "partial",
+      "requirements": [
+        "FR-007"
+      ],
+      "environment": "手机、真实桌面、隔离网关",
+      "steps": [
+        "核对电脑和空间",
+        "用户拒绝一次再批准新的原对象"
+      ],
+      "expected": [
+        "未批准不建立执行权；批准范围明确"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/macos-native-ui.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-006",
+      "title": "批准竞争与目标冻结",
+      "status": "partial",
+      "requirements": [
+        "FR-006",
+        "FR-007",
+        "FR-010"
+      ],
+      "environment": "两个控制端和两台电脑",
+      "steps": [
+        "两个端并发批准同一修订",
+        "提交期间切换界面选中目标"
+      ],
+      "expected": [
+        "关系最多建立一次；任务仍指向冻结目标；冲突可见"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/native-validation.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-007",
+      "title": "撤销与派发竞争",
+      "status": "partial",
+      "requirements": [
+        "FR-008",
+        "NFR-002"
+      ],
+      "environment": "真实网关和执行端",
+      "steps": [
+        "撤销配对",
+        "交错提交已授权动作与撤销",
+        "尝试新增动作"
+      ],
+      "expected": [
+        "新任务拒绝；在途任务按真实账本解释；无隐式扩大权限"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-008",
+      "title": "文本卡片实际呈现",
+      "status": "partial",
+      "requirements": [
+        "FR-011"
+      ],
+      "environment": "真实手机、网关、目标电脑",
+      "steps": [
+        "选定支持卡片的电脑",
+        "发送唯一文本标记",
+        "查看实际窗口与任务回执"
+      ],
+      "expected": [
+        "仅目标电脑显示正确文本；submitted/observed 分开；不声称已阅读"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/macos-native-ui.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-009",
+      "title": "同一任务两端查询",
+      "status": "partial",
+      "requirements": [
+        "FR-012"
+      ],
+      "environment": "双端、网关",
+      "steps": [
+        "发送并保存 command_id",
+        "分别读取并比较"
+      ],
+      "expected": [
+        "两端引用同一原命令与状态依据"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-010",
+      "title": "提交前崩溃",
+      "status": "partial",
+      "requirements": [
+        "FR-013"
+      ],
+      "environment": "可注入故障的客户端",
+      "steps": [
+        "落盘原意图",
+        "请求前或请求后崩溃",
+        "重启恢复"
+      ],
+      "expected": [
+        "恢复原请求；未核实前不生成新任务"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-011",
+      "title": "各边界丢响应",
+      "status": "partial",
+      "requirements": [
+        "FR-014",
+        "NFR-003"
+      ],
+      "environment": "客户端/网关/执行端的故障代理",
+      "steps": [
+        "每个边界丢弃一次响应",
+        "恢复网络后查询原键"
+      ],
+      "expected": [
+        "单条平台命令；无自动重复本机派发；未知如实显示"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-012",
+      "title": "取消与效果交错",
+      "status": "partial",
+      "requirements": [
+        "FR-015"
+      ],
+      "environment": "可暂停的桌面动作",
+      "steps": [
+        "分别在派发前后取消",
+        "读取原取消与动作结果"
+      ],
+      "expected": [
+        "取消请求和真实效果分离；不误报回滚成功"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-013",
+      "title": "陈旧事件与 cursor 缺口",
+      "status": "not_run",
+      "requirements": [
+        "FR-016"
+      ],
+      "environment": "网关事件夹具",
+      "steps": [
+        "注入重复、乱序、gap",
+        "重新读取原命令"
+      ],
+      "expected": [
+        "按查询事实恢复；不将事件误当完整历史"
+      ]
+    },
+    {
+      "id": "TC-014",
+      "title": "效果后崩溃",
+      "status": "partial",
+      "requirements": [
+        "FR-011",
+        "FR-013",
+        "FR-014"
+      ],
+      "environment": "真实桌面、故障注入运行时",
+      "steps": [
+        "显示卡片后阻止回执并崩溃",
+        "重启并核对持久效果记录"
+      ],
+      "expected": [
+        "核实原效果；证据不足保持 unknown；不再次派发"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-015",
+      "title": "磁盘满和重启",
+      "status": "not_run",
+      "requirements": [
+        "FR-013",
+        "FR-014",
+        "FR-017"
+      ],
+      "environment": "隔离数据目录、可控存储配额",
+      "steps": [
+        "提交前后注入磁盘满",
+        "重启各进程"
+      ],
+      "expected": [
+        "不能持久化时安全失败；原记录可解释；无静默重复"
+      ]
+    },
+    {
+      "id": "TC-016",
+      "title": "手机后台与电脑休眠",
+      "status": "not_run",
+      "requirements": [
+        "FR-017",
+        "NFR-005"
+      ],
+      "environment": "真实手机、真实目标电脑",
+      "steps": [
+        "后台/切网/休眠",
+        "唤醒并恢复连接"
+      ],
+      "expected": [
+        "各身份在线状态独立；查询原任务；后台不作为常驻路由"
+      ]
+    },
+    {
+      "id": "TC-017",
+      "title": "跨端会话接续",
+      "status": "partial",
+      "requirements": [
+        "FR-018"
+      ],
+      "environment": "P3 端点与两个客户端",
+      "steps": [
+        "显式选择目标和共享范围",
+        "接续同一会话修订"
+      ],
+      "expected": [
+        "接续已批准对象；无默认共享历史或任意桌面控制"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/macos-native-ui.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-018",
+      "title": "并发输入权限",
+      "status": "partial",
+      "requirements": [
+        "FR-019"
+      ],
+      "environment": "P3 同会话双写夹具",
+      "steps": [
+        "两端同时申请写入",
+        "过期写入与撤销交错"
+      ],
+      "expected": [
+        "以冻结修订裁决；冲突可见；旧输入不覆盖新状态"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/macos-native-ui.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-019",
+      "title": "语音草稿与确认",
+      "status": "not_run",
+      "requirements": [
+        "FR-023"
+      ],
+      "environment": "P4 隔离模型账号与音频夹具",
+      "steps": [
+        "说出操作意图",
+        "检查识别草稿",
+        "未确认时观察设备"
+      ],
+      "expected": [
+        "先呈现草稿；未批准无设备副作用；识别失败可改"
+      ]
+    },
+    {
+      "id": "TC-020",
+      "title": "共享、播放与打断",
+      "status": "not_run",
+      "requirements": [
+        "FR-024"
+      ],
+      "environment": "P4 受限媒体环境",
+      "steps": [
+        "只批准生成不批准播放",
+        "选择目标播放并打断"
+      ],
+      "expected": [
+        "正文和播放分别授权；打断结果真实；无默认后台录音"
+      ]
+    },
+    {
+      "id": "TC-021",
+      "title": "内容预算与 TTL",
+      "status": "partial",
+      "requirements": [
+        "FR-025",
+        "FR-026"
+      ],
+      "environment": "P4 内容夹具与可控时间",
+      "steps": [
+        "安装合法和越界内容包",
+        "注入过期数据与中断安装"
+      ],
+      "expected": [
+        "越界拒绝；TTL 可见；安装恢复；无任意脚本权限"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/native-validation.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-022",
+      "title": "多端可访问性",
+      "status": "not_run",
+      "requirements": [
+        "NFR-006"
+      ],
+      "environment": "macOS/Windows/iOS/Android 各目标环境",
+      "steps": [
+        "屏幕阅读器、键盘、缩放",
+        "检查明暗、状态颜色与语言长度"
+      ],
+      "expected": [
+        "状态有文字和图形；焦点正确；长文案不遮挡动作"
+      ]
+    },
+    {
+      "id": "TC-023",
+      "title": "秘密、清除与诊断",
+      "status": "partial",
+      "requirements": [
+        "FR-020",
+        "NFR-004"
+      ],
+      "environment": "隔离凭据、正文和日志夹具",
+      "steps": [
+        "生成诊断",
+        "退出、撤销、清除本地数据",
+        "扫描日志与导出"
+      ],
+      "expected": [
+        "无令牌/正文泄漏；保留策略明确；清除不删除无关文件"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-024",
+      "title": "故障、背压与性能",
+      "status": "not_run",
+      "requirements": [
+        "NFR-008"
+      ],
+      "environment": "记录硬件与网络的负载环境",
+      "steps": [
+        "按性能文档采集基线",
+        "注入慢客户端、断网和队列压力"
+      ],
+      "expected": [
+        "报告分位延迟与资源使用；限流可见；未知不伪成功"
+      ]
+    },
+    {
+      "id": "TC-025",
+      "title": "构建安装更新回退",
+      "status": "partial",
+      "requirements": [
+        "FR-020",
+        "FR-027",
+        "NFR-007"
+      ],
+      "environment": "固定工具链的各目标 OS 干净环境",
+      "steps": [
+        "构建并验证依赖摘要",
+        "安装、升级、失败回退、卸载",
+        "导出最小诊断"
+      ],
+      "expected": [
+        "制品与证据同版本；回退保留必要数据；无秘密"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+    },
+    {
+      "id": "TC-026",
+      "title": "云入口与跨网限制",
+      "status": "not_run",
+      "requirements": [
+        "FR-021"
+      ],
+      "environment": "P3 隔离控制面与受限中继",
+      "steps": [
+        "合法跨网读取/动作",
+        "尝试任意 RPC 和越权设备"
+      ],
+      "expected": [
+        "只支持正式合同范围；不把云连通等同授权"
+      ]
+    },
+    {
+      "id": "TC-027",
+      "title": "模型目录与预算",
+      "status": "not_run",
+      "requirements": [
+        "FR-022"
+      ],
+      "environment": "P4 隔离提供方配置",
+      "steps": [
+        "读取可用模型",
+        "失效/超预算/取消任务"
+      ],
+      "expected": [
+        "目录来自真实配置；错误可解释；不自动扩大调用范围"
+      ]
+    },
+    {
+      "id": "TC-028",
+      "title": "未来硬件立项门槛",
+      "status": "not_run",
+      "requirements": [
+        "FR-028"
+      ],
+      "environment": "P5 独立评审与指定样机",
+      "steps": [
+        "确认需求、预算、功耗与隐私输入",
+        "比较形态并测试指定样机"
+      ],
+      "expected": [
+        "概念图不作为样机；无未实测参数；立项后独立验收"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+import Icon from '../components/Icon.astro';
+interface Props { title?: string; description?: string; noindex?: boolean; }
+const { title='小小连接，大有默契', description='LimeLink 柠联，让手机、电脑与未来的桌面小伙伴，通过网关默契协作。探索多端联动、原创角色与未来硬件。', noindex=false }=Astro.props;
+const canonical = new URL(Astro.url.pathname, 'https://link.limeai.run').href;
+---
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} · LimeLink 柠联</title>
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#F7F8EF" />
+  <meta name="robots" content={noindex?'noindex,follow':'index,follow'} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" type="image/svg+xml" href="/brand/mark-color.svg" />
+  <link rel="apple-touch-icon" href="/brand/web/icon-180.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title+' · LimeLink 柠联'} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content="https://link.limeai.run/images/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="青柠色柠柠桌面终端与手机、电脑联动的概念场景" />
+  <meta name="twitter:card" content="summary_large_image" />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/" aria-label="LimeLink 柠联首页"><img src="/brand/mark-color.svg" width="40" height="40" alt="" /><span>LimeLink<span class="brand-dot">.</span></span></a>
+      <nav class="desktop-nav" aria-label="主导航">
+        <a href="/#connection">如何联动</a><a href="/scenes/">场景图册</a><a href="/#future">未来终端</a><a href="/brand/">认识柠柠</a>
+      </nav>
+      <div class="header-actions"><a class="nav-docs" href="/docs/">设计文档 <Icon name="up" size={15}/></a>
+        <details class="mobile-menu"><summary role="button" aria-expanded="false" aria-controls="mobile-navigation" aria-label="展开导航菜单"><span></span><span></span></summary><nav id="mobile-navigation" aria-label="移动导航"><a href="/#connection">如何联动</a><a href="/scenes/">场景图册</a><a href="/#future">未来终端</a><a href="/brand/">认识柠柠</a><a href="/docs/">设计文档</a></nav></details>
+      </div>
+    </div>
+  </header>
+  <main id="main"><slot /></main>
+  <footer class="footer"><div class="wrap">
+    <div class="footer-top"><div><a class="brand" href="/"><img src="/brand/mark-color.svg" width="44" height="44" alt="" /><span>LimeLink.</span></a><p>让每一端，都多一点默契。</p></div>
+      <div class="footer-links"><h2>一起探索</h2><a href="/scenes/">全部 28 张设计图</a><a href="/brand/">品牌与资源</a><a href="/docs/">产品设计文档</a></div>
+      <div class="footer-links"><h2>Lime 伙伴</h2><a href="https://iot.limeai.run" rel="noreferrer">LimeIoT <Icon name="up" size={13}/></a><a href="https://gootuan.limeai.run" rel="noreferrer">Gootuan <Icon name="up" size={13}/></a><a href="https://github.com/limecloud/limelink" rel="noreferrer">GitHub <Icon name="up" size={13}/></a></div>
+    </div>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} LimeLink · 柠联</span><span>原生开发阶段 · 场景图与硬件为概念展示</span><a href="/privacy/">隐私说明</a></div>
+  </div></footer>
+  <script>
+    const menu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
+    menu?.addEventListener('toggle',()=>menu.querySelector('summary')?.setAttribute('aria-expanded',String(menu.open)));
+    menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ menu.open=false; }));
+    document.addEventListener('keydown',event=>{ if(event.key==='Escape'&&menu?.open){menu.open=false;menu.querySelector('summary')?.focus();} });
+  </script>
+</body>
+</html>

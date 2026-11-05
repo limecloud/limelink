@@ -1,0 +1,449 @@
+{
+  "source": "output/imagegen/03-mark-master.png",
+  "source_sha256": "367464fd326f3aea745d63515ce7d4fc4c85a0d3759c25929cd36d40d1c33936",
+  "method": "生成母版颜色分割、轮廓追踪、固定色板与尺寸导出；不新增模型生成图数量",
+  "files": [
+    {
+      "path": "docs/brand/assets/android/ic_launcher.xml",
+      "sha256": "111e032e04f6c97a63511a96fde92089a147a7da3638c99c7118b18f3f0af105"
+    },
+    {
+      "path": "docs/brand/assets/android/ic_launcher_background.png",
+      "sha256": "c1a20899386c2d076dc6163caa6b0713661ada2a80d42fdf8cbcc32638462cf3",
+      "width": 432,
+      "height": 432,
+      "mode": "RGB"
+    },
+    {
+      "path": "docs/brand/assets/android/ic_launcher_foreground.png",
+      "sha256": "58dd349233fe730a82f445b852e2858dd3fc7c84ddc69cd218ad164dfc4ae43f",
+      "width": 432,
+      "height": 432,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/android/ic_launcher_monochrome.png",
+      "sha256": "81972bb08de540e2eade7920e5b55ac1ae2d6059e935b1741ee2c09dfdaa8d60",
+      "width": 432,
+      "height": 432,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/android/legacy-144.png",
+      "sha256": "44dc35b80ef3d6dc71adce8f10af389d9b4ed78e9cb3e1869b36efa602ec6e4e",
+      "width": 144,
+      "height": 144,
+      "mode": "RGB"
+    },
+    {
+      "path": "docs/brand/assets/android/legacy-192.png",
+      "sha256": "639d74e4c782f3fab9cbb63950510f250a7d1fb03dcbe80cd7f9ad25854da56d",
+      "width": 192,
+      "height": 192,
+      "mode": "RGB"
+    },
+    {
+      "path": "docs/brand/assets/android/legacy-48.png",
+      "sha256": "56365d57febfb417a892ce8097039200411f3ebcbe0ed5f952dfcc4acdb3dc7d",
+      "width": 48,
+      "height": 48,
+      "mode": "RGB"
+    },
+    {
+      "path": "docs/brand/assets/android/legacy-72.png",
+      "sha256": "023986e4d34ba63d7b7e83e892b0262017345e57052216be0a7a2aaca9dfe6c3",
+      "width": 72,
+      "height": 72,
+      "mode": "RGB"
+    },
+    {
+      "path": "docs/brand/assets/android/legacy-96.png",
+      "sha256": "c1bd5bdb7f1792f11c83ecf8ab0c0be09a2cae6c05ea08d95eed8edf50a7b85a",
+      "width": 96,
+      "height": 96,
+      "mode": "RGB"
+    },
+    {
+      "path": "docs/brand/assets/ios/AppIcon-1024.png",
+      "sha256": "89324689a3d5c9534f16bcc23469e388a8181d83fbdbaf6110a457227097364f",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    {
+      "path": "docs/brand/assets/ios/Contents.json",
+      "sha256": "fe9c6cb1386fe06210e0ad1d3a77ad53db0b038d856750f6b2dbde716e41017e"
+    },
+    {
+      "path": "docs/brand/assets/logo-horizontal.svg",
+      "sha256": "9ae010d9a7bd009dcc9b2afca6c70ede7748885ea85c848dd6dee4507116724e"
+    },
+    {
+      "path": "docs/brand/assets/logo-stacked.svg",
+      "sha256": "9ea7a536faaf4628fb4eb1b0c162c7065b8360cc34a6f120cc63aa590b872372"
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.icns",
+      "sha256": "bbdf68ef1ceeebce86f6aea2f4d668f373bd927eb7da2e003c8c39b14cddb237",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_128x128.png",
+      "sha256": "c9dbfb022adc8719a890851bee7b5c095e7c81cc8e628d0888dc7f0a565f8213",
+      "width": 128,
+      "height": 128,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_128x128@2x.png",
+      "sha256": "78ce7cba7535cbed8f8a6d5b4dd1779ae8a5aeb4e3fcbc254f118315fab630a0",
+      "width": 256,
+      "height": 256,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_16x16.png",
+      "sha256": "b0f9e5de5d6401ad08c71a34f23be0f7759e36e603fcc65051878502e165580d",
+      "width": 16,
+      "height": 16,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_16x16@2x.png",
+      "sha256": "f6deed4bd6ddca84833555c510f0bfddd8ea980563964194dcbfbef7d58f5800",
+      "width": 32,
+      "height": 32,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_256x256.png",
+      "sha256": "78ce7cba7535cbed8f8a6d5b4dd1779ae8a5aeb4e3fcbc254f118315fab630a0",
+      "width": 256,
+      "height": 256,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_256x256@2x.png",
+      "sha256": "ab639fb42c783310c126303a97b5e2f233d2b5cad4c13ba50f0ab552df22e7e1",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_32x32.png",
+      "sha256": "f6deed4bd6ddca84833555c510f0bfddd8ea980563964194dcbfbef7d58f5800",
+      "width": 32,
+      "height": 32,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_32x32@2x.png",
+      "sha256": "bbd3d765aa40d7e662bcd76a3d78a0ba0b45c7c063e91cf9373a7a94d9b4cbf4",
+      "width": 64,
+      "height": 64,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_512x512.png",
+      "sha256": "ab639fb42c783310c126303a97b5e2f233d2b5cad4c13ba50f0ab552df22e7e1",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_512x512@2x.png",
+      "sha256": "e004eabed8671ddbe40c4a4196ccad1b5d3bb486eb9012820edbd91df8111a46",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/mark-color.png",
+      "sha256": "521f313b9ab6b1b127352369a7e2e64e10e449bea69a2868b4eaa56dfdc07b78",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/mark-color.svg",
+      "sha256": "dbf6935b65a2431385bf33316ff4385b5f621b3e6a1a28404f0042f342913f91"
+    },
+    {
+      "path": "docs/brand/assets/mark-dark.svg",
+      "sha256": "95b1b1ebb83a6f4ce24afa10b8906297d8eba21f23a137e381bc9cdf7aa54a67"
+    },
+    {
+      "path": "docs/brand/assets/mark-inverse.png",
+      "sha256": "6bd6685b1e1f1b20b213ff61f2a344c407dca012782d48251ad4479f9cc4d3a5",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/mark-inverse.svg",
+      "sha256": "97f6bb49815279edf31cd19bfd3e093922676cca71f2f3c85e2b503a20749b28"
+    },
+    {
+      "path": "docs/brand/assets/mark-mono.png",
+      "sha256": "08f666236d82f010a35dfc6ffd6dd35f2a91972af90113b9d978aba1e900b637",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/mark-mono.svg",
+      "sha256": "b36802870bc222426ef9904e294570c42bab41a852b6e1052ae0c3bc1615e5b1"
+    },
+    {
+      "path": "docs/brand/assets/templates/menu-16.png",
+      "sha256": "5fded1bb84bced81f0f5c60b6c3a6c39f64a1448ecd26a99b20ebd09958545c5",
+      "width": 16,
+      "height": 16,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/templates/menu-32.png",
+      "sha256": "85be6cb7a9786a6eb68e3e5a7df55111bbd49caa3844bc0dace0ccd0ef7540be",
+      "width": 32,
+      "height": 32,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/templates/menu-64.png",
+      "sha256": "96d7494376e10a5b3c177b501e5e5e5488926148fda5ccc8f01a034d419900d0",
+      "width": 64,
+      "height": 64,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/web/favicon.ico",
+      "sha256": "6f1366bde1cf3b79cb50bbe9b1643a85173157fd0d668136d8555bc7b6094127",
+      "width": 48,
+      "height": 48,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/web/icon-16.png",
+      "sha256": "8e3807892cbbea53948130cb257bc9fdcf38f9b05179f004ba15b64fe5d7c523",
+      "width": 16,
+      "height": 16,
+      "mode": "RGB"
+    },
+    {
+      "path": "docs/brand/assets/web/icon-180.png",
+      "sha256": "03aa9e6889ae94a13c1fc02430675cd6dd9b2a37fe39f73fe21b14056689020b",
+      "width": 180,
+      "height": 180,
+      "mode": "RGB"
+    },
+    {
+      "path": "docs/brand/assets/web/icon-192.png",
+      "sha256": "639d74e4c782f3fab9cbb63950510f250a7d1fb03dcbe80cd7f9ad25854da56d",
+      "width": 192,
+      "height": 192,
+      "mode": "RGB"
+    },
+    {
+      "path": "docs/brand/assets/web/icon-32.png",
+      "sha256": "e2d9d8930e61672e5e1cbd3e1d9f8101cc9411119cb12968cb70db3fbd1ecbe9",
+      "width": 32,
+      "height": 32,
+      "mode": "RGB"
+    },
+    {
+      "path": "docs/brand/assets/web/icon-48.png",
+      "sha256": "56365d57febfb417a892ce8097039200411f3ebcbe0ed5f952dfcc4acdb3dc7d",
+      "width": 48,
+      "height": 48,
+      "mode": "RGB"
+    },
+    {
+      "path": "docs/brand/assets/web/icon-512.png",
+      "sha256": "9de1f7964539166278f4167632d4bbabbba7f5f737fae703ab816d3fcc1b2b1a",
+      "width": 512,
+      "height": 512,
+      "mode": "RGB"
+    },
+    {
+      "path": "docs/brand/assets/windows/LimeLink.ico",
+      "sha256": "c70ed0b7f21a921b22c5c13ab974b0ebaf3c515275ac7c76b41ff390f1c92d20",
+      "width": 256,
+      "height": 256,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-128.png",
+      "sha256": "77958fe023e57e12e848283e00e859bd245919d3d61bfdb572303b0fd6d2a2bf",
+      "width": 128,
+      "height": 128,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-16.png",
+      "sha256": "b2f13aaa7df499d61ac9aff6144671bfb3191bd4e3ab6acae5721d433dec8637",
+      "width": 16,
+      "height": 16,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-24.png",
+      "sha256": "8b9d4f7a7cf7ae01e5f5ff6eb3e6e60b9e5d27dc407500ecdc81bdd618c3e52b",
+      "width": 24,
+      "height": 24,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-256.png",
+      "sha256": "e1548ca3b5edcd4d11428115ddfcb65971063b12023075a5fcebc84d4ff0d24f",
+      "width": 256,
+      "height": 256,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-32.png",
+      "sha256": "ba848d8158db0f80d936fc18764345e9748b43073897a0822511bd15cfd841b3",
+      "width": 32,
+      "height": 32,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-48.png",
+      "sha256": "ef001e301e5635bcaca87a11b9c204be75820919eb7b940995b5141bea7aadbb",
+      "width": 48,
+      "height": 48,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-512.png",
+      "sha256": "858319176c7c0f2a68908b8ac188b2743da6b1cc6c2d15a165d5d8e599ae7134",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-64.png",
+      "sha256": "6c064c48685a40bc36f82d321f21af20a5737838cd7f571e4282b0a5334962b8",
+      "width": 64,
+      "height": 64,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  ]
+}

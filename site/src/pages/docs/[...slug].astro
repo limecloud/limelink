@@ -1,0 +1,21 @@
+---
+import Site from '../../layouts/Site.astro';
+import {documents,renderDoc} from '../../lib/docs';
+export function getStaticPaths(){return documents().map(doc=>({params:{slug:doc.slug||undefined},props:{doc}}));}
+const {doc}=Astro.props;
+const entries=documents();
+const html=await renderDoc(doc.raw,doc.path);
+---
+<Site title={doc.title}>
+  <div class="wrap docs-layout">
+    <aside class="docs-sidebar" aria-label="设计文档目录"><h2>设计文档</h2><label class="sr-only" for="docs-search">筛选文档</label><input id="docs-search" type="search" placeholder="查找设计文档…" autocomplete="off"/><nav aria-label="文档导航">{entries.map(entry=><a href={'/docs/'+(entry.slug?entry.slug+'/':'')} aria-current={entry.path===doc.path?'page':undefined}>{entry.title}</a>)}</nav></aside>
+    <article class="prose"><a class="raw-link" href={'/resources/docs/'+doc.path}>查看原始 Markdown ↗</a><div set:html={html}/></article>
+  </div>
+</Site>
+<script>
+  const search=document.querySelector<HTMLInputElement>('#docs-search');
+  search?.addEventListener('input',()=>{
+    const value=search.value.trim().toLowerCase();
+    document.querySelectorAll<HTMLAnchorElement>('.docs-sidebar nav a').forEach(link=>link.hidden=!(link.textContent??'').toLowerCase().includes(value));
+  });
+</script>

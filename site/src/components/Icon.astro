@@ -1,0 +1,19 @@
+---
+interface Props { name?: string; size?: number; }
+const { name = 'arrow', size = 20 } = Astro.props;
+const paths: Record<string, string> = {
+  arrow: '<path d="M5 12h14m-6-6 6 6-6 6"/>',
+  up: '<path d="M6 18 18 6M6 6h12v12"/>',
+  phone: '<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4m-3 14h2"/>',
+  monitor: '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/>',
+  gateway: '<rect x="3" y="7" width="18" height="14" rx="4"/><path d="M7 7V3m10 4V3m-10 12h.01M11 15h6"/>',
+  check: '<path d="m5 12 4 4L19 6"/>',
+  shield: '<path d="M12 2 3 6v6c0 5 9 10 9 10s9-5 9-10V6l-9-4Z"/><path d="m8 12 3 3 5-6"/>',
+  link: '<path d="m10 13 4-4m-6 6-2 2a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m4 2 2-2a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0"/>',
+  leaf: '<path d="M4 20C-2 7 7 1 21 3c1 14-5 20-17 17Zm0 0L15 9"/>',
+  pause: '<path d="M8 5v14M16 5v14"/>',
+  play: '<path d="m8 4 12 8-12 8V4Z"/>',
+  download: '<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',
+};
+---
+<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={paths[name] ?? paths.arrow} />

@@ -1,0 +1,250 @@
+{
+  "sources": [
+    {
+      "id": "SRC-IOT-ARCH",
+      "repository": "https://github.com/limecloud/iot",
+      "paths": [
+        "README.md",
+        "docs/03-总体技术架构.md",
+        "docs/21-Monorepo与开发规范.md"
+      ],
+      "observed_scope": "架构和工程文档",
+      "supports": "平台网关与产品边界",
+      "does_not_prove": "不证明桌面运行时已存在",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-IOT-COMMANDS",
+      "repository": "https://github.com/limecloud/iot",
+      "paths": [
+        "contracts/commands.md",
+        "contracts/text.md",
+        "contracts/tools/catalog.json"
+      ],
+      "observed_scope": "命令合同、文本和工具目录",
+      "supports": "action.invoke、operation.value、原任务恢复",
+      "does_not_prove": "不证明 LimeLink 卡片模型已实现",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-IOT-PAIRING",
+      "repository": "https://github.com/limecloud/iot",
+      "paths": [
+        "contracts/control-pairing.md",
+        "contracts/device-enrollment.md"
+      ],
+      "observed_scope": "控制面配对及设备接入定向条款",
+      "supports": "配对种类、归属与设备身份",
+      "does_not_prove": "不证明跨端配对已有产品接口",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-IOT-NATIVE-AUTH",
+      "repository": "https://github.com/limecloud/iot",
+      "paths": [
+        "contracts/control-native.md",
+        "contracts/control-relay.md"
+      ],
+      "observed_scope": "原生授权及有限中继合同",
+      "supports": "移动平台限制和有限动作",
+      "does_not_prove": "不证明 macOS/Windows 云授权或任意媒体支持",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-IOT-EVENTS",
+      "repository": "https://github.com/limecloud/iot",
+      "paths": [
+        "contracts/device-events.md"
+      ],
+      "observed_scope": "本地事件合同",
+      "supports": "cursor/gap/查询恢复",
+      "does_not_prove": "不证明事件是完整任务历史",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-IOT-SWIFT",
+      "repository": "https://github.com/limecloud/iot",
+      "paths": [
+        "apps/ios/Package.swift",
+        "apps/ios/Sources/LimeIoTKit/GatewayClient.swift"
+      ],
+      "observed_scope": "包声明与客户端接口开头",
+      "supports": "iOS/macOS 目标与客户端接口",
+      "does_not_prove": "不证明根仓库可直接 SwiftPM 消费或 macOS 端已验收",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-IOT-MOBILE",
+      "repository": "https://github.com/limecloud/iot",
+      "paths": [
+        "docs/15-客户端与交互设计.md",
+        "apps/ios/README.md",
+        "apps/android/README.md",
+        "apps/android/core/src/main/kotlin/run/limeai/iot/core/GatewayClient.kt"
+      ],
+      "observed_scope": "客户端设计与原生 SDK 文档/接口定向片段",
+      "supports": "客户端分层与平台 SDK 方向",
+      "does_not_prove": "不证明 LimeLink 产品 App 已存在",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-IOT-AI",
+      "repository": "https://github.com/limecloud/iot",
+      "paths": [
+        "contracts/ai-catalog.md",
+        "contracts/companion.md",
+        "contracts/composition.md"
+      ],
+      "observed_scope": "目录和产品组合合同",
+      "supports": "显式模型目录与领域边界",
+      "does_not_prove": "不证明本产品 AI 能力已验收",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-IOT-VOICE",
+      "repository": "https://github.com/limecloud/iot",
+      "paths": [
+        "contracts/voice-turns.md"
+      ],
+      "observed_scope": "语音轮次合同",
+      "supports": "媒体与轮次生命周期",
+      "does_not_prove": "不证明实时端到端语音已实现",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-GOOTUAN-BOUNDARY",
+      "repository": "https://github.com/limecloud/gootuan",
+      "paths": [
+        "README.zh-CN.md",
+        "docs/00-product-baseline.md",
+        "docs/engineering/07-monorepo.zh-CN.md",
+        "contracts/limeiot-sdk.lock.json",
+        "docs/evidence/upstream-snapshot.json"
+      ],
+      "observed_scope": "产品、monorepo 和依赖锁文档",
+      "supports": "独立产品归属、显式平台依赖与证据层次",
+      "does_not_prove": "不证明本产品复用了上游全部实现",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-GOOTUAN-VISUAL",
+      "repository": "https://github.com/limecloud/gootuan",
+      "paths": [
+        "docs/16-appearance-and-visual-baseline.md",
+        "docs/assets/reference/master-prompts.json",
+        "docs/assets/reference/gootuan-master.png",
+        "docs/assets/image-prompts.json",
+        "docs/scripts/render_diagrams.py",
+        "docs/scripts/validate_package.py"
+      ],
+      "observed_scope": "视觉方法及母版图片实际查看，脚本定向阅读",
+      "supports": "母版继承、提示词与生成记录方法",
+      "does_not_prove": "不提供本产品的角色形象或硬件工程数据",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-SHOU-ARCH",
+      "repository": "https://github.com/limecloud/shou",
+      "paths": [
+        "docs/architecture/system-design.md",
+        "docs/architecture/monorepo-and-platforms.md"
+      ],
+      "observed_scope": "原生分层与平台边界",
+      "supports": "SwiftUI/AppKit、WinUI 3 与 Core/Platform/Presentation",
+      "does_not_prove": "不证明所有 Windows 功能已验收",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-SHOU-BUILD",
+      "repository": "https://github.com/limecloud/shou",
+      "paths": [
+        "Package.swift",
+        "apps/windows/src/Shou.Windows.App/Shou.Windows.App.csproj"
+      ],
+      "observed_scope": "构建清单",
+      "supports": "原生目标与 .NET 工具链选择",
+      "does_not_prove": "不证明本产品可直接构建或发行",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-HACHI-COMPONENT",
+      "repository": "https://github.com/YizhengWw/HachimoDock",
+      "paths": [
+        "README.md",
+        "firmware/README.md",
+        "firmware/protocol.md",
+        "pc/skills/petui/contracts/component-program-v2.json"
+      ],
+      "observed_scope": "产品、固件、USB 协议与受限组件合同",
+      "supports": "USB 架构、能力边界、资源预算",
+      "does_not_prove": "不证明 LimeLink 有硬件或获得代码许可",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-HACHI-DATA",
+      "repository": "https://github.com/YizhengWw/HachimoDock",
+      "paths": [
+        "pc/docs/widget-live-data.md"
+      ],
+      "observed_scope": "实时数据设计",
+      "supports": "TTL、新鲜度和受限数据源",
+      "does_not_prove": "不证明产品线上质量或任意脚本支持",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-HACHI-VOICE",
+      "repository": "https://github.com/YizhengWw/HachimoDock",
+      "paths": [
+        "pc/docs/realtime-duplex.md",
+        "pc/docs/realtime-chat.md",
+        "pc/docs/agent-integration-audit.md"
+      ],
+      "observed_scope": "语音与 Agent 审计文档",
+      "supports": "草稿、状态和运行边界的交互借鉴",
+      "does_not_prove": "不证明本产品具备语音/Agent 执行接口",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-HACHI-LICENSE",
+      "repository": "https://github.com/YizhengWw/HachimoDock",
+      "paths": [
+        "LICENSE"
+      ],
+      "observed_scope": "许可全文",
+      "supports": "商业与独立产品复用限制",
+      "does_not_prove": "不构成授权或法律审查",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-GOOTUAN-WEB-WEBSITE",
+      "repository": "https://github.com/limecloud/gootuan-web",
+      "paths": [
+        "package.json",
+        "wrangler.jsonc",
+        "astro.config.mjs",
+        "src/components/Home.astro",
+        "src/layouts/Site.astro",
+        "README.md"
+      ],
+      "observed_scope": "页面、构建、动效和部署配置定向阅读",
+      "supports": "独立宣传站、内容、资源和 Cloudflare 目标的组织参考",
+      "does_not_prove": "不证明本产品 App 功能或网站已部署；不复用用户/预约数据及后台绑定",
+      "observed_date": "2026-11-05"
+    },
+    {
+      "id": "SRC-IOTWEB-WEBSITE",
+      "repository": "https://github.com/limecloud/iotweb",
+      "paths": [
+        "package.json",
+        "wrangler.jsonc",
+        "src/components/HeroMotion.astro",
+        "src/styles/global.css",
+        "README.md"
+      ],
+      "observed_scope": "页面、构建、动效和部署配置定向阅读",
+      "supports": "渐变、Hero 动效降级、页面生命周期与静态站部署参考",
+      "does_not_prove": "不证明本产品 App 功能或网站已部署；不复用用户/预约数据及后台绑定",
+      "observed_date": "2026-11-05"
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "requirements": [
+    {
+      "id": "FR-001",
+      "title": "原生桌面入口",
+      "status": "partial",
+      "phase": "P1",
+      "documents": [
+        "DOC-04",
+        "DOC-10"
+      ],
+      "test_cases": [
+        "TC-001"
+      ]
+    },
+    {
+      "id": "FR-002",
+      "title": "原生手机入口",
+      "status": "partial",
+      "phase": "P2",
+      "documents": [
+        "DOC-04",
+        "DOC-11"
+      ],
+      "test_cases": [
+        "TC-002"
+      ]
+    },
+    {
+      "id": "FR-003",
+      "title": "明确网关与空间选择",
+      "status": "implemented",
+      "phase": "P1",
+      "documents": [
+        "DOC-04",
+        "DOC-12"
+      ],
+      "test_cases": [
+        "TC-002"
+      ]
+    },
+    {
+      "id": "FR-004",
+      "title": "用户与执行身份分离",
+      "status": "implemented",
+      "phase": "P2",
+      "documents": [
+        "DOC-06",
+        "DOC-10",
+        "DOC-15"
+      ],
+      "test_cases": [
+        "TC-003"
+      ]
+    },
+    {
+      "id": "FR-005",
+      "title": "桌面执行端注册",
+      "status": "partial",
+      "phase": "P2",
+      "documents": [
+        "DOC-07",
+        "DOC-10",
+        "DOC-12"
+      ],
+      "test_cases": [
+        "TC-003"
+      ]
+    },
+    {
+      "id": "FR-006",
+      "title": "短期配对与失效",
+      "status": "partial",
+      "phase": "P2",
+      "documents": [
+        "DOC-03",
+        "DOC-07"
+      ],
+      "test_cases": [
+        "TC-004",
+        "TC-006"
+      ]
+    },
+    {
+      "id": "FR-007",
+      "title": "本机批准并核对身份",
+      "status": "implemented",
+      "phase": "P2",
+      "documents": [
+        "DOC-03",
+        "DOC-07"
+      ],
+      "test_cases": [
+        "TC-005",
+        "TC-006"
+      ]
+    },
+    {
+      "id": "FR-008",
+      "title": "独立撤销协同关系",
+      "status": "implemented",
+      "phase": "P2",
+      "documents": [
+        "DOC-07",
+        "DOC-15"
+      ],
+      "test_cases": [
+        "TC-007"
+      ]
+    },
+    {
+      "id": "FR-009",
+      "title": "读取真实能力",
+      "status": "implemented",
+      "phase": "P1",
+      "documents": [
+        "DOC-06",
+        "DOC-12"
+      ],
+      "test_cases": [
+        "TC-001"
+      ]
+    },
+    {
+      "id": "FR-010",
+      "title": "提交前明确目标",
+      "status": "implemented",
+      "phase": "P2",
+      "documents": [
+        "DOC-03",
+        "DOC-04"
+      ],
+      "test_cases": [
+        "TC-006"
+      ]
+    },
+    {
+      "id": "FR-011",
+      "title": "在电脑实际呈现文本卡片",
+      "status": "partial",
+      "phase": "P2",
+      "documents": [
+        "DOC-02",
+        "DOC-09",
+        "DOC-10"
+      ],
+      "test_cases": [
+        "TC-008",
+        "TC-014"
+      ]
+    },
+    {
+      "id": "FR-012",
+      "title": "两端查询同一原结果",
+      "status": "partial",
+      "phase": "P2",
+      "documents": [
+        "DOC-08",
+        "DOC-09"
+      ],
+      "test_cases": [
+        "TC-009"
+      ]
+    },
+    {
+      "id": "FR-013",
+      "title": "提交前持久保存原意图",
+      "status": "implemented",
+      "phase": "P2",
+      "documents": [
+        "DOC-09",
+        "DOC-15"
+      ],
+      "test_cases": [
+        "TC-010",
+        "TC-014",
+        "TC-015"
+      ]
+    },
+    {
+      "id": "FR-014",
+      "title": "丢响应查询原请求",
+      "status": "implemented",
+      "phase": "P2",
+      "documents": [
+        "DOC-09",
+        "DOC-16"
+      ],
+      "test_cases": [
+        "TC-011",
+        "TC-014",
+        "TC-015"
+      ]
+    },
+    {
+      "id": "FR-015",
+      "title": "取消与实际结果分开",
+      "status": "implemented",
+      "phase": "P2",
+      "documents": [
+        "DOC-09"
+      ],
+      "test_cases": [
+        "TC-012"
+      ]
+    },
+    {
+      "id": "FR-016",
+      "title": "事件缺口重新查询事实",
+      "status": "planned",
+      "phase": "P1",
+      "documents": [
+        "DOC-09",
+        "DOC-12",
+        "DOC-16"
+      ],
+      "test_cases": [
+        "TC-013"
+      ]
+    },
+    {
+      "id": "FR-017",
+      "title": "执行端在线状态独立呈现",
+      "status": "implemented",
+      "phase": "P2",
+      "documents": [
+        "DOC-04",
+        "DOC-08",
+        "DOC-16"
+      ],
+      "test_cases": [
+        "TC-016",
+        "TC-015"
+      ]
+    },
+    {
+      "id": "FR-018",
+      "title": "跨端会话明确接续",
+      "status": "partial",
+      "phase": "P3",
+      "documents": [
+        "DOC-03",
+        "DOC-08"
+      ],
+      "test_cases": [
+        "TC-017"
+      ]
+    },
+    {
+      "id": "FR-019",
+      "title": "同会话输入权限仲裁",
+      "status": "implemented",
+      "phase": "P3",
+      "documents": [
+        "DOC-08"
+      ],
+      "test_cases": [
+        "TC-018"
+      ]
+    },
+    {
+      "id": "FR-020",
+      "title": "最小操作记录与诊断",
+      "status": "partial",
+      "phase": "P2",
+      "documents": [
+        "DOC-09",
+        "DOC-15",
+        "DOC-20"
+      ],
+      "test_cases": [
+        "TC-025",
+        "TC-023"
+      ]
+    },
+    {
+      "id": "FR-021",
+      "title": "受限云入口",
+      "status": "planned",
+      "phase": "P3",
+      "documents": [
+        "DOC-05",
+        "DOC-07",
+        "DOC-12"
+      ],
+      "test_cases": [
+        "TC-026"
+      ]
+    },
+    {
+      "id": "FR-022",
+      "title": "显式模型目录与配置",
+      "status": "partial",
+      "phase": "P4",
+      "documents": [
+        "DOC-13"
+      ],
+      "test_cases": [
+        "TC-027"
+      ]
+    },
+    {
+      "id": "FR-023",
+      "title": "语音先形成草稿",
+      "status": "partial",
+      "phase": "P4",
+      "documents": [
+        "DOC-13"
+      ],
+      "test_cases": [
+        "TC-019"
+      ]
+    },
+    {
+      "id": "FR-024",
+      "title": "正文共享与播放单独授权",
+      "status": "planned",
+      "phase": "P4",
+      "documents": [
+        "DOC-13",
+        "DOC-15"
+      ],
+      "test_cases": [
+        "TC-020"
+      ]
+    },
+    {
+      "id": "FR-025",
+      "title": "有界内容包",
+      "status": "partial",
+      "phase": "P4",
+      "documents": [
+        "DOC-14"
+      ],
+      "test_cases": [
+        "TC-021"
+      ]
+    },
+    {
+      "id": "FR-026",
+      "title": "数据过期可见",
+      "status": "implemented",
+      "phase": "P4",
+      "documents": [
+        "DOC-14",
+        "DOC-16"
+      ],
+      "test_cases": [
+        "TC-021"
+      ]
+    },
+    {
+      "id": "FR-027",
+      "title": "原生更新与回退",
+      "status": "planned",
+      "phase": "P2",
+      "documents": [
+        "DOC-10",
+        "DOC-11",
+        "DOC-20"
+      ],
+      "test_cases": [
+        "TC-025"
+      ]
+    },
+    {
+      "id": "FR-028",
+      "title": "硬件终端独立立项",
+      "status": "planned",
+      "phase": "P5",
+      "documents": [
+        "DOC-23"
+      ],
+      "test_cases": [
+        "TC-028"
+      ]
+    },
+    {
+      "id": "NFR-001",
+      "title": "身份隔离",
+      "status": "implemented",
+      "phase": "P2",
+      "documents": [
+        "DOC-06",
+        "DOC-07",
+        "DOC-15"
+      ],
+      "test_cases": [
+        "TC-003"
+      ]
+    },
+    {
+      "id": "NFR-002",
+      "title": "最小权限",
+      "status": "partial",
+      "phase": "P2",
+      "documents": [
+        "DOC-07",
+        "DOC-15"
+      ],
+      "test_cases": [
+        "TC-007"
+      ]
+    },
+    {
+      "id": "NFR-003",
+      "title": "单一命令账本与恢复",
+      "status": "implemented",
+      "phase": "P2",
+      "documents": [
+        "DOC-09",
+        "DOC-12"
+      ],
+      "test_cases": [
+        "TC-011"
+      ]
+    },
+    {
+      "id": "NFR-004",
+      "title": "隐私与保留清除",
+      "status": "partial",
+      "phase": "P2",
+      "documents": [
+        "DOC-15"
+      ],
+      "test_cases": [
+        "TC-023"
+      ]
+    },
+    {
+      "id": "NFR-005",
+      "title": "系统生命周期",
+      "status": "partial",
+      "phase": "P2",
+      "documents": [
+        "DOC-10",
+        "DOC-11",
+        "DOC-16"
+      ],
+      "test_cases": [
+        "TC-016"
+      ]
+    },
+    {
+      "id": "NFR-006",
+      "title": "可访问性与国际化",
+      "status": "partial",
+      "phase": "P2",
+      "documents": [
+        "DOC-04",
+        "DOC-24"
+      ],
+      "test_cases": [
+        "TC-022"
+      ]
+    },
+    {
+      "id": "NFR-007",
+      "title": "可复现构建交付",
+      "status": "partial",
+      "phase": "P2",
+      "documents": [
+        "DOC-17",
+        "DOC-18",
+        "DOC-20"
+      ],
+      "test_cases": [
+        "TC-025"
+      ]
+    },
+    {
+      "id": "NFR-008",
+      "title": "可观察性能",
+      "status": "planned",
+      "phase": "P2",
+      "documents": [
+        "DOC-16",
+        "DOC-19"
+      ],
+      "test_cases": [
+        "TC-024"
+      ]
+    }
+  ]
+}

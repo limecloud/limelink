@@ -1,0 +1,13 @@
+flowchart LR
+  I["limecloud/iot<br/>平台合同、SDK、网关与执行账本"]
+  L["limecloud/limelink<br/>原生客户端、桌面适配、协同产品规则"]
+  S["limecloud/shou<br/>原生分层与共享资源参考"]
+  G["limecloud/gootuan<br/>独立产品仓库与依赖锁参考"]
+  H["HachimoDock<br/>交互与有界组件研究"]
+  T["LimeLink 联合验收<br/>核心/网关/原生窗口分层；真机待验"]
+  I -->|"固定 Git 修订与消费文件摘要"| L
+  L -->|"必要通用原语回归上游"| I
+  S -.->|"参考，不建立构建依赖"| L
+  G -.->|"参考，不集成产品功能"| L
+  H -.->|"不复制受限代码与素材"| L
+  L --> T

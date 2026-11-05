@@ -1,0 +1,174 @@
+{
+  "status": "deployed-and-verified",
+  "verified_at": "2026-11-05T10:26:27.550689+00:00",
+  "url": "https://link.limeai.run",
+  "worker": "limelink-website",
+  "version_id": "2ee16660-f351-4ab3-a430-70826b35010d",
+  "scope": "静态宣传站；非产品 App、网关或硬件发布",
+  "source": {
+    "head": "5382998479914b1ad7ead06127d3533dd8c70157",
+    "worktree": "dirty-with-untracked-implementation",
+    "git_commit_created": false,
+    "git_push_performed": false
+  },
+  "browser_verification": {
+    "target": "production",
+    "passed": 7,
+    "failed": 0,
+    "report": "docs/evidence/website-browser.json",
+    "version_id": "7565fb0a-a0f2-4b25-9664-507291b17178",
+    "final_release_note": "最终发布仅更新文档、证据和审核截图，网站源码与资源沿用已通过生产浏览器检查的版本；最终发布另做 HTTPS、图像和下载包摘要核验。"
+  },
+  "http_probes": [
+    {
+      "path": "/",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 21082,
+      "sha256": "c0a2dc046b330df252be965f74376ed2f8c7539366dcb391752e1875018d4ee9",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/scenes/",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 29499,
+      "sha256": "21fefd5de08978514c5658f14e05b5c58cc383a8e2eafb7959a6a3b6e0925979",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/brand/",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 8325,
+      "sha256": "6a80a9004ac1cfdf1718e66aa978ff2403d88d8521244bf726a260dfebac7d28",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/docs/",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 15583,
+      "sha256": "af28b4e3c6c97edb14bedeaf0c8856d8f19e4369d4fca8702a6f2d121acf6e88",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/docs/05-system-architecture/",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 11912,
+      "sha256": "82bec139f67b63d456d3a45a1a21f9a8b1371010c71d5a25bccdfc83be079308",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/docs/28-website-and-deployment/",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 12130,
+      "sha256": "47c5aa9eb6c011d5b692c20b5cc637458ef7794a6f923eb612797a5b5cc1785d",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/images/ningning-hero.webp",
+      "status": 200,
+      "content_type": "image/webp",
+      "bytes": 44738,
+      "sha256": "bf4393d71755ae2f3cda17e4a4772d867725c13e52ac09fdc8782f97ad8fed6f",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/images/21-hardware-desk.webp",
+      "status": 200,
+      "content_type": "image/webp",
+      "bytes": 102298,
+      "sha256": "69fe5316c572fc98a3189676512f54a5b34f4b0fd18f8db8a35a91b7d911d29e",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/brand/limelink-brand-kit.zip",
+      "status": 200,
+      "content_type": "application/zip",
+      "bytes": 636953,
+      "sha256": "0af791656db11460130e141e6e86500c65be84b07e4caaa62dfec2491b76ba5f",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 2744,
+      "sha256": "64ff2912a4c17a941e9b87304f50f1853a2a7c4f9e46f3db975b8cd97e5ff34a",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "content_type": "application/xml",
+      "bytes": 3140,
+      "sha256": "8a29862f1ac7e6ee747aba1edc815b70faf4177d7201edf66a18e4efa720a853",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/resources/docs/evidence/documentation-verification.json",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 260,
+      "sha256": "73c7630341a438a71f9e9581b32343b38e0e6a401150d2a55a2fd35ecc28c4eb",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/resources/docs/evidence/website-browser.json",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 4636,
+      "sha256": "66f1f0c09058ef3d8461183ade23ca90e4e8f8bef5e301200650e21d1ba3926b",
+      "server": "cloudflare"
+    },
+    {
+      "path": "/not-a-real-page/",
+      "status": 404
+    }
+  ],
+  "artifact_fingerprints": [
+    {
+      "path": "site/wrangler.jsonc",
+      "sha256": "20ed56d47cdcc3397f3ec34e87909db8bf7cb77b73e203d236561e5f076068a0"
+    },
+    {
+      "path": "site/package-lock.json",
+      "sha256": "ec8267305fa333683709a07479732474428a1b52e5c78485bef2a4891fff1ef2"
+    },
+    {
+      "path": "site/dist/index.html",
+      "sha256": "dd47ccf5de0e56f9979fb6cde6ba38c563182f0f1dea0d127493e6d00c2e6bcf"
+    },
+    {
+      "path": "site/dist/scenes/index.html",
+      "sha256": "0274fee23ba1285c705a69a3a7ba32dd0ea49665eef759ee69f7a46b48b7b545"
+    },
+    {
+      "path": "site/dist/brand/index.html",
+      "sha256": "4c08ad59d89fdc5b292eb89ed12377a681e1e16e4263a31c986bcb3f1952a365"
+    },
+    {
+      "path": "site/dist/docs/index.html",
+      "sha256": "45ba7a412945b0bfed34175dbae502cdc71a2ea3fd595efbf949f42ef8d9c3cc"
+    },
+    {
+      "path": "site/dist/brand/limelink-brand-kit.zip",
+      "sha256": "0af791656db11460130e141e6e86500c65be84b07e4caaa62dfec2491b76ba5f"
+    }
+  ],
+  "publication_note": "站内公开记录表示此次构建前已核验发布；最终发布版本在本地证据更新，不为自引用重复发布。",
+  "product_runtime_verified": false,
+  "build": {
+    "files": 369,
+    "bytes": 53129488,
+    "manifest_sha256": "937d7957ee792fcb02dbe0054054c40307180883f18078949bc49c4bbc39302e",
+    "html_pages": 72,
+    "local_links": 3213,
+    "scene_images": 28,
+    "errors": []
+  },
+  "published_evidence_version": "7565fb0a-a0f2-4b25-9664-507291b17178"
+}

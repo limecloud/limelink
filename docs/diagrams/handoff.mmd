@@ -1,0 +1,25 @@
+sequenceDiagram
+  autonumber
+  participant M as 手机客户端
+  participant G as IoT 命令账本
+  participant R as 单台桌面运行时
+  participant D as 本机桌面窗口
+  M->>G: 明确发送 session_create
+  G->>R: 验证目标与签名，建立修订 1
+  R-->>D: 当前纯文本与修订
+  D->>R: 本机 claim（期望修订）
+  R->>R: CAS 更新，授予 30 秒写入租约
+  alt 手机抢占或旧修订写入
+    M->>G: claim / write / release
+    G->>R: 原签名请求
+    R-->>G: writer_busy / revision_conflict
+    G-->>M: 明确冲突，重新读取
+  else 电脑提交并释放
+    D->>R: write（当前修订与草稿）
+    D->>R: release（更新后的修订）
+    M->>G: status 后明确 claim 当前修订
+    G->>R: 校验批准、修订与期限
+    R-->>G: 手机取得资格与当前草稿
+    G-->>M: 电脑接续的纯文本
+  end
+  Note over M,D: 当前只支持单桌面与创建客户端；跨电脑迁移仍待实现

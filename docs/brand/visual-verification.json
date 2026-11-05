@@ -1,0 +1,546 @@
+{
+  "scope": "设计资料的实际解码、摘要、尺寸、alpha 与人工视觉检查；未做四端 App 或硬件运行测试",
+  "generated_images": 28,
+  "exports": 50,
+  "review_method": "实际查看 7 张 2×2 审图页、母版原图、标志 PNG；各生成图按约 900px 宽审阅，非逐像素审查",
+  "image_review": [
+    {
+      "id": "01-logo-flare",
+      "note": "未采用的对称探索；保留用于比较。"
+    },
+    {
+      "id": "02-logo-sunburst",
+      "note": "选作本轮原创身份方向；原图含 alpha，图册合成白底。"
+    },
+    {
+      "id": "03-mark-master",
+      "note": "原始像素仍有色差/纹理；标准标志经轮廓提取与固定双色导出。"
+    },
+    {
+      "id": "04-mascot-turnaround",
+      "note": "四视图作为视觉母版；侧视不是精确正投影，不可用于 CAD。"
+    },
+    {
+      "id": "05-hardware-master",
+      "note": "形态一致；背部接口、滑块、充电座仅为概念位置，不保证装配一致性。"
+    },
+    {
+      "id": "06-emotions",
+      "note": "六态角色轮廓一致；实际 UI 仍需文字标签和无障碍名称。"
+    },
+    {
+      "id": "07-four-platforms",
+      "note": "四设备和明暗方向可读；手机框架不证明实际 iOS/Android 原生设计或实现。"
+    },
+    {
+      "id": "08-vi-stationery",
+      "note": "可用的品牌应用概念；字样不作为印刷转曲母版。"
+    },
+    {
+      "id": "09-physical-merch",
+      "note": "物化轮廓与母版一致；各材料仅为效果图。"
+    },
+    {
+      "id": "10-ecosystem",
+      "note": "可表达手机—网关—电脑；背景硬件形态为泛化显示设备，不作为 05 的实体母版。"
+    },
+    {
+      "id": "11-phone-pc-card",
+      "note": "发送路径清楚；模型把文本卡片画为图片占位，不改变首期纯文本需求。"
+    },
+    {
+      "id": "12-pairing",
+      "note": "三步配对和本机批准可读；二维码图案仅为非凭据示意。"
+    },
+    {
+      "id": "13-receipt-recovery",
+      "note": "四格状态与原任务恢复可读；示意不替代正式任务协议。"
+    },
+    {
+      "id": "14-session-handoff",
+      "note": "三段对话连续、目标选择和网关清楚；屏幕只作设计。"
+    },
+    {
+      "id": "15-target-selection",
+      "note": "三台候选电脑且只有一台激活；模型内容为角色/图片占位。"
+    },
+    {
+      "id": "16-voice-draft",
+      "note": "录音、草稿确认和发送的三段流程可读；实际转写与授权未实现。"
+    },
+    {
+      "id": "17-widgets",
+      "note": "工作台/TTL 时钟和权限呈现可读；文字与时间均为示意。"
+    },
+    {
+      "id": "18-remote",
+      "note": "跨网与网关角色可辨；图中带锁文件夹是泛化符号，不承诺任意文件操作。"
+    },
+    {
+      "id": "19-gateway-deployment",
+      "note": "NAS 与路由器分开；发光角色为图形连接隐喻，不是另一款网关产品。"
+    },
+    {
+      "id": "20-privacy-revoke",
+      "note": "撤销与阻断可读；不表示撤销会清除已经发生的实际效果。"
+    },
+    {
+      "id": "21-hardware-desk",
+      "note": "继承深色面屏与双瓣轮廓；内容是图片占位，首期卡片仍是文本。"
+    },
+    {
+      "id": "22-hardware-study",
+      "note": "定时/专注与同形硬件可辨；无学习监控或评分承诺。"
+    },
+    {
+      "id": "23-hardware-bedside",
+      "note": "暗屏和静音可辨；滑块位置为场景变化，不覆盖母版结构。"
+    },
+    {
+      "id": "24-hardware-family",
+      "note": "生活留言与同形硬件可辨；不表示防水、厨房耐热或家电控制。"
+    },
+    {
+      "id": "25-hardware-meeting",
+      "note": "显式分享意图可读；屏幕底部录音/静音图形只是概念，不承诺会议录音功能。"
+    },
+    {
+      "id": "26-hardware-portable",
+      "note": "外接供电和收纳可辨；不承诺内置电池、蜂窝或离线能力。"
+    },
+    {
+      "id": "27-hardware-accessible",
+      "note": "高对比确认可辨；图中生成中文不是正式 UI 文案，不能作为无障碍通过证据。"
+    },
+    {
+      "id": "28-hardware-offline",
+      "note": "离线与恢复两格可辨；卡片内容泛化，不等同软件状态机实测。"
+    }
+  ],
+  "technical_checks": [
+    {
+      "path": "docs/brand/assets/android/ic_launcher_background.png",
+      "decoded": true,
+      "size": [
+        432,
+        432
+      ]
+    },
+    {
+      "path": "docs/brand/assets/android/ic_launcher_foreground.png",
+      "decoded": true,
+      "size": [
+        432,
+        432
+      ]
+    },
+    {
+      "path": "docs/brand/assets/android/ic_launcher_monochrome.png",
+      "decoded": true,
+      "size": [
+        432,
+        432
+      ]
+    },
+    {
+      "path": "docs/brand/assets/android/legacy-144.png",
+      "decoded": true,
+      "size": [
+        144,
+        144
+      ]
+    },
+    {
+      "path": "docs/brand/assets/android/legacy-192.png",
+      "decoded": true,
+      "size": [
+        192,
+        192
+      ]
+    },
+    {
+      "path": "docs/brand/assets/android/legacy-48.png",
+      "decoded": true,
+      "size": [
+        48,
+        48
+      ]
+    },
+    {
+      "path": "docs/brand/assets/android/legacy-72.png",
+      "decoded": true,
+      "size": [
+        72,
+        72
+      ]
+    },
+    {
+      "path": "docs/brand/assets/android/legacy-96.png",
+      "decoded": true,
+      "size": [
+        96,
+        96
+      ]
+    },
+    {
+      "path": "docs/brand/assets/ios/AppIcon-1024.png",
+      "decoded": true,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.icns",
+      "decoded": true,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_128x128.png",
+      "decoded": true,
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_128x128@2x.png",
+      "decoded": true,
+      "size": [
+        256,
+        256
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_16x16.png",
+      "decoded": true,
+      "size": [
+        16,
+        16
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_16x16@2x.png",
+      "decoded": true,
+      "size": [
+        32,
+        32
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_256x256.png",
+      "decoded": true,
+      "size": [
+        256,
+        256
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_256x256@2x.png",
+      "decoded": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_32x32.png",
+      "decoded": true,
+      "size": [
+        32,
+        32
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_32x32@2x.png",
+      "decoded": true,
+      "size": [
+        64,
+        64
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_512x512.png",
+      "decoded": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "docs/brand/assets/macos/LimeLink.iconset/icon_512x512@2x.png",
+      "decoded": true,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "docs/brand/assets/mark-color.png",
+      "decoded": true,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "docs/brand/assets/mark-inverse.png",
+      "decoded": true,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "docs/brand/assets/mark-mono.png",
+      "decoded": true,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "docs/brand/assets/templates/menu-16.png",
+      "decoded": true,
+      "size": [
+        16,
+        16
+      ]
+    },
+    {
+      "path": "docs/brand/assets/templates/menu-32.png",
+      "decoded": true,
+      "size": [
+        32,
+        32
+      ]
+    },
+    {
+      "path": "docs/brand/assets/templates/menu-64.png",
+      "decoded": true,
+      "size": [
+        64,
+        64
+      ]
+    },
+    {
+      "path": "docs/brand/assets/web/favicon.ico",
+      "decoded": true,
+      "size": [
+        48,
+        48
+      ]
+    },
+    {
+      "path": "docs/brand/assets/web/icon-16.png",
+      "decoded": true,
+      "size": [
+        16,
+        16
+      ]
+    },
+    {
+      "path": "docs/brand/assets/web/icon-180.png",
+      "decoded": true,
+      "size": [
+        180,
+        180
+      ]
+    },
+    {
+      "path": "docs/brand/assets/web/icon-192.png",
+      "decoded": true,
+      "size": [
+        192,
+        192
+      ]
+    },
+    {
+      "path": "docs/brand/assets/web/icon-32.png",
+      "decoded": true,
+      "size": [
+        32,
+        32
+      ]
+    },
+    {
+      "path": "docs/brand/assets/web/icon-48.png",
+      "decoded": true,
+      "size": [
+        48,
+        48
+      ]
+    },
+    {
+      "path": "docs/brand/assets/web/icon-512.png",
+      "decoded": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/LimeLink.ico",
+      "decoded": true,
+      "size": [
+        256,
+        256
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-128.png",
+      "decoded": true,
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-16.png",
+      "decoded": true,
+      "size": [
+        16,
+        16
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-24.png",
+      "decoded": true,
+      "size": [
+        24,
+        24
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-256.png",
+      "decoded": true,
+      "size": [
+        256,
+        256
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-32.png",
+      "decoded": true,
+      "size": [
+        32,
+        32
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-48.png",
+      "decoded": true,
+      "size": [
+        48,
+        48
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-512.png",
+      "decoded": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "docs/brand/assets/windows/icon-64.png",
+      "decoded": true,
+      "size": [
+        64,
+        64
+      ]
+    }
+  ],
+  "ios_opaque": true,
+  "windows_ico_sizes": [
+    [
+      16,
+      16
+    ],
+    [
+      24,
+      24
+    ],
+    [
+      32,
+      32
+    ],
+    [
+      48,
+      48
+    ],
+    [
+      64,
+      64
+    ],
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ]
+  ],
+  "macos_icns_sizes": [
+    [
+      512,
+      512,
+      2
+    ],
+    [
+      512,
+      512,
+      1
+    ],
+    [
+      256,
+      256,
+      2
+    ],
+    [
+      256,
+      256,
+      1
+    ],
+    [
+      128,
+      128,
+      2
+    ],
+    [
+      128,
+      128,
+      1
+    ],
+    [
+      32,
+      32,
+      2
+    ],
+    [
+      16,
+      16,
+      2
+    ]
+  ],
+  "android_foreground_max_radius_px": 131.61,
+  "android_safe_circle_radius_px": 132,
+  "contrast_ratios": {
+    "forest_on_cream": 10.99,
+    "forest_on_lime": 7.08,
+    "lime_on_cream": 1.55
+  },
+  "not_tested": [
+    "目标系统图标渲染",
+    "启动器真实裁切",
+    "商店验收",
+    "印刷与材料打样",
+    "商标与商业使用审查",
+    "软件与硬件功能"
+  ]
+}

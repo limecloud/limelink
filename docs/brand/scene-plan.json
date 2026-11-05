@@ -1,0 +1,389 @@
+{
+  "scope": "本轮完整场景清单；未来场景是候选，不是功能承诺",
+  "assets": [
+    {
+      "id": "05-hardware-master",
+      "title": "未来终端外观母版",
+      "category": "product-mockup",
+      "phase": "P5",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/05-hardware-master.txt",
+      "output": "output/imagegen/05-hardware-master.png",
+      "status": "generated"
+    },
+    {
+      "id": "06-emotions",
+      "title": "角色表情与状态",
+      "category": "illustration-story",
+      "phase": "P0",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/06-emotions.txt",
+      "output": "output/imagegen/06-emotions.png",
+      "status": "generated"
+    },
+    {
+      "id": "07-four-platforms",
+      "title": "四端品牌应用",
+      "category": "ui-mockup",
+      "phase": "P1/P2",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/07-four-platforms.txt",
+      "output": "output/imagegen/07-four-platforms.png",
+      "status": "generated"
+    },
+    {
+      "id": "08-vi-stationery",
+      "title": "VI 文具与包装",
+      "category": "product-mockup",
+      "phase": "P0",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/08-vi-stationery.txt",
+      "output": "output/imagegen/08-vi-stationery.png",
+      "status": "generated"
+    },
+    {
+      "id": "09-physical-merch",
+      "title": "角色物化与周边",
+      "category": "product-mockup",
+      "phase": "P5-concept",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/09-physical-merch.txt",
+      "output": "output/imagegen/09-physical-merch.png",
+      "status": "generated"
+    },
+    {
+      "id": "10-ecosystem",
+      "title": "手机电脑网关与未来硬件全景",
+      "category": "stylized-concept",
+      "phase": "P2/P5",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/10-ecosystem.txt",
+      "output": "output/imagegen/10-ecosystem.png",
+      "status": "generated"
+    },
+    {
+      "id": "11-phone-pc-card",
+      "title": "手机向电脑发送卡片",
+      "category": "photorealistic-natural",
+      "phase": "P2",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/11-phone-pc-card.txt",
+      "output": "output/imagegen/11-phone-pc-card.png",
+      "status": "generated"
+    },
+    {
+      "id": "12-pairing",
+      "title": "扫码配对与本机确认",
+      "category": "ui-mockup",
+      "phase": "P2",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/12-pairing.txt",
+      "output": "output/imagegen/12-pairing.png",
+      "status": "generated"
+    },
+    {
+      "id": "13-receipt-recovery",
+      "title": "同一回执与断线恢复",
+      "category": "infographic-diagram",
+      "phase": "P2",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/13-receipt-recovery.txt",
+      "output": "output/imagegen/13-receipt-recovery.png",
+      "status": "generated"
+    },
+    {
+      "id": "14-session-handoff",
+      "title": "手机与电脑会话接续",
+      "category": "ui-mockup",
+      "phase": "P3",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/14-session-handoff.txt",
+      "output": "output/imagegen/14-session-handoff.png",
+      "status": "generated"
+    },
+    {
+      "id": "15-target-selection",
+      "title": "多台电脑明确选择目标",
+      "category": "ui-mockup",
+      "phase": "P3-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/15-target-selection.txt",
+      "output": "output/imagegen/15-target-selection.png",
+      "status": "generated"
+    },
+    {
+      "id": "16-voice-draft",
+      "title": "语音先成草稿再发送",
+      "category": "ui-mockup",
+      "phase": "P4",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/16-voice-draft.txt",
+      "output": "output/imagegen/16-voice-draft.png",
+      "status": "generated"
+    },
+    {
+      "id": "17-widgets",
+      "title": "电脑工作台与有界组件",
+      "category": "ui-mockup",
+      "phase": "P4",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/17-widgets.txt",
+      "output": "output/imagegen/17-widgets.png",
+      "status": "generated"
+    },
+    {
+      "id": "18-remote",
+      "title": "未来受限跨网协同",
+      "category": "stylized-concept",
+      "phase": "P3",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/18-remote.txt",
+      "output": "output/imagegen/18-remote.png",
+      "status": "generated"
+    },
+    {
+      "id": "19-gateway-deployment",
+      "title": "网关在家庭 Linux NAS 的部署",
+      "category": "product-mockup",
+      "phase": "P2",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/19-gateway-deployment.txt",
+      "output": "output/imagegen/19-gateway-deployment.png",
+      "status": "generated"
+    },
+    {
+      "id": "20-privacy-revoke",
+      "title": "撤销授权与私密空间",
+      "category": "ui-mockup",
+      "phase": "P2",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/20-privacy-revoke.txt",
+      "output": "output/imagegen/20-privacy-revoke.png",
+      "status": "generated"
+    },
+    {
+      "id": "21-hardware-desk",
+      "title": "桌面硬件与手机电脑联动",
+      "category": "product-mockup",
+      "phase": "P5",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/21-hardware-desk.txt",
+      "output": "output/imagegen/21-hardware-desk.png",
+      "status": "generated"
+    },
+    {
+      "id": "22-hardware-study",
+      "title": "学习与专注陪伴",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/22-hardware-study.txt",
+      "output": "output/imagegen/22-hardware-study.png",
+      "status": "generated"
+    },
+    {
+      "id": "23-hardware-bedside",
+      "title": "床头提醒与静音",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/23-hardware-bedside.txt",
+      "output": "output/imagegen/23-hardware-bedside.png",
+      "status": "generated"
+    },
+    {
+      "id": "24-hardware-family",
+      "title": "家庭留言与厨房餐桌",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/24-hardware-family.txt",
+      "output": "output/imagegen/24-hardware-family.png",
+      "status": "generated"
+    },
+    {
+      "id": "25-hardware-meeting",
+      "title": "会议桌协同与显式分享",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/25-hardware-meeting.txt",
+      "output": "output/imagegen/25-hardware-meeting.png",
+      "status": "generated"
+    },
+    {
+      "id": "26-hardware-portable",
+      "title": "差旅与便携场景候选",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/26-hardware-portable.txt",
+      "output": "output/imagegen/26-hardware-portable.png",
+      "status": "generated"
+    },
+    {
+      "id": "27-hardware-accessible",
+      "title": "大字号与可访问提醒",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/27-hardware-accessible.txt",
+      "output": "output/imagegen/27-hardware-accessible.png",
+      "status": "generated"
+    },
+    {
+      "id": "28-hardware-offline",
+      "title": "硬件离线与恢复状态",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/28-hardware-offline.txt",
+      "output": "output/imagegen/28-hardware-offline.png",
+      "status": "generated"
+    }
+  ]
+}

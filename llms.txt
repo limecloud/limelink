@@ -1,0 +1,18 @@
+# LimeLink
+
+LimeLink 是连接手机、电脑与未来硬件终端的多端协同产品。产品客户端仍处于设计阶段，没有可调用的 LimeLink 运行时工具。另有 site 静态宣传站，目标域名 https://link.limeai.run。
+
+- 文档入口: docs/README.md
+- 文档目录: docs/catalog.json
+- 需求基线: docs/00-product-baseline.md
+- 架构: docs/05-system-architecture.md
+- 平台接入: docs/12-gateway-integration.md
+- 工程边界: docs/17-monorepo-engineering.md
+- 进度: docs/status.json
+- 需求: docs/requirements.json
+- 验收计划: docs/test-cases.json
+- 来源: docs/evidence/sources.json
+- 品牌与 28 张图册: docs/brand/README.md
+- 宣传站与部署: docs/28-website-and-deployment.md
+
+docs 中的候选字段、流程和示例不能作为已存在的 API。运行能力以当前部署的 LimeIoT 工具合同和后续 LimeLink 正式版本合同为准。

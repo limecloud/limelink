@@ -1,0 +1,331 @@
+{
+  "observed_date": "2026-11-05",
+  "repositories": [
+    {
+      "repository": "https://github.com/limecloud/iot",
+      "head": "105029420ce9df5b61d02e0a5c1b8e42894718a8",
+      "observation": "实际工作树文件；matches_head=false 时不能由该 commit 重现所读内容",
+      "worktree_dirty": true,
+      "files": [
+        {
+          "path": "README.md",
+          "sha256": "a5bf253f2cd1d9ba6b0a41ed55e994a6cb0a4689d40b43a239bd597000de5b58",
+          "matches_head": true
+        },
+        {
+          "path": "apps/android/README.md",
+          "sha256": "f6749285219f010f5207d34f84db7c5f824f492fe93e9157b8e368ae16a2fae6",
+          "matches_head": true
+        },
+        {
+          "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/GatewayClient.kt",
+          "sha256": "4e641e66f96b4fc6517acc7dcdade4edea58d00b4ad54f598a1b4b12254f8264",
+          "matches_head": true
+        },
+        {
+          "path": "apps/ios/Package.swift",
+          "sha256": "9ef360ff6379188d643a4db63eafb3a5a06b42397a16c99e4cf5260798dffd97",
+          "matches_head": true
+        },
+        {
+          "path": "apps/ios/README.md",
+          "sha256": "44d187e26a79c910b86d8d6e5dc004536961a239639d44035202ee795e1f7574",
+          "matches_head": true
+        },
+        {
+          "path": "apps/ios/Sources/LimeIoTKit/GatewayClient.swift",
+          "sha256": "d28b4bb6e721981eba7da7485b91a6f7b8d50d2fa7e4c40b409dd44d6042e0c0",
+          "matches_head": true
+        },
+        {
+          "path": "contracts/ai-catalog.md",
+          "sha256": "27d58a880755263fb9bd4274bacdda64b6ecc9caa681578f7ad6152e28a25e79",
+          "matches_head": true
+        },
+        {
+          "path": "contracts/commands.md",
+          "sha256": "214f930dd2e534b885dc054c0672702447ce2b46efcb010b6667c772db81677c",
+          "matches_head": true
+        },
+        {
+          "path": "contracts/companion.md",
+          "sha256": "267a2d943a8431352e89e4108b139491ab13dcd88b35213efd57026a4f9e2480",
+          "matches_head": true
+        },
+        {
+          "path": "contracts/composition.md",
+          "sha256": "8b2ba8f7d05eeede2cdddf304331eed06500372737326483ed8e5115dad4be14",
+          "matches_head": true
+        },
+        {
+          "path": "contracts/control-native.md",
+          "sha256": "72e96e53314ce75b26a379dfbe8ab239dfb41b98adad0e356fae7182fa6c6812",
+          "matches_head": true
+        },
+        {
+          "path": "contracts/control-pairing.md",
+          "sha256": "9a6e1b477a80b03761026cb4cb12495bd74f92f4f7fdce9a06e86198242d2a10",
+          "matches_head": true
+        },
+        {
+          "path": "contracts/control-relay.md",
+          "sha256": "4888736e5180cfbc47e1d41500df4e67a937febb8ed91eb1ef7a1ee41ae7c1a2",
+          "matches_head": true
+        },
+        {
+          "path": "contracts/device-enrollment.md",
+          "sha256": "f220c45976a8c652d614648dbf178b3a00c0028efbaa44bd67b1a6760187617a",
+          "matches_head": true
+        },
+        {
+          "path": "contracts/device-events.md",
+          "sha256": "5fb94ca7d82f95fbfd9cc93ca98083ae3d6c4a58ab8ddef6528c81ef9ae3c9ed",
+          "matches_head": true
+        },
+        {
+          "path": "contracts/text.md",
+          "sha256": "f20baa3f9811a15cb0b40687944552a84e47c0b1e7eb459ef43d3e0440e4fa6a",
+          "matches_head": false
+        },
+        {
+          "path": "contracts/tools/catalog.json",
+          "sha256": "df38e01c80b4cbe3d99939f69130697b9ef39b5fa7b8dc8938501a9eba7fe928",
+          "matches_head": false
+        },
+        {
+          "path": "contracts/voice-turns.md",
+          "sha256": "0b12adb493e28bf0e2db448943ff96fb0c4e668dfc8dc56d47f88c0c60606d88",
+          "matches_head": true
+        },
+        {
+          "path": "docs/03-总体技术架构.md",
+          "sha256": "e19cde1bc32f6a87113ea7dea9ce96524067cde5fa1652374c099e1bd139b3b2",
+          "matches_head": true
+        },
+        {
+          "path": "docs/15-客户端与交互设计.md",
+          "sha256": "5e834fd3f16e248bf4c833ee024ad0716797327784d66697477787608e860a50",
+          "matches_head": true
+        },
+        {
+          "path": "docs/21-Monorepo与开发规范.md",
+          "sha256": "ed2a3c6fde50ef830bea3ae476e50ae85c6a5249a9d323bf8a225293f2c09b7f",
+          "matches_head": true
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/limecloud/gootuan",
+      "head": "1e0d745bd2dcd8021b4ca97214a75ef1c858f86a",
+      "observation": "实际工作树文件；matches_head=false 时不能由该 commit 重现所读内容",
+      "worktree_dirty": true,
+      "files": [
+        {
+          "path": "README.zh-CN.md",
+          "sha256": "1beae9e9bb5fd7abe5b53068fc923845a57fd69b9947502cae29d54ee06f44a9",
+          "matches_head": false
+        },
+        {
+          "path": "contracts/limeiot-sdk.lock.json",
+          "sha256": "3c872c59ac0d61d8da36d766fc0a3cb7a93cf84ac06d3a7a41f1ee1bd08aee1f",
+          "matches_head": false
+        },
+        {
+          "path": "docs/00-product-baseline.md",
+          "sha256": "a2f1e2fa0c66de1321d7d2827859e07e289b85e2336e6a659273b042ea8cabd5",
+          "matches_head": true
+        },
+        {
+          "path": "docs/16-appearance-and-visual-baseline.md",
+          "sha256": "ce2782707667148082d53f7054d0608c842fb6ba2762cae3edc8fe4c3518ad92",
+          "matches_head": true
+        },
+        {
+          "path": "docs/assets/image-prompts.json",
+          "sha256": "88697c82df1ca7ad5aaab7e68650e8a4a9c602476232ca672211e7f0ef71559f",
+          "matches_head": true
+        },
+        {
+          "path": "docs/assets/reference/gootuan-master.png",
+          "sha256": "dd62e5e0ebf3960c44fc0f45393a8d36e5a723c84bf50494168f36f24f26197e",
+          "matches_head": true
+        },
+        {
+          "path": "docs/assets/reference/master-prompts.json",
+          "sha256": "d466a5278b48d80c19096eed96b6b94569706fe7e7d3a514a45f96e875f4e92b",
+          "matches_head": true
+        },
+        {
+          "path": "docs/engineering/07-monorepo.zh-CN.md",
+          "sha256": "a858b36e60dd1e91eb61d4cecd80f3a040c26e21299910691379e7f6ef969952",
+          "matches_head": false
+        },
+        {
+          "path": "docs/evidence/upstream-snapshot.json",
+          "sha256": "735f00d522b9e07839ba8af31e0fa6ca43a31da1113c43afe9b5ac57dee82c98",
+          "matches_head": true
+        },
+        {
+          "path": "docs/scripts/render_diagrams.py",
+          "sha256": "6ee49ab3d9236412ab8ca6ab660e4e2a7a155ce6e8ed658a7ad739bc25d10d7b",
+          "matches_head": true
+        },
+        {
+          "path": "docs/scripts/validate_package.py",
+          "sha256": "2a1aea2ea2bd69bcc7ce3bb80d75caf4a991d783157bef75a4d530f12b90ae06",
+          "matches_head": true
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/limecloud/shou",
+      "head": "b080d7460fd9513f11a8cc9adba55ddcf93ef557",
+      "observation": "实际工作树文件；matches_head=false 时不能由该 commit 重现所读内容",
+      "worktree_dirty": false,
+      "files": [
+        {
+          "path": "Package.swift",
+          "sha256": "6524fc6ff3c1f91d5e4265002916097bdc3c87758e06e04ae47ed3b859663bfe",
+          "matches_head": true
+        },
+        {
+          "path": "apps/windows/src/Shou.Windows.App/Shou.Windows.App.csproj",
+          "sha256": "2caf0210f877d6d1f30b2a41b6cb425683844d97de5f212bdd2d0b38dfb96e90",
+          "matches_head": true
+        },
+        {
+          "path": "docs/architecture/monorepo-and-platforms.md",
+          "sha256": "16b962456c84f6e92f5a9cec680ad952a2059ccef262f37518145c24819bb45e",
+          "matches_head": true
+        },
+        {
+          "path": "docs/architecture/system-design.md",
+          "sha256": "e5ad9253cd58b9007b31eeb7d24c60abb52540676225eaac90d8525eecd3aaa7",
+          "matches_head": true
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/YizhengWw/HachimoDock",
+      "head": "5e2dbdacb7beda88843b2182ae98c7f0c5060721",
+      "observation": "实际工作树文件；matches_head=false 时不能由该 commit 重现所读内容",
+      "worktree_dirty": false,
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "f410049813a24b574b39af6dd4807c3e0a0432fe41081b768ef3fae4e0f1fd3a",
+          "matches_head": true
+        },
+        {
+          "path": "README.md",
+          "sha256": "44c6dfda6819781871f4cc067f7c4e74d1e6995cb23546f838b8985b1f8e93ed",
+          "matches_head": true
+        },
+        {
+          "path": "firmware/README.md",
+          "sha256": "325d2c0cc7713049faa942f72829d9115eee7373f4a041b33736e661f2971298",
+          "matches_head": true
+        },
+        {
+          "path": "firmware/protocol.md",
+          "sha256": "fd0c3cfc0cfe8acaee35c0642be933362f9e0aacb1085a5427d911bdfc335a2b",
+          "matches_head": true
+        },
+        {
+          "path": "pc/docs/agent-integration-audit.md",
+          "sha256": "0b5fe1e814adc8833d982eda4564784f3d5a85d701ca9e740db84711dd93ca7e",
+          "matches_head": true
+        },
+        {
+          "path": "pc/docs/realtime-chat.md",
+          "sha256": "f358c025c8b9fe4e0c9d9b2a028d50969e44589d5601f081cd6a6c95220e2d0e",
+          "matches_head": true
+        },
+        {
+          "path": "pc/docs/realtime-duplex.md",
+          "sha256": "780b29cfc6be249e23818ceb6cfcb042cba3878a6a04622673b1f21f96b16a8b",
+          "matches_head": true
+        },
+        {
+          "path": "pc/docs/widget-live-data.md",
+          "sha256": "7b9dfab21a39e81c0152dadfd84b12cb6feb547b24b072458b4d4db4fee73f4f",
+          "matches_head": true
+        },
+        {
+          "path": "pc/skills/petui/contracts/component-program-v2.json",
+          "sha256": "905e5d8d6efe76edcd7cdf03348441e33a82e837c4851f722f1008e2b1f59c8c",
+          "matches_head": true
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/limecloud/gootuan-web",
+      "head": "16ff6f2e4dab5adc22a0de98c8e484f8d34df7df",
+      "worktree_dirty": false,
+      "files": [
+        {
+          "path": "package.json",
+          "sha256": "79abb6a507cadd511311c5bca67750b61f1119aec140ea7034f4480dc8b6e7a8",
+          "matches_head": true
+        },
+        {
+          "path": "wrangler.jsonc",
+          "sha256": "780b14242be6043389dbbf6834424f83585809f8686f80b88a8ce550cde5e2f3",
+          "matches_head": true
+        },
+        {
+          "path": "astro.config.mjs",
+          "sha256": "d25aeb726448271bc03e57f88e2fb1c742c38bdc59676d1b4a8f2c8c3ad7b639",
+          "matches_head": true
+        },
+        {
+          "path": "src/components/Home.astro",
+          "sha256": "f68f22f47595fdc8884b7339f07054569c861d79c8e694c23a29bce1bf6498ed",
+          "matches_head": true
+        },
+        {
+          "path": "src/layouts/Site.astro",
+          "sha256": "fb95cf503f44bac6351f0a2d1af97a10c3d926ffa34c7c8bc089b3d6f0b7eb1b",
+          "matches_head": true
+        },
+        {
+          "path": "README.md",
+          "sha256": "ee4a14746374d9afff6889dfa8cdbf0a70a794da9a2a863a61401cd7945f1c90",
+          "matches_head": true
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/limecloud/iotweb",
+      "head": "090347cebad14644d514ad106077a31cd49e8172",
+      "worktree_dirty": false,
+      "files": [
+        {
+          "path": "package.json",
+          "sha256": "7f321ee3264495059d53aa6c3174e75e4031109901814c285d935319bfc0a096",
+          "matches_head": true
+        },
+        {
+          "path": "wrangler.jsonc",
+          "sha256": "14375b85d1234f4e337af6eeb00de1f48f7d6cfa8d484ee034b040f4a9948ecd",
+          "matches_head": true
+        },
+        {
+          "path": "src/components/HeroMotion.astro",
+          "sha256": "3d3552814c32cfe8b898ddb8e99803c4ec0d7e4ef75fda98bfdf6098c5a7c4f7",
+          "matches_head": true
+        },
+        {
+          "path": "src/styles/global.css",
+          "sha256": "d8ecf9a161a68950613ffeb90d73e68d20aca33ddfdc19939708f01e1cb0bcf8",
+          "matches_head": true
+        },
+        {
+          "path": "README.md",
+          "sha256": "fb17e747f0ab108075d05467a0a0f832f6701aec22a4e2f55a7db58bb1d3aaef",
+          "matches_head": true
+        }
+      ]
+    }
+  ]
+}

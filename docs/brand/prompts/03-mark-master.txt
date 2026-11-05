@@ -1,0 +1,6 @@
+Use case: logo-brand
+Asset type: official flat master symbol for LimeLink
+Input images: Image 1 is the selected original LimeLink identity exploration, identity reference only.
+Primary request: Extract and refine ONLY the flat character on the LEFT of the reference. Preserve its asymmetric large round lower body joined to a smaller UPPER LEFT lobe, upper-right dark-green pointed leaf, two round dark eyes, small smile, two short rounded feet, no arms. One coherent silhouette with the face low on the large lower lobe. Keep exactly that unique shape and proportions.
+Composition: ONE centered large flat vector-style symbol, full height about 740px in a 1024px square. Pure SOLID WHITE background #FFFFFF across the entire canvas, including corners. Strictly opaque image. Solid lime #A8D85D fill, dark forest #263D2C leaf and face, perfectly crisp boundaries.
+Constraints: FLAT 2D only. NO glow, halo, gradients, shading, translucency, shadow, words, type, borders, 3D objects, extra variants or props. Do not reproduce the reference background or figurine. Absolute white background; no vignette or black.

@@ -1,0 +1,24 @@
+sequenceDiagram
+  autonumber
+  participant M as 手机用户客户端
+  participant G as LimeIoT 命令账本
+  participant R as 桌面设备运行时
+  participant D as 桌面本机窗口
+  M->>M: 用户选择目标，保存完整签名原意图
+  M->>G: 自身用户会话提交 pair 动作
+  G->>R: MQTT / mTLS，目标模型与原命令
+  R->>R: 校验签名、nonce、期限，耐久保存 pending
+  R-->>G: submitted，配对请求已记录
+  R-->>D: 客户端名称、指纹、120 秒期限
+  alt 本机用户核对并批准，且未过期
+    D->>R: 私有本机通道批准
+    R->>R: 更新本机产品批准状态
+    M->>G: 新的显式 status 查询
+    G->>R: 验证原客户端签名
+    R-->>G: approved
+    G-->>M: 当前协同状态
+  else 拒绝、撤销、过期或签名不符
+    R-->>D: 明确状态，不扩大能力
+    G-->>M: 原回执或当前拒绝状态
+  end
+  Note over M,D: 同一 IoT 所有者下的额外本机批准，不是跨账号委派或二维码配对

@@ -1,0 +1,429 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-11-05",
+  "scope": "实现状态与源码/局部证据；未构成全产品验收",
+  "requirements": [
+    {
+      "requirement": "FR-001",
+      "status": "partial",
+      "sources": [
+        "apps/macos/LocalTerminal.swift",
+        "apps/windows/LimeLink.App/MainWindow.cs"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json",
+        "docs/evidence/macos-native-ui.json"
+      ],
+      "limits": "Windows 原生窗口、正式发行未验收"
+    },
+    {
+      "requirement": "FR-002",
+      "status": "partial",
+      "sources": [
+        "apps/ios/LimeLinkApp.swift",
+        "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "手机真机与完整原生旅程未验收"
+    },
+    {
+      "requirement": "FR-003",
+      "status": "implemented",
+      "sources": [
+        "packages/apple/Sources/LimeLinkCore/LinkClient.swift",
+        "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt",
+        "apps/windows/LimeLink.Core/LinkClient.cs"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "各端完整空间切换 UI 尚需目标系统验收"
+    },
+    {
+      "requirement": "FR-004",
+      "status": "implemented",
+      "sources": [
+        "packages/apple/Sources/LimeLinkCore/LinkClient.swift",
+        "runtime/src/main.rs"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "limits": "仅同一所有者下额外本机批准"
+    },
+    {
+      "requirement": "FR-005",
+      "status": "partial",
+      "sources": [
+        "runtime/src/main.rs"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "limits": "管理员提供注册身份与配置；自主入网未完成"
+    },
+    {
+      "requirement": "FR-006",
+      "status": "partial",
+      "sources": [
+        "runtime/src/lib.rs"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "limits": "已实现120秒失效；二维码和重配管理缺失"
+    },
+    {
+      "requirement": "FR-007",
+      "status": "implemented",
+      "sources": [
+        "runtime/src/lib.rs",
+        "apps/macos/LocalTerminal.swift"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/macos-native-ui.json"
+      ],
+      "limits": "macOS 实际窗口验证；其他桌面窗口另验"
+    },
+    {
+      "requirement": "FR-008",
+      "status": "implemented",
+      "sources": [
+        "runtime/src/lib.rs",
+        "apps/macos/LocalTerminal.swift"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "limits": "保留已经发生的展示事实"
+    },
+    {
+      "requirement": "FR-009",
+      "status": "implemented",
+      "sources": [
+        "packages/apple/Sources/LimeLinkCore/LinkClient.swift",
+        "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt",
+        "apps/windows/LimeLink.Core/LinkClient.cs"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json",
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "limits": "离线目标拒绝提交"
+    },
+    {
+      "requirement": "FR-010",
+      "status": "implemented",
+      "sources": [
+        "packages/apple/Sources/LimeLinkCore/LinkClient.swift",
+        "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt",
+        "apps/windows/LimeLink.Core/LinkClient.cs"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "空间、设备、模型及完整载荷绑定"
+    },
+    {
+      "requirement": "FR-011",
+      "status": "partial",
+      "sources": [
+        "apps/macos/LocalTerminal.swift",
+        "apps/windows/LimeLink.App/MainWindow.cs"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/macos-native-ui.json"
+      ],
+      "limits": "macOS 实际展示已验；Windows 窗口尚未验收"
+    },
+    {
+      "requirement": "FR-012",
+      "status": "partial",
+      "sources": [
+        "packages/apple/Sources/LimeLinkCore/LinkClient.swift",
+        "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt",
+        "apps/windows/LimeLink.Core/LinkClient.cs",
+        "runtime/src/lib.rs"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "limits": "原键查询已有；双端统一原回执界面未完整交付"
+    },
+    {
+      "requirement": "FR-013",
+      "status": "implemented",
+      "sources": [
+        "packages/apple/Sources/LimeLinkCore/LinkClient.swift",
+        "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt",
+        "apps/windows/LimeLink.Core/LinkClient.cs"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "持久化与回读后才 POST"
+    },
+    {
+      "requirement": "FR-014",
+      "status": "implemented",
+      "sources": [
+        "packages/apple/Sources/LimeLinkCore/LinkClient.swift",
+        "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt",
+        "apps/windows/LimeLink.Core/LinkClient.cs"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json",
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "limits": "超时/404 保留原键，不自动重发"
+    },
+    {
+      "requirement": "FR-015",
+      "status": "implemented",
+      "sources": [
+        "runtime/src/lib.rs"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "limits": "只取消 queued；不回滚已展示事实"
+    },
+    {
+      "requirement": "FR-016",
+      "status": "planned",
+      "sources": [],
+      "evidence": [],
+      "limits": "产品 SSE/cursor gap 消费尚未接入"
+    },
+    {
+      "requirement": "FR-017",
+      "status": "implemented",
+      "sources": [
+        "runtime/src/main.rs",
+        "apps/macos/LocalTerminal.swift"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/macos-native-ui.json"
+      ],
+      "limits": "用户登录与设备通道状态分别呈现"
+    },
+    {
+      "requirement": "FR-018",
+      "status": "partial",
+      "sources": [
+        "runtime/src/lib.rs",
+        "apps/macos/LocalTerminal.swift"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/macos-native-ui.json"
+      ],
+      "limits": "仅单桌面与创建客户端；无跨电脑迁移"
+    },
+    {
+      "requirement": "FR-019",
+      "status": "implemented",
+      "sources": [
+        "runtime/src/lib.rs"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/macos-native-ui.json"
+      ],
+      "limits": "CAS 修订与30秒写入租约；手机不能释放电脑租约"
+    },
+    {
+      "requirement": "FR-020",
+      "status": "partial",
+      "sources": [
+        "runtime/src/lib.rs",
+        "apps/macos/LocalTerminal.swift"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "脱敏计数诊断已实现；完整操作管理与保留未完成"
+    },
+    {
+      "requirement": "FR-021",
+      "status": "planned",
+      "sources": [],
+      "evidence": [],
+      "limits": "受限云入口尚未在产品接入"
+    },
+    {
+      "requirement": "FR-022",
+      "status": "partial",
+      "sources": [
+        "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift",
+        "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt",
+        "apps/windows/LimeLink.App/MainWindow.cs"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "只有真实文字 capability/任务；完整模型目录和配置 UI 缺失"
+    },
+    {
+      "requirement": "FR-023",
+      "status": "partial",
+      "sources": [
+        "packages/apple/Sources/LimeLinkUI/VoiceDraft.swift",
+        "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt",
+        "apps/windows/LimeLink.App/MainWindow.cs"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "系统语音草稿，未真实录音验收；不是网关ASR"
+    },
+    {
+      "requirement": "FR-024",
+      "status": "planned",
+      "sources": [],
+      "evidence": [],
+      "limits": "跨端播放/打断未实现"
+    },
+    {
+      "requirement": "FR-025",
+      "status": "partial",
+      "sources": [
+        "runtime/src/lib.rs"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "limits": "仅纯文本内容；不是通用内容包和组件系统"
+    },
+    {
+      "requirement": "FR-026",
+      "status": "implemented",
+      "sources": [
+        "runtime/src/lib.rs",
+        "apps/macos/LocalTerminal.swift"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "TTL 对当前表生效；不承诺WAL/备份物理擦除"
+    },
+    {
+      "requirement": "FR-027",
+      "status": "planned",
+      "sources": [],
+      "evidence": [],
+      "limits": "打包脚本不构成更新回退系统"
+    },
+    {
+      "requirement": "FR-028",
+      "status": "planned",
+      "sources": [],
+      "evidence": [],
+      "limits": "未来硬件单独立项，无样机或固件"
+    },
+    {
+      "requirement": "NFR-001",
+      "status": "implemented",
+      "sources": [
+        "packages/apple/Sources/LimeLinkCore/LinkClient.swift",
+        "runtime/src/lib.rs",
+        "runtime/src/main.rs"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "用户与设备身份分离，不含跨账号委派"
+    },
+    {
+      "requirement": "NFR-002",
+      "status": "partial",
+      "sources": [
+        "runtime/src/lib.rs",
+        "contracts/desktop.json"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json"
+      ],
+      "limits": "本机动作有界；用户端仍使用已有网关所有者权限"
+    },
+    {
+      "requirement": "NFR-003",
+      "status": "implemented",
+      "sources": [
+        "packages/apple/Sources/LimeLinkCore/LinkClient.swift",
+        "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt",
+        "apps/windows/LimeLink.Core/LinkClient.cs",
+        "runtime/src/lib.rs"
+      ],
+      "evidence": [
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "平台单一命令账本，本机只保存效果与原回执"
+    },
+    {
+      "requirement": "NFR-004",
+      "status": "partial",
+      "sources": [
+        "runtime/src/lib.rs",
+        "packages/apple/Sources/LimeLinkCore/LinkClient.swift"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "TTL不等于安全擦除；历史命令/回执保留策略缺失"
+    },
+    {
+      "requirement": "NFR-005",
+      "status": "partial",
+      "sources": [
+        "packages/apple/Sources/LimeLinkUI/VoiceDraft.swift",
+        "apps/macos/LocalTerminal.swift",
+        "runtime/src/main.rs"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json",
+        "docs/evidence/macos-native-ui.json"
+      ],
+      "limits": "后台停录与stdin退出已有，休眠/切网与长稳未验收"
+    },
+    {
+      "requirement": "NFR-006",
+      "status": "partial",
+      "sources": [
+        "packages/apple/Sources/LimeLinkUI/WorkbenchView.swift"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "基础可访问名称；四端可访问性/国际化未验收"
+    },
+    {
+      "requirement": "NFR-007",
+      "status": "partial",
+      "sources": [
+        "tools/prepare-sdk.py",
+        "contracts/iot-sdk.lock.json",
+        ".github/workflows/native.yml"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "固定SDK和多端CI已有；正式签名与完整发布门槛未满足"
+    },
+    {
+      "requirement": "NFR-008",
+      "status": "planned",
+      "sources": [],
+      "evidence": [],
+      "limits": "没有产品性能测量结论"
+    }
+  ]
+}

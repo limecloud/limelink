@@ -1,0 +1,93 @@
+---
+import Site from '../layouts/Site.astro';
+import Icon from '../components/Icon.astro';
+const moments = [
+ {image:'11-phone-pc-card',title:'灵感在手机，接着到电脑',text:'随手记下一句话，明确选择电脑，把想法送到眼前的工作台。',tag:'开发中 · 文本卡片'},
+ {image:'14-session-handoff',title:'换个屏幕，思路继续',text:'在允许的范围内接续同一会话，切换设备，也保留上下文。',tag:'开发中 · 会话接续'},
+ {image:'16-voice-draft',title:'先说出来，再决定怎么做',text:'语音先变成可编辑的草稿，确认内容和对象后，再交给另一端。',tag:'开发中 · 语音草稿'}
+];
+const questions = [
+ ['现在可以下载安装吗？','还没有正式发行包。LimeLink 已进入四端原生开发，已验证部分电脑与网关联动；手机真机、完整跨端体验和正式发行仍在推进。开发者可从开源仓库了解构建方式，场景图继续作为设计示意。'],
+ ['为什么需要网关？','网关为各端提供共同的连接、授权与任务记录。首期计划先支持同一局域网，复用 LimeIoT 在 Linux / NAS 上的网关能力。'],
+ ['会自动控制电脑或同步所有内容吗？','计划采用明确的目标选择与逐项授权。第一步从应用内文本卡片开始，不默认开放任意电脑操作、全盘同步或后台持续录音。'],
+ ['图中的小硬件可以买到吗？','暂时不能。柠柠终端是未来外观概念，用于探索桌面提醒、专注和陪伴等场景；尚未确定工程方案、价格或上市时间。']
+];
+---
+<Site>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-glow glow-one"></div><div class="hero-glow glow-two"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy"><p class="eyebrow"><span class="live-dot"></span> 一个正在生长的多端协同计划</p>
+        <h1 id="hero-title">小小连接，<br/><span>大有默契。</span></h1>
+        <p class="hero-intro">手机上的灵感，电脑上接着做。<br/>通过网关，让各自忙碌的设备，成为默契的小团队。</p>
+        <div class="actions"><a class="button" href="#connection">看看怎么联动 <Icon/></a><a class="text-link" href="/scenes/">探索生活场景 <Icon name="up" size={17}/></a></div>
+        <p class="hero-note">LimeLink 柠联 · 原生开发进行中</p>
+      </div>
+      <div class="hero-stage" aria-label="手机、网关、电脑围绕青柠小伙伴连接的动态设计示意">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <svg class="connection-lines" viewBox="0 0 600 600" fill="none" aria-hidden="true"><path d="M120 160Q270 260 300 450Q380 320 510 250" stroke="#739955" stroke-width="1.5" stroke-dasharray="5 9"/></svg>
+        <div class="stage-halo"></div>
+        <img class="hero-mascot" src="/images/ningning-hero.webp" width="584" height="686" alt="柠柠：双瓣青柠身体、深绿叶片和微笑的小伙伴" fetchpriority="high" />
+        <div class="floating-end endpoint-phone"><div class="endpoint-icon"><Icon name="phone" size={24}/></div><div><strong>手机</strong><span>随手记录灵感</span></div><i class="endpoint-dot"></i></div>
+        <div class="floating-end endpoint-pc"><div class="endpoint-icon"><Icon name="monitor" size={25}/></div><div><strong>电脑</strong><span>接着把事情做好</span></div><i class="endpoint-dot"></i></div>
+        <div class="floating-end endpoint-gateway"><div class="endpoint-icon"><Icon name="gateway" size={24}/></div><div><strong>LimeIoT 网关</strong><span>把每一端连在一起</span></div><Icon name="link" size={16}/></div>
+        <div class="hello-label">你好，我是柠柠 <span aria-hidden="true">✳</span></div>
+      </div>
+    </div>
+    <div class="wrap hero-bottom"><span>从手机与电脑开始，慢慢走进生活。</span><button class="motion-button" type="button" aria-pressed="false"><Icon name="pause" size={14}/><span>暂停动效</span></button></div>
+  </section>
+
+  <div class="platform-strip"><div class="wrap"><span>同一个小伙伴，不同的屏幕</span><div><span>macOS</span><span>Windows</span><span>iOS</span><span>Android</span></div><small>四端原生开发中</small></div></div>
+
+  <section class="section" id="connection"><div class="wrap">
+    <div class="section-head"><div><p class="eyebrow">A LITTLE CONNECTION</p><h2>不止连接设备，<br/>更是接上你的思路。</h2></div><p>从一个轻巧、明确的动作开始。<br/>选择另一端，确认发送，一起看见结果。</p></div>
+    <figure class="feature-photo"><img src="/images/11-phone-pc-card.webp" width="1536" height="1024" loading="lazy" alt="在手机上选择发送，内容经网关到达电脑的使用概念"/><figcaption>手机与电脑联动 · 目标体验示意</figcaption></figure>
+    <div class="connection-steps">
+      <article><span class="step-no">01</span><h3>先认识，再连接</h3><p>核对网关、空间和电脑，经过明确批准，让连接有来由。</p></article>
+      <article><span class="step-no">02</span><h3>这一条，发给这一端</h3><p>一张卡片、一段文字，发送前知道内容，也知道接收的电脑。</p></article>
+      <article><span class="step-no">03</span><h3>两边，都有个交代</h3><p>共同跟进同一任务。断开后先核对结果，减少不确定的重复操作。</p></article>
+    </div>
+    <div class="inline-note"><Icon name="leaf" size={17}/><p>首个协同目标：同一局域网内，手机发送文本卡片，电脑呈现并返回回执。</p><a href="/docs/02-prd/">阅读产品规划 <Icon name="up" size={14}/></a></div>
+  </div></section>
+
+  <section class="section soft-section"><div class="wrap">
+    <div class="section-head"><div><p class="eyebrow">YOUR DAY, CONNECTED</p><h2>让日常，顺手一点。</h2></div><a class="text-link" href="/scenes/">查看完整图册 <Icon name="up" size={18}/></a></div>
+    <div class="moment-grid">{moments.map(item=><article class="moment"><a href={'/scenes/#'+item.image} aria-label={'查看'+item.title+'的设计图'}><img src={'/images/'+item.image+'.webp'} width="1536" height="1024" alt={item.title+'的概念场景'} loading="lazy"/></a><p class="caption">{item.tag}</p><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+  </div></section>
+
+  <section class="section gateway-section"><div class="wrap split-layout">
+    <div class="split-copy"><p class="eyebrow">QUIETLY, IN THE MIDDLE</p><h2>默契背后，<br/>有一个安静的连接点。</h2><p>LimeIoT 网关连接手机与电脑，让授权、任务和回执有共同的依据。首期从家庭或工作空间里的局域网开始。</p><ul class="simple-list"><li><Icon name="check" size={18}/>复用 Linux / NAS 上的网关能力</li><li><Icon name="check" size={18}/>每一次协同，明确内容与目标</li><li><Icon name="check" size={18}/>远程协同按独立阶段探索</li></ul><a class="text-link" href="/docs/05-system-architecture/">看看系统如何组成 <Icon name="up" size={17}/></a></div>
+    <figure class="split-photo"><img src="/images/19-gateway-deployment.webp" width="1536" height="1024" loading="lazy" alt="家庭 NAS、路由器、手机与电脑构成的网关部署概念"/><figcaption>网关是运行在受支持主机上的服务，外观仅作示意</figcaption></figure>
+  </div></section>
+
+  <section class="future-section" id="future"><div class="wrap">
+    <div class="section-head"><div><p class="eyebrow">A LITTLE FRIEND, ONE DAY</p><h2>有一天，<br/>小伙伴也会来到桌边。</h2></div><p>从屏幕里的形象，到触手可及的陪伴。<br/>探索一个有表情、会呈现小小信息的桌面终端。</p></div>
+    <div class="future-feature"><img src="/images/21-hardware-desk.webp" width="1536" height="1024" loading="lazy" alt="柠柠显示终端与手机和电脑在办公桌上联动的未来外观概念"/><div class="future-overlay"><span>未来硬件 · 外观概念</span><h3>在你身边，<br/>也在连接之中。</h3><a class="button light-button" href="/scenes/?filter=hardware">探索未来终端 <Icon name="arrow" size={18}/></a></div></div>
+    <div class="future-minis">{[{id:'22-hardware-study',label:'专注时，轻轻陪伴'},{id:'23-hardware-bedside',label:'入夜后，安静一点'},{id:'24-hardware-family',label:'家里的小事，彼此看见'}].map(item=><a href={'/scenes/#'+item.id}><img src={'/images/'+item.id+'.webp'} width="1536" height="1024" loading="lazy" alt={item.label+'的硬件概念'}/><span>{item.label}<Icon name="up" size={16}/></span></a>)}</div>
+    <p class="concept-note">硬件尚未立项或上市。外观、场景与功能均为设计探索，不代表最终产品规格。</p>
+  </div></section>
+
+  <section class="section"><div class="wrap trust-layout"><div><p class="eyebrow">YOU STAY IN CONTROL</p><h2>连接多一点，<br/>边界也清楚一点。</h2><a class="text-link" href="/docs/15-security-and-privacy/">了解授权与隐私设计 <Icon name="up" size={17}/></a></div>
+    <div class="trust-items"><article><Icon name="shield" size={27}/><h3>你来决定分享什么</h3><p>连接关系与具体能力分别授权，不把一次登录变成所有操作的通行证。</p></article><article><Icon name="link" size={27}/><h3>知道发生了什么</h3><p>已发送、已呈现和未知各有含义。界面计划呈现真实的任务状态。</p></article><article><Icon name="leaf" size={27}/><h3>从小而有用的事情开始</h3><p>先做好手机与电脑的基础协同，再逐步探索会话、语音和实体终端。</p></article></div>
+  </div></section>
+
+  <section class="section soft-section"><div class="wrap faq-layout"><div><p class="eyebrow">A FEW THINGS TO KNOW</p><h2>你可能也想知道。</h2></div><div class="faq">{questions.map(([q,a])=><details><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></div></section>
+
+  <section class="closing"><div class="wrap"><img src="/images/ningning-hero.webp" width="144" height="170" loading="lazy" alt="微笑的柠柠"/><div><p class="eyebrow">LET'S GROW TOGETHER</p><h2>默契，从相遇开始。</h2><p>认识柠柠，看看我们正在描绘的下一步。</p><div class="actions"><a class="button" href="/brand/">认识这个小伙伴 <Icon/></a><a class="text-link" href="/docs/21-roadmap-and-status/">查看进展 <Icon name="up" size={17}/></a></div></div></div></section>
+</Site>
+<script>
+  const hero=document.querySelector<HTMLElement>('.hero');
+  const button=document.querySelector<HTMLButtonElement>('.motion-button');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  let paused=reduced.matches;
+  const update=()=>{
+    hero?.classList.toggle('motion-paused',paused||document.hidden||reduced.matches);
+    button?.setAttribute('aria-pressed',String(paused));
+    if(button){const label=button.querySelector('span');if(label)label.textContent=paused?'播放动效':'暂停动效';}
+  };
+  button?.addEventListener('click',()=>{paused=!paused;update();});
+  reduced.addEventListener('change',()=>{paused=reduced.matches;update();});
+  document.addEventListener('visibilitychange',update);
+  if(hero)new IntersectionObserver(([entry])=>{hero.classList.toggle('motion-offscreen',!entry.isIntersecting);}).observe(hero);
+  update();
+</script>

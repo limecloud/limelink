@@ -1,0 +1,1031 @@
+{
+  "generated_count": 28,
+  "date": "2026-11-05",
+  "model_identity": "请求别名；未核验服务内部路由",
+  "generation_tool": "imagegen bundled CLI",
+  "attempt_notes": [
+    {
+      "asset": "17-widgets",
+      "attempt": 1,
+      "result": "failed",
+      "reason": "服务响应 JSON 含非法控制字符；未产生文件"
+    },
+    {
+      "asset": "17-widgets",
+      "attempt": 2,
+      "result": "generated"
+    }
+  ],
+  "assets": [
+    {
+      "id": "01-logo-flare",
+      "title": "Flare 标志与物化探索",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "mode": "generate",
+      "references": [],
+      "phase": "P0",
+      "output": "output/imagegen/01-logo-flare.png",
+      "prompt": "docs/brand/prompts/01-logo-flare.txt",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "quality": "high",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "image_sha256": "8acca67c1dead2232a29f77918fd842e12143741d659b234322ebbd081c65e9b",
+      "prompt_sha256": "6ac5c858714fb92091b97a1934f2cd8dc11b7aae4826fe17af2d4fa15930b5ae",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "preview": "docs/brand/scenes/01-logo-flare.webp",
+      "preview_sha256": "fbb7b87e30bfbc405569b7d70ed880293e1046631419a671e5488bca58402eaf",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {},
+      "visual_note": "未采用的对称探索；保留用于比较。"
+    },
+    {
+      "id": "02-logo-sunburst",
+      "title": "Sunburst 标志与物化探索",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "mode": "generate",
+      "references": [],
+      "phase": "P0",
+      "output": "output/imagegen/02-logo-sunburst.png",
+      "prompt": "docs/brand/prompts/02-logo-sunburst.txt",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "quality": "high",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "image_sha256": "8009a798bf712c36418d010721d40ed684251acf5bec23e63a1e9fa11f6b3ffb",
+      "prompt_sha256": "72beb0019471bb211cb2652cce51df1e287f4da680e370f3ed3eebd444a0047f",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "preview": "docs/brand/scenes/02-logo-sunburst.webp",
+      "preview_sha256": "8c1acad71d701435913328ebe4ac262f4fe0edef4cf9ca19021990c055c0b60b",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {},
+      "visual_note": "选作本轮原创身份方向；原图含 alpha，图册合成白底。"
+    },
+    {
+      "id": "03-mark-master",
+      "title": "平面标志母版",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1024x1024",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/02-logo-sunburst.png"
+      ],
+      "phase": "P0",
+      "output": "output/imagegen/03-mark-master.png",
+      "prompt": "docs/brand/prompts/03-mark-master.txt",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "quality": "high",
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "image_sha256": "367464fd326f3aea745d63515ce7d4fc4c85a0d3759c25929cd36d40d1c33936",
+      "prompt_sha256": "8efae6be908a5b043a640b8aeb888273c7fcd67df60a17be549a123abac6aefe",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/03-mark-master.webp",
+      "preview_sha256": "74a1545ca4f1259e455b706c1a349b68af277ae329eaebb73aa098fced7d539c",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/02-logo-sunburst.png": "8009a798bf712c36418d010721d40ed684251acf5bec23e63a1e9fa11f6b3ffb"
+      },
+      "visual_note": "原始像素仍有色差/纹理；标准标志经轮廓提取与固定双色导出。"
+    },
+    {
+      "id": "04-mascot-turnaround",
+      "title": "角色四视图母版",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/02-logo-sunburst.png"
+      ],
+      "phase": "P0",
+      "output": "output/imagegen/04-mascot-turnaround.png",
+      "prompt": "docs/brand/prompts/04-mascot-turnaround.txt",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "quality": "high",
+      "actual_size": [
+        2172,
+        724
+      ],
+      "image_sha256": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f",
+      "prompt_sha256": "8f74b01587f56a2bbdb25adc6b6b77c0a34c404a81ff2fde77cb1aa0240f4b31",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/04-mascot-turnaround.webp",
+      "preview_sha256": "ea4cc1618a9ca8972f6e4c1485120c669adbbf6b0206c3574d63e386e2dce9bd",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/02-logo-sunburst.png": "8009a798bf712c36418d010721d40ed684251acf5bec23e63a1e9fa11f6b3ffb"
+      },
+      "visual_note": "四视图作为视觉母版；侧视不是精确正投影，不可用于 CAD。"
+    },
+    {
+      "id": "05-hardware-master",
+      "title": "未来终端外观母版",
+      "category": "product-mockup",
+      "phase": "P5",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/05-hardware-master.txt",
+      "output": "output/imagegen/05-hardware-master.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        2172,
+        724
+      ],
+      "image_sha256": "1f594559aab2df9d5257d98120d08a1992d8e0a8cc6ad5ec992318849f953667",
+      "prompt_sha256": "22aa48e32fcc41e2e71d25647eed0b312af5fe4227445f36a8645d6277664efc",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/05-hardware-master.webp",
+      "preview_sha256": "e12ea5e6f9c0538219d97ee9208bc439fffc6d14ec404a8354490d50a89a4657",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "形态一致；背部接口、滑块、充电座仅为概念位置，不保证装配一致性。"
+    },
+    {
+      "id": "06-emotions",
+      "title": "角色表情与状态",
+      "category": "illustration-story",
+      "phase": "P0",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/06-emotions.txt",
+      "output": "output/imagegen/06-emotions.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "image_sha256": "e67fdbd9b098197c14e92b81ff7832b6701311370157bffb323cb0ca42896f33",
+      "prompt_sha256": "d45b72a232aece5d013f0bd97b83282e997dcc468a226fbe72c180c5d8f50a3e",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/06-emotions.webp",
+      "preview_sha256": "c918e11bb03e1059a92930baad14d846bd4c6ca819947c28b6977c554eed5764",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "六态角色轮廓一致；实际 UI 仍需文字标签和无障碍名称。"
+    },
+    {
+      "id": "07-four-platforms",
+      "title": "四端品牌应用",
+      "category": "ui-mockup",
+      "phase": "P1/P2",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/07-four-platforms.txt",
+      "output": "output/imagegen/07-four-platforms.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1774,
+        887
+      ],
+      "image_sha256": "ece6c419d9fa633146c27e59c81cac5a9334b366cb2898cff93594dc380b18a8",
+      "prompt_sha256": "2f721f12cda669bee96520056df2f9e09e7b451fc8ee9ac1c6bacb14f92da5dd",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/07-four-platforms.webp",
+      "preview_sha256": "301e8cbcf9354427a75d1e0ba8e276d4501e07778c566c5013ebb66b34198611",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "四设备和明暗方向可读；手机框架不证明实际 iOS/Android 原生设计或实现。"
+    },
+    {
+      "id": "08-vi-stationery",
+      "title": "VI 文具与包装",
+      "category": "product-mockup",
+      "phase": "P0",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/08-vi-stationery.txt",
+      "output": "output/imagegen/08-vi-stationery.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "image_sha256": "6dd78e301e4e9e48743b07004758d19fde3f3a8dbc3327971698213ab02d678d",
+      "prompt_sha256": "08acdaef4a421098308897b52177f183d6cfab9ec22bbe8f60dabf20065f7220",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/08-vi-stationery.webp",
+      "preview_sha256": "5f2ca30ae66de35644195deb2839fdf38f237a708d6428fbdcf6f3c67da7906d",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "可用的品牌应用概念；字样不作为印刷转曲母版。"
+    },
+    {
+      "id": "09-physical-merch",
+      "title": "角色物化与周边",
+      "category": "product-mockup",
+      "phase": "P5-concept",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/09-physical-merch.txt",
+      "output": "output/imagegen/09-physical-merch.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "image_sha256": "5c08ad3fcee38a67e823baba45793497466f5181b3affbd6b920f4fb54473b65",
+      "prompt_sha256": "766dcf93d8f85c0042acec4de5b67f19c6b63010bddef0c8ee0b0bac3512104b",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/09-physical-merch.webp",
+      "preview_sha256": "bc44d882438beedab398473b69db2e4485b8ee964cf31fe4e940954aee4f8723",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "物化轮廓与母版一致；各材料仅为效果图。"
+    },
+    {
+      "id": "10-ecosystem",
+      "title": "手机电脑网关与未来硬件全景",
+      "category": "stylized-concept",
+      "phase": "P2/P5",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/10-ecosystem.txt",
+      "output": "output/imagegen/10-ecosystem.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "image_sha256": "717402d54078a2d2aae6aca7ebc855f88709b3b2002edb5d0be57cf71d38635b",
+      "prompt_sha256": "efe8af32733b17ea86ea94c2a13ee07ac8ba9cc14c572cb70e2ba2dcdd31e919",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/10-ecosystem.webp",
+      "preview_sha256": "fe82e6bdfa00add92fe86e504db59b133a30a0ad9eda2b576d696ce66ec05438",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "可表达手机—网关—电脑；背景硬件形态为泛化显示设备，不作为 05 的实体母版。"
+    },
+    {
+      "id": "11-phone-pc-card",
+      "title": "手机向电脑发送卡片",
+      "category": "photorealistic-natural",
+      "phase": "P2",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/11-phone-pc-card.txt",
+      "output": "output/imagegen/11-phone-pc-card.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1774,
+        887
+      ],
+      "image_sha256": "f237709499a8c1ee3e5084ebed0e82f1d9a1cbd17d47244a809d397b1e10c885",
+      "prompt_sha256": "ba006aaac8ae58aef9ce6aadfe4ee46e7051762078b460f1e324532094306990",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/11-phone-pc-card.webp",
+      "preview_sha256": "ddf9b178f2356acfaf22af9942879c76336cbc14d1a522c97c2a2fc8f32339db",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "发送路径清楚；模型把文本卡片画为图片占位，不改变首期纯文本需求。"
+    },
+    {
+      "id": "12-pairing",
+      "title": "扫码配对与本机确认",
+      "category": "ui-mockup",
+      "phase": "P2",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/12-pairing.txt",
+      "output": "output/imagegen/12-pairing.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        2172,
+        724
+      ],
+      "image_sha256": "f8a482086c8fbed9f5843b70b1e30741928428f3e8c8470ae8bfc252892686ae",
+      "prompt_sha256": "a80becaef0fbc121f30bcf6b6dcdeb4731a1ab181611da93e8eb16a310afe300",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/12-pairing.webp",
+      "preview_sha256": "a7988ff2b6f96fab1819807eee72993cf5e3f7af05bd49283dd704e90d5c8274",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "三步配对和本机批准可读；二维码图案仅为非凭据示意。"
+    },
+    {
+      "id": "13-receipt-recovery",
+      "title": "同一回执与断线恢复",
+      "category": "infographic-diagram",
+      "phase": "P2",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/13-receipt-recovery.txt",
+      "output": "output/imagegen/13-receipt-recovery.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1774,
+        887
+      ],
+      "image_sha256": "38494101ea83e7855b74431075e6a39bad6122e4342c34151db798e389643aa7",
+      "prompt_sha256": "cfcc9c815e65b123ea557d55fc1267b3756f2ccf266354e538e3deb6355bf2bb",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/13-receipt-recovery.webp",
+      "preview_sha256": "8ddad710fc5dbe889a49d415bd14fc2b29c661f7cdc1f298865f3b1d8429421f",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "四格状态与原任务恢复可读；示意不替代正式任务协议。"
+    },
+    {
+      "id": "14-session-handoff",
+      "title": "手机与电脑会话接续",
+      "category": "ui-mockup",
+      "phase": "P3",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/14-session-handoff.txt",
+      "output": "output/imagegen/14-session-handoff.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1774,
+        887
+      ],
+      "image_sha256": "d1f145d68c74bc828725625641ab7ad38afc215cd75341ed191b0e4d662dfae7",
+      "prompt_sha256": "0c4244df6c9f8aa07e29dc78f83c6510ed983aad5507b8a480f8298851bc3a27",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/14-session-handoff.webp",
+      "preview_sha256": "8281d3d6d0df1adfe62377118201d4883998d7b0bec1a018c371f0aa5982d766",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "三段对话连续、目标选择和网关清楚；屏幕只作设计。"
+    },
+    {
+      "id": "15-target-selection",
+      "title": "多台电脑明确选择目标",
+      "category": "ui-mockup",
+      "phase": "P3-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/15-target-selection.txt",
+      "output": "output/imagegen/15-target-selection.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "image_sha256": "397672c36506ccc59161b4b10aeda1410e91d032618107e1e0243f61fa185e8b",
+      "prompt_sha256": "10b64515062e83cd6849674fa24676f4c9f8282edabafa5c3b56310d10efb1d8",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/15-target-selection.webp",
+      "preview_sha256": "7eb572a18d3004fee27041de68e082f6abed81129981e2f307b09c56076bedd3",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "三台候选电脑且只有一台激活；模型内容为角色/图片占位。"
+    },
+    {
+      "id": "16-voice-draft",
+      "title": "语音先成草稿再发送",
+      "category": "ui-mockup",
+      "phase": "P4",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/16-voice-draft.txt",
+      "output": "output/imagegen/16-voice-draft.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        2172,
+        724
+      ],
+      "image_sha256": "4812e8350a564752550c20a93e688e600b50b753bb69d7e5471db932b74b21b8",
+      "prompt_sha256": "7b93d222f7a8d1dd693ea13151857499dea48b26928baf798ee83d1fd21f4de9",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/16-voice-draft.webp",
+      "preview_sha256": "d565e98966cda35b4b1a5afe5000f39070cc868734b05a8d237ddaa4ca5240d4",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "录音、草稿确认和发送的三段流程可读；实际转写与授权未实现。"
+    },
+    {
+      "id": "17-widgets",
+      "title": "电脑工作台与有界组件",
+      "category": "ui-mockup",
+      "phase": "P4",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/17-widgets.txt",
+      "output": "output/imagegen/17-widgets.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "image_sha256": "428c6bea5b7d9a19b48c5c52f9dd77935fab0754083ac61d01c14c933b23bcce",
+      "prompt_sha256": "613d2b72ee2b73730b657477d2b18e6fbdacd90800ed18be9d36194d700fbb07",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/17-widgets.webp",
+      "preview_sha256": "05e60a340f3f5cebd8328ad87080c1f5b3bd01c1ac011be33131b0d07268e7b0",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "工作台/TTL 时钟和权限呈现可读；文字与时间均为示意。"
+    },
+    {
+      "id": "18-remote",
+      "title": "未来受限跨网协同",
+      "category": "stylized-concept",
+      "phase": "P3",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/18-remote.txt",
+      "output": "output/imagegen/18-remote.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        2172,
+        724
+      ],
+      "image_sha256": "6b72c2a9249ec0f8073fea8c0a4e07080165e0810a05551a2a54338a4f0d92da",
+      "prompt_sha256": "b2d46a35f04f1434618df2c548c8bfe49752155f624d466084e37f811bc32edc",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/18-remote.webp",
+      "preview_sha256": "24ccc1bd79416783f14a74b956cd9f33b07973580a6a086b7edc42011a1a46f7",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "跨网与网关角色可辨；图中带锁文件夹是泛化符号，不承诺任意文件操作。"
+    },
+    {
+      "id": "19-gateway-deployment",
+      "title": "网关在家庭 Linux NAS 的部署",
+      "category": "product-mockup",
+      "phase": "P2",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/19-gateway-deployment.txt",
+      "output": "output/imagegen/19-gateway-deployment.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "image_sha256": "4f93b12153482e8b273a4e1eb7bae86933fa3b8cfa6aa9625971a935c8f65078",
+      "prompt_sha256": "1093014443e4c714aa2595fbb985996c19d86fdec89e58765666e114ccecec7a",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/19-gateway-deployment.webp",
+      "preview_sha256": "97129889c04fadf49946dc534db319faa28a86ad50111b3aafc3e490dea3d507",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "NAS 与路由器分开；发光角色为图形连接隐喻，不是另一款网关产品。"
+    },
+    {
+      "id": "20-privacy-revoke",
+      "title": "撤销授权与私密空间",
+      "category": "ui-mockup",
+      "phase": "P2",
+      "model_requested": "gpt-image-2.5-sunburst",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/04-mascot-turnaround.png"
+      ],
+      "prompt": "docs/brand/prompts/20-privacy-revoke.txt",
+      "output": "output/imagegen/20-privacy-revoke.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1774,
+        887
+      ],
+      "image_sha256": "4a6d2c7040cfaa3509d195a544aac7e9c49b8cf54fead51cef2a37a319b65a85",
+      "prompt_sha256": "7f5baa26a5e15a13da6ce11f479b9878a1d14897a4f4eeaa64598f5902bd99c8",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/20-privacy-revoke.webp",
+      "preview_sha256": "61c472128c1d0de0acdc06e1a21a873904f601f86fda0df070e8549f40806863",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/04-mascot-turnaround.png": "b329073dc8ab3e22fd0b2ba60a98dde0691c22f681b57edb68b91cc06bd0792f"
+      },
+      "visual_note": "撤销与阻断可读；不表示撤销会清除已经发生的实际效果。"
+    },
+    {
+      "id": "21-hardware-desk",
+      "title": "桌面硬件与手机电脑联动",
+      "category": "product-mockup",
+      "phase": "P5",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/21-hardware-desk.txt",
+      "output": "output/imagegen/21-hardware-desk.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "image_sha256": "d450b078f9317102258ecba2b4a01fcb5dbea800c1f449ab0cc57d1db09727dc",
+      "prompt_sha256": "11b6f0db633bab4fb6a3e43107f1c24922e8e62cf0db4b5e271d7dba4fac66b0",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/21-hardware-desk.webp",
+      "preview_sha256": "69fe5316c572fc98a3189676512f54a5b34f4b0fd18f8db8a35a91b7d911d29e",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/05-hardware-master.png": "1f594559aab2df9d5257d98120d08a1992d8e0a8cc6ad5ec992318849f953667"
+      },
+      "visual_note": "继承深色面屏与双瓣轮廓；内容是图片占位，首期卡片仍是文本。"
+    },
+    {
+      "id": "22-hardware-study",
+      "title": "学习与专注陪伴",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/22-hardware-study.txt",
+      "output": "output/imagegen/22-hardware-study.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "image_sha256": "9209af2c3f4c17889eb1041ae17837f78f9b6bc8dce0048834c084927fa808f0",
+      "prompt_sha256": "063a4689407ab9de2841c2263f0d1798f8cb68a9d4142af41e6c9b97f049df56",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/22-hardware-study.webp",
+      "preview_sha256": "49f5bddbcb64284722d3896df89c26303f8c973a477c101ca6b3b21e2e9b6acd",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/05-hardware-master.png": "1f594559aab2df9d5257d98120d08a1992d8e0a8cc6ad5ec992318849f953667"
+      },
+      "visual_note": "定时/专注与同形硬件可辨；无学习监控或评分承诺。"
+    },
+    {
+      "id": "23-hardware-bedside",
+      "title": "床头提醒与静音",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/23-hardware-bedside.txt",
+      "output": "output/imagegen/23-hardware-bedside.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "image_sha256": "347b8026546862d854b47041592b642f016e38b62866a213a5169ce7e7325318",
+      "prompt_sha256": "b3da34c019e66048cc8199969a99de731f2209fa537837b61695f11d9ac9bcc2",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/23-hardware-bedside.webp",
+      "preview_sha256": "85e35fee396d3df329e03d10ea9a053b06973ebd34614fd2090446132cdf3494",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/05-hardware-master.png": "1f594559aab2df9d5257d98120d08a1992d8e0a8cc6ad5ec992318849f953667"
+      },
+      "visual_note": "暗屏和静音可辨；滑块位置为场景变化，不覆盖母版结构。"
+    },
+    {
+      "id": "24-hardware-family",
+      "title": "家庭留言与厨房餐桌",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/24-hardware-family.txt",
+      "output": "output/imagegen/24-hardware-family.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "image_sha256": "57aaf9c3168233a885c20ebbcee1853cb59b2a8a4e303c9924f85b87b2060652",
+      "prompt_sha256": "e5b75e6b510f9b3cfe76f50c32adedb2461a92acc58e4c54093b63bf553184c8",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/24-hardware-family.webp",
+      "preview_sha256": "fe7ec2c260c45642029dc390af1ba9a9b9056081650270c7a165774d8b45ddef",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/05-hardware-master.png": "1f594559aab2df9d5257d98120d08a1992d8e0a8cc6ad5ec992318849f953667"
+      },
+      "visual_note": "生活留言与同形硬件可辨；不表示防水、厨房耐热或家电控制。"
+    },
+    {
+      "id": "25-hardware-meeting",
+      "title": "会议桌协同与显式分享",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/25-hardware-meeting.txt",
+      "output": "output/imagegen/25-hardware-meeting.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "image_sha256": "12b61e4806e36eab0ba02e3ab461d62b4bd5852a3d04de629fd7319d12a87fe1",
+      "prompt_sha256": "e466bf1fe3ae5385f3a723164294b9f070ad4fc3daea82f3dc101d7c4072c02f",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/25-hardware-meeting.webp",
+      "preview_sha256": "383a5f00d223280cf311c997e643c0da356a74c8123a8365eda98c6eb9f4c2db",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/05-hardware-master.png": "1f594559aab2df9d5257d98120d08a1992d8e0a8cc6ad5ec992318849f953667"
+      },
+      "visual_note": "显式分享意图可读；屏幕底部录音/静音图形只是概念，不承诺会议录音功能。"
+    },
+    {
+      "id": "26-hardware-portable",
+      "title": "差旅与便携场景候选",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/26-hardware-portable.txt",
+      "output": "output/imagegen/26-hardware-portable.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "image_sha256": "be80deb7a28bb7986437b3e6956b2a0e631997053e47aed14db059a102755bd0",
+      "prompt_sha256": "b347da49c25029817633f7ee26b7af0a6e5d82279fd661a6bd999d090b0763ce",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/26-hardware-portable.webp",
+      "preview_sha256": "d2c176b29189d6d02771458fb105ba452fc8ae3906b8c802287e70f04c41940d",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/05-hardware-master.png": "1f594559aab2df9d5257d98120d08a1992d8e0a8cc6ad5ec992318849f953667"
+      },
+      "visual_note": "外接供电和收纳可辨；不承诺内置电池、蜂窝或离线能力。"
+    },
+    {
+      "id": "27-hardware-accessible",
+      "title": "大字号与可访问提醒",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/27-hardware-accessible.txt",
+      "output": "output/imagegen/27-hardware-accessible.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "image_sha256": "74226f9383a3bc2cb492285951c82ee8edd2af739af181ac637910ed0483968a",
+      "prompt_sha256": "612dbfdff6f4c6a56528ea0059eee21df8c36b450094f1ecee7bf37664a81523",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/27-hardware-accessible.webp",
+      "preview_sha256": "38eef7af92513f74133d830c144934f33907ca3e20412cf15fb3cda5e31b0c35",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/05-hardware-master.png": "1f594559aab2df9d5257d98120d08a1992d8e0a8cc6ad5ec992318849f953667"
+      },
+      "visual_note": "高对比确认可辨；图中生成中文不是正式 UI 文案，不能作为无障碍通过证据。"
+    },
+    {
+      "id": "28-hardware-offline",
+      "title": "硬件离线与恢复状态",
+      "category": "product-mockup",
+      "phase": "P5-exploration",
+      "model_requested": "gpt-image-2.5-flare",
+      "requested_size": "1536x1024",
+      "quality": "high",
+      "mode": "edit",
+      "references": [
+        "output/imagegen/05-hardware-master.png"
+      ],
+      "prompt": "docs/brand/prompts/28-hardware-offline.txt",
+      "output": "output/imagegen/28-hardware-offline.png",
+      "status": "generated",
+      "endpoint": "https://img.aishenji.top/v1",
+      "actual_size": [
+        2172,
+        724
+      ],
+      "image_sha256": "19457c2a75892e8c9e0693546eb2195882e134fb05d06833347bb29ab8a17d53",
+      "prompt_sha256": "ea66375ef566231fbb548b1f7fe0c83f020c7e91155e26b8afbbcf3afe9854e6",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "preview": "docs/brand/scenes/28-hardware-offline.webp",
+      "preview_sha256": "0e71f78c138cb4f8cdb8fc79ac26cf4355901a956b394ec73f0b54a7edc65a5e",
+      "visual_review": "reviewed-at-contact-sheet-scale",
+      "request_id": null,
+      "actual_backend_model": null,
+      "reference_sha256": {
+        "output/imagegen/05-hardware-master.png": "1f594559aab2df9d5257d98120d08a1992d8e0a8cc6ad5ec992318849f953667"
+      },
+      "visual_note": "离线与恢复两格可辨；卡片内容泛化，不等同软件状态机实测。"
+    }
+  ],
+  "derivatives": [
+    {
+      "path": "docs/brand/derived/ningning-hero.webp",
+      "source": "output/imagegen/02-logo-sunburst.png",
+      "method": "从 02 裁切立体角色，按绿色色差移除残留白底与台面，保留主体 alpha；不修改 API 原件",
+      "sha256": "bf4393d71755ae2f3cda17e4a4772d867725c13e52ac09fdc8782f97ad8fed6f"
+    },
+    {
+      "path": "docs/brand/derived/og-cover.jpg",
+      "source": "docs/brand/scenes/21-hardware-desk.webp",
+      "method": "缩放/中心裁切至 1200×630",
+      "sha256": "a60d51fa6a28e5a7974eeefd59bde163d8df0045eaee9a1bc4ce1926b2ef357c"
+    }
+  ]
+}
