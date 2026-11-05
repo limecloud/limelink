@@ -91,7 +91,7 @@ import UIKit
             self.ai=TextGenerationClient(gateway:client.gateway,store:self.secure)
             let spaces=try await client.spaces().map(\.spaceId);try Task.checkCancellation();self.spaces=spaces
             self.devices=[];self.target="";self.fingerprint=""
-            self.hasPending=try await client.pending() != nil
+            let pending=try await client.pending();try Task.checkCancellation();self.hasPending=pending != nil
             UserDefaults.standard.set(self.endpoint,forKey:"limelink.endpoint")
             self.result="已连接，请明确选择空间并刷新电脑列表。"
         }
@@ -237,6 +237,7 @@ import UIKit
         run {
             guard let ai=self.ai,!self.space.isEmpty else{throw LinkError("connect_first")}
             let capability=try await ai.capabilities(space:self.space)
+            try Task.checkCancellation()
             guard capability.configured else{throw LinkError("gateway_text_model_not_configured")}
             self.modelNotice="文字内容由网关配置的模型服务处理；生成结果仅作为草稿。"
             let records=try await ai.records(space:self.space)

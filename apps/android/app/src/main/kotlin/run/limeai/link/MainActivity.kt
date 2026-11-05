@@ -24,6 +24,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
@@ -75,7 +76,7 @@ class Workbench(application:Application):AndroidViewModel(application) {
     fun pause(){generation++;job?.cancel();clearTargets();cloudSnapshot=null;gateway="";authorization=null}
     fun run(work:suspend()->Unit){
         if(busy)return;busy=true;val current=generation
-        job=viewModelScope.launch{
+        job=viewModelScope.launch(start=CoroutineStart.UNDISPATCHED){
             try{currentCoroutineContext().ensureActive();work()}
             catch(error:CancellationException){throw error}
             catch(error:Exception){if(current==generation){if(error is ControlException&&error.code=="unauthenticated"){spaces=emptyList();space="";clearTargets();principal="";gateway="";cloudSnapshot=null;cloudRecords=emptyList();recordKey="";text=""};message=(error as? GatewayException)?.displayMessage?:(error as? ControlException)?.displayMessage?:error.message?:"操作未完成"}}

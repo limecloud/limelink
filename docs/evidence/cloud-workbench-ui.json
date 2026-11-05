@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "verified_at": "2026-11-05T13:22:11.677136+00:00",
+  "verified_at": "2026-11-05T13:29:25.387227+00:00",
   "scope": "macOS 真窗口的云入口、字段清理与拒绝非 HTTPS 地址；未访问云服务或领取授权",
   "native_ui": true,
   "physical_phone": false,
@@ -13,9 +13,9 @@
     "非 HTTPS 控制面地址在发起前被拒绝，界面显示精确 HTTPS 地址提示",
     "返回本地入口后恢复本地所有者凭据与模型操作入口"
   ],
-  "app_binary_sha256": "ba77ae534e5c825a9308c9baaeaed59f9262fe3ae3a829ae6b14b2edfef679a1",
+  "app_binary_sha256": "2b6d30997898ae9c439a996ca20b54c41b7b96ee83a3d4692d2ab2c089e1f92c",
   "sources": {
-    "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift": "44d1a32de657a4339025ebfef4618bf206b61d843386bfa874784f602953c3e0",
+    "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift": "8369cc13b67740fbd3e887e1223c1346257fbec3385e4f2c53ac3d76b93e467d",
     "packages/apple/Sources/LimeLinkUI/WorkbenchView.swift": "f3679e058dd9ec17eca7a64cc86770f53083e356771d23292b4fc972789b7308",
     "contracts/iot-sdk.lock.json": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3"
   },
