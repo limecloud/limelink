@@ -1,6 +1,8 @@
 {
   "passed": true,
-  "sdk_revision": "e01581888d8be168481b85242c5835864674df3e",
+  "verified_at": "2026-11-06T03:27:06.287776+00:00",
+  "sdk_revision": "1c77ef65e7af9c9036f82e278dfd84507a0f0e7d",
+  "scope": "三种产品云核心的HTTP共享夹具，签名使用本地空间、跨空间阻塞、原键404零重发与客户端重建；非真实云或原生窗口",
   "fixture": true,
   "official_cloud": false,
   "native_app": false,
@@ -18,7 +20,7 @@
       "sources": [
         {
           "path": "contracts/iot-sdk.lock.json",
-          "sha256": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3"
+          "sha256": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6"
         },
         {
           "path": "tools/test-cloud-clients.mjs",
@@ -38,14 +40,14 @@
         },
         {
           "path": "packages/apple/Tests/IdentityTests.swift",
-          "sha256": "0a14b140c26111641cfcdb294a163b9c961d1606ce05177a29b70d7e6a04069b"
+          "sha256": "e2cb9af1b7bfd68b635fd36e872f3585f630665b4f2cfb8dcb2635008550458d"
         },
         {
           "path": "Package.swift",
-          "sha256": "f40f02141e76d38acff763b47283d6311a6dabb47e91cdb4ba1fb8c4f33b39f8"
+          "sha256": "3ca5ae1e3dc03127c9a0a65a34a4de07906381ca3c5e9b64afda3eed7ef57806"
         }
       ],
-      "log_sha256": "6867a3ece8d74722950bdd297af9ed19af369b2b934b24f312b5078ba9856666"
+      "log_sha256": "c8b99ee294449f207edf675a60288f3afafee4b59a3898cb26421f9149a28762"
     },
     {
       "target": "android",
@@ -59,7 +61,7 @@
       "sources": [
         {
           "path": "contracts/iot-sdk.lock.json",
-          "sha256": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3"
+          "sha256": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6"
         },
         {
           "path": "tools/test-cloud-clients.mjs",
@@ -71,7 +73,7 @@
         },
         {
           "path": "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt",
-          "sha256": "d5855e8e73580a3c053f1e7259bbe9ac18abb7d0837758f470e808ef127b7d19"
+          "sha256": "f58a43db04ae26ad6b7b1326c9a91dfa0b2ed6b17e373634a54e2f510c12219d"
         },
         {
           "path": "apps/android/core/src/test/kotlin/run/limeai/link/core/CloudLinkClientTest.kt",
@@ -82,7 +84,7 @@
           "sha256": "1ea1aa2fc5247ab8285d6167f47165ceb734f36766e1f4e63a6d760eb0e34afc"
         }
       ],
-      "log_sha256": "a9dc85dc7f9504812e260b21c28d058e43788740a29a2b459fa8bb27aaa100e3"
+      "log_sha256": "bf593a5970490ee1f3be849d23dbfc63109031be261376d7a3b32351b1923f38"
     },
     {
       "target": "dotnet",
@@ -96,7 +98,7 @@
       "sources": [
         {
           "path": "contracts/iot-sdk.lock.json",
-          "sha256": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3"
+          "sha256": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6"
         },
         {
           "path": "tools/test-cloud-clients.mjs",
@@ -108,11 +110,11 @@
         },
         {
           "path": "apps/windows/LimeLink.Core/LinkClient.cs",
-          "sha256": "a766b2e7f9ba82338bbb430b98810d2313e203a77451f4f3eb58fac45eba340e"
+          "sha256": "db94c430e4e964f5a4345e191346a9e9501e1aeafc60374ade6b3b6f63035b49"
         },
         {
           "path": "apps/windows/LimeLink.Core.Checks/Program.cs",
-          "sha256": "e2b6479e30f1db680cd27a337cd99f332ae4d7da5947c6622bc5cd9f87e218ff"
+          "sha256": "734267f29b1f96781cfab17a420480ab9b8794c14179945d80334ebc26115e3a"
         },
         {
           "path": "apps/windows/LimeLink.Core.Checks/CloudChecks.cs",
@@ -123,28 +125,27 @@
           "sha256": "67da3c3c88a9c612007cf69c959a4ba3fe5546dc48c9c7b896624784c297e795"
         }
       ],
-      "log_sha256": "ef4af11a9e6fd2634b92728880aebe92879c6d17c860cc3366e1c22f7ad9fec6"
+      "log_sha256": "33fe4a58bc77903bd076c07fe548bddcdd7edfea892c93d5585d1f5ddca74d63"
     }
   ],
   "sources": {
-    "contracts/iot-sdk.lock.json": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3",
+    "contracts/iot-sdk.lock.json": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6",
     "tools/test-cloud-clients.mjs": "eb102caa6c1838dd89b6353d5ec32163416e96c55f02dd9c1ad01179c9135b8d",
     "packages/apple/Sources/LimeLinkCore/CloudLinkClient.swift": "98951d8ff351d11ebfb529e8ccd8c3102706ed58f82140170c3ebe988e295375",
     "packages/apple/Sources/LimeLinkCore/SecureStore.swift": "38b3a589ef466cce173a66dfa59ac6f9250ef9034206864f0491c20f1f54cf1d",
     "packages/apple/Tests/CloudChecks.swift": "13b2d6aaf4989f70e5432f964b5a1947e803a88b511ac9c288cd88f6c7d89f41",
-    "packages/apple/Tests/IdentityTests.swift": "0a14b140c26111641cfcdb294a163b9c961d1606ce05177a29b70d7e6a04069b",
-    "Package.swift": "f40f02141e76d38acff763b47283d6311a6dabb47e91cdb4ba1fb8c4f33b39f8",
+    "packages/apple/Tests/IdentityTests.swift": "e2cb9af1b7bfd68b635fd36e872f3585f630665b4f2cfb8dcb2635008550458d",
+    "Package.swift": "3ca5ae1e3dc03127c9a0a65a34a4de07906381ca3c5e9b64afda3eed7ef57806",
     "apps/android/core/src/main/kotlin/run/limeai/link/core/CloudLinkClient.kt": "2ecd3f6db6d4866805aa74f09c7a3178fa4f2d2fb4280009e5dac2a2c6e966ba",
-    "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt": "d5855e8e73580a3c053f1e7259bbe9ac18abb7d0837758f470e808ef127b7d19",
+    "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt": "f58a43db04ae26ad6b7b1326c9a91dfa0b2ed6b17e373634a54e2f510c12219d",
     "apps/android/core/src/test/kotlin/run/limeai/link/core/CloudLinkClientTest.kt": "5fbdebdbf68f92b5c8163157347bd3cf37249c4f77cbc6b80559decb60e2db28",
     "apps/android/core/build.gradle.kts": "1ea1aa2fc5247ab8285d6167f47165ceb734f36766e1f4e63a6d760eb0e34afc",
     "apps/windows/LimeLink.Core/CloudLinkClient.cs": "d86b5e964a3d7aa756b1382474626cebdb1e8ee0a4c6ff08e7ea8514181a10d3",
-    "apps/windows/LimeLink.Core/LinkClient.cs": "a766b2e7f9ba82338bbb430b98810d2313e203a77451f4f3eb58fac45eba340e",
-    "apps/windows/LimeLink.Core.Checks/Program.cs": "e2b6479e30f1db680cd27a337cd99f332ae4d7da5947c6622bc5cd9f87e218ff",
+    "apps/windows/LimeLink.Core/LinkClient.cs": "db94c430e4e964f5a4345e191346a9e9501e1aeafc60374ade6b3b6f63035b49",
+    "apps/windows/LimeLink.Core.Checks/Program.cs": "734267f29b1f96781cfab17a420480ab9b8794c14179945d80334ebc26115e3a",
     "apps/windows/LimeLink.Core.Checks/CloudChecks.cs": "e91e8a423288410e128e5437009b8102aaa9c7ae02f626642e5736670271d0fe",
     "apps/windows/LimeLink.Core.Checks/CloudLiveChecks.cs": "67da3c3c88a9c612007cf69c959a4ba3fe5546dc48c9c7b896624784c297e795"
   },
-  "scope": "三种 LimeLink 产品云核心消费同一 HTTP 夹具；非原生云 UI 或真实跨网产品旅程",
-  "as_of": "2026-11-05",
-  "upstream_evidence": "https://github.com/limecloud/iot/blob/e01581888d8be168481b85242c5835864674df3e/docs/evidence/2026-11-05-native-desktop-cloud.json"
+  "history": "docs/evidence/history/2026-11-06-before-sdk-revalidation/cloud-clients.json",
+  "invocation_note": "首个all批次的Apple和Android通过，.NET因传入不存在的可执行文件路径ENOENT而未执行；更正路径后单独执行.NET通过，没有重复前两个已通过的客户端检查。"
 }

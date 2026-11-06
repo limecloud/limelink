@@ -2,16 +2,17 @@ import SwiftUI
 @preconcurrency import Speech
 @preconcurrency import AVFoundation
 
-@MainActor final class VoiceDraft: ObservableObject {
-    @Published var recording=false
-    @Published var starting=false
-    @Published var message="语音仅生成草稿，发送仍需点击确认。"
+@MainActor public final class VoiceDraft: ObservableObject {
+    @Published public private(set) var recording=false
+    @Published public private(set) var starting=false
+    @Published public private(set) var message="语音仅生成草稿，发送仍需点击确认。"
+    public init(){}
     private let engine=AVAudioEngine()
     private var task:SFSpeechRecognitionTask?
     private var request:SFSpeechAudioBufferRecognitionRequest?
     private var timer:Task<Void,Never>?
     private var generation=0
-    func start(result:@escaping @MainActor (String)->Void) {
+    public func start(result:@escaping @MainActor (String)->Void) {
         guard !recording && !starting else{return}
         starting=true;generation+=1;let current=generation
         Task {
@@ -46,7 +47,7 @@ import SwiftUI
             timer=Task{[weak self] in try? await Task.sleep(for:.seconds(30));guard !Task.isCancelled else{return};self?.stop()}
         }
     }
-    func stop(){
+    public func stop(){
         timer?.cancel();timer=nil
         if recording{engine.stop();engine.inputNode.removeTap(onBus:0)}
         recording=false;starting=false;generation+=1

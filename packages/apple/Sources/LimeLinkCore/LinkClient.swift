@@ -40,20 +40,24 @@ public actor LinkClient {
         return identity
     }
     public func fingerprint(space:String,device:String) async throws -> String { try await identity(space:space,device:device).fingerprint }
-    public func perform(space:String,device:Device,kind:String,payload:JSONValue) async throws -> Command {
+    public func perform(space:String,device:Device,kind:String,payload:JSONValue,path:String = "link.exchange",onPrepared:(@Sendable (PendingAction) async throws -> Void)? = nil) async throws -> Command {
         guard !busy else { throw LinkError("request_in_progress") };busy=true;defer{busy=false}
+        guard ["link.exchange","agent.exchange"].contains(path),kind.hasPrefix("agent.") == (path=="agent.exchange") else {throw LinkError("invalid_action_path")}
         guard selectedSpace==space,device.ready else { throw LinkError("refresh_target_required") }
         guard try await pending()==nil else { throw LinkError("resolve_original_request_first") }
         let snapshot=try await gateway.snapshot(space:space)
         guard let current=snapshot.devices.first(where:{$0.id==device.id}),current.ready,current.modelRevision==device.modelRevision,
-              snapshot.models[current.modelRevision]?.modelId=="urn:limelink:model:desktop:1" else { throw LinkError("target_capability_changed") }
+              let model=snapshot.models[current.modelRevision],model.modelId=="urn:limelink:model:desktop:1",
+              model.services.contains(where: {service in service.id == String(path.split(separator:".")[0]) && service.actions?.contains(where:{$0.id=="exchange"}) == true}) else { throw LinkError("target_capability_changed") }
         let identity=try await identity(space:space,device:device.id)
         let input=try identity.exchange(space:space,device:device.id,revision:device.modelRevision,kind:kind,payload:payload.jsonText)
-        let intent=CommandIntent(device:current,path:"link.exchange",value:input,type:"action.invoke")
+        let intent=CommandIntent(device:current,path:path,value:input,type:"action.invoke")
         let pending=PendingAction(origin:gateway.origin,space:space,intent:intent)
         let data=try JSONEncoder().encode(pending)
         try await store.save(origin:scope,data:data)
         guard try await store.load(origin:scope)==data else { throw LinkError("intent_not_durable") }
+        // 有独立设备命令的调用方，在 POST 前保存本次结果回传的原平台意图。
+        if let onPrepared{try await onPrepared(pending)}
         // 网络失败后保留原意图；下次只允许查询，不能重建另一个 POST。
         return try await gateway.create(space:space,intent:intent)
     }

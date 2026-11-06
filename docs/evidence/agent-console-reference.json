@@ -1,0 +1,33 @@
+{
+  "observed_at": "2026-11-05T15:02:48.553822+00:00",
+  "repository": "https://github.com/YizhengWw/HachimoDock",
+  "head": "5e2dbdacb7beda88843b2182ae98c7f0c5060721",
+  "worktree_dirty": false,
+  "scope": "源代码和文档研究，未运行参考产品；未复制代码和素材",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "44c6dfda6819781871f4cc067f7c4e74d1e6995cb23546f838b8985b1f8e93ed"
+    },
+    {
+      "path": "pc/README.md",
+      "sha256": "2a908a6a2e1b434014d7579f8b27254b9447520fe805c292a3d92ffd470b1c38"
+    },
+    {
+      "path": "pc/docs/agent-integration-audit.md",
+      "sha256": "0b5fe1e814adc8833d982eda4564784f3d5a85d701ca9e740db84711dd93ca7e"
+    },
+    {
+      "path": "pc/src-tauri/bridge/packages/agent-session-bus/README.md",
+      "sha256": "9844d80d04b18cc9541ad43406eaf606495122dc1e0f738ee7aaf5436986d7b5"
+    },
+    {
+      "path": "pc/src-tauri/bridge/packages/agent-session-bus/src/adapters/base.js",
+      "sha256": "7713fae5ad7c7e7e5e21857a66d32557cf8f4d958112587d4fcf3a421f81072c"
+    },
+    {
+      "path": "pc/src-tauri/bridge/packages/agent-session-bus/src/registry.js",
+      "sha256": "a3c6e7205c72148bfcf4d02cca0bfbaa4b783238dd30d1ccc7a61fc526846c4c"
+    }
+  ]
+}

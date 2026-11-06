@@ -1,0 +1,7 @@
+Use case: stylized-concept
+Asset type: transparent native desktop illustration for connecting a phone, a computer and a gateway.
+Input image: reference image for the right-hand LimeLink mascot identity only. Preserve its lime-green round pod silhouette, taller left lobe, one dark green leaf, two feet, round eyes and friendly smile. Do not copy the original flat logo, wordmark or layout.
+Primary request: a small tasteful isometric composition of one unbranded slim ivory desktop display, one ivory phone with a pale lime blank screen, and one tiny rounded ivory gateway puck resting between them. A soft thin mint connection arc visually joins the three objects. The original tiny LimeLink mascot sits beside the display, modest in scale. Native productivity app empty-state artwork, premium matte ceramic and frosted glass, soft studio lighting, warm contact shadows, clean elegant proportions.
+Composition: cohesive centered group, generous space around all sides, all devices fully visible, no more than these three devices and one mascot, no desks or room. Screens blank and restrained; the tiny gateway is a networking illustration, not a robot or future production claim.
+Palette: warm ivory, lime #A8D85D, forest #263D2C and pale mint.
+Background: transparent alpha if supported. Avoid any text, lettering, logos, numbers, fake interface controls, watermarks, checkerboard, sparks, neon blue, complex wiring or busy scenery.

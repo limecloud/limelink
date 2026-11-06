@@ -481,6 +481,60 @@
       "test_cases": [
         "TC-024"
       ]
+    },
+    {
+      "id": "FR-029",
+      "title": "跨端 Agent 执行与原运行恢复",
+      "status": "partial",
+      "phase": "P6",
+      "documents": [
+        "DOC-32",
+        "DOC-33"
+      ],
+      "test_cases": [
+        "TC-029"
+      ]
+    },
+    {
+      "id": "FR-030",
+      "title": "本机网关安装与生命周期",
+      "status": "partial",
+      "phase": "P6",
+      "documents": [
+        "DOC-20",
+        "DOC-30",
+        "DOC-32"
+      ],
+      "test_cases": [
+        "TC-030"
+      ]
+    },
+    {
+      "id": "FR-031",
+      "title": "远程普通网关部署与公网内网引导",
+      "status": "partial",
+      "phase": "P6",
+      "documents": [
+        "DOC-20",
+        "DOC-30",
+        "DOC-32"
+      ],
+      "test_cases": [
+        "TC-031"
+      ]
+    },
+    {
+      "id": "FR-032",
+      "title": "USB手机安装、网关地址交接与跨端联调",
+      "status": "partial",
+      "phase": "P6",
+      "documents": [
+        "DOC-11",
+        "DOC-30"
+      ],
+      "test_cases": [
+        "TC-032"
+      ]
     }
   ]
 }

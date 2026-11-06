@@ -2,37 +2,178 @@
   "schema_version": 2,
   "model_id": "urn:limelink:model:desktop:1",
   "model_version": "0.1.0",
-  "services": [{
-    "id": "link",
-    "semantic_id": "urn:limelink:service:collaboration:1",
-    "properties": [],
-    "events": [],
-    "actions": [{
-      "id": "exchange",
-      "semantic_id": "urn:limelink:action:exchange:1",
-      "input": {
-        "type": "object",
-        "properties": {
-          "client_id": {"type": "string", "minLength": 36, "maxLength": 36},
-          "public_key": {"type": "string", "minLength": 130, "maxLength": 130},
-          "kind": {"type": "string", "enum": ["pair", "status", "card", "cancel", "revoke", "session_create", "session_claim", "session_write", "session_release", "content_put", "content_remove"]},
-          "nonce": {"type": "string", "minLength": 36, "maxLength": 36},
-          "expires_at": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
-          "payload": {"type": "string", "maxLength": 4096},
-          "signature": {"type": "string", "minLength": 16, "maxLength": 144}
-        },
-        "required": ["client_id", "public_key", "kind", "nonce", "expires_at", "payload", "signature"],
-        "additionalProperties": false
-      },
-      "output": {
-        "type": "object",
-        "properties": {"response": {"type": "string", "maxLength": 4096}},
-        "required": ["response"],
-        "additionalProperties": false
-      },
-      "idempotent": false,
-      "risk": "low",
-      "completion": "submitted"
-    }]
-  }]
+  "services": [
+    {
+      "id": "link",
+      "semantic_id": "urn:limelink:service:collaboration:1",
+      "properties": [],
+      "events": [],
+      "actions": [
+        {
+          "id": "exchange",
+          "semantic_id": "urn:limelink:action:exchange:1",
+          "input": {
+            "type": "object",
+            "properties": {
+              "client_id": {
+                "type": "string",
+                "minLength": 36,
+                "maxLength": 36
+              },
+              "public_key": {
+                "type": "string",
+                "minLength": 130,
+                "maxLength": 130
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "pair",
+                  "status",
+                  "card",
+                  "cancel",
+                  "revoke",
+                  "session_create",
+                  "session_claim",
+                  "session_write",
+                  "session_release",
+                  "content_put",
+                  "content_remove"
+                ]
+              },
+              "nonce": {
+                "type": "string",
+                "minLength": 36,
+                "maxLength": 36
+              },
+              "expires_at": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "payload": {
+                "type": "string",
+                "maxLength": 4096
+              },
+              "signature": {
+                "type": "string",
+                "minLength": 16,
+                "maxLength": 144
+              }
+            },
+            "required": [
+              "client_id",
+              "public_key",
+              "kind",
+              "nonce",
+              "expires_at",
+              "payload",
+              "signature"
+            ],
+            "additionalProperties": false
+          },
+          "output": {
+            "type": "object",
+            "properties": {
+              "response": {
+                "type": "string",
+                "maxLength": 4096
+              }
+            },
+            "required": [
+              "response"
+            ],
+            "additionalProperties": false
+          },
+          "idempotent": false,
+          "risk": "low",
+          "completion": "submitted"
+        }
+      ]
+    },
+    {
+      "id": "agent",
+      "semantic_id": "urn:limelink:service:agent:1",
+      "properties": [],
+      "events": [],
+      "actions": [
+        {
+          "id": "exchange",
+          "semantic_id": "urn:limelink:action:agent-exchange:1",
+          "input": {
+            "type": "object",
+            "properties": {
+              "client_id": {
+                "type": "string",
+                "minLength": 36,
+                "maxLength": 36
+              },
+              "public_key": {
+                "type": "string",
+                "minLength": 130,
+                "maxLength": 130
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "agent.capabilities",
+                  "agent.submit",
+                  "agent.status",
+                  "agent.cancel",
+                  "agent.tool_capabilities",
+                  "agent.tool_pending",
+                  "agent.tool_result"
+                ]
+              },
+              "nonce": {
+                "type": "string",
+                "minLength": 36,
+                "maxLength": 36
+              },
+              "expires_at": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "payload": {
+                "type": "string",
+                "maxLength": 4096
+              },
+              "signature": {
+                "type": "string",
+                "minLength": 16,
+                "maxLength": 144
+              }
+            },
+            "required": [
+              "client_id",
+              "public_key",
+              "kind",
+              "nonce",
+              "expires_at",
+              "payload",
+              "signature"
+            ],
+            "additionalProperties": false
+          },
+          "output": {
+            "type": "object",
+            "properties": {
+              "response": {
+                "type": "string",
+                "maxLength": 4096
+              }
+            },
+            "required": [
+              "response"
+            ],
+            "additionalProperties": false
+          },
+          "idempotent": false,
+          "risk": "high",
+          "completion": "submitted"
+        }
+      ]
+    }
+  ]
 }

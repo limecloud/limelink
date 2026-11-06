@@ -1,0 +1,168 @@
+{
+  "passed": true,
+  "started_at": "2026-11-05T23:09:15.255672+00:00",
+  "finished_at": "2026-11-05T23:09:49.822973+00:00",
+  "scope": "macOS宿主的真实Linux ARM64离线包、隔离Docker安装、HTTPS登录、正式设备证书入网/mTLS及停止重启；无原生窗口或手机",
+  "sources": {
+    "tools/package-gateway.py": "a30a980f34666c3ad60f8e608a3a78fa4748a7a02273d464fbc9ad5d5c954e75",
+    "tools/test-local-gateway.py": "af4763b8949ccccb3735c6409e331663c1f5bfcfed153def2810b6b39db10274",
+    "runtime/src/bin/limelink-gateway.rs": "797a27516f56827d547ef816bf0f2a66a96d1e83c4bf05c88dc79d50b0ca297e",
+    "runtime/src/gateway_deployment.rs": "ebfdc4e8b614bc8ae1192198a8e74a664881190a068bda9c5a78f460f46deded",
+    "contracts/desktop.json": "43d19e24c54904d0ed8d5aca94c6ea564e7d9739ff6a815cae1873fae15ec348",
+    "contracts/iot-sdk.lock.json": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f",
+    "runtime/Cargo.toml": "d38e52d755ab5e3b1cf5c8464236833f73e7eca31ed756c4e51d95a3b858bbd1",
+    "runtime/Cargo.lock": "1893fa56859022cab8a681c8f9bc4ef2871a768dd1e50f29e1c6f866a83963e1",
+    "runtime/src/main.rs": "42ae2f66d373e95c0e606e3666a87f8f639eb5c68cefd34f203690250d322305",
+    "runtime/src/lib.rs": "87f25d4a1b1cc7460a659b4f647cbce309d9e26f23d4d94508e37a4a2400cd54"
+  },
+  "bundle_manifest_sha256": "4f12f6f202577d60ddedeb3c02974306f721581ce432e7bad99e7d47ca7a9332",
+  "helper_sha256": "8c5ae66eabfa19f96b887c97b7170bd2e0ad8da986f7064ff8d9081ff8df3904",
+  "runtime_sha256": "91d386c28fa0813b1036e3bac6b71bc7f67c02fc690c7108507f116b84a4744b",
+  "events": [
+    "bundle_checksums_verified",
+    "remote_docker_rejected_before_installation",
+    "changed_bundle_refused",
+    "new_private_installation_prepared_without_starting",
+    "reinitialization_refused_and_identity_preserved",
+    "real_https_with_explicit_test_CA",
+    "system_trust_unchanged",
+    "owner_cookie_login_and_unique_space",
+    "only_enrolled_desktop_is_offline",
+    "broker_requires_device_client_certificate",
+    "enrolled_desktop_connected_with_real_mTLS",
+    "modified_compose_refused_before_start",
+    "stop_restart_preserves_identity_and_space"
+  ],
+  "cleanup": "containers_removed_data_preserved",
+  "system_trust_changed": false,
+  "native_window": false,
+  "physical_device": false,
+  "formal_distribution": false,
+  "sdk_revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25",
+  "checks": {
+    "deployment_core_tests": 3,
+    "real_lifecycle_events": 13,
+    "desktop_mtls_enrollment": true,
+    "system_trust_modified": false,
+    "agent_started": false,
+    "full_rust_suite": {
+      "shared_vectors": 1,
+      "deployment": 3,
+      "agent": 20,
+      "agent_protocol": 8,
+      "collaboration": 16,
+      "total": 48,
+      "failed": 0
+    }
+  },
+  "bundle": {
+    "platform": "linux/arm64",
+    "images": {
+      "gateway": "sha256:ee4e2eac9b7f8ac72448d68dd44cf6bdf839485b888959a7731a373156e976d8",
+      "edge": "sha256:038087155436d542134e8f268b89fd039ca794f1fbac1aa9c50ac4320be7963b"
+    },
+    "upstream": {
+      "repository": "https://github.com/limecloud/iot",
+      "revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25",
+      "worktree_overlay": false,
+      "archive_sha256": "d067fca55dc1eba77c1255c11ba5e672d41754fc24dfb39df52c71393473ca36",
+      "artifact_source_digest": "90ac4821bdc94d3696b2b35acb8037f410f8d9affb3722c0d4f95a2ed1b55893"
+    },
+    "distribution": "development_unsigned",
+    "runtime_files": {
+      "desktop.json": "43d19e24c54904d0ed8d5aca94c6ea564e7d9739ff6a815cae1873fae15ec348",
+      "images.tar": "2621e7b69a94bedce42e33e4869ab1000c35e6b68233b5a5420d5226c9e400af",
+      "upstream/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "upstream/deploy/dev/config.json": "e109cff0b26b5cab8070af8f8b84dd06db4e4d3388087903c3df600f0a304106",
+      "upstream/deploy/nas/device_identity.py": "5b3d3c3a4c2e5d3570af684cbb3c8b85f59dbd1121dedbf87965d4a7198c5e44",
+      "upstream/deploy/nas/manage.py": "099355e1d2f1164465273dc612afd0482e8d8b08449a70c0760f6978d021afa3",
+      "upstream/deploy/nas/media_state.py": "7c468968af0c378eca1723aee208889098eb55422be6a4ce19d6bec0e7b5facf",
+      "upstream/deploy/nas/nginx.conf": "1293c7ee00b22282203f63b18d11bb9aa85e740c14f0a62250127cb08e907097",
+      "upstream/deploy/nas/platform_install.py": "1fdc899f6eb7bccb229e144e801a51acebf373969451259478fc60803989e81e"
+    }
+  },
+  "artifact_build": {
+    "manifest_sha256": "7b24508d68a3a518cbe178133f16b9d947266964aac8e1c71312f538729670a0",
+    "source_digest": "90ac4821bdc94d3696b2b35acb8037f410f8d9affb3722c0d4f95a2ed1b55893",
+    "input_files": 443,
+    "toolchain": {
+      "rust": "1.93.1",
+      "zig": "0.14.1",
+      "zig_archive_sha256": "39f3dc5e79c22088ce878edc821dedb4ca5a1cd9f5ef915e9b3cc3053e8faefa",
+      "rust_std_sha256": "56f2cd66ad7167dd6924ff095063ffddfe731812a1909b9200bb0ee21982fc47",
+      "rust_target": "aarch64-unknown-linux-gnu",
+      "c_target": "aarch64-linux-gnu.2.36"
+    }
+  },
+  "cleanup_checks": {
+    "containers_remaining": 0,
+    "networks_remaining": 0,
+    "data_preserved": true,
+    "enrollment_preserved": true
+  },
+  "logs": {
+    ".dev/gateway-artifacts-arm64-build.log": "0925a599d24d189d3afb6814e90dc9b88b1743bac074afcdf0ed41b261ddbedb",
+    ".dev/package-gateway-arm64-fixed.log": "37d3d097f5eedb5a6dc2ad202490f6e5870fa533c1a101ac66fce277b5bcc6d6",
+    ".dev/gateway-deployment-core-fixed.log": "f1ca5195b6366a1e2e0e91e284bf499f0585e313cd4011fe215b9540b3221b52",
+    ".dev/gateway-deployment-helper-fixed-build.log": "bb59a2749ca05ba84ac598aaabc1783104c964db15f9ea5430c4464a136ff5ae",
+    ".dev/local-gateway-installation-fixed.log": "5952d3b1ecdaf784e52994d369b4d8ee1a40fd24b98941693f234907a07fce37",
+    ".dev/verify-runtime.log": "2226346faf77fef2710f07000e56537454a77cf11acd10c9f4db9e3d8534c686"
+  },
+  "previous_attempts": [
+    {
+      "stage": "standard_image_build",
+      "passed": false,
+      "reason": "Docker虚拟机DNS拒绝镜像仓库解析；未修改全局DNS，改用固定源码新制品与校验过的本地依赖层",
+      "log_sha256": "b186987813a4f2132ca3d3a52c2c89608efb327b59130b1e5b35f849b5858eea"
+    },
+    {
+      "stage": "old_artifact_reuse",
+      "passed": false,
+      "reason": "旧制品与固定提交有19个构建输入不同，拒绝复用，随后重新交叉构建当前提交",
+      "log_sha256": "5e04ed26512a769efd1100cc6a516ba5d9c871af5d4dcbccc8db8b34f606d5ce"
+    },
+    {
+      "stage": "empty_initial_registry",
+      "passed": false,
+      "reason": "上游要求至少一台初始设备，空配置返回invalid_config；改为正式登记当前电脑并签发独立设备证书，随后实测mTLS上线",
+      "evidence": {
+        "passed": false,
+        "error": "{'action': 'start', 'exit_code': 1, 'response': '{\"code\":\"deployment_tool_failed\",\"ok\":false}\\n'}",
+        "started_at": "2026-11-05T23:04:29.974182+00:00",
+        "finished_at": "2026-11-05T23:04:50.017056+00:00",
+        "scope": "macOS宿主的真实Linux ARM64离线包、隔离Docker安装、HTTPS登录、mTLS匿名拒绝和停止重启；无原生窗口或手机",
+        "sources": {
+          "tools/package-gateway.py": "a30a980f34666c3ad60f8e608a3a78fa4748a7a02273d464fbc9ad5d5c954e75",
+          "tools/test-local-gateway.py": "5245d71feb24c87f6ca5fe2ed38b7bc67c2b98f7f06181598644b926f920c830",
+          "runtime/src/bin/limelink-gateway.rs": "797a27516f56827d547ef816bf0f2a66a96d1e83c4bf05c88dc79d50b0ca297e",
+          "runtime/src/gateway_deployment.rs": "998f8929d9b21bb0fa778875fe3ef0eb6a603c0b9500cea7871226bcc731cec8",
+          "contracts/desktop.json": "43d19e24c54904d0ed8d5aca94c6ea564e7d9739ff6a815cae1873fae15ec348",
+          "contracts/iot-sdk.lock.json": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f"
+        },
+        "bundle_manifest_sha256": "4f12f6f202577d60ddedeb3c02974306f721581ce432e7bad99e7d47ca7a9332",
+        "helper_sha256": "5e8422eac960344b773bcf86958f14bff0eb9ea242ada3900f45a78ccc8a26ed",
+        "events": [
+          "bundle_checksums_verified",
+          "remote_docker_rejected_before_installation",
+          "changed_bundle_refused",
+          "new_private_installation_prepared_without_starting",
+          "reinitialization_refused_and_identity_preserved"
+        ],
+        "cleanup": "containers_removed_data_preserved",
+        "system_trust_changed": false,
+        "native_window": false,
+        "physical_device": false,
+        "formal_distribution": false
+      },
+      "diagnostic_log_sha256": "ac35c785ce4ecf47126fdc2e3e809964f1445037649da79ba128d0737d150266"
+    }
+  ],
+  "remaining": [
+    "桌面图形安装、工具发现与服务状态入口",
+    "目标系统和手机的CA信任引导",
+    "Windows宿主与其他架构",
+    "安装中断/超时后的恢复、诊断和卸载",
+    "正式签名分发、版本更新及数据回退",
+    "发现公告与完整手机/Agent用户旅程"
+  ]
+}

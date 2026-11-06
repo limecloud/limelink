@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "verified_at": "2026-11-06T03:23:47.795396+00:00",
+  "scope": "本机协同 Store 正文保留、原命令回执与明确 v1 到 v2 迁移；macOS 主机 Rust 核心和 CLI 子进程检查",
+  "sdk_revision": "1c77ef65e7af9c9036f82e278dfd84507a0f0e7d",
+  "sources": {
+    "runtime/src/lib.rs": "87f25d4a1b1cc7460a659b4f647cbce309d9e26f23d4d94508e37a4a2400cd54",
+    "runtime/src/main.rs": "42ae2f66d373e95c0e606e3666a87f8f639eb5c68cefd34f203690250d322305",
+    "runtime/tests/collaboration.rs": "30c1c70cef55e8d63a87d5ab4a18408091f401855346822dbec38705856f4ed2",
+    "runtime/Cargo.toml": "d38e52d755ab5e3b1cf5c8464236833f73e7eca31ed756c4e51d95a3b858bbd1",
+    "runtime/Cargo.lock": "1893fa56859022cab8a681c8f9bc4ef2871a768dd1e50f29e1c6f866a83963e1",
+    "contracts/iot-sdk.lock.json": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6"
+  },
+  "host": "Darwin arm64",
+  "storage_schema_version": 2,
+  "native_ui": false,
+  "agent_storage": false,
+  "physical_device": false,
+  "command": [
+    "cargo",
+    "test",
+    "--manifest-path",
+    "runtime/Cargo.toml",
+    "--locked",
+    "--test",
+    "collaboration"
+  ],
+  "collaboration_tests": 16,
+  "exit_code": 0,
+  "verified": [
+    "主表与 session_claim 缓存回执正文按原会话期限在同一事务内清空",
+    "原命令查询先检查 TTL，无需等待心跳；command ID、摘要、修订及 nonce 保留且不重跑",
+    "普通启动拒绝 v1；明确迁移清空无法确定原始期限的旧缓存正文，当前有效会话主表不提前清空",
+    "同名新会话不能延长旧回执正文期限",
+    "身份不匹配、损坏回执迁移回滚；高于 v2 拒绝",
+    "secure_delete 与 WAL 截断；v1 空闲页整理和 pending 状态持久化",
+    "活跃只读事务固定 WAL 时不阻塞等待读者；重启仍报告 pending，释放后重试完成",
+    "读者释放并完成维护后扫描活动数据库和 WAL，不含测试夹具正文",
+    "CLI 遵守运行锁，成功迁移不连接网关且不创建 Agent 数据库"
+  ],
+  "logs": {
+    ".dev/revalidate-retention.log": "19b0f231e8b11f5cd3e54614da71891599cacd6bee788468c03d882124ee0a5e"
+  },
+  "regression_reproducer": {
+    "log_sha256": "7558dbdc49b912716cdf5e3e14ae4d06e6e4d2f034e32723beb9c76b6cfd7a31",
+    "initial_expected_failure": true,
+    "resolved_by_current_tests": true
+  },
+  "limits": [
+    "活跃读者释放前仍可读取旧快照；content_cleanup_pending=true 不表示清理完成",
+    "不包含 AgentStore、客户端原意图、IoT 命令账本、Codex 会话和日志",
+    "不包含备份、系统快照、文件系统旧块、存储介质及其他副本的清除",
+    "历史命令引用和防重放记录的容量回收仍未完成",
+    "CLI 是开发格式迁移入口，正式安装更新、加密备份和回退仍待验收"
+  ],
+  "current_run": {
+    "command": "cargo test --manifest-path runtime/Cargo.toml --locked --test collaboration --test agent",
+    "exit_code": 0,
+    "relevant_tests": 16,
+    "history": "docs/evidence/history/2026-11-06-before-sdk-revalidation/content-retention.json"
+  }
+}

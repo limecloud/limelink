@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "verified_at": "2026-11-06T03:24:32.804746+00:00",
+  "scope": "当前SDK的18组.NET核心和WinUI C#类型检查；在macOS运行，不验证Windows ACL、XAML构建、安装或窗口",
+  "sdk_revision": "1c77ef65e7af9c9036f82e278dfd84507a0f0e7d",
+  "host_platform": "macOS",
+  "sources": {
+    "contracts/iot-sdk.lock.json": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6",
+    "apps/windows/LimeLink.Core/LocalAgentConfiguration.cs": "8869f430f77013511c610ebb158ef2155d9b31235f34875ebc40068c04148826",
+    "apps/windows/LimeLink.Core/CodexExecutableDiscovery.cs": "426959bb45002d90d62804d2ef7fc94244caa1ea1682a992cdbff6b78d8dc195",
+    "apps/windows/LimeLink.Core/LimeLink.Core.csproj": "4a4b4f24e91e7f956bab26d84615357b2738814a41a0a76eb5d9748304be46ed",
+    "apps/windows/LimeLink.Core.Checks/LocalAgentConfigurationChecks.cs": "58e078cdaae2fe303a1c1f437a9af1aed7024424641eb34739cb9353e3df6624",
+    "apps/windows/LimeLink.Core.Checks/Program.cs": "734267f29b1f96781cfab17a420480ab9b8794c14179945d80334ebc26115e3a",
+    "apps/windows/LimeLink.Core.Checks/LimeLink.Core.Checks.csproj": "44858788e81753c438afaaccd369e82d584d2b023a264fe43de1d7561c2ef700",
+    "apps/windows/LimeLink.App/DesktopAgentSettings.cs": "a4e2c6d1669ddc6f78885c8eab09a9a94024e14cca28349baeda85ee57b890ba",
+    "apps/windows/LimeLink.App/DesktopWorkspace.cs": "a5a0f15537e9ed6871e3640de0edafa93f8365b01e331bcd0a96b87e67ac4dab",
+    "apps/windows/LimeLink.App/MainWindow.cs": "7af61ff3f327855a8a0a6a40d1a40ddf4abfd568217846a805e425efb50828ec",
+    "apps/windows/LimeLink.App/LimeLink.App.csproj": "2ba80037523035b26f2923eca5ebc92c09df7cf6d2643f1cac75b68a26dbc239",
+    "tools/check-windows-sources.py": "909e268d093dabc1af2fae712a5c63a9339640c9b12a56e0b35f5959b1c7009a"
+  },
+  "checks": {
+    "dotnet_groups": 18,
+    "local_configuration": {
+      "local_agent_configuration": true,
+      "identity_preserved": true,
+      "external_change_refused": true,
+      "codex_probe": true,
+      "windows_acl_exercised": false,
+      "windows_ui": false
+    },
+    "windows_csharp_types": true,
+    "identity_fields_preserved": true,
+    "external_change_refused": true,
+    "configuration_unknown_fields_refused": true,
+    "codex_version_and_app_server_probe": true,
+    "probe_timeout_and_output_budget_on_macos": true
+  },
+  "windows_acl_exercised": false,
+  "xaml_compiled": false,
+  "native_ui": false,
+  "native_runtime_lifecycle": false,
+  "package_created": false,
+  "physical_device": false,
+  "evidence": [
+    "docs/evidence/native-validation.json",
+    "docs/evidence/windows-source-check.json"
+  ],
+  "logs": {
+    ".dev/verify-dotnet.log": "33fe4a58bc77903bd076c07fe548bddcdd7edfea892c93d5585d1f5ddca74d63",
+    ".dev/revalidate-windows-sources.log": "66f4c43182df40e31a460ea2da872bd0e4a27a67c94b3cc9d79cbe4241a25a03"
+  },
+  "remaining": [
+    "Windows 当前用户 Owner 和专用 ACL 实测",
+    "完整 WinUI XAML 构建与打包",
+    "设置表单、文件/目录选择器和保存重连的原生窗口验收",
+    "Windows 进程退出、超时和迟到帧的系统生命周期验收"
+  ],
+  "revalidation": {
+    "core_started_at": "2026-11-06T01:48:01.798911+00:00",
+    "core_finished_at": "2026-11-06T01:48:13.297514+00:00",
+    "types_verified_at": "2026-11-06T03:24:32.804746+00:00"
+  },
+  "previous_evidence": "docs/evidence/history/2026-11-06-sdk-core-revalidation/agent-settings-windows-core.json"
+}

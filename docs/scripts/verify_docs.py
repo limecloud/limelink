@@ -254,7 +254,16 @@ def main() -> int:
             data = path.read_bytes()
             require(data[:8] == b"\x89PNG\r\n\x1a\n", f"不是有效 PNG 头: {path.name}")
             require(list(struct.unpack(">II", data[16:24])) == row.get("actual_size"), f"原图实际尺寸过期: {path.name}")
-    require({str(path.relative_to(ROOT)) for path in (ROOT / "output/imagegen").glob("*.png")} == {row.get("output") for row in assets}, "原图必须全部入册")
+    desktop_assets = load("docs/brand/desktop-generation.json").get("assets", [])
+    require(len(desktop_assets) == 4, "桌面生成素材必须覆盖插画、背景与 3D 图标")
+    for row in desktop_assets:
+        for field, digest_field in [("source", "source_sha256"), ("prompt", "prompt_sha256"), ("export", "export_sha256")]:
+            path = ROOT / row.get(field, "")
+            require(path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest() == row.get(digest_field), f"桌面图像记录过期: {row.get(field)}")
+        for icon in row.get("system_icons", []):
+            path = ROOT / icon.get("path", "")
+            require(path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest() == icon.get("sha256"), f"桌面图标过期: {icon.get('path')}")
+    require({str(path.relative_to(ROOT)) for path in (ROOT / "output/imagegen").glob("*.png")} == {row.get("output") for row in assets} | {row.get("source") for row in desktop_assets}, "原图必须全部入册")
     require({row.get("id") for row in plan.get("assets", [])} == {value for value in asset_ids if int(value[:2]) >= 5}, "场景计划与实际图册不一致")
     for row in exports.get("files", []):
         path = ROOT / row.get("path", "")

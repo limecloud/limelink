@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "verified_at": "2026-11-05T23:57:29.867998+00:00",
+  "scope": "macOS当前开发App的统一网关入口、本机管理和启停、当前电脑执行端连接与Agent默认关闭、内网/公网原生远程引导；初次图形安装在同轮前一开发构建完成。没有重跑旧真实模型任务。",
+  "sdk_revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25",
+  "sources": {
+    "apps/macos/DesktopGatewaySettings.swift": "6badcdbf8cbcc2d1182b13dac7c4b3941fe507124a28879cbc3d1bf319dabab2",
+    "apps/macos/DesktopAgentSettings.swift": "c3d29d4884300cbf519b07174c703bc0c62a18857b8fcd26a08ef1af40fa92bd",
+    "apps/macos/LocalTerminal.swift": "f70c63bc75d7f9999cc4fe091546d5ba266c340507d945157c6c07d470df3641",
+    "packages/apple/Tests/LocalGatewayDeploymentChecks.swift": "bd558cc2fefded1d86edb9aee4744dbf0da2159055cc62ac1635e125e56e4d0e",
+    "contracts/iot-sdk.lock.json": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f"
+  },
+  "native_ui": true,
+  "app_binary_sha256": "7f23175ef131bf6590395c31ce889b5b72609866de28d096b9f688db52eb4a1e",
+  "helper_binary_sha256": "9bcbe82a9f097a223ec5039b256f8b1a9901b9f90706bf3994887e32f1d6fd16",
+  "runtime_binary_sha256": "ccc6376bb67b335dd2a54b7900546dc29150011bae7e588607c8f02a7f944fc0",
+  "events": [
+    "gateway_page_opens_installation_and_management",
+    "settings_and_gateway_page_share_one_controller",
+    "automatic_docker_and_standalone_compose_discovery",
+    "first_native_installation_to_new_private_directory",
+    "installation_does_not_start_services_or_agent",
+    "native_start_and_stop_and_restart",
+    "selected_installation_restored_after_app_relaunch",
+    "generated_device_configuration_connects_over_mtls",
+    "agent_settings_show_connected_and_codex_disabled",
+    "private_network_native_guide_generated",
+    "public_network_native_guide_with_separate_ssh_host_and_root_login",
+    "public_guide_uses_systemd_and_nginx_without_docker",
+    "using_remote_address_returns_to_connection_without_login",
+    "current_app_runtime_connected_without_enabling_agent"
+  ],
+  "first_installation_phase": {
+    "app_binary_digest_recorded": false,
+    "note": "首次安装构建的App摘要未单独保存；当前App摘要只绑定后续统一入口、启停、设置共享状态和远程引导复验。Rust部署源码未变。",
+    "before_restart": {
+      "identity_digests": {
+        "state/secrets/owner-token": "230dae6495f011b332d10ba4c8c9a3f0265b43ce0bf0618601a81d4c7259f071",
+        "state/authority/ca.key": "263a774cc42523dd8edae7deb25fb55c1ec5eb018e3e4b2c96d8653eae7ac154",
+        "state/device-authority/ca.key": "8fae3745f855eccb218244f7ab79c6622005880e533d70cbea781bfb1465c0d1",
+        "enrollment/desktop/private.key": "d486be777e99e4c65d0faa056b25a1ee7920dc85557d56f1144e9f70611438e7",
+        "desktop-runtime.json": "aa810d10e25bc17e32c6503530bce44cf97b26f09aaa4da3f3d74cc3eabaffd8"
+      },
+      "agent_disabled": true,
+      "origin": "https://127.0.0.1:18443",
+      "https_healthy": true,
+      "owner_authenticated": true,
+      "spaces_preserved": true,
+      "only_registered_desktop": true
+    },
+    "after_restart": {
+      "identities_preserved": true,
+      "same_desktop_ready_after_restart": true,
+      "agent_disabled": true
+    },
+    "app_quit_keeps_gateway_running": true
+  },
+  "screenshots": {
+    "docs/evidence/screenshots/macos-gateway-management.png": "60c81d926dfb1d74c642b350a8143e9cf91275f4de279ea46ff9f7f97a84fecc",
+    "docs/evidence/screenshots/macos-remote-gateway-private.png": "419b441eb6f3b4831203a91181eedefbb64ce1f47eedd625f28fbd9dd753bbfb",
+    "docs/evidence/screenshots/macos-remote-gateway-public.png": "e99d311464c74b52375fb2a9eb0b3c57da0d11e0a6781f2f31665b24d92ab79b"
+  },
+  "public_remote_endpoint_verified": false,
+  "physical_phone": false,
+  "real_model_task_rerun": false,
+  "formal_distribution": false,
+  "remaining": [
+    "系统/手机证书信任引导",
+    "完整中断恢复、卸载、更新和回退",
+    "Windows目标宿主",
+    "公网DNS、受信证书与安全组",
+    "远程执行端自主设备入网及完整手机旅程"
+  ],
+  "historical_entry_point_sources": {
+    "apps/macos/DesktopRemoteGatewayGuide.swift": "188730e04796e34a67e705453b0149523e7a06b14f8e2e9d34b41e67128700b6",
+    "apps/macos/DesktopSettings.swift": "b14c675b6a6b32df2febf3455985809e8db7f7e14ba4953a4cd24c6cfee62bb1",
+    "apps/macos/DesktopWorkspace.swift": "ff69e373281e81dbeb9cd188bda35c6b164a2e2c840fedba254ef874f5c799fc",
+    "apps/macos/LimeLinkApp.swift": "36d6095504e85013d890690bd1f11ebd635a341c2c0441fac5c99309b2898aae",
+    "packages/apple/Sources/LimeLinkCore/LocalGatewayDeployment.swift": "1ea4862101c878f636f8eff4a43cdd07ea980e80f0e33a1abf826008f507e71b",
+    "packages/apple/Sources/LimeLinkCore/RemoteGatewayPlan.swift": "445f745e979fb3e18a4a4aa031f3865779ad08badf7c0b64fd87d920d799d193",
+    "packages/apple/Tests/RemoteGatewayPlanChecks.swift": "17ba50d5dc3847294aacc1723d434f13f5267a2b5df027fbd6a474ad46215461",
+    "tools/package-macos.py": "da2a4596a009284df8fc4c29f2dba82dcf9b9fc6eedfacc948792368349fe12e"
+  },
+  "entry_point_revalidation": [
+    {
+      "evidence": "docs/evidence/android-mobile-ui.json",
+      "build_evidence": "docs/evidence/native-validation.json",
+      "scope": "App和设置增加共享手机安装入口，远程引导新增端口提示与网络探测；GatewayProcess复用不改原安装进程策略。原本机图形安装和启停旅程未在本轮重跑，新入口仅完成手机安装与公网执行端连接的局部检查。",
+      "full_original_journey_repeated": false
+    }
+  ]
+}

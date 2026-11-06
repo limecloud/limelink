@@ -1,0 +1,6 @@
+Use case: stylized-concept
+Asset type: quiet background texture behind navigation and content of the native LimeLink desktop app.
+Primary request: an extremely restrained, airy abstract atmosphere, warm ivory paper-white at center and bottom, very pale fresh lime light drifting in from the upper left, a hint of cool mint light at the far right, one broad softly curved translucent frosted-glass ribbon near the far lower-right edge. Premium peaceful tactile desktop workspace, soft studio daylight, very subtle fine material texture.
+Composition: most of the canvas must remain nearly empty and close to #F7F8EF so readable interface text and white work surfaces can be placed over it. All decoration stays low contrast and near the outer edges. Smooth spacious continuous composition, no separate panels.
+Palette: warm ivory #F7F8EF, extremely pale lime #E8F1D9, extremely pale mint #E2F1EC, restrained forest undertone; no dark corners.
+Constraints: no mascots, objects, devices, circles resembling buttons, panels, icons, diagrams, UI, text, letters, numbers, logos, borders, watermark or dramatic gradients. Opaque background, soft and subtle rather than busy.

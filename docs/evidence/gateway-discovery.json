@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "started_at": "2026-11-05T15:06:48.820405+00:00",
+  "finished_at": "2026-11-05T15:07:03.985124+00:00",
+  "scope": "macOS Foundation 原生浏览与 Python NAS 公告器的真实 DNS-SD 发现、重复来源、撤回、重现及无效公告合同；未登录实际网关",
+  "events": [
+    "discovery_contract_passed",
+    "gateway_seen",
+    "gateway_removed",
+    "gateway_reappeared"
+  ],
+  "physical_phone": false,
+  "windows": "not_run",
+  "container_runtime": "not_run",
+  "gateway_login": "not_run",
+  "sources": {
+    "Package.swift": "fbf618bd5f3983b987e5b27671a760e063271de6d80ca242f4a5bfac21a79b38",
+    "packages/apple/Sources/LimeLinkCore/GatewayCandidate.swift": "ead921fa172b718cc8aa9d11edf19409cee6f8e3cb44fc5f881502d34e8cb50f",
+    "packages/apple/Sources/LimeLinkUI/GatewayDiscovery.swift": "6c8b867c8d15d0980371fb2dd066d0bb3375c7dcca7b370c213dd9d9b577ff0c",
+    "packages/apple/DiscoveryTests/DiscoveryChecks.swift": "cb099154c049c8b8664898b5f10786e30ec82d132457539a1041d6aa9bd3d7ec",
+    "contracts/fixtures/gateway-discovery.json": "01a7a9bf1636ab8f524820355700b7984b9b1162beed4cb2b7ba66d786588ee6",
+    "tools/test-gateway-discovery.py": "b31ffd1c00eaa4e4d92d762a56cac809c17a7b9e7c338514c8fe359d0ffa0975"
+  },
+  "upstream": {
+    "repository": "https://github.com/limecloud/iot",
+    "head": "e01581888d8be168481b85242c5835864674df3e",
+    "worktree_overlay": true,
+    "files": {
+      "contracts/gateway-discovery.md": "524660f31563cdee216d4d4b5283c38148766c22ca8a0ff07dce44a297999f84",
+      "deploy/nas/compose.discovery.yaml": "68e996c1c501883ccbfca3fb1b27f79ee6b4ab2a19f046eb68409c594d749e0e",
+      "deploy/nas/discovery/requirements.txt": "d703258be86b88ae2137c7270d58e67230ab7b42e9173b1e81c5cab5a0ced0e1",
+      "deploy/nas/discovery/Dockerfile": "ac38d3b45df9f54fb2177c771ad8f093dbdc29c653a12a66dbf31320c46e9078",
+      "deploy/nas/discovery/README.md": "2b4a5cae5788ecbb0d50580a33043651b0aa880e268fa7f76b88861ac741e4a7",
+      "deploy/nas/discovery/test_publish.py": "a83be86b88c15d5b818aaa214d1a87fb9d54adf92b188ddf6f7aa16dd81e8ce8",
+      "deploy/nas/discovery/publish.py": "49ee3e357eb3a3c5fae83304c2def895141f19749c74623143c4bb3587ce6124"
+    }
+  }
+}

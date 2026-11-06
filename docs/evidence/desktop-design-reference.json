@@ -1,0 +1,28 @@
+{
+  "observed_at": "2026-11-05T14:28:14.420876+00:00",
+  "repository": "https://github.com/limecloud/shou",
+  "head": "b080d7460fd9513f11a8cc9adba55ddcf93ef557",
+  "worktree_dirty": false,
+  "files": [
+    {
+      "path": "docs/engineering/interface-design.md",
+      "sha256": "87c523f6f2b73b9b598fd23ed34d7f7afaf5d252c3da12976943db1a5f4307a3"
+    },
+    {
+      "path": "docs/engineering/workspace-design-review.md",
+      "sha256": "80266860ba919598916352d09f2abec35ed4980fb6d263cc690d568281586e5a"
+    },
+    {
+      "path": "apps/macos/Sources/WorkspaceBackdrop.swift",
+      "sha256": "c4b6f5a8242e899a135b9a363b1e51374d5d00fff32da5876e465d549aa0461d"
+    },
+    {
+      "path": "apps/macos/Sources/WorkspaceChrome.swift",
+      "sha256": "f26e86337ac6c3849cbb697b7c04f9b6009a72dfc886becfe2b0e7da34a815e1"
+    },
+    {
+      "path": "apps/macos/Sources/CleanupWelcomeView.swift",
+      "sha256": "6c029a9badf6a15a91b144dea4a5fb95cafa666d73c5c57774baaadbcb473f45"
+    }
+  ]
+}

@@ -34,7 +34,7 @@ static class RecoveryChecks {
             var path=request.RequestUri!.AbsolutePath;HttpStatusCode status=HttpStatusCode.OK;string text;
             if(path.EndsWith("/auth/session",StringComparison.Ordinal))text="{\"csrf_token\":\"csrf\",\"authenticated\":true}";
             else if(path.EndsWith("/devices",StringComparison.Ordinal))text=new JsonObject{{"items",new JsonArray(new JsonObject{{"device_id","desktop"},{"model_revision",Changed?"sha256:changed":"sha256:fixture"},{"ready",true}})}}.ToJsonString();
-            else if(path.EndsWith("/capabilities",StringComparison.Ordinal))text="{\"models\":{\"sha256:fixture\":{\"model_id\":\"urn:limelink:model:desktop:1\"}}}";
+            else if(path.EndsWith("/capabilities",StringComparison.Ordinal))text=new JsonObject{{"models",new JsonObject{{"sha256:fixture",JsonNode.Parse(File.ReadAllText(Path.Combine(AgentChecks.Root,"contracts/desktop.json")))}}}}.ToJsonString();
             else if(request.Method==HttpMethod.Post){Posts++;throw new HttpRequestException("fixture lost response");}
             else{Gets++;status=HttpStatusCode.NotFound;text="{\"error\":{\"code\":\"command_not_found\"}}";}
             var response=new HttpResponseMessage(status){Content=new StringContent(text,Encoding.UTF8,"application/json")};response.Headers.TryAddWithoutValidation("Set-Cookie","__Host-limeiot_session="+new string('a',64)+"; Secure; HttpOnly");return Task.FromResult(response);

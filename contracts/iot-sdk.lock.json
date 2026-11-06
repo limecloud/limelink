@@ -1,6 +1,6 @@
 {
   "repository": "https://github.com/limecloud/iot",
-  "head": "e01581888d8be168481b85242c5835864674df3e",
+  "head": "1c77ef65e7af9c9036f82e278dfd84507a0f0e7d",
   "worktree_overlay": false,
   "files": [
     {
@@ -50,7 +50,7 @@
     },
     {
       "path": "apps/android/core/src/main/kotlin/run/limeai/iot/core/GatewayClient.kt",
-      "sha256": "6a9d257c3f43f2c3cbc4e049d7bf5f9b41d44139b700925e8eea3209e9397e05",
+      "sha256": "cc49156ff6761886c508aa2c6036f0894900dec985dcfac75b71a9cb84dca3c1",
       "matches_head": true
     },
     {
@@ -306,6 +306,11 @@
     {
       "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/TranscriptionClientTest.kt",
       "sha256": "6cec6bd85a9402826a60ddc1b1fccc0677dd8188ee11f55f582ec8a3284fa45e",
+      "matches_head": true
+    },
+    {
+      "path": "apps/android/core/src/test/kotlin/run/limeai/iot/core/TransportRecoveryTest.kt",
+      "sha256": "870ae01b5dfb5062a4d7d02fea538e15908f9a515239c900e6f6b5f6db35a3fc",
       "matches_head": true
     },
     {
@@ -610,7 +615,7 @@
     },
     {
       "path": "packages/dotnet/LimeIoT.Client/GatewayClient.cs",
-      "sha256": "bed25f6e4326afa62621a9309ec4cca989df71ddc563f3abad64c9ad136e4130",
+      "sha256": "b4db127b2577db5bc46af2d0ad949cc8f37a24c3a07e6187076214ae18cfdbe5",
       "matches_head": true
     },
     {
@@ -620,7 +625,7 @@
     },
     {
       "path": "packages/dotnet/LimeIoT.Client/README.md",
-      "sha256": "e1ef165bf48fdd4116499a4608075a82a1ac8525b3787401b1d4b1fa2a718bdd",
+      "sha256": "48bcae5dce40317e7bca3626186241aadceed6c2eab5e66cb594277e75001c96",
       "matches_head": true
     },
     {

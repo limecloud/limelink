@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-11-05",
+  "as_of": "2026-11-06",
   "scope": "实现状态与源码/局部证据；未构成全产品验收",
   "requirements": [
     {
@@ -14,19 +14,24 @@
         "docs/evidence/native-validation.json",
         "docs/evidence/macos-native-ui.json"
       ],
-      "limits": "Windows 原生窗口、正式发行未验收"
+      "limits": "macOS App 构建、本机配对和原生卡片/会话窗口已局部验证；Windows 原生窗口、正式发行未验收"
     },
     {
       "requirement": "FR-002",
       "status": "partial",
       "sources": [
         "apps/ios/LimeLinkApp.swift",
-        "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt"
+        "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt",
+        "apps/android/app/src/main/kotlin/run/limeai/link/GatewayDiscovery.kt",
+        "apps/android/app/src/main/kotlin/run/limeai/link/WorkbenchScreen.kt",
+        "apps/android/app/src/main/kotlin/run/limeai/link/LinkTheme.kt"
       ],
       "evidence": [
-        "docs/evidence/native-validation.json"
+        "docs/evidence/native-validation.json",
+        "docs/evidence/android-gateway-discovery.json",
+        "docs/evidence/android-mobile-ui.json"
       ],
-      "limits": "手机真机与完整原生旅程未验收"
+      "limits": "Android16真机已安装，重做三页导航、连接与设置，完成受信公网HTTPS登录、会话恢复和在线电脑读取；配对回执、Agent、系统NSD生命周期与iOS真机仍未完整验收。"
     },
     {
       "requirement": "FR-003",
@@ -34,12 +39,17 @@
       "sources": [
         "packages/apple/Sources/LimeLinkCore/LinkClient.swift",
         "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt",
-        "apps/windows/LimeLink.Core/LinkClient.cs"
+        "apps/windows/LimeLink.Core/LinkClient.cs",
+        "apps/android/app/src/main/kotlin/run/limeai/link/GatewayDiscovery.kt",
+        "apps/android/core/src/main/kotlin/run/limeai/link/core/GatewayCandidate.kt",
+        "apps/android/core/src/test/kotlin/run/limeai/link/core/GatewayCandidateTest.kt",
+        "contracts/fixtures/gateway-discovery.json"
       ],
       "evidence": [
-        "docs/evidence/native-validation.json"
+        "docs/evidence/native-validation.json",
+        "docs/evidence/android-gateway-discovery.json"
       ],
-      "limits": "各端完整空间切换 UI 尚需目标系统验收"
+      "limits": "网关/空间显式选择已实现；Android 新增自动发现、origin 去重和手动地址备用，解析核心与 APK 构建通过。公告仅提供候选，不自动认证或携带凭据探测；NSD 系统生命周期和各端完整空间切换 UI 仍需目标系统验收"
     },
     {
       "requirement": "FR-004",
@@ -57,23 +67,31 @@
       "requirement": "FR-005",
       "status": "partial",
       "sources": [
-        "runtime/src/main.rs"
+        "runtime/src/main.rs",
+        "runtime/src/gateway_deployment.rs"
       ],
       "evidence": [
-        "docs/evidence/iot-runtime-mtls-integration.json"
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/local-gateway-installation.json"
       ],
-      "limits": "管理员提供注册身份与配置；自主入网未完成"
+      "limits": "本机开发部署已沿上游正式流程为当前电脑签发独立证书并生成执行端配置，真实mTLS上线通过；其他场景仍由管理员提供身份，远程/手机自主CSR和完整入网向导未完成"
     },
     {
       "requirement": "FR-006",
       "status": "partial",
       "sources": [
-        "runtime/src/lib.rs"
+        "runtime/src/lib.rs",
+        "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift",
+        "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt",
+        "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt",
+        "apps/windows/LimeLink.Core/LinkClient.cs",
+        "apps/windows/LimeLink.App/MainWindow.cs"
       ],
       "evidence": [
-        "docs/evidence/iot-runtime-mtls-integration.json"
+        "docs/evidence/iot-runtime-mtls-integration.json",
+        "docs/evidence/pairing-receipt-recovery.json"
       ],
-      "limits": "120秒失效与明确重配已实现；二维码、跨账号和完整真机流程未验收"
+      "limits": "120秒失效与明确重配已实现；三种本地工作台收尾成功配对回执，仍须电脑批准。Android/.NET 十一种结果检查与真实网关局部联调通过；二维码、跨账号和完整目标系统/真机流程未验收"
     },
     {
       "requirement": "FR-007",
@@ -86,7 +104,7 @@
         "docs/evidence/iot-runtime-mtls-integration.json",
         "docs/evidence/macos-native-ui.json"
       ],
-      "limits": "macOS 实际窗口验证；其他桌面窗口另验"
+      "limits": "macOS 当前构建通过本机配对窗口；其他桌面窗口、二维码与完整产品授权仍需验收"
     },
     {
       "requirement": "FR-008",
@@ -138,7 +156,7 @@
         "docs/evidence/iot-runtime-mtls-integration.json",
         "docs/evidence/macos-native-ui.json"
       ],
-      "limits": "macOS 实际展示已验；Windows 窗口尚未验收"
+      "limits": "macOS 当前构建已验证实际卡片呈现及 presented 回执；Windows 窗口尚未验收"
     },
     {
       "requirement": "FR-012",
@@ -223,7 +241,7 @@
         "docs/evidence/iot-runtime-mtls-integration.json",
         "docs/evidence/macos-native-ui.json"
       ],
-      "limits": "仅单桌面与创建客户端；无跨电脑迁移"
+      "limits": "仅单桌面与创建客户端；当前原生会话编辑和软件手机接续已复验，无跨电脑迁移"
     },
     {
       "requirement": "FR-019",
@@ -235,19 +253,26 @@
         "docs/evidence/iot-runtime-mtls-integration.json",
         "docs/evidence/macos-native-ui.json"
       ],
-      "limits": "CAS 修订与30秒写入租约；手机不能释放电脑租约"
+      "limits": "CAS 修订与30秒写入租约；手机不能释放电脑租约；原生编辑/释放与软件手机接续已复验"
     },
     {
       "requirement": "FR-020",
       "status": "partial",
       "sources": [
         "runtime/src/lib.rs",
-        "apps/macos/LocalTerminal.swift"
+        "runtime/src/main.rs",
+        "runtime/tests/collaboration.rs",
+        "apps/macos/LocalTerminal.swift",
+        "runtime/src/agent.rs",
+        "runtime/src/agent/tools.rs",
+        "runtime/tests/agent.rs"
       ],
       "evidence": [
-        "docs/evidence/native-validation.json"
+        "docs/evidence/native-validation.json",
+        "docs/evidence/content-retention.json",
+        "docs/evidence/agent-content-retention.json"
       ],
-      "limits": "脱敏计数诊断已实现；完整操作管理与保留未完成"
+      "limits": "脱敏计数诊断、协同/Agent 库正文和缓存回执到期事务清理、协同 v1 明确迁移及 WAL/旧空闲页维护已验证；完整操作管理、平台/客户端/Codex 保留、备份和历史引用容量回收未完成"
     },
     {
       "requirement": "FR-021",
@@ -266,7 +291,7 @@
         "docs/evidence/native-validation.json",
         "docs/evidence/cloud-workbench-ui.json"
       ],
-      "limits": "四端云工作台源码已接入正式 SDK；Apple 工作台模型 7 组专项及 Android 构建通过；正式云、四端目标系统/真机及完整跨网撤销旅程未验收"
+      "limits": "四端云工作台源码已接入正式 SDK；Apple 工作台模型 8 组专项及 Android 构建通过；正式云、四端目标系统/真机及完整跨网撤销旅程未验收"
     },
     {
       "requirement": "FR-022",
@@ -385,12 +410,19 @@
       "status": "partial",
       "sources": [
         "runtime/src/lib.rs",
-        "packages/apple/Sources/LimeLinkCore/LinkClient.swift"
+        "runtime/src/main.rs",
+        "runtime/tests/collaboration.rs",
+        "packages/apple/Sources/LimeLinkCore/LinkClient.swift",
+        "runtime/src/agent.rs",
+        "runtime/src/agent/tools.rs",
+        "runtime/tests/agent.rs"
       ],
       "evidence": [
-        "docs/evidence/native-validation.json"
+        "docs/evidence/native-validation.json",
+        "docs/evidence/content-retention.json",
+        "docs/evidence/agent-content-retention.json"
       ],
-      "limits": "TTL不等于安全擦除；历史命令/回执保留策略缺失"
+      "limits": "协同与 Agent 库主表、工具和缓存正文按 TTL 清理，secure_delete、旧空闲页及活动 DB/WAL 夹具扫描通过；损坏 Agent 回执回滚整次清理，迟到消息不能重新写回过期正文。读者释放前仍可能读取旧快照；平台/客户端/Codex、备份、系统快照和介质未覆盖，容量回收未完成，不构成完整安全擦除"
     },
     {
       "requirement": "NFR-005",
@@ -436,6 +468,137 @@
       "sources": [],
       "evidence": [],
       "limits": "没有产品性能测量结论"
+    },
+    {
+      "requirement": "FR-029",
+      "status": "partial",
+      "sources": [
+        "contracts/desktop.json",
+        "runtime/src/agent.rs",
+        "runtime/src/agent/codex.rs",
+        "packages/apple/Sources/LimeLinkCore/AgentClient.swift",
+        "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift",
+        "apps/macos/DesktopAssistant.swift",
+        "apps/windows/LimeLink.Core/AgentClient.cs",
+        "apps/windows/LimeLink.App/DesktopAssistant.cs",
+        "apps/android/core/src/main/kotlin/run/limeai/link/core/AgentClient.kt",
+        "apps/android/app/src/main/kotlin/run/limeai/link/AssistantPanel.kt",
+        "contracts/fixtures/agent-responses.json",
+        "runtime/src/agent/tools.rs",
+        "packages/apple/Sources/LimeLinkCore/AgentIoTClient.swift",
+        "packages/apple/Sources/LimeLinkCore/AgentToolProtocol.swift",
+        "packages/apple/Sources/LimeLinkUI/AgentToolsView.swift",
+        "contracts/fixtures/agent-tools.json",
+        "tools/test-agent-iot.mjs",
+        "apps/android/core/src/main/kotlin/run/limeai/link/core/AgentIoTClient.kt",
+        "apps/android/core/src/main/kotlin/run/limeai/link/core/AgentToolProtocol.kt",
+        "apps/android/core/src/test/kotlin/run/limeai/link/core/AgentToolVectorTest.kt",
+        "apps/android/core/src/test/kotlin/run/limeai/link/core/AgentIoTClientTest.kt",
+        "apps/android/core/src/test/kotlin/run/limeai/link/core/AgentIoTLiveTest.kt",
+        "tools/test-agent-iot-android.mjs",
+        "apps/windows/LimeLink.Core/AgentIoTClient.cs",
+        "apps/windows/LimeLink.Core/AgentToolProtocol.cs",
+        "apps/windows/LimeLink.Core.Checks/AgentIoTChecks.cs",
+        "apps/windows/LimeLink.Core.Checks/AgentIoTLiveChecks.cs",
+        "tools/test-agent-iot-clients.mjs",
+        "packages/apple/Sources/LimeLinkCore/LocalAgentConfiguration.swift",
+        "packages/apple/Sources/LimeLinkCore/CodexExecutableDiscovery.swift",
+        "packages/apple/Tests/LocalAgentConfigurationChecks.swift",
+        "apps/macos/DesktopAgentSettings.swift",
+        "apps/macos/DesktopSettings.swift",
+        "apps/macos/LocalTerminal.swift",
+        "apps/windows/LimeLink.Core/LocalAgentConfiguration.cs",
+        "apps/windows/LimeLink.Core/CodexExecutableDiscovery.cs",
+        "apps/windows/LimeLink.Core.Checks/LocalAgentConfigurationChecks.cs",
+        "apps/windows/LimeLink.App/DesktopAgentSettings.cs",
+        "apps/windows/LimeLink.App/DesktopWorkspace.cs",
+        "apps/windows/LimeLink.App/MainWindow.cs"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json",
+        "docs/evidence/agent-gateway-integration.json",
+        "docs/evidence/macos-agent-ui.json",
+        "docs/evidence/windows-source-check.json",
+        "docs/evidence/agent-tools-protocol.json",
+        "docs/evidence/agent-iot-apple-integration.json",
+        "docs/evidence/agent-iot-apple-live.json",
+        "docs/evidence/agent-iot-macos-ui.json",
+        "docs/evidence/agent-iot-android-integration.json",
+        "docs/evidence/agent-iot-android-live.json",
+        "docs/evidence/agent-iot-dotnet-integration.json",
+        "docs/evidence/agent-iot-dotnet-live.json",
+        "docs/evidence/pairing-receipt-recovery.json",
+        "docs/evidence/agent-settings-macos-ui.json",
+        "docs/evidence/agent-settings-windows-core.json"
+      ],
+      "limits": "Codex 适配器、三种产品核心与 macOS 本机批准已有局部验证；Apple/Android/.NET 设备工具代理、逐次确认、两种丢响应恢复及真实模型/网关/模拟灯联调已通过，默认关闭。三种客户端在意图保存后再次核对提案期限，延迟存储过期时零写入。macOS 另完成原生设备确认，Android 仅 JVM 核心与 APK 构建，Windows 仅 Core 与 C# 类型检查。Windows 目标构建/窗口、移动真机、云助手、安装与完整保留策略仍未完成。 最新无设备工具真实模型三端 mTLS 整套回归未通过，出现执行期限未知与严格回复不匹配；夹具 mTLS 已通过，旧真实模型整套记录不作为当前通过依据。 本地成功配对处理回执自动收尾，Android/.NET 十一种结果、无工具 mTLS 夹具及真实 Agent 设备工具重新通过。 macOS 本机 Agent 图形配置、兼容程序自动查找与保存重连已通过核心和真实窗口/模型/模拟灯验收；Windows 本机助手设置、后台程序探测与保存重连源码已实现，18 组 .NET 核心及 WinUI C# 类型检查通过；运行于 macOS，Windows ACL、完整目标构建、设置窗口与退出时序尚未验收。原始设备入网仍由管理员提供配置。",
+      "historical_evidence": [
+        "docs/evidence/agent-gateway-live.json"
+      ],
+      "regressions": [
+        "docs/evidence/regression-2026-11-06.json"
+      ]
+    },
+    {
+      "requirement": "FR-030",
+      "status": "partial",
+      "sources": [
+        "tools/package-gateway.py",
+        "runtime/src/bin/limelink-gateway.rs",
+        "runtime/src/gateway_deployment.rs",
+        "tools/test-local-gateway.py",
+        "apps/macos/DesktopGatewaySettings.swift",
+        "apps/macos/DesktopSettings.swift",
+        "packages/apple/Sources/LimeLinkCore/LocalGatewayDeployment.swift",
+        "packages/apple/Tests/LocalGatewayDeploymentChecks.swift",
+        "tools/package-macos.py"
+      ],
+      "evidence": [
+        "docs/evidence/local-gateway-installation.json",
+        "docs/evidence/native-validation.json",
+        "docs/evidence/gateway-management-macos-ui.json"
+      ],
+      "limits": "macOS本机Linux ARM64离线开发包、辅助程序和原生安装管理已局部验收；实际窗口完成安装、启停、重启恢复、执行端mTLS与Agent默认关闭，主网关页和设置共用控制器，可显式附带离线包。系统/手机信任、Windows、完整中断恢复、卸载和正式升级回退未完成"
+    },
+    {
+      "requirement": "FR-031",
+      "status": "partial",
+      "sources": [
+        "tools/package-native-gateway.py",
+        "tools/native-gateway/install.py",
+        "tools/native-gateway/run.py",
+        "tools/test-native-gateway.py",
+        "packages/apple/Sources/LimeLinkCore/RemoteGatewayPlan.swift",
+        "packages/apple/Tests/RemoteGatewayPlanChecks.swift",
+        "apps/macos/DesktopRemoteGatewayGuide.swift"
+      ],
+      "evidence": [
+        "docs/evidence/native-gateway-server.json",
+        "docs/evidence/gateway-management-macos-ui.json",
+        "docs/evidence/native-validation.json",
+        "docs/evidence/public-native-gateway.json",
+        "docs/evidence/remote-gateway-probe.json"
+      ],
+      "limits": "macOS已实现公网/内网参数与普通版本安装引导，可用root SSH管理员并以独立非root服务运行；用户授权Ubuntu22.04 amd64主机完成17项systemd、回环TLS登录、设备mTLS、私钥隔离和重启保留检查。当前公网域名尚无DNS，受信证书、安全组和完整外网/手机链路未验收；App不自动执行SSH。其他架构、正式签名、更新回退和卸载未完成"
+    },
+    {
+      "requirement": "FR-032",
+      "status": "partial",
+      "sources": [
+        "apps/macos/DesktopMobileSettings.swift",
+        "packages/apple/Sources/LimeLinkCore/MobileDeviceDeployment.swift",
+        "packages/apple/Sources/LimeLinkCore/GatewayConnectionRequest.swift",
+        "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt",
+        "apps/android/app/src/main/kotlin/run/limeai/link/WorkbenchScreen.kt",
+        "apps/ios/Info.plist",
+        "packages/apple/Sources/LimeLinkUI/WorkbenchView.swift",
+        "tools/package-macos.py"
+      ],
+      "evidence": [
+        "docs/evidence/android-mobile-ui.json",
+        "docs/evidence/native-validation.json"
+      ],
+      "limits": "Android真机安装、HTTPS登录和在线电脑读取已局部通过；完整配对/卡片/Agent旅程、iOS实机签名安装和正式发行未验收。桌面需要官方ADB；iOS需要完整Xcode和设备签名。"
     }
   ]
 }

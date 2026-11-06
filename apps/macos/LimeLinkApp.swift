@@ -3,8 +3,13 @@ import AppKit
 import LimeLinkUI
 
 @main struct LimeLinkApp:App {
+    @AppStorage("limelink.appearance") private var appearance="system"
+    @StateObject private var runtime=RuntimeBridge()
+    @StateObject private var gateway=LocalGatewayController()
+    @StateObject private var mobile=MobileDeviceController()
     var body:some Scene {
-        WindowGroup { TabView { WorkbenchView().tabItem{Label("工作台",systemImage:"rectangle.connected.to.line.below")};LocalTerminalView().tabItem{Label("本机终端",systemImage:"desktopcomputer")} }.frame(minWidth:680,minHeight:700).onAppear{NSApplication.shared.setActivationPolicy(.regular);NSApplication.shared.activate(ignoringOtherApps:true)} }
-            .defaultSize(width:860,height:820)
+        WindowGroup { DesktopWorkspace(runtime:runtime,gateway:gateway,mobile:mobile).preferredColorScheme(appearance == "dark" ? .dark : appearance == "light" ? .light : nil).frame(minWidth:960,minHeight:600).onAppear{NSApplication.shared.setActivationPolicy(.regular);NSApplication.shared.activate(ignoringOtherApps:true)} }
+            .defaultSize(width:1280,height:800)
+        Settings { DesktopSettingsView(runtime:runtime,gateway:gateway,mobile:mobile) }
     }
 }

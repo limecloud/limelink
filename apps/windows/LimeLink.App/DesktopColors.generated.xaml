@@ -1,0 +1,264 @@
+<!-- 由 tools/generate-desktop-theme.py 生成，请勿手改。 -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"><ResourceDictionary.ThemeDictionaries>
+<ResourceDictionary x:Key="Light">
+<SolidColorBrush x:Key="LLslate1" Color="#FCFCFD" />
+<SolidColorBrush x:Key="LLslate2" Color="#F9F9FB" />
+<SolidColorBrush x:Key="LLslate3" Color="#F0F0F3" />
+<SolidColorBrush x:Key="LLslate4" Color="#E8E8EC" />
+<SolidColorBrush x:Key="LLslate5" Color="#E0E1E6" />
+<SolidColorBrush x:Key="LLslate6" Color="#D9D9E0" />
+<SolidColorBrush x:Key="LLslate7" Color="#CDCED6" />
+<SolidColorBrush x:Key="LLslate8" Color="#B9BBC6" />
+<SolidColorBrush x:Key="LLslate9" Color="#8B8D98" />
+<SolidColorBrush x:Key="LLslate10" Color="#80838D" />
+<SolidColorBrush x:Key="LLslate11" Color="#60646C" />
+<SolidColorBrush x:Key="LLslate12" Color="#1C2024" />
+<SolidColorBrush x:Key="LLteal1" Color="#FAFEFD" />
+<SolidColorBrush x:Key="LLteal2" Color="#F3FBF9" />
+<SolidColorBrush x:Key="LLteal3" Color="#E0F8F3" />
+<SolidColorBrush x:Key="LLteal4" Color="#CCF3EA" />
+<SolidColorBrush x:Key="LLteal5" Color="#B8EAE0" />
+<SolidColorBrush x:Key="LLteal6" Color="#A1DED2" />
+<SolidColorBrush x:Key="LLteal7" Color="#83CDC1" />
+<SolidColorBrush x:Key="LLteal8" Color="#53B9AB" />
+<SolidColorBrush x:Key="LLteal9" Color="#12A594" />
+<SolidColorBrush x:Key="LLteal10" Color="#0D9B8A" />
+<SolidColorBrush x:Key="LLteal11" Color="#008573" />
+<SolidColorBrush x:Key="LLteal12" Color="#0D3D38" />
+<SolidColorBrush x:Key="LLgreen1" Color="#FBFEFC" />
+<SolidColorBrush x:Key="LLgreen2" Color="#F4FBF6" />
+<SolidColorBrush x:Key="LLgreen3" Color="#E6F6EB" />
+<SolidColorBrush x:Key="LLgreen4" Color="#D6F1DF" />
+<SolidColorBrush x:Key="LLgreen5" Color="#C4E8D1" />
+<SolidColorBrush x:Key="LLgreen6" Color="#ADDDC0" />
+<SolidColorBrush x:Key="LLgreen7" Color="#8ECEAA" />
+<SolidColorBrush x:Key="LLgreen8" Color="#5BB98B" />
+<SolidColorBrush x:Key="LLgreen9" Color="#30A46C" />
+<SolidColorBrush x:Key="LLgreen10" Color="#2B9A66" />
+<SolidColorBrush x:Key="LLgreen11" Color="#218358" />
+<SolidColorBrush x:Key="LLgreen12" Color="#193B2D" />
+<SolidColorBrush x:Key="LLamber1" Color="#FEFDFB" />
+<SolidColorBrush x:Key="LLamber2" Color="#FEFBE9" />
+<SolidColorBrush x:Key="LLamber3" Color="#FFF7C2" />
+<SolidColorBrush x:Key="LLamber4" Color="#FFEE9C" />
+<SolidColorBrush x:Key="LLamber5" Color="#FBE577" />
+<SolidColorBrush x:Key="LLamber6" Color="#F3D673" />
+<SolidColorBrush x:Key="LLamber7" Color="#E9C162" />
+<SolidColorBrush x:Key="LLamber8" Color="#E2A336" />
+<SolidColorBrush x:Key="LLamber9" Color="#FFC53D" />
+<SolidColorBrush x:Key="LLamber10" Color="#FFBA18" />
+<SolidColorBrush x:Key="LLamber11" Color="#AB6400" />
+<SolidColorBrush x:Key="LLamber12" Color="#4F3422" />
+<SolidColorBrush x:Key="LLred1" Color="#FFFCFC" />
+<SolidColorBrush x:Key="LLred2" Color="#FFF7F7" />
+<SolidColorBrush x:Key="LLred3" Color="#FEEBEC" />
+<SolidColorBrush x:Key="LLred4" Color="#FFDBDC" />
+<SolidColorBrush x:Key="LLred5" Color="#FFCDCE" />
+<SolidColorBrush x:Key="LLred6" Color="#FDBDBE" />
+<SolidColorBrush x:Key="LLred7" Color="#F4A9AA" />
+<SolidColorBrush x:Key="LLred8" Color="#EB8E90" />
+<SolidColorBrush x:Key="LLred9" Color="#E5484D" />
+<SolidColorBrush x:Key="LLred10" Color="#DC3E42" />
+<SolidColorBrush x:Key="LLred11" Color="#CE2C31" />
+<SolidColorBrush x:Key="LLred12" Color="#641723" />
+<SolidColorBrush x:Key="LLmint1" Color="#F9FEFD" />
+<SolidColorBrush x:Key="LLmint2" Color="#F2FBF9" />
+<SolidColorBrush x:Key="LLmint3" Color="#DDF9F2" />
+<SolidColorBrush x:Key="LLmint4" Color="#C8F4E9" />
+<SolidColorBrush x:Key="LLmint5" Color="#B3ECDE" />
+<SolidColorBrush x:Key="LLmint6" Color="#9CE0D0" />
+<SolidColorBrush x:Key="LLmint7" Color="#7ECFBD" />
+<SolidColorBrush x:Key="LLmint8" Color="#4CBBA5" />
+<SolidColorBrush x:Key="LLmint9" Color="#86EAD4" />
+<SolidColorBrush x:Key="LLmint10" Color="#7DE0CB" />
+<SolidColorBrush x:Key="LLmint11" Color="#027864" />
+<SolidColorBrush x:Key="LLmint12" Color="#16433C" />
+<SolidColorBrush x:Key="LLblue1" Color="#FBFDFF" />
+<SolidColorBrush x:Key="LLblue2" Color="#F4FAFF" />
+<SolidColorBrush x:Key="LLblue3" Color="#E6F4FE" />
+<SolidColorBrush x:Key="LLblue4" Color="#D5EFFF" />
+<SolidColorBrush x:Key="LLblue5" Color="#C2E5FF" />
+<SolidColorBrush x:Key="LLblue6" Color="#ACD8FC" />
+<SolidColorBrush x:Key="LLblue7" Color="#8EC8F6" />
+<SolidColorBrush x:Key="LLblue8" Color="#5EB1EF" />
+<SolidColorBrush x:Key="LLblue9" Color="#0090FF" />
+<SolidColorBrush x:Key="LLblue10" Color="#0588F0" />
+<SolidColorBrush x:Key="LLblue11" Color="#0D74CE" />
+<SolidColorBrush x:Key="LLblue12" Color="#113264" />
+<SolidColorBrush x:Key="LLviolet1" Color="#FDFCFE" />
+<SolidColorBrush x:Key="LLviolet2" Color="#FAF8FF" />
+<SolidColorBrush x:Key="LLviolet3" Color="#F4F0FE" />
+<SolidColorBrush x:Key="LLviolet4" Color="#EBE4FF" />
+<SolidColorBrush x:Key="LLviolet5" Color="#E1D9FF" />
+<SolidColorBrush x:Key="LLviolet6" Color="#D4CAFE" />
+<SolidColorBrush x:Key="LLviolet7" Color="#C2B5F5" />
+<SolidColorBrush x:Key="LLviolet8" Color="#AA99EC" />
+<SolidColorBrush x:Key="LLviolet9" Color="#6E56CF" />
+<SolidColorBrush x:Key="LLviolet10" Color="#654DC4" />
+<SolidColorBrush x:Key="LLviolet11" Color="#6550B9" />
+<SolidColorBrush x:Key="LLviolet12" Color="#2F265F" />
+<SolidColorBrush x:Key="LLwhite" Color="#FFFFFF" />
+<SolidColorBrush x:Key="ButtonBackground" Color="#F0F0F3" />
+<SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#E8E8EC" />
+<SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#E0E1E6" />
+<SolidColorBrush x:Key="ButtonForeground" Color="#1C2024" />
+<SolidColorBrush x:Key="ButtonBorderBrush" Color="#CDCED6" />
+<SolidColorBrush x:Key="ToggleButtonBackground" Color="#F9F9FB" />
+<SolidColorBrush x:Key="ToggleButtonBackgroundChecked" Color="#CCF3EA" />
+<SolidColorBrush x:Key="ToggleButtonForeground" Color="#1C2024" />
+<SolidColorBrush x:Key="ToggleButtonBorderBrush" Color="#CDCED6" />
+<SolidColorBrush x:Key="TextControlBackground" Color="#FCFCFD" />
+<SolidColorBrush x:Key="TextControlForeground" Color="#1C2024" />
+<SolidColorBrush x:Key="TextControlBorderBrush" Color="#CDCED6" />
+<SolidColorBrush x:Key="TextControlPlaceholderForeground" Color="#60646C" />
+<SolidColorBrush x:Key="ComboBoxBackground" Color="#FCFCFD" />
+<SolidColorBrush x:Key="ComboBoxForeground" Color="#1C2024" />
+<SolidColorBrush x:Key="ComboBoxBorderBrush" Color="#CDCED6" />
+<LinearGradientBrush x:Key="LLWorkspaceBackground" StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#F3FBF9" Offset="0"/><GradientStop Color="#F9F9FB" Offset="0.5"/><GradientStop Color="#F4FAFF" Offset="1"/></LinearGradientBrush>
+<LinearGradientBrush x:Key="LLPrimaryBackground" StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#008573" Offset="0"/><GradientStop Color="#0D3D38" Offset="1"/></LinearGradientBrush>
+</ResourceDictionary>
+<ResourceDictionary x:Key="Dark">
+<SolidColorBrush x:Key="LLslate1" Color="#111113" />
+<SolidColorBrush x:Key="LLslate2" Color="#18191B" />
+<SolidColorBrush x:Key="LLslate3" Color="#212225" />
+<SolidColorBrush x:Key="LLslate4" Color="#272A2D" />
+<SolidColorBrush x:Key="LLslate5" Color="#2E3135" />
+<SolidColorBrush x:Key="LLslate6" Color="#363A3F" />
+<SolidColorBrush x:Key="LLslate7" Color="#43484E" />
+<SolidColorBrush x:Key="LLslate8" Color="#5A6169" />
+<SolidColorBrush x:Key="LLslate9" Color="#696E77" />
+<SolidColorBrush x:Key="LLslate10" Color="#777B84" />
+<SolidColorBrush x:Key="LLslate11" Color="#B0B4BA" />
+<SolidColorBrush x:Key="LLslate12" Color="#EDEEF0" />
+<SolidColorBrush x:Key="LLteal1" Color="#0D1514" />
+<SolidColorBrush x:Key="LLteal2" Color="#111C1B" />
+<SolidColorBrush x:Key="LLteal3" Color="#0D2D2A" />
+<SolidColorBrush x:Key="LLteal4" Color="#023B37" />
+<SolidColorBrush x:Key="LLteal5" Color="#084843" />
+<SolidColorBrush x:Key="LLteal6" Color="#145750" />
+<SolidColorBrush x:Key="LLteal7" Color="#1C6961" />
+<SolidColorBrush x:Key="LLteal8" Color="#207E73" />
+<SolidColorBrush x:Key="LLteal9" Color="#12A594" />
+<SolidColorBrush x:Key="LLteal10" Color="#0EB39E" />
+<SolidColorBrush x:Key="LLteal11" Color="#0BD8B6" />
+<SolidColorBrush x:Key="LLteal12" Color="#ADF0DD" />
+<SolidColorBrush x:Key="LLgreen1" Color="#0E1512" />
+<SolidColorBrush x:Key="LLgreen2" Color="#121B17" />
+<SolidColorBrush x:Key="LLgreen3" Color="#132D21" />
+<SolidColorBrush x:Key="LLgreen4" Color="#113B29" />
+<SolidColorBrush x:Key="LLgreen5" Color="#174933" />
+<SolidColorBrush x:Key="LLgreen6" Color="#20573E" />
+<SolidColorBrush x:Key="LLgreen7" Color="#28684A" />
+<SolidColorBrush x:Key="LLgreen8" Color="#2F7C57" />
+<SolidColorBrush x:Key="LLgreen9" Color="#30A46C" />
+<SolidColorBrush x:Key="LLgreen10" Color="#33B074" />
+<SolidColorBrush x:Key="LLgreen11" Color="#3DD68C" />
+<SolidColorBrush x:Key="LLgreen12" Color="#B1F1CB" />
+<SolidColorBrush x:Key="LLamber1" Color="#16120C" />
+<SolidColorBrush x:Key="LLamber2" Color="#1D180F" />
+<SolidColorBrush x:Key="LLamber3" Color="#302008" />
+<SolidColorBrush x:Key="LLamber4" Color="#3F2700" />
+<SolidColorBrush x:Key="LLamber5" Color="#4D3000" />
+<SolidColorBrush x:Key="LLamber6" Color="#5C3D05" />
+<SolidColorBrush x:Key="LLamber7" Color="#714F19" />
+<SolidColorBrush x:Key="LLamber8" Color="#8F6424" />
+<SolidColorBrush x:Key="LLamber9" Color="#FFC53D" />
+<SolidColorBrush x:Key="LLamber10" Color="#FFD60A" />
+<SolidColorBrush x:Key="LLamber11" Color="#FFCA16" />
+<SolidColorBrush x:Key="LLamber12" Color="#FFE7B3" />
+<SolidColorBrush x:Key="LLred1" Color="#191111" />
+<SolidColorBrush x:Key="LLred2" Color="#201314" />
+<SolidColorBrush x:Key="LLred3" Color="#3B1219" />
+<SolidColorBrush x:Key="LLred4" Color="#500F1C" />
+<SolidColorBrush x:Key="LLred5" Color="#611623" />
+<SolidColorBrush x:Key="LLred6" Color="#72232D" />
+<SolidColorBrush x:Key="LLred7" Color="#8C333A" />
+<SolidColorBrush x:Key="LLred8" Color="#B54548" />
+<SolidColorBrush x:Key="LLred9" Color="#E5484D" />
+<SolidColorBrush x:Key="LLred10" Color="#EC5D5E" />
+<SolidColorBrush x:Key="LLred11" Color="#FF9592" />
+<SolidColorBrush x:Key="LLred12" Color="#FFD1D9" />
+<SolidColorBrush x:Key="LLmint1" Color="#0E1515" />
+<SolidColorBrush x:Key="LLmint2" Color="#0F1B1B" />
+<SolidColorBrush x:Key="LLmint3" Color="#092C2B" />
+<SolidColorBrush x:Key="LLmint4" Color="#003A38" />
+<SolidColorBrush x:Key="LLmint5" Color="#004744" />
+<SolidColorBrush x:Key="LLmint6" Color="#105650" />
+<SolidColorBrush x:Key="LLmint7" Color="#1E685F" />
+<SolidColorBrush x:Key="LLmint8" Color="#277F70" />
+<SolidColorBrush x:Key="LLmint9" Color="#86EAD4" />
+<SolidColorBrush x:Key="LLmint10" Color="#A8F5E5" />
+<SolidColorBrush x:Key="LLmint11" Color="#58D5BA" />
+<SolidColorBrush x:Key="LLmint12" Color="#C4F5E1" />
+<SolidColorBrush x:Key="LLblue1" Color="#0D1520" />
+<SolidColorBrush x:Key="LLblue2" Color="#111927" />
+<SolidColorBrush x:Key="LLblue3" Color="#0D2847" />
+<SolidColorBrush x:Key="LLblue4" Color="#003362" />
+<SolidColorBrush x:Key="LLblue5" Color="#004074" />
+<SolidColorBrush x:Key="LLblue6" Color="#104D87" />
+<SolidColorBrush x:Key="LLblue7" Color="#205D9E" />
+<SolidColorBrush x:Key="LLblue8" Color="#2870BD" />
+<SolidColorBrush x:Key="LLblue9" Color="#0090FF" />
+<SolidColorBrush x:Key="LLblue10" Color="#3B9EFF" />
+<SolidColorBrush x:Key="LLblue11" Color="#70B8FF" />
+<SolidColorBrush x:Key="LLblue12" Color="#C2E6FF" />
+<SolidColorBrush x:Key="LLviolet1" Color="#14121F" />
+<SolidColorBrush x:Key="LLviolet2" Color="#1B1525" />
+<SolidColorBrush x:Key="LLviolet3" Color="#291F43" />
+<SolidColorBrush x:Key="LLviolet4" Color="#33255B" />
+<SolidColorBrush x:Key="LLviolet5" Color="#3C2E69" />
+<SolidColorBrush x:Key="LLviolet6" Color="#473876" />
+<SolidColorBrush x:Key="LLviolet7" Color="#56468B" />
+<SolidColorBrush x:Key="LLviolet8" Color="#6958AD" />
+<SolidColorBrush x:Key="LLviolet9" Color="#6E56CF" />
+<SolidColorBrush x:Key="LLviolet10" Color="#7D66D9" />
+<SolidColorBrush x:Key="LLviolet11" Color="#BAA7FF" />
+<SolidColorBrush x:Key="LLviolet12" Color="#E2DDFE" />
+<SolidColorBrush x:Key="LLwhite" Color="#FFFFFF" />
+<SolidColorBrush x:Key="ButtonBackground" Color="#212225" />
+<SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#272A2D" />
+<SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#2E3135" />
+<SolidColorBrush x:Key="ButtonForeground" Color="#EDEEF0" />
+<SolidColorBrush x:Key="ButtonBorderBrush" Color="#43484E" />
+<SolidColorBrush x:Key="ToggleButtonBackground" Color="#18191B" />
+<SolidColorBrush x:Key="ToggleButtonBackgroundChecked" Color="#023B37" />
+<SolidColorBrush x:Key="ToggleButtonForeground" Color="#EDEEF0" />
+<SolidColorBrush x:Key="ToggleButtonBorderBrush" Color="#43484E" />
+<SolidColorBrush x:Key="TextControlBackground" Color="#111113" />
+<SolidColorBrush x:Key="TextControlForeground" Color="#EDEEF0" />
+<SolidColorBrush x:Key="TextControlBorderBrush" Color="#43484E" />
+<SolidColorBrush x:Key="TextControlPlaceholderForeground" Color="#B0B4BA" />
+<SolidColorBrush x:Key="ComboBoxBackground" Color="#111113" />
+<SolidColorBrush x:Key="ComboBoxForeground" Color="#EDEEF0" />
+<SolidColorBrush x:Key="ComboBoxBorderBrush" Color="#43484E" />
+<LinearGradientBrush x:Key="LLWorkspaceBackground" StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#111C1B" Offset="0"/><GradientStop Color="#18191B" Offset="0.5"/><GradientStop Color="#111927" Offset="1"/></LinearGradientBrush>
+<LinearGradientBrush x:Key="LLPrimaryBackground" StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#008573" Offset="0"/><GradientStop Color="#0D3D38" Offset="1"/></LinearGradientBrush>
+</ResourceDictionary>
+<ResourceDictionary x:Key="HighContrast">
+<SolidColorBrush x:Key="LLslate1" Color="{ThemeResource SystemColorWindowColor}" />
+<SolidColorBrush x:Key="LLslate2" Color="{ThemeResource SystemColorWindowColor}" />
+<SolidColorBrush x:Key="LLWorkspaceBackground" Color="{ThemeResource SystemColorWindowColor}" />
+<SolidColorBrush x:Key="LLslate3" Color="{ThemeResource SystemColorButtonFaceColor}" />
+<SolidColorBrush x:Key="LLslate4" Color="{ThemeResource SystemColorButtonFaceColor}" />
+<SolidColorBrush x:Key="LLslate5" Color="{ThemeResource SystemColorButtonFaceColor}" />
+<SolidColorBrush x:Key="LLslate7" Color="{ThemeResource SystemColorWindowTextColor}" />
+<SolidColorBrush x:Key="LLslate11" Color="{ThemeResource SystemColorWindowTextColor}" />
+<SolidColorBrush x:Key="LLslate12" Color="{ThemeResource SystemColorWindowTextColor}" />
+<SolidColorBrush x:Key="LLteal11" Color="{ThemeResource SystemColorWindowTextColor}" />
+<SolidColorBrush x:Key="LLgreen11" Color="{ThemeResource SystemColorWindowTextColor}" />
+<SolidColorBrush x:Key="LLamber11" Color="{ThemeResource SystemColorWindowTextColor}" />
+<SolidColorBrush x:Key="LLred11" Color="{ThemeResource SystemColorWindowTextColor}" />
+<SolidColorBrush x:Key="LLwhite" Color="{ThemeResource SystemColorHighlightTextColor}" />
+<SolidColorBrush x:Key="LLPrimaryBackground" Color="{ThemeResource SystemColorHighlightColor}" />
+<SolidColorBrush x:Key="LLteal9" Color="{ThemeResource SystemColorHighlightColor}" />
+<SolidColorBrush x:Key="LLteal10" Color="{ThemeResource SystemColorHighlightColor}" />
+</ResourceDictionary></ResourceDictionary.ThemeDictionaries>
+<Style TargetType="TextBlock"><Setter Property="FontSize" Value="14"/><Setter Property="Foreground" Value="{ThemeResource LLslate12}"/></Style>
+<Style TargetType="Button"><Setter Property="FontSize" Value="14"/><Setter Property="BorderThickness" Value="0.5"/><Setter Property="CornerRadius" Value="6"/><Setter Property="Padding" Value="14,9"/></Style>
+<Style TargetType="ToggleButton"><Setter Property="FontSize" Value="14"/><Setter Property="BorderThickness" Value="0.5"/><Setter Property="CornerRadius" Value="6"/></Style>
+<Style x:Key="LimeLinkPrimaryButton" TargetType="Button"><Setter Property="FontSize" Value="14"/><Setter Property="Foreground" Value="{ThemeResource LLwhite}"/><Setter Property="Background" Value="{ThemeResource LLPrimaryBackground}"/><Setter Property="BorderThickness" Value="0.5"/><Setter Property="CornerRadius" Value="6"/><Setter Property="Padding" Value="14,9"/></Style>
+<Style TargetType="TextBox"><Setter Property="FontSize" Value="14"/><Setter Property="BorderThickness" Value="0.5"/><Setter Property="CornerRadius" Value="6"/></Style>
+<Style TargetType="PasswordBox"><Setter Property="FontSize" Value="14"/><Setter Property="BorderThickness" Value="0.5"/><Setter Property="CornerRadius" Value="6"/></Style>
+<Style TargetType="ComboBox"><Setter Property="FontSize" Value="14"/><Setter Property="BorderThickness" Value="0.5"/><Setter Property="CornerRadius" Value="6"/></Style>
+<Style TargetType="Expander"><Setter Property="FontSize" Value="14"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Background" Value="{ThemeResource LLslate2}"/></Style>
+</ResourceDictionary>

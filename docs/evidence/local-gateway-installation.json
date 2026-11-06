@@ -1,0 +1,43 @@
+{
+  "passed": false,
+  "error": "{'action': 'start', 'exit_code': 1, 'response': '{\"code\":\"deployment_tool_failed\",\"ok\":false}\\n'}",
+  "started_at": "2026-11-06T03:26:38.729327+00:00",
+  "finished_at": "2026-11-06T03:27:09.144428+00:00",
+  "scope": "macOS宿主的真实Linux ARM64离线包、隔离Docker安装、HTTPS登录、正式设备证书入网/mTLS及停止重启；无原生窗口或手机",
+  "sources": {
+    "tools/package-gateway.py": "a30a980f34666c3ad60f8e608a3a78fa4748a7a02273d464fbc9ad5d5c954e75",
+    "tools/test-local-gateway.py": "af4763b8949ccccb3735c6409e331663c1f5bfcfed153def2810b6b39db10274",
+    "runtime/src/bin/limelink-gateway.rs": "797a27516f56827d547ef816bf0f2a66a96d1e83c4bf05c88dc79d50b0ca297e",
+    "runtime/src/gateway_deployment.rs": "ebfdc4e8b614bc8ae1192198a8e74a664881190a068bda9c5a78f460f46deded",
+    "contracts/desktop.json": "43d19e24c54904d0ed8d5aca94c6ea564e7d9739ff6a815cae1873fae15ec348",
+    "contracts/iot-sdk.lock.json": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6"
+  },
+  "bundle_manifest_sha256": "72b8ad25916d8014034569ae0304b24881baa63208ba50a05c61c4b6cf2448bb",
+  "helper_sha256": "712434776b554422ea8b148aed9be48ef8606a67389b0625d1f0f940f94110e5",
+  "runtime_sha256": "ccc6376bb67b335dd2a54b7900546dc29150011bae7e588607c8f02a7f944fc0",
+  "events": [
+    "bundle_checksums_verified",
+    "remote_docker_rejected_before_installation",
+    "changed_bundle_refused",
+    "new_private_installation_prepared_without_starting",
+    "reinitialization_refused_and_identity_preserved"
+  ],
+  "cleanup": "containers_removed_data_preserved",
+  "system_trust_changed": false,
+  "native_window": false,
+  "physical_device": false,
+  "formal_distribution": false,
+  "sdk_revision": "1c77ef65e7af9c9036f82e278dfd84507a0f0e7d",
+  "failure_diagnosis": {
+    "category": "local_environment",
+    "stage": "start",
+    "cause": "Docker predefined address pools have been fully subnetted",
+    "compose_configuration_valid": true,
+    "direct_compose_up_exit_code": 1,
+    "log_sha256": "ee5d42e193954d02f53f7e11765c4d055605eba8e8adf183ca7e04a1f9fd8c19",
+    "user_networks_changed": false,
+    "address_pools_changed": false,
+    "test_network_cleanup": "not_performed",
+    "previous_passed_evidence": "docs/evidence/history/2026-11-06-before-sdk-revalidation/local-gateway-installation.json"
+  }
+}

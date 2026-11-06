@@ -1,0 +1,7 @@
+Use case: stylized-concept
+Asset type: high quality transparent decorative illustration for the native LimeLink desktop workspace, not a screenshot.
+Input image: reference image for mascot identity only. Preserve the right-hand three-dimensional lime-green smiling character, round lime-pod body with one taller lobe, exactly one dark forest-green leaf, two small feet, dark round eyes and a small curved smile. Do not reproduce the left flat logo, original layout, glow, wordmark or lettering.
+Primary request: one adorable LimeLink mascot standing beside a small floating ivory note card, a tiny softly rounded lime tile and two restrained pale-mint orbit arcs, conveying quietly picking up an idea from another device. Sculpted soft matte vinyl and translucent frosted glass, premium friendly desktop utility visual, studio quality lighting, delicate contact shadow, original simple shapes.
+Composition: a single cohesive compact subject centered with generous clean breathing room around all edges, entire mascot and leaf fully visible, natural three-quarter view, no cropped feet. The floating blank note stays smaller than the mascot.
+Palette: lime #A8D85D, forest green #263D2C, warm ivory #F7F8EF, a trace of pale mint; no saturated rainbow.
+Background: truly transparent alpha if supported. No solid backdrop, floor plane, checkerboard, text, letters, numbers, badges, logos, watermark, photographic environment or invented hardware features.

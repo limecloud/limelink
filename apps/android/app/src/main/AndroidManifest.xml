@@ -3,8 +3,9 @@
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
   <queries><intent><action android:name="android.speech.RecognitionService" /></intent></queries>
   <application android:label="柠联 LimeLink" android:icon="@mipmap/ic_launcher" android:allowBackup="false" android:usesCleartextTraffic="false" android:theme="@android:style/Theme.Material.Light.NoActionBar">
-    <activity android:name=".MainActivity" android:exported="true">
+    <activity android:name=".MainActivity" android:exported="true" android:launchMode="singleTop">
       <intent-filter><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent-filter>
+      <intent-filter><action android:name="android.intent.action.VIEW" /><category android:name="android.intent.category.DEFAULT" /><category android:name="android.intent.category.BROWSABLE" /><data android:scheme="limelink" android:host="connect" /></intent-filter>
     </activity>
   </application>
 </manifest>

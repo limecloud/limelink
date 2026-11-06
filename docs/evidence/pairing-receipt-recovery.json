@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "verified_at": "2026-11-06T03:38:34.580001+00:00",
+  "sdk_revision": "1c77ef65e7af9c9036f82e278dfd84507a0f0e7d",
+  "scope": "当前SDK的Apple工作台、Android/.NET配对回执核心，以及三种客户端真实隔离HTTP/MQTT/mTLS协议夹具；没有本轮真实模型、原生窗口或手机",
+  "sources": {
+    "contracts/iot-sdk.lock.json": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6",
+    "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift": "262f675a526379b8d74ded33abad0c0d091a9fc6c87612b043271aaf24ce35a4",
+    "packages/apple/WorkbenchTests/PairingWorkbenchChecks.swift": "e6dfdcab42b65721e8577b33ce26dfb6a4f1fb30ce4de61b951f77e6dea585ce",
+    "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt": "f58a43db04ae26ad6b7b1326c9a91dfa0b2ed6b17e373634a54e2f510c12219d",
+    "apps/android/core/src/test/kotlin/run/limeai/link/core/PairingReceiptTest.kt": "a7da94250e029e66bac7022fcb174da63e487534c9e4f96be0f05f8e2df00acd",
+    "apps/windows/LimeLink.Core/LinkClient.cs": "db94c430e4e964f5a4345e191346a9e9501e1aeafc60374ade6b3b6f63035b49",
+    "apps/windows/LimeLink.App/MainWindow.cs": "7af61ff3f327855a8a0a6a40d1a40ddf4abfd568217846a805e425efb50828ec",
+    "apps/windows/LimeLink.Core.Checks/PairingReceiptChecks.cs": "c10c9dd4c9f3ffb4968acd553bd15d40500957258a1a81d751f82f13058f3303",
+    "apps/windows/LimeLink.Core.Checks/Program.cs": "734267f29b1f96781cfab17a420480ab9b8794c14179945d80334ebc26115e3a",
+    "apps/android/core/src/test/kotlin/run/limeai/link/core/CardReceiptTest.kt": "5f4b50500be76a02f26f9662eda280ab7c0c5f124fc69b8b82bafda992fede9a"
+  },
+  "checks": {
+    "apple_workbench_outcomes": 7,
+    "android_outcomes": 11,
+    "android_tests": {
+      "tests": 5,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "report": "apps/android/core/build/test-results/test/TEST-run.limeai.link.core.PairingReceiptTest.xml",
+      "sha256": "de65ee0f516b1382f6d84f8f93885785f7572f627159dba1ad725601649e2da3"
+    },
+    "android_card_receipt_tests": {
+      "tests": 1,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "report": "apps/android/core/build/test-results/test/TEST-run.limeai.link.core.CardReceiptTest.xml",
+      "sha256": "3f92c69e1d028096e438b0d69bad0876cc6f9ec854fdf8899285d5d7f634ba54"
+    },
+    "dotnet_outcomes": 11,
+    "dotnet_groups": 18,
+    "android_apk": true,
+    "windows_csharp_types": true,
+    "current_cross_client_mtls_fixture": true,
+    "native_ui_retested": false,
+    "physical_phone": false,
+    "real_model": false,
+    "windows_xaml_compiled": false,
+    "windows_acl_exercised": false
+  },
+  "invariants": [
+    "配对成功回执与电脑本机批准分别处理，不由网络回执自动授予权限",
+    "原请求只查询，不自动重发POST；未核实的原请求阻止新提交",
+    "Android普通link.exchange明确终态可自动收尾；unknown、404、畸形回执、字符串ok及清除失败保留原意图",
+    "Android仅严格成功卡片且原草稿匹配、收尾成功时清空输入；配对成功不等于Agent任务获批",
+    "Apple/.NET保留各自已验证的配对收尾范围；云原操作流程不变"
+  ],
+  "evidence": [
+    "docs/evidence/native-validation.json",
+    "docs/evidence/windows-source-check.json",
+    "docs/evidence/iot-runtime-mtls-integration.json",
+    "docs/evidence/agent-iot-apple-integration.json",
+    "docs/evidence/agent-iot-android-integration.json",
+    "docs/evidence/agent-iot-dotnet-integration.json"
+  ],
+  "logs": {
+    ".dev/verify-apple-workbench.log": "60f5459f1946a84fb6fea7519caac4eb6c3108bb6baaac149aa60d41435677d5",
+    ".dev/verify-android.log": "75f423a1971f64b7ce5ba4fb029f732c1994999e4cb30cbcfdf35b6a11a28ed6",
+    ".dev/verify-dotnet.log": "33fe4a58bc77903bd076c07fe548bddcdd7edfea892c93d5585d1f5ddca74d63",
+    ".dev/revalidate-cross-client-mtls.log": "95f0a660fcabaf4542438b7391122d37be6373dca3dce0670d4ccfb723b58f58"
+  },
+  "related_physical_journey": "docs/evidence/android-mobile-flow.json",
+  "unresolved_regression": "docs/evidence/regression-2026-11-06.json",
+  "previous_evidence": "docs/evidence/history/2026-11-06-sdk-core-revalidation/pairing-receipt-recovery.json"
+}

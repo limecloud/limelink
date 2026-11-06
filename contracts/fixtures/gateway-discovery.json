@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {"name":"局域网网关","attributes":{"version":"1","origin":"https://192.168.1.20:8443"},"valid":true},
+    {"name":"域名入口","attributes":{"version":"1","origin":"https://gateway.example.com"},"valid":true},
+    {"name":"IPv6入口","attributes":{"version":"1","origin":"https://[fd00::20]:8443"},"valid":true},
+    {"name":"旧版本","attributes":{"version":"0","origin":"https://192.168.1.20"},"valid":false},
+    {"name":"缺少版本","attributes":{"origin":"https://192.168.1.20"},"valid":false},
+    {"name":"明文地址","attributes":{"version":"1","origin":"http://192.168.1.20"},"valid":false},
+    {"name":"内嵌凭据","attributes":{"version":"1","origin":"https://owner:secret@gateway.local"},"valid":false},
+    {"name":"路径","attributes":{"version":"1","origin":"https://gateway.local/api"},"valid":false},
+    {"name":"末尾斜线","attributes":{"version":"1","origin":"https://gateway.local/"},"valid":false},
+    {"name":"查询","attributes":{"version":"1","origin":"https://gateway.local?token=value"},"valid":false},
+    {"name":"片段","attributes":{"version":"1","origin":"https://gateway.local#value"},"valid":false},
+    {"name":"空端口","attributes":{"version":"1","origin":"https://gateway.local:"},"valid":false},
+    {"name":"零端口","attributes":{"version":"1","origin":"https://gateway.local:0"},"valid":false},
+    {"name":"越界端口","attributes":{"version":"1","origin":"https://gateway.local:65536"},"valid":false},
+    {"name":"编码主机","attributes":{"version":"1","origin":"https://gateway%2elocal"},"valid":false},
+    {"name":"空主机","attributes":{"version":"1","origin":"https://"},"valid":false}
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "mode": "imagegen bundled CLI, user-selected API and models",
+  "reference": "output/imagegen/02-logo-sunburst.png",
+  "assets": [
+    {
+      "name": "welcome",
+      "model": "gpt-image-2.5-flare",
+      "operation": "edit",
+      "prompt": "docs/brand/prompts/desktop-welcome-v1.txt",
+      "prompt_sha256": "5b12affbaf61477f054d2ca8d0a64330171afb1bc3b4e23480ce8aa5ca6f4811",
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "source": "output/imagegen/desktop-welcome-v1.png",
+      "source_sha256": "03ada8d4fcdfa16de19e37668c169e579ec3fb6c46216b29a7e68e25f05349d9",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "export": "assets/desktop/images/welcome.png",
+      "export_size": [
+        1200,
+        800
+      ],
+      "export_sha256": "7eb4bb57384da992b4aadb94cd9710371a3e9460d18ca07d806ccc340c4db6f0",
+      "consumers": [
+        "macOS SwiftPM resources",
+        "Windows app content",
+        "Android drawable-nodpi"
+      ],
+      "android_export": {
+        "path": "apps/android/app/src/main/res/drawable-nodpi/link_welcome.webp",
+        "size": [
+          800,
+          533
+        ],
+        "sha256": "f5af98232f8ae65249f78a9c68cbbce275cfdb8df5c8396812ef03070589479c"
+      }
+    },
+    {
+      "name": "devices",
+      "model": "gpt-image-2.5-sunburst",
+      "operation": "edit",
+      "prompt": "docs/brand/prompts/desktop-devices-v1.txt",
+      "prompt_sha256": "2ffe99324ca859e016994edc8d7845acf7b3299ede6934801b8404aae65fc1e4",
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "source": "output/imagegen/desktop-devices-v1.png",
+      "source_sha256": "a84c93976cfd29b3c137778a967e0acff3c16e5deaadf866acfa0181df06a52b",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "export": "assets/desktop/images/devices.png",
+      "export_size": [
+        1200,
+        800
+      ],
+      "export_sha256": "ea8e9dda5aae5b1ea79d8e2beaf9ed4da36e7516a26444eba4f3824f0b5811d0",
+      "consumers": [
+        "macOS SwiftPM resources",
+        "Windows app content",
+        "Android drawable-nodpi"
+      ],
+      "android_export": {
+        "path": "apps/android/app/src/main/res/drawable-nodpi/link_devices.webp",
+        "size": [
+          800,
+          533
+        ],
+        "sha256": "4a0e2c02dc06802cb8ce5b4e1d1b6bdf914f0c1ce669445edbceba3481563ea1"
+      }
+    },
+    {
+      "name": "backdrop",
+      "model": "gpt-image-2.5-sunburst",
+      "operation": "generate",
+      "prompt": "docs/brand/prompts/desktop-backdrop-v1.txt",
+      "prompt_sha256": "c3dfe8699a372e9d294f28b69f8c6ba083d0a12df98f7843a6f61f77cb0aa070",
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "actual_size": [
+        1672,
+        941
+      ],
+      "source": "output/imagegen/desktop-backdrop-v1.png",
+      "source_sha256": "c29fc99c472f97c2446296b8be9cb3654abad15ce6af88cc902ecc612be096c4",
+      "alpha_extrema": null,
+      "export": "assets/desktop/images/backdrop.png",
+      "export_size": [
+        1440,
+        810
+      ],
+      "export_sha256": "662483450d7b72f4a0d21a9d9db621b5c3b9fb30d20f2e65eb2ae09c3f7a0de6",
+      "consumers": [
+        "macOS SwiftPM resources",
+        "Windows app content"
+      ]
+    },
+    {
+      "name": "icon",
+      "model": "gpt-image-2.5-flare",
+      "operation": "edit",
+      "prompt": "docs/brand/prompts/desktop-icon-v1.txt",
+      "prompt_sha256": "130f6390c61668a58ad67bbd76f2db054b626cb0b1dc828091dac75e685bced4",
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "source": "output/imagegen/desktop-icon-v1.png",
+      "source_sha256": "7f0edc0ab67504d76fc5e1b6bb3f42d0aa45e91f4e905d45a221ef332d581f7a",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "export": "assets/desktop/images/icon.png",
+      "export_size": [
+        1024,
+        1024
+      ],
+      "export_sha256": "6c2c603094b534c7dd65dd818ece68977859a17094c6d006710102ef7c29dee0",
+      "consumers": [
+        "macOS SwiftPM resources",
+        "Windows app content",
+        "Android drawable-nodpi"
+      ],
+      "android_export": {
+        "path": "apps/android/app/src/main/res/drawable-nodpi/link_brand.webp",
+        "size": [
+          128,
+          128
+        ],
+        "sha256": "ce226473d6ddcf7a65302fb675746d42d15dfe97a658410c070d67fae91cb26b"
+      },
+      "additional_reference": "docs/brand/references/shou-icon-user.png",
+      "additional_reference_sha256": "6c25b7ebeb3e70fb4b2c421188b094da22ab5f144ac554f1d890acd2b5b9236d",
+      "processing": "alpha > 32 center-connected component, 5px dilation; retain original alpha, Lanczos resize",
+      "system_icons": [
+        {
+          "path": "assets/desktop/icons/LimeLink.icns",
+          "sha256": "63878c4f2d81d7cbd7890602a5306f0bbd52fc9b670e739415ac39b67767c68a"
+        },
+        {
+          "path": "assets/desktop/icons/LimeLink.ico",
+          "sha256": "c04f9dc8220d25e35422fa0a13ac0d678c4d3861edf3a0465d5df65d4344faf7"
+        }
+      ]
+    }
+  ]
+}

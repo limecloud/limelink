@@ -5,7 +5,9 @@ import LimeIoTKit
 public struct WorkbenchView:View {
     @StateObject private var model=WorkbenchModel()
     @StateObject private var voice=VoiceDraft()
+    @StateObject private var discovery=GatewayDiscovery()
     @State private var confirmingReapply=false
+    @State private var connectionRequest:GatewayConnectionRequest?
     @Environment(\.openURL) private var openURL
     @Environment(\.scenePhase) private var scenePhase
     public init(){}
@@ -17,6 +19,7 @@ public struct WorkbenchView:View {
                 }
                 connectionSection
                 targetSection
+                agentSection
                 draftSection
                 recoverySection
                 sessionSection
@@ -27,11 +30,26 @@ public struct WorkbenchView:View {
             .overlay(alignment:.topTrailing){if model.busy{ProgressView().padding()}}
         }
         .tint(Color(red:0.28,green:0.44,blue:0.15))
-        .onChange(of:scenePhase){_,phase in if phase == .background{voice.stop();model.pause()}else if phase != .active{voice.stop()}}
-        .onDisappear{voice.stop();model.pause()}
+        .task{discovery.start()}
+        .task(id:model.agentRunID){
+            guard !model.agentRunID.isEmpty else{return}
+            while !Task.isCancelled {do{try await Task.sleep(for:.seconds(2))}catch{return};model.pollAgent()}
+        }
+        .onChange(of:scenePhase){_,phase in if phase == .background{voice.stop();model.pause();discovery.stop()}else if phase == .active{discovery.start()}else{voice.stop()}}
+        .onDisappear{voice.stop();model.pause();discovery.stop()}
+        .onOpenURL{url in
+            do{connectionRequest=try GatewayConnectionRequest(url:url)}catch{model.result="无法识别网关连接地址。"}
+        }
+        .alert("连接网关",isPresented:Binding(get:{connectionRequest != nil},set:{if !$0{connectionRequest=nil}})){
+            Button("使用此地址"){
+                guard !model.busy,let request=connectionRequest else{return}
+                model.cloudMode=false;model.endpoint=request.origin;model.result="网关地址已填入，请登录或恢复连接。";connectionRequest=nil
+            }.disabled(model.busy)
+            Button("取消",role:.cancel){connectionRequest=nil}
+        }message:{Text(connectionRequest?.origin ?? "")}
     }
     private var connectionSection:some View {
-                Section("1 · 选择连接入口") {
+                Section("1，选择连接入口") {
                     Toggle("通过 LimeIoT 云控制面连接",isOn:$model.cloudMode)
                     if model.cloudMode {
                         TextField("控制面 HTTPS 地址",text:$model.cloudEndpoint).textContentType(.URL).autocorrectionDisabled()
@@ -47,9 +65,17 @@ public struct WorkbenchView:View {
                         Button("退出云会话",action:model.logout)
                         Text("授权由系统浏览器明确批准。云入口仅提供已授权的设备命令；模型草稿使用本地网关入口。").font(.footnote)
                     }else{
-                    TextField("网关 HTTPS 地址",text:$model.endpoint).textContentType(.URL).autocorrectionDisabled()
-                    SecureField("所有者凭据（留空恢复会话）",text:$model.token)
-                    HStack{Button("连接",action:model.connect);Button("退出",action:model.logout)}
+                    HStack{if discovery.searching{ProgressView()};Text(discovery.message).foregroundStyle(.secondary)}
+                    ForEach(discovery.gateways){gateway in
+                        Button{model.endpoint=gateway.origin;model.connect()}label:{VStack(alignment:.leading,spacing:4){Text(gateway.name);Text(gateway.origin).font(.caption).foregroundStyle(.secondary)}}
+                    }
+                    Button("重新查找",action:discovery.restart)
+                    if !model.endpoint.isEmpty{
+                        Text(model.endpoint).font(.caption).foregroundStyle(.secondary)
+                        DisclosureGroup("首次连接"){SecureField("访问密钥",text:$model.token);Button("连接",action:model.connect)}
+                        HStack{Button("恢复连接",action:model.connect);Button("退出",action:model.logout)}
+                    }
+                    DisclosureGroup("手动输入地址"){TextField("https://",text:$model.endpoint).textContentType(.URL).autocorrectionDisabled();Button("连接",action:model.connect)}
                     }
                     Picker("明确选择空间",selection:$model.space){Text("请选择").tag("");ForEach(model.spaces,id:\.self){Text($0).tag($0)}}
                     Button("刷新电脑与真实能力",action:model.refresh)
@@ -57,8 +83,8 @@ public struct WorkbenchView:View {
     }
 
     private var targetSection:some View {
-                Section("2 · 核对电脑并配对") {
-                    Picker("目标电脑",selection:$model.target){Text("请选择").tag("");ForEach(model.devices){device in Text(device.deviceId + (device.ready ? " · 在线" : " · 离线")).tag(device.id)}}
+                Section("2，核对电脑并配对") {
+                    Picker("目标电脑",selection:$model.target){Text("请选择").tag("");ForEach(model.devices){device in Text(device.deviceId + (device.ready ? "，在线" : "，离线")).tag(device.id)}}
                         .onChange(of:model.target){_,_ in model.selectTarget()}
                     TextField("本客户端名称",text:$model.name)
                     if !model.fingerprint.isEmpty{Text("本客户端指纹\n" + model.fingerprint).font(.caption.monospaced()).textSelection(.enabled)}
@@ -72,7 +98,7 @@ public struct WorkbenchView:View {
     }
 
     private var draftSection:some View {
-                Section("3 · 草稿与明确发送") {
+                Section("3，草稿与明确发送") {
                     TextEditor(text:$model.text).frame(minHeight:120).privacySensitive().accessibilityLabel("纯文本草稿")
                     Text("\(model.text.utf8.count) / 2048 字节；仅按纯文本展示，不执行其中的指令。").font(.caption)
                     HStack{Button("确认发送到所选电脑"){voice.stop();model.action("card")};Button(voice.recording || voice.starting ? "停止录音" : "语音草稿"){if voice.recording || voice.starting{voice.stop()}else{voice.start{model.text=$0}}}}
@@ -80,6 +106,31 @@ public struct WorkbenchView:View {
                     if !model.cloudMode{HStack{Button("通过网关生成草稿"){model.generateDraft()};Button("查询原模型任务"){model.generateDraft(resolve:true)}}}
                     Text("模型调用会把当前草稿发送到网关已配置的提供方；生成不会触发设备操作。" + model.modelNotice).font(.footnote)
                 }
+    }
+    private var agentSection:some View {
+        Section("助手") {
+            if model.cloudMode{Text("助手任务需要直接连接网关。").foregroundStyle(.secondary)}
+            else{
+                HStack{Button("读取助手配置",action:model.discoverAgent).disabled(model.hasPending);Button("恢复任务记录",action:model.restoreAgent)}
+                if model.hasPending{Button("核实原助手请求",action:model.recoverAgent)}
+                if let capabilities=model.agentCapabilities{
+                    Picker("工作目录",selection:$model.agentWorkspace){Text("请选择").tag("");ForEach(capabilities.workspaces){Text($0.name).tag($0.id)}}
+                        .onChange(of:model.agentWorkspace){_,_ in model.agentWrite=false;model.agentContinue=false}
+                    if capabilities.workspaces.first(where:{$0.id==model.agentWorkspace})?.allowWrite==true{Toggle("允许修改文件",isOn:$model.agentWrite)}
+                    AgentDeviceSelection(model:model)
+                    TextEditor(text:$model.agentText).frame(minHeight:120).privacySensitive().accessibilityLabel("助手任务")
+                    if model.agentRun?.state=="succeeded",model.agentRun?.sessionId != nil{Toggle("继续所选对话",isOn:$model.agentContinue)}
+                    Button("提交助手任务",action:model.submitAgent).disabled(model.agentWorkspace.isEmpty || model.agentText.isEmpty || model.hasPending)
+                }
+                if !model.agentRecords.isEmpty{
+                    Picker("原任务",selection:$model.agentRunID){Text("选择任务").tag("");ForEach(model.agentRecords.reversed()){Text("任务 "+String($0.id.prefix(8))).tag($0.id)}}
+                    HStack{Button("查询进度"){model.queryAgent()};if model.agentRun?.canCancel==true{Button("中断任务"){model.queryAgent(cancel:true)}}}.disabled(model.agentRunID.isEmpty || model.hasPending)
+                    if let run=model.agentRun{Text(run.stateText);if let error=run.error{DisclosureGroup("错误详情"){Text(error).font(.system(size:12,design:.monospaced))}}}
+                    ForEach(model.agentEvents){event in Text(event.text).textSelection(.enabled).privacySensitive()}
+                    AgentToolResults(model:model)
+                }
+            }
+        }
     }
 
     private var recoverySection:some View {
@@ -103,7 +154,7 @@ public struct WorkbenchView:View {
     }
     private func recordLabel(_ record:ControlCommandRecord)->String {
         let status=record.isPrepared ? "尚未提交" : (record.result?.status.rawValue ?? record.rejection ?? "未知")
-        return [record.reference.spaceId,record.reference.request.deviceId,status,String(record.id.prefix(8))].joined(separator:" · ")
+        return [record.reference.spaceId,record.reference.request.deviceId,status,String(record.id.prefix(8))].joined(separator:"，")
     }
 
     private var sessionSection:some View {

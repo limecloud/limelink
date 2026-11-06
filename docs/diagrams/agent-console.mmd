@@ -1,0 +1,8 @@
+flowchart TB
+  desktop[桌面控制台] --> gateway[LimeIoT 网关\n本机或远程]
+  phone[手机客户端] --> gateway
+  hardware[未来硬件终端] -.-> gateway
+  gateway <-->|任务路由与事件，受控工具引用| agent[Agent 运行时\n本机或远程执行主机]
+  gateway --> devices[IoT 设备与桌面执行端]
+  agent --> adapters[执行主机适配器]
+  adapters --> external[已接入的外部 Agent 与本机能力]

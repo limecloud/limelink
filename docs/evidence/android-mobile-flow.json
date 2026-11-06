@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "passed": false,
+  "verified_at": "2026-11-06T04:01:55.365641+00:00",
+  "scope": "分阶段记录新SDK公网Android真机历史配对/真实只读Agent、UI安装连接与双输入键盘；卡片在窗口恢复可见后取得持久呈现回执，最新窗口恢复监听尚未完成完整复验",
+  "sdk_revision": "1c77ef65e7af9c9036f82e278dfd84507a0f0e7d",
+  "gateway": "https://gateway.link.limeai.run",
+  "device": {
+    "model": "Xiaomi 13 / 2211133C",
+    "android": "16",
+    "transport": "USB",
+    "serial_recorded": false
+  },
+  "sources": {
+    "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt": "97d7b9ea51f88356dcf8ca03dfcc95f85eb6a58bde4d6dfd473b813cd1d294e6",
+    "apps/android/app/src/main/kotlin/run/limeai/link/WorkbenchScreen.kt": "0c4546a9999eb6ca0ba3e92b82ca3f2e112a83d98e1f4df0195def76c2973f6a",
+    "apps/android/app/src/main/kotlin/run/limeai/link/AssistantPanel.kt": "25f0a9cf32b78edbfe31753a47153e3fe36f19081c99c2d1a9023e2179c636a0",
+    "apps/macos/DesktopAssistant.swift": "a31e11e6e7335e710b46e21bbe623d51508859222545de92f39f91c6e2e94277",
+    "apps/macos/LocalTerminal.swift": "a53293f2ee31a3e08e09936ea0b890fb06e66ecbe536d6eb7415f8918c05c265",
+    "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt": "f58a43db04ae26ad6b7b1326c9a91dfa0b2ed6b17e373634a54e2f510c12219d",
+    "apps/android/core/src/test/kotlin/run/limeai/link/core/CardReceiptTest.kt": "5f4b50500be76a02f26f9662eda280ab7c0c5f124fc69b8b82bafda992fede9a",
+    "contracts/iot-sdk.lock.json": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6",
+    "apps/macos/DesktopMobileSettings.swift": "2440e9264ce730ee10bb3f75e04457a27b638326708132d1e9d978589fb984ba"
+  },
+  "journey_before_final_ui_polish": {
+    "sources_and_artifacts": {
+      "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt": "8eff14faa0ac56409f2634e0734fe8f98893d14859f905927236c166c4093d93",
+      "apps/android/app/src/main/kotlin/run/limeai/link/WorkbenchScreen.kt": "b1a6458f3f5c5244d750598752039fec5bd6d51f99bac165d7e69237c8d82d21",
+      "apps/android/app/src/main/kotlin/run/limeai/link/AssistantPanel.kt": "a8d4578d4d3682dac6c02b1c2acadc062cb77f8dc4a01b940462c47d4ffa6fd4",
+      "apps/macos/DesktopAssistant.swift": "11163abea0612b6ebdf169e82aa210ebfeaafb6b29e42836ebb95feea62dda9c",
+      "apps/macos/LocalTerminal.swift": "f2182738cb38d9644ad7a845ccf9aba00c0a516b97d4ab461cd8da784c5a473d",
+      "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt": "317563a8f323eb74101ff96ed6edb57a759080063b31fb439ddc5be23bdcbfec",
+      "apps/android/app/build/outputs/apk/debug/app-debug.apk": "72bbfb3dd7e9d55b50efbe15db5a739aeb52765e8217841fd9de5a7c2fa7b81a",
+      ".dev/artifacts/LimeLink.app/Contents/Resources/LimeLink-android.apk": "72bbfb3dd7e9d55b50efbe15db5a739aeb52765e8217841fd9de5a7c2fa7b81a",
+      ".dev/artifacts/LimeLink.app/Contents/MacOS/LimeLink": "ebeaea7004ea5d607c7d1d4419add860618fceaa8fab479f94c67d2a9fce6935"
+    },
+    "checks": {
+      "session_restore": true,
+      "single_connect_selects_unique_space_and_computer": true,
+      "phone_pair_request": true,
+      "desktop_native_pair_approval": true,
+      "matching_fingerprint": true,
+      "phone_reports_approved": true,
+      "card_visible_in_native_desktop": true,
+      "desktop_native_agent_approval": true,
+      "phone_displays_real_agent_reply": true
+    },
+    "card": {
+      "text": "LimeLink phone to PC check 2026-11-06.",
+      "durable_receipts": [
+        {
+          "state": "presented",
+          "created": 1793931920,
+          "presented": 1793932373
+        }
+      ]
+    },
+    "agent": {
+      "prompt": "Read check.txt and reply with its verification sentence. Do not modify any file.",
+      "expected_sentence": "手机与电脑协同成功。",
+      "durable_receipts": [
+        {
+          "id": "a515ea9e-4c39-4239-88f6-8d4ffc16266b",
+          "state": "succeeded",
+          "sandbox": "read-only",
+          "created": 1793932610,
+          "error": null,
+          "reply_sha256": "29439e03e0d2183aa9d88f8fabff0242a5be924ffef496dc8c1f5ec8280c3cd9",
+          "contains_expected_sentence": true
+        }
+      ],
+      "allow_write": false,
+      "allow_iot_tools": false,
+      "approval": "电脑原生批准",
+      "timeout_seconds": 600
+    },
+    "observations": [
+      "最新桌面构建收到真实卡片并显示已显示；旧持续运行进程原地重打包前曾保持等待显示，未伪造呈现回执。",
+      "真实手机提交的Codex任务在电脑批准后完成；手机截图和电脑AX均显示预期校验句。"
+    ]
+  },
+  "current_ui": {
+    "changes": [
+      "移除静态安全说明和重复的提交提示",
+      "自动查询进度，不常驻重复刷新按钮；分页和原请求恢复入口保留",
+      "设备操作恢复文案改为检查操作结果和检查提交结果",
+      "电脑手机安装页优先显示已连接设备和安装并连接",
+      "连接设置和安装准备默认折叠，无效地址时展开；输入过程中不自动折叠"
+    ],
+    "checks": {
+      "android_core_and_build": {
+        "status": "passed",
+        "counts": {
+          "tests": 20,
+          "executed": 17,
+          "skipped": 3,
+          "failures": 0,
+          "errors": 0
+        },
+        "evidence": "docs/evidence/native-validation.json"
+      },
+      "macos_build_and_temporary_signature": {
+        "status": "passed",
+        "evidence": "docs/evidence/native-validation.json"
+      },
+      "android_final_install": {
+        "status": "passed",
+        "method": "USB覆盖安装成功；最终macOS原生安装并连接入口再次成功安装并打开相同APK",
+        "embedded_apk_matches": true
+      },
+      "android_single_connect_restore": {
+        "status": "passed",
+        "observation": "确认无凭据HTTPS地址后一次连接，恢复原会话、唯一空间和电脑；单台电脑不显示切换，无需重新配对或输入访问密钥"
+      },
+      "android_keyboard_button_visibility": {
+        "status": "passed",
+        "assistant": "真实输入后，三行输入框及提交任务按钮完整位于输入法上方，底部导航收起；清空测试字符后按钮禁用",
+        "collaboration": "输入本轮测试卡片时，输入内容和发送按钮完整位于键盘上方，底部导航收起",
+        "keyboard_dismissed": "助手与协同页均观察到键盘收起后底部导航恢复"
+      },
+      "android_card_clear_visual_check": {
+        "status": "passed",
+        "observation": "发送中保留本轮卡片文字；确认成功后输入恢复占位文字、发送禁用并显示已发送到电脑；没有要求手工收尾"
+      },
+      "android_settings_information": {
+        "status": "passed",
+        "observation": "设置仅显示网关连接、折叠诊断、应用版本和退出；编号、完整指纹及原始响应未在常规界面出现"
+      },
+      "desktop_mobile_settings": {
+        "status": "passed",
+        "observation": "已连接手机及安装并连接可直接操作；连接设置和安装准备可折叠；从无效地址改为受信公网地址时焦点和输入框均保留，手动折叠后设置隐藏"
+      },
+      "desktop_native_install_and_launch": {
+        "status": "passed",
+        "observation": "最终原生入口显示App已安装并打开；真实手机出现仅含HTTPS地址的确认框"
+      },
+      "macos_current_card_presentation": {
+        "status": "partial",
+        "visible_text": true,
+        "durable_receipt": "queued",
+        "observation": "电脑接收页可见本轮测试文字，但多次前台显示后仍为等待显示；只读SQLite核实仍queued，没有手工改写回执"
+      }
+    },
+    "card_receipt": {
+      "text": "limelink ui check 1152",
+      "text_sha256": "5342f8964046591ee46d379c76e4b680d3fb2b3f84ada5afec6686fa1d21868e",
+      "durable_receipts": [
+        {
+          "state": "queued",
+          "created": 1793937162,
+          "expires": 1793940762,
+          "presented": null
+        }
+      ]
+    }
+  },
+  "remaining": [
+    "最新窗口可见性监听的完整最小化/恢复旅程；同一卡片在诊断阶段的presented已单独取得",
+    "系统NSD与服务撤回/重现",
+    "完整前后台、锁屏及重启恢复",
+    "移动设备工具逐次确认及真实中断",
+    "iPhone签名与真机",
+    "旧真实模型、完整云工作台和原生窗口证据复验；本机容器安装因地址池耗尽失败",
+    "正式签名与发行更新"
+  ],
+  "sensitive_material": "没有记录用户凭据、私钥、会话材料或USB序列号；本地数据库以只读模式核实已知测试记录",
+  "artifacts": {
+    "apps/android/app/build/outputs/apk/debug/app-debug.apk": "039f6f54cf3c2f82ce924bb7ee70169a8e5a6264f4f91f87b844c162057de579",
+    ".dev/artifacts/LimeLink.app/Contents/Resources/LimeLink-android.apk": "039f6f54cf3c2f82ce924bb7ee70169a8e5a6264f4f91f87b844c162057de579",
+    ".dev/artifacts/LimeLink.app/Contents/MacOS/LimeLink": "c6aa0affce96df5276e1c3235e63ec63408c7e0f36bfa67723aad0117ddbf327"
+  },
+  "interaction_limits": "恢复CUA后镜像坐标点击已可用，完成最终UI实测；后续读取电脑AX状态超时，不能据此推定电脑卡片呈现已确认",
+  "previous_ui_evidence": {
+    "evidence": "docs/evidence/history/2026-11-06-before-ui-information-reduction/android-mobile-flow.json",
+    "sources": {
+      "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt": "97d7b9ea51f88356dcf8ca03dfcc95f85eb6a58bde4d6dfd473b813cd1d294e6",
+      "apps/android/app/src/main/kotlin/run/limeai/link/WorkbenchScreen.kt": "934bccfac6b0ffc3f706ffc749b9885b1e1060280e3e0599de260faadeddb7a9",
+      "apps/android/app/src/main/kotlin/run/limeai/link/AssistantPanel.kt": "2c61363728ce2b013a2770cedad5f27bc11b66233ee76a93dcb7b7260613b71f",
+      "apps/macos/DesktopAssistant.swift": "a31e11e6e7335e710b46e21bbe623d51508859222545de92f39f91c6e2e94277",
+      "apps/macos/LocalTerminal.swift": "a53293f2ee31a3e08e09936ea0b890fb06e66ecbe536d6eb7415f8918c05c265",
+      "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt": "f58a43db04ae26ad6b7b1326c9a91dfa0b2ed6b17e373634a54e2f510c12219d",
+      "apps/android/core/src/test/kotlin/run/limeai/link/core/CardReceiptTest.kt": "5f4b50500be76a02f26f9662eda280ab7c0c5f124fc69b8b82bafda992fede9a",
+      "contracts/iot-sdk.lock.json": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6"
+    },
+    "scope": "上一UI包的连接、发送、草稿清空、电脑呈现和原生结果页实测；保留其实际来源，不自动迁移为最终包通过"
+  },
+  "desktop_observation": {
+    "accessibility_timeout": true,
+    "sample_sha256": "21c0efaaa18cd79286f61028bc449f1e87c472097ba90bf6842614b6778761ca",
+    "sample_scope": "仅对本轮启动的开发App采样1秒；不足以判定超时根因",
+    "receipt_mutated_by_test": false
+  },
+  "presentation_recheck": {
+    "status": "passed",
+    "scope": "临时诊断包中同一测试卡片在系统报告窗口可见后，经原生界面取得presented；不是最新去除诊断后的完整最小化/恢复旅程",
+    "card_text_sha256": "5342f8964046591ee46d379c76e4b680d3fb2b3f84ada5afec6686fa1d21868e",
+    "durable_receipts": [
+      {
+        "state": "presented",
+        "created": 1793937162,
+        "presented": 1793938376
+      }
+    ],
+    "guard_observations": {
+      "card_intersects_viewport": true,
+      "application_active": true,
+      "visible_window": true
+    },
+    "diagnostic_log_sha256": "a0efc2811d35b682311b365c8086711c33063f1cea44b4df82403233c86500e9",
+    "receipt_manually_written": false
+  },
+  "paused_stage": {
+    "date": "2026-11-06",
+    "reason": "用户要求先告一段落并提交、打Tag、推送",
+    "window_occlusion_listener": {
+      "source": "apps/macos/LocalTerminal.swift",
+      "source_sha256": "40a4141a891daeac50489d30485e2c6911aec73a04ecca97e0916893537a8d07",
+      "build_status": "passed",
+      "complete_minimize_restore_journey": "not_completed",
+      "interrupted_by_user": true
+    },
+    "formal_distribution": false
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "exit_code": 0,
+  "verified_at": "2026-11-06T00:46:52.133638+00:00",
+  "scope": "Apple核心安装引导网络探测，公网HTTPS/设备TCP可达、未受信证书拒绝与关闭端口；不是设备证书或手机验收",
+  "cases": [
+    {
+      "host": "gateway.link.limeai.run",
+      "privateNetwork": false,
+      "https": 443,
+      "mqtt": 8883,
+      "httpsReady": true,
+      "deviceReady": true,
+      "certificateError": false
+    },
+    {
+      "host": "192.168.31.187",
+      "privateNetwork": true,
+      "https": 55371,
+      "mqtt": 55372,
+      "httpsReady": false,
+      "deviceReady": true,
+      "certificateError": true
+    },
+    {
+      "host": "192.168.31.187",
+      "privateNetwork": true,
+      "https": 55373,
+      "mqtt": 55374,
+      "httpsReady": false,
+      "deviceReady": false,
+      "certificateError": false
+    }
+  ],
+  "sources": {
+    "tools/test-remote-gateway-probe.py": "e9254f9cdbe9c2c0209efb4db67e47a168cb8b9f695c42a3ca7a96c2ece22620",
+    "packages/apple/Sources/LimeLinkCore/RemoteGatewayPlan.swift": "f2662794c96e0f9c0604c407d90425548c3ac20a29ac924990e1cedafbab416e",
+    "packages/apple/Sources/LimeLinkCore/RemoteGatewayProbe.swift": "31ff3b7f479b2bbb06e92ff2ff27af5c828cbc67a39e73e8f480da577e43db6a",
+    "packages/apple/Tests/RemoteGatewayPlanChecks.swift": "c993d006e955f904eca9f9eaf905a7ab7035f2706a2e3d05580eba613a3047a5",
+    "packages/apple/Tests/IdentityTests.swift": "e2cb9af1b7bfd68b635fd36e872f3585f630665b4f2cfb8dcb2635008550458d",
+    "contracts/iot-sdk.lock.json": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f"
+  },
+  "log_sha256": "03c72a9a051fb86fabce23d7e3cdba9a7bcd416234df579bc4fa5465638a7912",
+  "native_ui": false,
+  "system_trust_changed": false,
+  "sdk_revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25"
+}

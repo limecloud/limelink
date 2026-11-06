@@ -4,6 +4,14 @@
   "scope": "设计图渲染，不是运行架构验证",
   "diagrams": [
     {
+      "source": "docs/diagrams/agent-console.mmd",
+      "svg": "docs/assets/agent-console.svg",
+      "source_sha256": "9af836ff1c80fc48ceaff13823e8787d6946b9df970530e5114e0556f2da907d",
+      "svg_sha256": "af65b9e2e330ff4dd1588c9c07084bcf26bf04f1de2b2470474e2b76a0e3ed42",
+      "rendered": true,
+      "visual_review": "passed"
+    },
+    {
       "source": "docs/diagrams/handoff.mmd",
       "svg": "docs/assets/handoff.svg",
       "source_sha256": "12cde05b3d49308be1046f1a20e0ee57f6c29fdbc3b3802c588f27e80acac2f9",

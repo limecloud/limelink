@@ -8,8 +8,11 @@ let package = Package(
     targets: [
         .target(name:"LimeLinkCore",dependencies:[.product(name:"LimeIoTKit",package:"ios")],path:"packages/apple/Sources/LimeLinkCore"),
         .target(name:"LimeLinkUI",dependencies:["LimeLinkCore",.product(name:"LimeIoTKit",package:"ios")],path:"packages/apple/Sources/LimeLinkUI"),
-        .executableTarget(name:"LimeLinkMac",dependencies:["LimeLinkUI","LimeLinkCore"],path:"apps/macos"),
+        .target(name:"LimeLinkDesktopAssets",path:"assets/desktop",exclude:["icons","design"],resources:[.copy("images")]),
+        .executableTarget(name:"LimeLinkMac",dependencies:["LimeLinkUI","LimeLinkCore","LimeLinkDesktopAssets"],path:"apps/macos"),
         .executableTarget(name:"LinkChecks",dependencies:["LimeLinkCore",.product(name:"LimeIoTKit",package:"ios")],path:"packages/apple/Tests"),
+        .executableTarget(name:"AgentChecks",dependencies:["LimeLinkCore","LimeLinkUI",.product(name:"LimeIoTKit",package:"ios")],path:"packages/apple/AgentTests"),
+        .executableTarget(name:"DiscoveryChecks",dependencies:["LimeLinkCore","LimeLinkUI"],path:"packages/apple/DiscoveryTests"),
         .executableTarget(name:"WorkbenchChecks",dependencies:["LimeLinkUI","LimeLinkCore",.product(name:"LimeIoTKit",package:"ios")],path:"packages/apple/WorkbenchTests")
     ]
 )

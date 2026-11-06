@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "verified_at": "2026-11-06T01:22:21.517752+00:00",
+  "scope": "Android界面重做、USB安装、HTTPS登录/会话恢复、空间和真实电脑列表的局部真机检查；完整配对和Agent旅程尚未通过",
+  "sdk_revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25",
+  "device": {
+    "model": "Xiaomi 13 / 2211133C",
+    "android": "16",
+    "transport": "USB",
+    "serial_recorded": false
+  },
+  "gateway": "https://gateway.link.limeai.run",
+  "sources": {
+    "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt": "77ae66ec76d2669cddc86b53624cac98b575cd5ff634a219b9166f2e756cff96",
+    "apps/android/app/src/main/kotlin/run/limeai/link/WorkbenchScreen.kt": "40c523dc03217866f91c431e5a92207fab5e8fa0fb0eab7460ce62b697115604",
+    "apps/android/app/src/main/kotlin/run/limeai/link/AssistantPanel.kt": "6313efcd25acda0d23c85ef16824ba9f5c0fdda713292e8275eff1fa367c9990",
+    "apps/android/app/src/main/kotlin/run/limeai/link/LinkTheme.kt": "c17e84c68960026f527266ba70a742bf9a2b59f3214813e7878f06c1a430e6df",
+    "apps/android/app/src/main/kotlin/run/limeai/link/LinkIcon.kt": "9ecac5c6538751719954c7cc77a6ed70ac6d88d9337751a90c6b64939f894827",
+    "apps/android/app/src/main/kotlin/run/limeai/link/LinkColors.generated.kt": "b0d6ab31e4f28b4b738e3705738110432547a47b5cf68efb49bbfeeded65ed49",
+    "apps/android/app/src/main/AndroidManifest.xml": "47c261e4198252a1016bc9845cb9eb293527559b51e92effabb22798688d0d6f",
+    "apps/macos/DesktopMobileSettings.swift": "60957fffd7b54814013f8544af3a082d8f0a376b7e1b81290cae9edbfeced8a3",
+    "packages/apple/Sources/LimeLinkCore/MobileDeviceDeployment.swift": "57f9f070db81869e2c141e8378608d998a68b41320a6ba7e5d89b4a22c67a90e",
+    "packages/apple/Tests/MobileDeviceDeploymentChecks.swift": "dea398c52ae9f153932a29b9ad9b48fb8c73107c0dd5f004448a5a34d07b50be",
+    "packages/apple/Sources/LimeLinkCore/GatewayConnectionRequest.swift": "f89f661a457a2431b98cf484e93bd8155ed74a929083bd8d34622ac427c590ae",
+    "packages/apple/Tests/GatewayConnectionRequestChecks.swift": "e0e947518e780fe717d3f69e796a1795d5039d09ace699cfe935a5f6487d18ad",
+    "contracts/fixtures/gateway-connection-links.json": "c8b63809cffc4c811cf9fcaf329c9f01cdb135e1a9ca7852c142d78acb9b1562",
+    "tools/package-macos.py": "f81c0f0fe088cb970158ec4505d539d73b5430b0d075d5d8cc0be024744d0aa7",
+    "tools/generate-desktop-theme.py": "759b8b46056780534aa215b5c9240da322c0cca20155cb8682fcdf41e3d4682d",
+    "tools/prepare-desktop-artwork.py": "68e01f70d029973351330406e947e46a6b0192d47c9b636bde55c6103eddbd60",
+    "apps/android/app/src/main/res/drawable-nodpi/link_welcome.webp": "f5af98232f8ae65249f78a9c68cbbce275cfdb8df5c8396812ef03070589479c",
+    "apps/android/app/src/main/res/drawable-nodpi/link_brand.webp": "ce226473d6ddcf7a65302fb675746d42d15dfe97a658410c070d67fae91cb26b",
+    "apps/android/app/src/main/res/drawable-nodpi/link_devices.webp": "4a0e2c02dc06802cb8ce5b4e1d1b6bdf914f0c1ce669445edbceba3481563ea1"
+  },
+  "build_evidence": "docs/evidence/native-validation.json",
+  "artifacts": {
+    "android_debug_apk": {
+      "path": "apps/android/app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "d9055e4a9c929fe924d539c4fefe4b38966c94556e6b68f032a4e76e09ab5b08"
+    },
+    "macos_embedded_apk": {
+      "path": ".dev/artifacts/LimeLink.app/Contents/Resources/LimeLink-android.apk",
+      "sha256": "d9055e4a9c929fe924d539c4fefe4b38966c94556e6b68f032a4e76e09ab5b08"
+    }
+  },
+  "design_reference": {
+    "repository": "https://github.com/limecloud/shou",
+    "head": "b080d7460fd9513f11a8cc9adba55ddcf93ef557",
+    "file": "apps/macos/Sources/ShouDesign.generated.swift",
+    "sha256": "6a980e32e3bd3bb9f591be63f56ad355e05b0b9c2e7fcc3e003603d3097b6e61",
+    "worktree_status": "",
+    "usage": "只参考浅色Teal渐变、字体层级和布局规则；复用LimeLink已有品牌素材，未复制Shou角色"
+  },
+  "checks": {
+    "usb_install_preserves_app_data": "passed",
+    "desktop_install_then_address_confirmation": "passed_before_ui_redesign",
+    "assistant_empty_state": "passed",
+    "collaboration_empty_state": "passed",
+    "fixed_bottom_navigation": "passed",
+    "dark_status_bar_icons": "passed",
+    "manual_origin_dialog_and_keyboard": "passed",
+    "public_https_login": "passed",
+    "session_restore_after_update": "passed",
+    "explicit_space_selection": "passed",
+    "actual_desktop_online_list": "passed",
+    "selected_desktop_assistant_page": "passed",
+    "pairing_details": "passed_before_full_expansion_fix",
+    "full_expansion_fix_build_and_install": "passed",
+    "full_expansion_fix_visual_retest": "passed",
+    "pairing_primary_button_above_keyboard": "passed",
+    "settings_sheet_contents_visible": "passed",
+    "android_agent_execution": "not_run",
+    "ios_device_installation": "blocked_no_full_xcode_or_iphone"
+  },
+  "sheet_visual_observations": [
+    "小米13/Android16真机：配对面板打开即完整展开，请求配对按钮可见",
+    "手机名称输入框聚焦并弹出键盘后，请求配对按钮仍显示在键盘上方",
+    "设置面板打开即完整展示网关连接、连接安全和App版本；本轮复验时处于未恢复网关会话状态"
+  ],
+  "network_observations": [
+    "首次电脑读取出现unexpected end of stream；用户明确再次读取后成功，未自动重试",
+    "一次配对尝试在网络读取阶段失败，尚未取得电脑批准或消息呈现的真机证据；不记为配对通过"
+  ],
+  "remaining": [
+    "手机请求配对、电脑原生批准、卡片呈现和回执",
+    "真实Agent任务、移动生命周期和系统NSD",
+    "iPhone开发者模式、签名和实机环境",
+    "正式签名和发行安装渠道"
+  ],
+  "sensitive_material": "凭据未写入连接URL、文档或证据；手机登录材料使用原有安全存储",
+  "core_tests": {
+    "tests": 17,
+    "executed": 14,
+    "skipped_online_specialties": 3,
+    "failures": 0,
+    "errors": 0
+  },
+  "additional_checks": {
+    "radix_generation": "passed",
+    "deterministic_artwork_exports": "passed",
+    "documentation": "passed",
+    "git_diff_check": "passed",
+    "macos_embedded_current_apk": "passed"
+  }
+}

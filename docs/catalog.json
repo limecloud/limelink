@@ -247,6 +247,24 @@
       "path": "docs/30-build-and-local-trial.md",
       "title": "构建与隔离试用",
       "summary": "SDK 固定、原生构建和隔离网关联调命令"
+    },
+    {
+      "id": "DOC-BRAND-DESKTOP",
+      "path": "docs/brand/desktop-design.md",
+      "title": "桌面界面与 3D 图标",
+      "summary": "桌面任务导航、Radix 主题、文案约束、离线配图及立体图标"
+    },
+    {
+      "id": "DOC-32",
+      "path": "docs/32-agent-console-architecture.md",
+      "title": "Agent 控制台与部署架构",
+      "summary": "电脑控制台、本机与远程网关、Agent 运行时、多端与硬件目标，以及实际交付边界"
+    },
+    {
+      "id": "DOC-33",
+      "path": "docs/33-agent-execution.md",
+      "title": "首个 Agent 执行闭环",
+      "summary": "Codex 执行、设备范围、Apple/Android/.NET 逐次确认与恢复、macOS 原生/真实网关模拟设备验证及剩余限制"
     }
   ],
   "reading_routes": {
@@ -267,7 +285,9 @@
       "DOC-11",
       "DOC-12",
       "DOC-17",
-      "DOC-18"
+      "DOC-18",
+      "DOC-32",
+      "DOC-33"
     ],
     "acceptance": [
       "DOC-02",
@@ -282,7 +302,8 @@
       "DOC-BRAND-IDENTITY",
       "DOC-BRAND-VI-SPEC",
       "DOC-BRAND-SCENE-GALLERY",
-      "DOC-28"
+      "DOC-28",
+      "DOC-BRAND-DESKTOP"
     ]
   }
 }

@@ -1,0 +1,110 @@
+{
+  "passed": false,
+  "verified_at": "2026-11-05T19:33:57.517048+00:00",
+  "sdk_revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25",
+  "scope": "保留历史真实模型与原生卡片失败；当前SDK无工具三端真实模型重新通过，不能据此推定原生窗口、真手机或真实中断完整通过",
+  "real_agent_without_iot_tools": {
+    "status": "failed",
+    "runtime_deadline_seconds": 60,
+    "automatic_retry": false,
+    "attempts": [
+      {
+        "target": "dotnet",
+        "error": "agent_deadline_unknown",
+        "log_sha256": "aa0ad2d869fdec6089e9740e68e5e884727f5b56336aa46994226bd77a6a01e5"
+      },
+      {
+        "target": "runtime_resume",
+        "error": "reply_mismatch_extra_period",
+        "log_sha256": "e11628b1042afe02d197173a2fdeb0ee1a78db5f75b7b7677629e424078bbea9"
+      },
+      {
+        "target": "apple",
+        "error": "agent_deadline_unknown",
+        "log_sha256": "955cda9dea8178fd492130d621809c70cc4d87ea9ae3e7ec75eb99f7ec27af5e"
+      }
+    ],
+    "cause": "未确定；没有通过延长运行期限或放宽结果断言将失败改为通过",
+    "fixture_mtls_regression": "docs/evidence/agent-gateway-integration.json",
+    "historical_pass": "docs/evidence/history/2026-11-06-before-current-agent-live/agent-gateway-live.json",
+    "investigation": {
+      "verified_at": "2026-11-05T20:41:46.949557+00:00",
+      "method": "只读核对既有失败数据库与会话中的事件类型、角色和时间；不读取隐藏推理、凭据或开发者消息正文",
+      "target": "apple",
+      "run_state": "unknown",
+      "error": "agent_deadline_unknown",
+      "thread_and_turn_recorded": true,
+      "task_started_at": "2026-11-05T19:19:28.727Z",
+      "turn_aborted_at": "2026-11-05T19:20:31.234Z",
+      "assistant_message_count": 0,
+      "task_completed_count": 0,
+      "observed": "任务已进入轮次；截止中断前没有助手消息或完成事件。对照同轮 Node 会话的新运行及续接均有消息与完成事件。",
+      "conclusion": "等待发生在任务进入轮次之后；现有记录不能确定等待原因，不支持把失败归因于客户端未提交或进程清理。",
+      "runtime_modified": false,
+      "real_model_rerun": false,
+      "timeout_changed": false,
+      "assertions_relaxed": false
+    }
+  },
+  "native_card_and_session": {
+    "status": "resolved",
+    "pairing_via_native_window": true,
+    "card_text_visibly_rendered": true,
+    "presented_receipt": false,
+    "session_editing": "not_reached",
+    "attempts": [
+      {
+        "step": "native_pairing",
+        "error": "readiness_timeout",
+        "log_sha256": "3c4b077790013d7ecdc39f21d78a659260d41277bdfd71b9190bc7e9092a5837"
+      },
+      {
+        "step": "native_card_presentation",
+        "error": "readiness_timeout",
+        "log_sha256": "07a849749f7c270c4d81cbb16cc373594c28ba0ae6fcb08960fcdd7de2bfba1c"
+      },
+      {
+        "step": "native_card_presentation_after_raise",
+        "error": "readiness_timeout",
+        "log_sha256": "07a849749f7c270c4d81cbb16cc373594c28ba0ae6fcb08960fcdd7de2bfba1c",
+        "window_raised": true
+      }
+    ],
+    "cause": "首次窗口控制不可用；重启测试后配对通过、卡片可见，但未形成 presented 回执；尚未确定前台/可见区域确认条件的具体失败原因；再次通过窗口 Raise 后仍未形成回执，已停止重复尝试。",
+    "historical_pass": "docs/evidence/macos-native-ui.json",
+    "resolved_at": "2026-11-05T20:24:54.965008+00:00",
+    "resolution": "诊断确认窗口处于前台且卡片可见，但 PreferenceKey 传递的 viewport 恒为零；改为直接读取外层 GeometryReader 的实际区域。当前原生配对、卡片 presented 回执、会话编辑/释放及软件手机接续均已通过。",
+    "resolution_evidence": "docs/evidence/macos-native-ui.json",
+    "observed_card_states_before_fix": {
+      "queued": 1
+    }
+  },
+  "native_ui": true,
+  "physical_phone": false,
+  "physical_device": false,
+  "sources": {
+    "contracts/iot-sdk.lock.json": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f",
+    "tools/test-iot-link.mjs": "43161b50f3dcc0ad07994e81bb770c1e609e3f20a091376eb6686c3678fb6309",
+    "tools/test-macos-ui.mjs": "868ce04c5c4754457ebce054da3ddd42e4e36efbfe428bca6a6b1458c651d050",
+    "runtime/src/agent.rs": "fe17307621d89ae1984e2a7809f32caa59ef3fb61563e966b5f762944c356e3a",
+    "runtime/src/agent/codex.rs": "0f5f70faca7053374cee40ccf594790d570e0ade07afa1ed08f949c76fc5d03d",
+    "apps/macos/LocalTerminal.swift": "c2f3171918b1f8e51c2fc2633e2fe02351acaa38ac302380ccf02d6c8c5ec20b",
+    "apps/macos/DesktopWorkspace.swift": "dddeaa98d26763e1b521581fc238fef69fa9da64090d87593c5e65c840dd02b0"
+  },
+  "current_revalidation": {
+    "status": "passed",
+    "verified_at": "2026-11-06T04:10:06.816Z",
+    "sdk_revision": "1c77ef65e7af9c9036f82e278dfd84507a0f0e7d",
+    "evidence": "docs/evidence/agent-gateway-live.json",
+    "log_sha256": "c9503c25f1218eef915cf0b4e94c9a90994e48a3cdbc574ee60771f4b10c76b0",
+    "real_agent": true,
+    "apple_workbench_model": true,
+    "android_product_client": true,
+    "dotnet_product_client": true,
+    "device_mtls": true,
+    "native_ui": false,
+    "physical_phone": false,
+    "real_interrupt_tested": false,
+    "original_failures_retained": true
+  }
+}

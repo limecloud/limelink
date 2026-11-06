@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "verified_at": "2026-11-06T02:31:55.183122+00:00",
+  "sdk_revision": "1c77ef65e7af9c9036f82e278dfd84507a0f0e7d",
+  "scope": "IoT Android生产HTTP适配器的回环故障恢复与固定来源核心回归；不是手机完整配对或公网中断根因证明",
+  "sources": {
+    "contracts/iot-sdk.lock.json": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6"
+  },
+  "upstream_sources": {
+    "apps/android/core/src/main/kotlin/run/limeai/iot/core/GatewayClient.kt": "cc49156ff6761886c508aa2c6036f0894900dec985dcfac75b71a9cb84dca3c1",
+    "apps/android/core/src/test/kotlin/run/limeai/iot/core/TransportRecoveryTest.kt": "870ae01b5dfb5062a4d7d02fea538e15908f9a515239c900e6f6b5f6db35a3fc",
+    "apps/android/README.md": "7c1887828b317017ace9ae9af3e3d830165d9d33aa2bf9a0f3ac77b876a550dc"
+  },
+  "baseline": {
+    "revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25",
+    "tests": 2,
+    "failures": 1,
+    "observation": "读取丢失响应时报unexpected end of stream；POST零重发通过"
+  },
+  "checks": {
+    "get_recovers_lost_response": "passed",
+    "post_is_never_replayed": "passed",
+    "consecutive_get_failures_end": "passed",
+    "truncated_body_resumes_with_exception": "passed"
+  },
+  "core_suite": {
+    "tests": 137,
+    "skipped": 1,
+    "failures": 0,
+    "errors": 0
+  },
+  "core_suite_limits": "部分在线专项未配置环境时提前返回或跳过；本记录只证明宿主回归，不代表真实网关专项、Android系统网络或手机UI通过",
+  "input_isolation": "使用固定提交归档和同一已提交补丁；没有消费IoT工作树其他未提交改动。最初扩大测试因归档缺少合同夹具失败，补齐同一固定提交的夹具后通过。",
+  "behavior": {
+    "recovery_method": "GET only",
+    "write_connection_retry": false,
+    "redirects": false,
+    "same_request_call_timeout": true,
+    "body_io_failure_propagates": true
+  },
+  "logs": {
+    ".dev/iot-http-recovery-baseline.log": "c378c8a58cd661264c6792341f421b444e3be5d69b7f0cc269dc62366b70eccc",
+    ".dev/iot-http-recovery-fixed.log": "22d553add512f08b5c79fbebe8a629f033de750d956a4d52bff21059b9860227",
+    ".dev/iot-http-recovery-core-fixtures.log": "f67be7195671ade03c9590f8668ff9359606a3034414001b751d8b058fd757ff"
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "passed": true,
+  "sdk_revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25",
+  "fixture": true,
+  "official_cloud": false,
+  "native_app": false,
+  "hardware": false,
+  "results": [
+    {
+      "target": "apple",
+      "passed": true,
+      "cloud_fixture": true,
+      "posts": 1,
+      "original_queries": 2,
+      "local_space_signature": true,
+      "hardware": false,
+      "native_app": false,
+      "sources": [
+        {
+          "path": "contracts/iot-sdk.lock.json",
+          "sha256": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f"
+        },
+        {
+          "path": "tools/test-cloud-clients.mjs",
+          "sha256": "eb102caa6c1838dd89b6353d5ec32163416e96c55f02dd9c1ad01179c9135b8d"
+        },
+        {
+          "path": "packages/apple/Sources/LimeLinkCore/CloudLinkClient.swift",
+          "sha256": "98951d8ff351d11ebfb529e8ccd8c3102706ed58f82140170c3ebe988e295375"
+        },
+        {
+          "path": "packages/apple/Sources/LimeLinkCore/SecureStore.swift",
+          "sha256": "38b3a589ef466cce173a66dfa59ac6f9250ef9034206864f0491c20f1f54cf1d"
+        },
+        {
+          "path": "packages/apple/Tests/CloudChecks.swift",
+          "sha256": "13b2d6aaf4989f70e5432f964b5a1947e803a88b511ac9c288cd88f6c7d89f41"
+        },
+        {
+          "path": "packages/apple/Tests/IdentityTests.swift",
+          "sha256": "8d046a95f28b4fa5cf12d91c7ec5a7a7f581450c98cdf2caa4be8e095689ea00"
+        },
+        {
+          "path": "Package.swift",
+          "sha256": "3ca5ae1e3dc03127c9a0a65a34a4de07906381ca3c5e9b64afda3eed7ef57806"
+        }
+      ],
+      "log_sha256": "223b7dbe66594458a75d46219712233def2dcbd331cd540838da328bdf90dad4"
+    },
+    {
+      "target": "android",
+      "passed": true,
+      "cloud_fixture": true,
+      "posts": 1,
+      "original_queries": 2,
+      "local_space_signature": true,
+      "hardware": false,
+      "native_app": false,
+      "sources": [
+        {
+          "path": "contracts/iot-sdk.lock.json",
+          "sha256": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f"
+        },
+        {
+          "path": "tools/test-cloud-clients.mjs",
+          "sha256": "eb102caa6c1838dd89b6353d5ec32163416e96c55f02dd9c1ad01179c9135b8d"
+        },
+        {
+          "path": "apps/android/core/src/main/kotlin/run/limeai/link/core/CloudLinkClient.kt",
+          "sha256": "2ecd3f6db6d4866805aa74f09c7a3178fa4f2d2fb4280009e5dac2a2c6e966ba"
+        },
+        {
+          "path": "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt",
+          "sha256": "d4bdca24645a70720ccf212407713b00a9033d2c172712d3f8f51c19cbc51034"
+        },
+        {
+          "path": "apps/android/core/src/test/kotlin/run/limeai/link/core/CloudLinkClientTest.kt",
+          "sha256": "5fbdebdbf68f92b5c8163157347bd3cf37249c4f77cbc6b80559decb60e2db28"
+        },
+        {
+          "path": "apps/android/core/build.gradle.kts",
+          "sha256": "1ea1aa2fc5247ab8285d6167f47165ceb734f36766e1f4e63a6d760eb0e34afc"
+        }
+      ],
+      "log_sha256": "5294e27481cccd735c0a38e1a16660f7ec09818a54f814bab36aa07f58788124"
+    },
+    {
+      "target": "dotnet",
+      "passed": true,
+      "cloud_fixture": true,
+      "posts": 1,
+      "original_queries": 2,
+      "local_space_signature": true,
+      "hardware": false,
+      "native_app": false,
+      "sources": [
+        {
+          "path": "contracts/iot-sdk.lock.json",
+          "sha256": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f"
+        },
+        {
+          "path": "tools/test-cloud-clients.mjs",
+          "sha256": "eb102caa6c1838dd89b6353d5ec32163416e96c55f02dd9c1ad01179c9135b8d"
+        },
+        {
+          "path": "apps/windows/LimeLink.Core/CloudLinkClient.cs",
+          "sha256": "d86b5e964a3d7aa756b1382474626cebdb1e8ee0a4c6ff08e7ea8514181a10d3"
+        },
+        {
+          "path": "apps/windows/LimeLink.Core/LinkClient.cs",
+          "sha256": "db94c430e4e964f5a4345e191346a9e9501e1aeafc60374ade6b3b6f63035b49"
+        },
+        {
+          "path": "apps/windows/LimeLink.Core.Checks/Program.cs",
+          "sha256": "734267f29b1f96781cfab17a420480ab9b8794c14179945d80334ebc26115e3a"
+        },
+        {
+          "path": "apps/windows/LimeLink.Core.Checks/CloudChecks.cs",
+          "sha256": "e91e8a423288410e128e5437009b8102aaa9c7ae02f626642e5736670271d0fe"
+        },
+        {
+          "path": "apps/windows/LimeLink.Core.Checks/CloudLiveChecks.cs",
+          "sha256": "67da3c3c88a9c612007cf69c959a4ba3fe5546dc48c9c7b896624784c297e795"
+        }
+      ],
+      "log_sha256": "33fe4a58bc77903bd076c07fe548bddcdd7edfea892c93d5585d1f5ddca74d63"
+    }
+  ],
+  "sources": {
+    "contracts/iot-sdk.lock.json": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f",
+    "tools/test-cloud-clients.mjs": "eb102caa6c1838dd89b6353d5ec32163416e96c55f02dd9c1ad01179c9135b8d",
+    "packages/apple/Sources/LimeLinkCore/CloudLinkClient.swift": "98951d8ff351d11ebfb529e8ccd8c3102706ed58f82140170c3ebe988e295375",
+    "packages/apple/Sources/LimeLinkCore/SecureStore.swift": "38b3a589ef466cce173a66dfa59ac6f9250ef9034206864f0491c20f1f54cf1d",
+    "packages/apple/Tests/CloudChecks.swift": "13b2d6aaf4989f70e5432f964b5a1947e803a88b511ac9c288cd88f6c7d89f41",
+    "Package.swift": "3ca5ae1e3dc03127c9a0a65a34a4de07906381ca3c5e9b64afda3eed7ef57806",
+    "apps/android/core/src/main/kotlin/run/limeai/link/core/CloudLinkClient.kt": "2ecd3f6db6d4866805aa74f09c7a3178fa4f2d2fb4280009e5dac2a2c6e966ba",
+    "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt": "d4bdca24645a70720ccf212407713b00a9033d2c172712d3f8f51c19cbc51034",
+    "apps/android/core/src/test/kotlin/run/limeai/link/core/CloudLinkClientTest.kt": "5fbdebdbf68f92b5c8163157347bd3cf37249c4f77cbc6b80559decb60e2db28",
+    "apps/android/core/build.gradle.kts": "1ea1aa2fc5247ab8285d6167f47165ceb734f36766e1f4e63a6d760eb0e34afc",
+    "apps/windows/LimeLink.Core/CloudLinkClient.cs": "d86b5e964a3d7aa756b1382474626cebdb1e8ee0a4c6ff08e7ea8514181a10d3",
+    "apps/windows/LimeLink.Core/LinkClient.cs": "db94c430e4e964f5a4345e191346a9e9501e1aeafc60374ade6b3b6f63035b49",
+    "apps/windows/LimeLink.Core.Checks/Program.cs": "734267f29b1f96781cfab17a420480ab9b8794c14179945d80334ebc26115e3a",
+    "apps/windows/LimeLink.Core.Checks/CloudChecks.cs": "e91e8a423288410e128e5437009b8102aaa9c7ae02f626642e5736670271d0fe",
+    "apps/windows/LimeLink.Core.Checks/CloudLiveChecks.cs": "67da3c3c88a9c612007cf69c959a4ba3fe5546dc48c9c7b896624784c297e795"
+  },
+  "historical_check_entry_points": {
+    "packages/apple/Tests/IdentityTests.swift": "8d046a95f28b4fa5cf12d91c7ec5a7a7f581450c98cdf2caa4be8e095689ea00"
+  },
+  "entry_point_revalidation": [
+    {
+      "evidence": "docs/evidence/native-validation.json",
+      "scope": "核心检查入口新增本机部署与原生远程引导检查；当前LinkChecks已实际运行七组检查，旧真实云旅程未重复执行"
+    }
+  ]
+}

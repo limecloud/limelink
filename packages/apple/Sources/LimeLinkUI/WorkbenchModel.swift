@@ -20,7 +20,8 @@ import UIKit
     @Published public var space = "" {didSet{if space != oldValue{clearTargets();cloudSnapshot=nil;gateway=""}}}
     @Published public var spaces: [String] = []
     @Published public var devices: [Device] = []
-    @Published public var target = ""
+    @Published public private(set) var gatewayDevices: [Device] = []
+    @Published public var target = "" {didSet{if target != oldValue{clearAgent()}}}
     @Published public var text = ""
     @Published public var name = "我的手机"
     @Published public var result = "先连接网关，选择空间和电脑。"
@@ -32,22 +33,40 @@ import UIKit
     @Published public var contentID = ""
     @Published public var cancelID = ""
     @Published public var modelNotice = ""
+    @Published public private(set) var agentCapabilities: AgentCapabilities?
+    @Published public private(set) var agentRecords: [AgentReference] = []
+    @Published public private(set) var agentRun: AgentRun?
+    @Published public private(set) var agentEvents: [AgentEvent] = []
+    @Published public private(set) var agentToolEnabled=false
+    @Published public private(set) var agentIoTDevices: [Device] = []
+    @Published public var agentSelectedDevices=Set<String>()
+    @Published public private(set) var agentToolRecords: [AgentToolRecord] = []
+    @Published public var agentRunID = "" {didSet{if agentRunID != oldValue{agentRun=nil;agentEvents=[];agentContinue=false;agentToolRecords=[]}}}
+    @Published public var agentWorkspace = ""
+    @Published public var agentText = ""
+    @Published public var agentWrite = false
+    @Published public var agentContinue = false
+    private var agent: AgentClient?
+    private var agentIoT: AgentIoTClient?
+    private var agentGeneration = 0
     private var client: LinkClient?
     private let secure: any SessionStore
     private let transport: any HTTPTransport
     private let development: Bool
     private var cloud: CloudLinkClient?
     private var cloudSnapshot: CloudLinkSnapshot?
+    private var gatewayModels: [String:Model] = [:]
     private var task: Task<Void,Never>?
     private var generation = 0
     private var nextPoll = Date.distantPast
     private var ai: TextGenerationClient?
     private var aiKey: String?
-    private func clearTargetFields(){fingerprint="";sessionID="";revision=1;contentID="";cancelID="";aiKey=nil;modelNotice=""}
-    private func clearTargets(){devices=[];target="";clearTargetFields()}
-    private func clearConnection(){client=nil;ai=nil;spaces=[];space="";clearTargets();hasPending=false;result="网关地址已更改，请重新连接。原任务保留在原网关的安全存储记录中。"}
+    private func clearAgent(){agentGeneration += 1;agentCapabilities=nil;agentRecords=[];agentRunID="";agentRun=nil;agentEvents=[];agentWorkspace="";agentText="";agentWrite=false;agentContinue=false;agentToolEnabled=false;agentToolRecords=[];agentSelectedDevices=[]}
+    private func clearTargetFields(){fingerprint="";sessionID="";revision=1;contentID="";cancelID="";aiKey=nil;modelNotice="";clearAgent()}
+    private func clearTargets(){gatewayDevices=[];devices=[];agentIoTDevices=[];gatewayModels=[:];target="";clearTargetFields()}
+    private func clearConnection(){client=nil;agent=nil;agentIoT=nil;ai=nil;spaces=[];space="";clearTargets();hasPending=false;result="网关地址已更改，请重新连接。原任务保留在原网关的安全存储记录中。"}
     private func resetRoute(){
-        pause();client=nil;cloud=nil;ai=nil;authorization=nil;principal="";gateway="";cloudSnapshot=nil
+        pause();client=nil;agent=nil;agentIoT=nil;cloud=nil;ai=nil;authorization=nil;principal="";gateway="";cloudSnapshot=nil
         spaces=[];space="";clearTargets();cloudRecords=[];recordKey="";token="";text="";hasPending=false
         result="连接入口已更改，请明确恢复会话或发起授权。原任务仍保存在原入口。"
     }
@@ -88,6 +107,8 @@ import UIKit
             if self.token.isEmpty {try await client.restore()}else{try await client.login(token:self.token)}
             try Task.checkCancellation()
             self.token="";self.client=client
+            let agent=AgentClient(link:client,store:self.secure);self.agent=agent
+            self.agentIoT=AgentIoTClient(gateway:client.gateway,agent:agent,store:self.secure)
             self.ai=TextGenerationClient(gateway:client.gateway,store:self.secure)
             let spaces=try await client.spaces().map(\.spaceId);try Task.checkCancellation();self.spaces=spaces
             self.devices=[];self.target="";self.fingerprint=""
@@ -104,7 +125,7 @@ import UIKit
         let session=try await client.control.restoreSession()
         let spaces=try await client.control.spaces(),records=try await client.records();try Task.checkCancellation()
         self.space="";clearTargets();cloudSnapshot=nil;gateway="";text=""
-        principal=session.principal.name + " · " + session.principal.principalId;self.spaces=spaces.map(\.spaceId);cloudRecords=records
+        principal=session.principal.name + "，" + session.principal.principalId;self.spaces=spaces.map(\.spaceId);cloudRecords=records
         authorization=nil;recordKey="";UserDefaults.standard.set(cloudEndpoint,forKey:"limelink.cloud.endpoint")
         result="云会话已恢复，请明确选择空间并刷新网关与电脑。原操作可在下方独立查询。"
     }
@@ -136,15 +157,19 @@ import UIKit
                 guard !self.space.isEmpty else{throw LinkError("select_space_first")}
                 let snapshot=try await self.cloudClient().snapshot(space:self.space);try Task.checkCancellation()
                 self.target="";self.clearTargetFields();self.cloudSnapshot=snapshot
+                self.gatewayDevices=snapshot.devices
                 self.devices=snapshot.devices.filter{snapshot.models[$0.modelRevision]?.modelId=="urn:limelink:model:desktop:1"}
-                self.gateway=snapshot.gateway.gatewayId+" · "+snapshot.gateway.localSpaceId+" · "+snapshot.gateway.revision
+                self.gateway=snapshot.gateway.gatewayId+"，"+snapshot.gateway.localSpaceId+"，"+snapshot.gateway.revision
                 self.result="已核对当前空间唯一有效网关；请选择电脑并核对指纹。";return
             }
             guard let client=self.client,!self.space.isEmpty else{throw LinkError("select_space_first")}
             let snapshot=try await client.snapshot(space:self.space)
             try Task.checkCancellation()
             self.target="";self.clearTargetFields()
+            self.gatewayDevices=snapshot.devices
             self.devices=snapshot.devices.filter{snapshot.models[$0.modelRevision]?.modelId=="urn:limelink:model:desktop:1"}
+            self.gatewayModels=snapshot.models
+            self.agentIoTDevices=snapshot.devices.filter{device in snapshot.models[device.modelRevision].map{!$0.modelId.hasPrefix("urn:limelink:model:desktop:")} ?? false}
             self.result="发现 \(self.devices.count) 个 LimeLink 终端；离线端不可提交。"
         }
     }
@@ -189,6 +214,10 @@ import UIKit
                 try await Task.sleep(for:.milliseconds(200));command=try await client.resolve()
             }
             try Task.checkCancellation();try self.show(command)
+            if kind=="pair",case .object(let response)=try LinkClient.response(command),response["ok"] == .bool(true) {
+                // 配对请求的处理回执与电脑上的批准分别核实；成功回执不阻塞后续能力读取。
+                try await client.acknowledgeResolved();try Task.checkCancellation()
+            }
         }
     }
     private func show(_ command:Command) throws {
@@ -229,7 +258,7 @@ import UIKit
     }}
     public func logout() {run{
         if self.cloudMode{try await self.cloudClient().logout()}else{try await self.client?.logout()};try Task.checkCancellation()
-        self.client=nil;self.cloud=nil;self.ai=nil;self.authorization=nil;self.principal="";self.gateway="";self.cloudSnapshot=nil
+        self.client=nil;self.agent=nil;self.agentIoT=nil;self.cloud=nil;self.ai=nil;self.authorization=nil;self.principal="";self.gateway="";self.cloudSnapshot=nil
         self.space="";self.clearTargets();self.spaces=[];self.cloudRecords=[];self.recordKey="";self.text="";self.hasPending=false
         self.result="已退出。未核实记录和配对身份保留在系统安全存储。"
     }}
@@ -254,5 +283,107 @@ import UIKit
             if let draft=record.text{self.text=draft}
             self.result=record.statusText + "；内容只进入草稿，发送需另行确认。"
         }
+    }
+    private func agentTarget(online:Bool = true) throws -> (AgentClient, Device) {
+        guard !cloudMode,let agent,let device=devices.first(where:{$0.id==target}),!online || device.ready else {throw LinkError("请选择已连接网关中的在线电脑。")}
+        return (agent,device)
+    }
+    private func loadAgentRecords(_ client:AgentClient) async throws {
+        let version=agentGeneration,records=try await client.references();try Task.checkCancellation()
+        guard version==agentGeneration else{throw CancellationError()}
+        agentRecords=records.filter{$0.space==space && $0.device==target && $0.revision==devices.first(where:{$0.id==target})?.modelRevision}
+    }
+    public func discoverAgent(){run{
+        let version=self.agentGeneration
+        let (client,device)=try self.agentTarget()
+        let capabilities=try await client.discover(space:self.space,device:device);try Task.checkCancellation()
+        guard version==self.agentGeneration else{throw CancellationError()}
+        self.agentCapabilities=capabilities
+        let tools=try await client.discoverTools(space:self.space,device:device)
+        try Task.checkCancellation();guard version==self.agentGeneration else{throw CancellationError()}
+        self.agentToolEnabled=tools.enabled
+        // 目录由用户明确选择；不按最近运行推定工作区或会话。
+        self.agentWorkspace="";self.agentWrite=false
+        try await self.loadAgentRecords(client);self.result="已读取电脑上的助手配置。"
+    }}
+    private func presentAgent(_ run:AgentRun){
+        agentRunID=run.id;agentRun=run
+        var events=Dictionary(uniqueKeysWithValues:agentEvents.map{($0.seq,$0)})
+        for event in run.events{events[event.seq]=event}
+        agentEvents=events.values.sorted{$0.seq<$1.seq}
+        if run.expiresAt <= Int64(Date().timeIntervalSince1970){agentEvents=[]}
+        result=run.stateText
+    }
+    public func submitAgent(){run{
+        let version=self.agentGeneration
+        let (client,device)=try self.agentTarget()
+        guard let workspace=self.agentCapabilities?.workspaces.first(where:{$0.id==self.agentWorkspace}),!self.agentWrite || workspace.allowWrite else {throw LinkError("请选择允许的工作目录。")}
+        let resume:AgentReference?
+        if self.agentContinue{
+            guard self.agentRun?.state=="succeeded",self.agentRun?.sessionId != nil,let record=self.agentRecords.first(where:{$0.id==self.agentRunID}) else{throw LinkError("请选择已完成的对话。")}
+            resume=record
+        }else{resume=nil}
+        let selected=resume?.iotDevices ?? Array(self.agentSelectedDevices).sorted()
+        guard selected.isEmpty || (self.agentToolEnabled && selected.allSatisfy({id in self.agentIoTDevices.contains{$0.id==id}})) else {throw LinkError("请选择当前网关中的设备。")}
+        let run=try await client.submit(space:self.space,device:device,workspace:self.agentWorkspace,text:self.agentText,sandbox:self.agentWrite ? "workspace-write" : "read-only",resume:resume,iotDevices:selected)
+        try Task.checkCancellation();guard version==self.agentGeneration else{throw CancellationError()}
+        try await self.loadAgentRecords(client);self.presentAgent(run);self.agentText=""
+    }}
+    public func queryAgent(cancel:Bool = false){run{
+        let version=self.agentGeneration
+        let (client,device)=try self.agentTarget()
+        guard let reference=self.agentRecords.first(where:{$0.id==self.agentRunID}) else{throw LinkError("请选择原任务。")}
+        let after=cancel ? 0 : self.agentEvents.last?.seq ?? 0
+        let run=try await client.query(reference,space:self.space,device:device,after:after,cancel:cancel)
+        try Task.checkCancellation();guard version==self.agentGeneration else{throw CancellationError()};self.presentAgent(run)
+        if let tools=self.agentIoT,!reference.iotDevices.isEmpty {
+            do {if !cancel,run.state=="running"{_=try await tools.receive(reference,space:self.space,execution:device)}}
+            catch{try await self.loadAgentTools(tools,reference:reference);throw error}
+            try await self.loadAgentTools(tools,reference:reference)
+        }
+    }}
+    public func restoreAgent(){run{
+        let (client,_)=try self.agentTarget()
+        try await self.loadAgentRecords(client);self.result="已恢复此电脑的任务引用，请选择原任务。"
+    }}
+    public func recoverAgent(){run{
+        let version=self.agentGeneration
+        let (client,_)=try self.agentTarget()
+        let run=try await client.recover();try Task.checkCancellation();guard version==self.agentGeneration else{throw CancellationError()};try await self.loadAgentRecords(client)
+        if let run,self.agentRecords.contains(where:{$0.id==run.id}){self.presentAgent(run)}else{self.result="原请求已核实，请重新读取助手配置或选择原任务。"}
+    }}
+    public var agentDeviceScope:[String] {agentContinue ? agentRecords.first{$0.id==agentRunID}?.iotDevices ?? [] : agentSelectedDevices.sorted()}
+    public func agentPropertyName(_ record:AgentToolRecord)->String {
+        guard record.call.isWrite else{return "设备状态"}
+        let parts=record.call.path.split(separator:".").map(String.init)
+        return gatewayModels[record.call.modelRevision]?.services.first{$0.id==parts.first}?.properties.first{$0.id==parts.last}?.displayName ?? record.call.path
+    }
+    private func loadAgentTools(_ tools:AgentIoTClient,reference:AgentReference) async throws {
+        let version=agentGeneration
+        try await tools.pruneExpired()
+        let records=try await tools.records();try Task.checkCancellation()
+        guard version==agentGeneration,agentRunID==reference.id else{throw CancellationError()}
+        agentToolRecords=records.filter{$0.reference==reference}
+    }
+    public enum ToolAction {case confirm,reject,recover,report}
+    public func performAgentTool(_ id:String,action:ToolAction){run{
+        let version=self.agentGeneration,(_,device)=try self.agentTarget(online:action != .recover)
+        guard let tools=self.agentIoT,let reference=self.agentRecords.first(where:{$0.id==self.agentRunID}) else{throw LinkError("请选择原任务。")}
+        let record:AgentToolRecord
+        do {
+            switch action {
+            case .confirm:record=try await tools.confirm(id,reference:reference,space:self.space,execution:device)
+            case .reject:record=try await tools.reject(id,reference:reference,space:self.space,execution:device)
+            case .recover:record=try await tools.recoverCommand(id,reference:reference,space:self.space,execution:device)
+            case .report:record=try await tools.sendResult(id,reference:reference,space:self.space,execution:device)
+            }
+        }catch{try await self.loadAgentTools(tools,reference:reference);throw error}
+        try Task.checkCancellation();guard version==self.agentGeneration else{throw CancellationError()}
+        try await self.loadAgentTools(tools,reference:reference)
+        self.result=record.needsRecovery ? "设备结果待核实，请查询原命令。" : record.delivered ? "设备操作结果已回传。" : "原设备命令已核实，请回传结果。"
+    }}
+    public func pollAgent(){
+        guard !busy,!hasPending,!cloudMode,!agentToolRecords.contains(where:{$0.canConfirm}),let state=agentRun?.state,["awaiting_approval","approved","starting","running","cancelling"].contains(state) else{return}
+        queryAgent()
     }
 }

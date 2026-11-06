@@ -52,6 +52,7 @@ private actor WorkbenchTransport:HTTPTransport {
 }
 @main private enum WorkbenchChecks {
     @MainActor static func main()async throws {
+        if ProcessInfo.processInfo.environment["LIMELINK_CLOUD_WORKBENCH_DIRECTORY"] != nil {try await cloudLiveWorkbenchChecks();return}
         func check(_ value:Bool,_ message:String)throws{if !value{throw LinkError(message)}}
         func idle(_ model:WorkbenchModel)async throws {
             for _ in 0..<500{if !model.busy{return};try await Task.sleep(for:.milliseconds(10))}
@@ -88,6 +89,7 @@ private actor WorkbenchTransport:HTTPTransport {
         try check(await transport.waiting,"delayed_fixture_not_reached")
         late.pause();await transport.releaseSpaces();try await idle(late)
         try check(late.spaces.isEmpty && late.principal.isEmpty && late.devices.isEmpty,"late_result_restored_view")
-        print("{\"passed\":true,\"groups\":7,\"authorization_interval\":true,\"proof_resume_cancel\":true,\"cloud_selection\":true,\"original_recovery\":true,\"unknown_blocks_submit\":true,\"route_isolation\":true,\"late_response_cancel\":true,\"native_window\":false}")
+        try await localPairingWorkbenchChecks()
+        print("{\"passed\":true,\"groups\":8,\"authorization_interval\":true,\"proof_resume_cancel\":true,\"cloud_selection\":true,\"original_recovery\":true,\"unknown_blocks_submit\":true,\"route_isolation\":true,\"late_response_cancel\":true,\"local_pairing_receipt\":true,\"native_window\":false}")
     }
 }

@@ -1,0 +1,185 @@
+{
+  "passed": true,
+  "verified_at": "2026-11-05T22:45:13.903282+00:00",
+  "sdk_revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25",
+  "scope": "本地配对处理回执收尾：Apple/Android/.NET核心结果与历史隔离网关集成分别保留；网关发现入口变更后Android配对3项/11种结果和APK重新通过，NSD及原生目标窗口未验收。",
+  "sources": {
+    "contracts/iot-sdk.lock.json": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f",
+    "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift": "262f675a526379b8d74ded33abad0c0d091a9fc6c87612b043271aaf24ce35a4",
+    "packages/apple/WorkbenchTests/PairingWorkbenchChecks.swift": "e6dfdcab42b65721e8577b33ce26dfb6a4f1fb30ce4de61b951f77e6dea585ce",
+    "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt": "d4bdca24645a70720ccf212407713b00a9033d2c172712d3f8f51c19cbc51034",
+    "apps/android/core/src/test/kotlin/run/limeai/link/core/PairingReceiptTest.kt": "6b189d0102008725ac16c77493b0ed163a95111a6c44ddcf772f3aedf7e97148",
+    "apps/windows/LimeLink.Core/LinkClient.cs": "db94c430e4e964f5a4345e191346a9e9501e1aeafc60374ade6b3b6f63035b49",
+    "apps/windows/LimeLink.App/MainWindow.cs": "7af61ff3f327855a8a0a6a40d1a40ddf4abfd568217846a805e425efb50828ec",
+    "apps/windows/LimeLink.Core.Checks/PairingReceiptChecks.cs": "c10c9dd4c9f3ffb4968acd553bd15d40500957258a1a81d751f82f13058f3303",
+    "apps/windows/LimeLink.Core.Checks/Program.cs": "734267f29b1f96781cfab17a420480ab9b8794c14179945d80334ebc26115e3a"
+  },
+  "checks": {
+    "apple_workbench_outcomes": 7,
+    "android_outcomes": 11,
+    "android_tests": 3,
+    "dotnet_outcomes": 11,
+    "android_apk": true,
+    "windows_csharp_types": true,
+    "windows_xaml_compiled": false,
+    "native_ui_retested": false,
+    "physical_phone": false,
+    "real_iot_device": false,
+    "dotnet_groups": 18,
+    "current_dotnet_gateway_fixture": true,
+    "current_dotnet_real_agent_iot": true,
+    "current_cross_client_mtls_fixture": true,
+    "windows_acl_exercised": false,
+    "windows_runtime_lifecycle": false
+  },
+  "invariants": [
+    "重新 GET 原键，平台 confirmed 且产品布尔 ok=true 才自动收尾",
+    "处理回执成功不等于电脑批准配对或批准 Agent 任务",
+    "未知、失败、产品拒绝、404、响应丢失、取消和存储失败保留原意图",
+    "再次查询变为 unknown 或 ok 为字符串时保留原意图",
+    "保留的原意图阻止新 POST；无重复配对或设备写入",
+    "普通卡片不自动收尾；云原操作流程不变"
+  ],
+  "evidence": [
+    "docs/evidence/native-validation.json",
+    "docs/evidence/windows-source-check.json",
+    "docs/evidence/agent-gateway-integration.json",
+    "docs/evidence/agent-iot-dotnet-integration.json",
+    "docs/evidence/agent-iot-android-integration.json",
+    "docs/evidence/agent-iot-dotnet-live.json",
+    "docs/evidence/agent-iot-android-live.json"
+  ],
+  "logs": {
+    ".dev/verify-dotnet.log": "33fe4a58bc77903bd076c07fe548bddcdd7edfea892c93d5585d1f5ddca74d63",
+    ".dev/windows-agent-settings-sources.log": "66f4c43182df40e31a460ea2da872bd0e4a27a67c94b3cc9d79cbe4241a25a03",
+    ".dev/windows-source-check/build.log": "687bb583aec6300d3035b7b527b4da7deb142011eeaf4367e46feedfa3a5cf14",
+    ".dev/windows-agent-settings-dotnet-iot-fixture.log": "6f12b014d4f5d3ef1f276708b14646c046cbc5dfe88de5e498cb5cb0c8e8757b",
+    ".dev/windows-agent-settings-dotnet-iot-live.log": "874cd68a3f929364494a3a24204afc2ac1e1dac043e81592374f890aad2956e1",
+    ".dev/windows-agent-settings-cross-client-mtls.log": "34d5f0b03eb04797d3329ebb34bffa57d0f9e6614c95d4781004efc1a6a4a992",
+    ".dev/windows-agent-settings-cloud-clients.log": "8ec9ec024b9a02853eb98ef9aea1eda4cebd26a72cadf85070d15bc56ed1bb28"
+  },
+  "unresolved_regression": "docs/evidence/regression-2026-11-06.json",
+  "retained_validation": {
+    "verified_at": "2026-11-05T20:43:14.582307+00:00",
+    "scope": "Apple 工作台七种、Android 十一种结果和 APK；源码未变，本轮未重做这些单项检查或原生窗口",
+    "logs": {
+      ".dev/verify-android.log": "c691f5b0efc57bc85e66f852afd9aaf538421f9b6d1f7f87ebd4c0c90e4722d7",
+      ".dev/pairing-android-iot-fixture.log": "6f12b014d4f5d3ef1f276708b14646c046cbc5dfe88de5e498cb5cb0c8e8757b",
+      ".dev/pairing-android-iot-real.log": "874cd68a3f929364494a3a24204afc2ac1e1dac043e81592374f890aad2956e1"
+    }
+  },
+  "current_batch": {
+    "started_at": "2026-11-05T21:41:26.276778+00:00",
+    "checks": [
+      {
+        "name": "dotnet-iot-fixture",
+        "command": [
+          "<node24>",
+          "tools/test-agent-iot-clients.mjs",
+          "--client",
+          "dotnet",
+          "--dotnet",
+          "<workspace>/.dev/tools/dotnet/sdk/dotnet",
+          "--iot-root",
+          "<iot-checkout>"
+        ],
+        "log": ".dev/windows-agent-settings-dotnet-iot-fixture.log",
+        "started_at": "2026-11-05T21:41:26.276896+00:00",
+        "finished_at": "2026-11-05T21:41:43.441399+00:00",
+        "exit_code": 0
+      },
+      {
+        "name": "dotnet-iot-live",
+        "command": [
+          "<node24>",
+          "tools/test-agent-iot-clients.mjs",
+          "--client",
+          "dotnet",
+          "--dotnet",
+          "<workspace>/.dev/tools/dotnet/sdk/dotnet",
+          "--iot-root",
+          "<iot-checkout>",
+          "--agent-executable",
+          "<codex>"
+        ],
+        "log": ".dev/windows-agent-settings-dotnet-iot-live.log",
+        "started_at": "2026-11-05T21:41:43.443068+00:00",
+        "finished_at": "2026-11-05T21:42:14.334178+00:00",
+        "exit_code": 0
+      },
+      {
+        "name": "cross-client-mtls",
+        "command": [
+          "<node24>",
+          "tools/test-iot-link.mjs",
+          "--iot-root",
+          "<workspace>/.dev/iot-cloud-fixed",
+          "--mtls",
+          "--agent",
+          "--apple-agent",
+          "--dotnet-agent",
+          "<workspace>/.dev/tools/dotnet/sdk/dotnet",
+          "--android-agent"
+        ],
+        "log": ".dev/windows-agent-settings-cross-client-mtls.log",
+        "started_at": "2026-11-05T21:42:14.337039+00:00",
+        "finished_at": "2026-11-05T21:43:16.261319+00:00",
+        "exit_code": 0
+      },
+      {
+        "name": "cloud-clients",
+        "command": [
+          "<node24>",
+          "tools/test-cloud-clients.mjs",
+          "--dotnet",
+          "<workspace>/.dev/tools/dotnet/sdk/dotnet"
+        ],
+        "log": ".dev/windows-agent-settings-cloud-clients.log",
+        "started_at": "2026-11-05T21:43:16.263154+00:00",
+        "finished_at": "2026-11-05T21:43:53.215354+00:00",
+        "exit_code": 0
+      }
+    ],
+    "finished_at": "2026-11-05T21:43:53.215910+00:00",
+    "passed": true
+  },
+  "android_discovery_revalidation": {
+    "started_at": "2026-11-05T22:44:59.935281+00:00",
+    "finished_at": "2026-11-05T22:45:13.903282+00:00",
+    "scope": "网关发现入口变更后，实际重跑Android Core（含配对3项/11种结果）并重新构建APK；网关集成、原生窗口和NSD系统生命周期未重跑",
+    "previous_sources": {
+      "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt": "46e0177dbe2c2b096b2ea388d24ce43732f27ea297ca124b6845c815591a53e6"
+    },
+    "checks": {
+      "pairing_tests": 3,
+      "pairing_outcomes": 11,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "debug_apk_built": true
+    },
+    "reports": {
+      "apps/android/core/build/test-results/test/TEST-run.limeai.link.core.PairingReceiptTest.xml": "ec9847ed700589cfdebd2024d8540b2edf5a3879a736503ec1f21f3aafd0dbbc"
+    },
+    "logs": {
+      ".dev/verify-android.log": "0444cb0a0fb7cb3809a7a80341c4886acf0dc2705bc7d95971f9f34df4b39f9e"
+    },
+    "evidence": "docs/evidence/android-gateway-discovery.json",
+    "retained_integration": "原有Apple/Android/.NET库及协议未改变，保留此前各自绑定核心源码的集成记录；不推定Android窗口通过"
+  },
+  "historical_entry_point_sources": {
+    "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt": "1c300432f41c25806b559613200f5f5200f77ce70dc81dc7151879160d59e527"
+  },
+  "entry_point_revalidation": [
+    {
+      "evidence": "docs/evidence/android-mobile-ui.json",
+      "build_evidence": "docs/evidence/native-validation.json",
+      "scope": "Android入口迁出Composable页面、保存网关地址并整理文案；原配对账本与收尾逻辑未改，原真实Agent旅程未在本轮重跑。",
+      "full_original_journey_repeated": false
+    }
+  ],
+  "metadata_redaction": {
+    "reason": "发布前移除本机个人绝对路径；不改变源码/日志摘要、退出码或验收结果",
+    "original_record_sha256": "93902b5eba4d8f94a66a1df488402a3fc825bdc962e2304a76187d7f27b2eb28"
+  }
+}

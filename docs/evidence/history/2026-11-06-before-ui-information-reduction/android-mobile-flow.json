@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "passed": false,
+  "verified_at": "2026-11-06T03:18:00.493610+00:00",
+  "scope": "新SDK公网Android真机配对、卡片呈现、真实只读Agent任务，以及最终UI的连接/发送/草稿清空局部实测；助手键盘布局最终复验仍待完成",
+  "sdk_revision": "1c77ef65e7af9c9036f82e278dfd84507a0f0e7d",
+  "gateway": "https://gateway.link.limeai.run",
+  "device": {
+    "model": "Xiaomi 13 / 2211133C",
+    "android": "16",
+    "transport": "USB",
+    "serial_recorded": false
+  },
+  "sources": {
+    "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt": "97d7b9ea51f88356dcf8ca03dfcc95f85eb6a58bde4d6dfd473b813cd1d294e6",
+    "apps/android/app/src/main/kotlin/run/limeai/link/WorkbenchScreen.kt": "934bccfac6b0ffc3f706ffc749b9885b1e1060280e3e0599de260faadeddb7a9",
+    "apps/android/app/src/main/kotlin/run/limeai/link/AssistantPanel.kt": "2c61363728ce2b013a2770cedad5f27bc11b66233ee76a93dcb7b7260613b71f",
+    "apps/macos/DesktopAssistant.swift": "a31e11e6e7335e710b46e21bbe623d51508859222545de92f39f91c6e2e94277",
+    "apps/macos/LocalTerminal.swift": "a53293f2ee31a3e08e09936ea0b890fb06e66ecbe536d6eb7415f8918c05c265",
+    "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt": "f58a43db04ae26ad6b7b1326c9a91dfa0b2ed6b17e373634a54e2f510c12219d",
+    "apps/android/core/src/test/kotlin/run/limeai/link/core/CardReceiptTest.kt": "5f4b50500be76a02f26f9662eda280ab7c0c5f124fc69b8b82bafda992fede9a",
+    "contracts/iot-sdk.lock.json": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6"
+  },
+  "journey_before_final_ui_polish": {
+    "sources_and_artifacts": {
+      "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt": "8eff14faa0ac56409f2634e0734fe8f98893d14859f905927236c166c4093d93",
+      "apps/android/app/src/main/kotlin/run/limeai/link/WorkbenchScreen.kt": "b1a6458f3f5c5244d750598752039fec5bd6d51f99bac165d7e69237c8d82d21",
+      "apps/android/app/src/main/kotlin/run/limeai/link/AssistantPanel.kt": "a8d4578d4d3682dac6c02b1c2acadc062cb77f8dc4a01b940462c47d4ffa6fd4",
+      "apps/macos/DesktopAssistant.swift": "11163abea0612b6ebdf169e82aa210ebfeaafb6b29e42836ebb95feea62dda9c",
+      "apps/macos/LocalTerminal.swift": "f2182738cb38d9644ad7a845ccf9aba00c0a516b97d4ab461cd8da784c5a473d",
+      "apps/android/core/src/main/kotlin/run/limeai/link/core/LinkClient.kt": "317563a8f323eb74101ff96ed6edb57a759080063b31fb439ddc5be23bdcbfec",
+      "apps/android/app/build/outputs/apk/debug/app-debug.apk": "72bbfb3dd7e9d55b50efbe15db5a739aeb52765e8217841fd9de5a7c2fa7b81a",
+      ".dev/artifacts/LimeLink.app/Contents/Resources/LimeLink-android.apk": "72bbfb3dd7e9d55b50efbe15db5a739aeb52765e8217841fd9de5a7c2fa7b81a",
+      ".dev/artifacts/LimeLink.app/Contents/MacOS/LimeLink": "ebeaea7004ea5d607c7d1d4419add860618fceaa8fab479f94c67d2a9fce6935"
+    },
+    "checks": {
+      "session_restore": true,
+      "single_connect_selects_unique_space_and_computer": true,
+      "phone_pair_request": true,
+      "desktop_native_pair_approval": true,
+      "matching_fingerprint": true,
+      "phone_reports_approved": true,
+      "card_visible_in_native_desktop": true,
+      "desktop_native_agent_approval": true,
+      "phone_displays_real_agent_reply": true
+    },
+    "card": {
+      "text": "LimeLink phone to PC check 2026-11-06.",
+      "durable_receipts": [
+        {
+          "state": "presented",
+          "created": 1793931920,
+          "presented": 1793932373
+        }
+      ]
+    },
+    "agent": {
+      "prompt": "Read check.txt and reply with its verification sentence. Do not modify any file.",
+      "expected_sentence": "手机与电脑协同成功。",
+      "durable_receipts": [
+        {
+          "id": "a515ea9e-4c39-4239-88f6-8d4ffc16266b",
+          "state": "succeeded",
+          "sandbox": "read-only",
+          "created": 1793932610,
+          "error": null,
+          "reply_sha256": "29439e03e0d2183aa9d88f8fabff0242a5be924ffef496dc8c1f5ec8280c3cd9",
+          "contains_expected_sentence": true
+        }
+      ],
+      "allow_write": false,
+      "allow_iot_tools": false,
+      "approval": "电脑原生批准",
+      "timeout_seconds": 600
+    },
+    "observations": [
+      "最新桌面构建收到真实卡片并显示已显示；旧持续运行进程原地重打包前曾保持等待显示，未伪造呈现回执。",
+      "真实手机提交的Codex任务在电脑批准后完成；手机截图和电脑AX均显示预期校验句。"
+    ]
+  },
+  "current_ui": {
+    "changes": [
+      "键盘显示时收起底部导航，助手输入默认三行",
+      "正在请求时不展示未确认提示，结果区域不重复展示相同任务状态",
+      "协议编号和原始响应收进诊断；共同编辑、保存和撤回不要求手工编号",
+      "仅多台电脑时显示切换入口",
+      "严格核实成功卡片且草稿匹配原内容后清空输入",
+      "电脑本机任务页隐藏内部任务编号及无关连接网关提示"
+    ],
+    "checks": {
+      "macos_result_view": {
+        "status": "passed",
+        "observation": "最新版原生窗口显示已完成和真实模型回复，无a515ea9e任务短ID，无连接网关提示"
+      },
+      "android_core_and_build": {
+        "status": "passed",
+        "counts": {
+          "tests": 20,
+          "skipped": 3,
+          "failures": 0,
+          "errors": 0
+        },
+        "evidence": "docs/evidence/native-validation.json",
+        "receipt_checks": "严格成功卡片返回原内容；非终态、拒绝、字符串true、非卡片、缺失ID和畸形payload均不作为成功清空依据"
+      },
+      "android_final_install": {
+        "status": "passed",
+        "method": "USB覆盖安装成功，保留数据；随后通过最新版桌面原生安装并连接入口再次完成安装与打开",
+        "embedded_apk_matches": true
+      },
+      "android_keyboard_button_visibility": {
+        "status": "partial",
+        "collaboration": "passed：真机键盘显示时底部导航收起，输入内容及发送按钮完整位于键盘上方",
+        "assistant": "not_run：镜像坐标点击仍报noWindowsAvailable，键盘导航可操作按钮但尚未切至助手输入框"
+      },
+      "android_card_clear_visual_check": {
+        "status": "passed",
+        "observation": "最终包发送前输入保留；核实成功后输入框恢复占位文字、发送按钮禁用、显示已发送到电脑；请求进行时没有上次操作未确认提示"
+      },
+      "android_single_connect_restore": {
+        "status": "passed",
+        "observation": "最终包确认公网地址后一次连接，恢复原会话、唯一空间和电脑，直接进入协同页；无需访问密钥、手选空间或重新配对，单台电脑不显示切换"
+      },
+      "desktop_native_install_and_launch": {
+        "status": "passed",
+        "observation": "设置的手机页识别已授权Android，安装并连接后显示App已安装并打开；手机实际出现无凭据HTTPS地址确认框"
+      },
+      "macos_current_card_presentation": {
+        "status": "passed",
+        "observation": "电脑接收页实际显示本次卡片；应用未在前台时保留等待显示，激活窗口后变为已显示；没有更改呈现守卫或写入回执"
+      }
+    },
+    "card_receipt": {
+      "text_sha256": "ac653038684fba34d1bd8f4ef5109d1c29cd5b35dfe0429402728e849d503829",
+      "displayed_text": "LimeLink simplified flow check 2026-11-06.",
+      "navigation_inserted_trailing_tabs": true,
+      "count": 1,
+      "state": "presented",
+      "created": 1793934820,
+      "presented": 1793934918
+    }
+  },
+  "remaining": [
+    "最终助手输入框键盘与主按钮位置复验；协同输入和成功清空草稿已真机通过",
+    "系统NSD与服务撤回/重现",
+    "完整前后台、锁屏及重启恢复",
+    "移动设备工具逐次确认及真实中断",
+    "iPhone签名与真机",
+    "旧SDK整套证据真实复验和文档校验",
+    "正式签名与发行更新"
+  ],
+  "sensitive_material": "没有记录用户凭据、私钥、会话材料或USB序列号；本地数据库以只读模式核实已知测试记录",
+  "artifacts": {
+    "apps/android/app/build/outputs/apk/debug/app-debug.apk": "a4ac52ee2451e566f39f5cc884438354e12eb950ab1384386d40826f8ea2d450",
+    ".dev/artifacts/LimeLink.app/Contents/Resources/LimeLink-android.apk": "a4ac52ee2451e566f39f5cc884438354e12eb950ab1384386d40826f8ea2d450",
+    ".dev/artifacts/LimeLink.app/Contents/MacOS/LimeLink": "eb6c5564903bb8c2805276eebda5dbcd2536af27848bfe0d15923ce45ba4ccdc"
+  },
+  "interaction_limits": "CUA镜像坐标点击noWindowsAvailable；改用桌面安装入口打开手机，Tab/Shift-Tab和Return完成地址确认、连接、输入和发送。助手页面切换未完成，仍需补测。"
+}

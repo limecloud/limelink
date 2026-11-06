@@ -2,6 +2,8 @@
 
 参考 Shou 的“原生界面 → 本平台应用服务 → 小型能力接口 → 系统适配”，保留 macOS 和 Windows 各自的原生工程。平台执行核心继续在 LimeIoT，桌面端只实现自身产品用例与系统能力。
 
+桌面首先是网关控制台，可连接本机或远程网关；Agent 的目标部署与客户端身份边界见[Agent 控制台与部署架构](32-agent-console-architecture.md)。接收内容只是其中一个协同功能，当前原生客户端构建不代表本机网关安装器已实现。
+
 ## 技术路线
 
 | 平台 | 目标方案 | 已有可复用基础 | 待验证项 |
@@ -35,8 +37,14 @@ UI 可以持有状态，但不决定动作授权、重试或证据真实性。�
 
 新增剪贴板、文件、快捷键或外部 Agent 功能时，以单个明确适配器和验收案例推进。Shou 的软件盘点代码、HachimoDock 的桌面输入路径不自动形成我们的兼容承诺。
 
+首个 Codex App Server 适配器、macOS 助手与本机批准已接入，配置和实际验收见[Agent 执行闭环](33-agent-execution.md)。主机文件沙箱、模型运行和未来 IoT 设备工具拥有不同权限边界。
+
 ## 与手机的共享
 
 Apple 平台优先复用版本明确的 LimeIoTKit 和通用产品值类型；AppKit、登录项和桌面权限留在 macOS 适配层。Windows 与 Android 共享 Schema 和测试向量，当前不为减少语言数量强行引入跨端 UI 引擎。
 
 依据：[SRC-SHOU-ARCH、SRC-SHOU-BUILD、SRC-IOT-SWIFT](evidence/sources.json)。维护成本与四端测试投入见[风险](22-risks-and-open-decisions.md)。
+
+## 桌面界面实现
+
+桌面导航、Radix 主题、渐进展开和 3D 图标见[桌面界面与图标](brand/desktop-design.md)。macOS 专用 DesktopWorkspace 复用 WorkbenchModel，iOS 保留独立界面；Windows 将布局拆到 DesktopWorkspace.cs，原有授权与原请求策略仍由产品客户端负责。

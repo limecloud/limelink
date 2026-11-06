@@ -42,7 +42,10 @@ private actor FixtureTransport:HTTPTransport {
         var status=200
         let body:String
         if path=="/api/v1/auth/session"{body="{\"authenticated\":true,\"csrf_token\":\"csrf\",\"expires_at\":\"2030-01-01T00:00:00Z\"}"}
-        else if path.hasSuffix("/capabilities"){body="{\"models\":{\"\(revision)\":{\"model_id\":\"urn:limelink:model:desktop:1\",\"services\":[]}}}"}
+        else if path.hasSuffix("/capabilities"){
+            let model=try JSONSerialization.jsonObject(with:Data(contentsOf:URL(fileURLWithPath:"contracts/desktop.json")))
+            body=String(decoding:try JSONSerialization.data(withJSONObject:["models":[revision:model]]),as:UTF8.self)
+        }
         else if path.hasSuffix("/devices"){body="{\"items\":[{\"device_id\":\"desktop\",\"model_revision\":\"\(revision)\",\"ready\":true,\"reported\":{}}],\"next_cursor\":null}"}
         else if path.hasSuffix("/commands")&&request.httpMethod=="POST"{postCommands+=1;throw URLError(.timedOut)}
         else if path.contains("/commands/by-key/"){resolveQueries+=1;status=404;body="{\"error\":{\"code\":\"command_not_found\"}}"}
@@ -71,7 +74,15 @@ private func recoveryChecks()async throws{
         try IdentityTests().testSignatureBindsTargetAndPayload()
         try IdentityTests().testPayloadBoundAndIndependentIdentities()
         try await recoveryChecks()
+        try localAgentConfigurationChecks()
+        try remoteGatewayPlanChecks()
+        try gatewayConnectionRequestChecks()
+        let probes=try await remoteGatewayProbeChecks()
+        #if os(macOS)
+        try localGatewayDeploymentChecks()
+        try mobileDeviceDeploymentChecks()
+        #endif
         try await cloudConsumerChecks()
-        print("{\"passed\":true,\"groups\":4,\"signature_target_binding\":true,\"payload_budget\":true,\"response_loss_get_only\":true,\"storage_failure_zero_post\":true}")
+        print("{\"passed\":true,\"groups\":7,\"signature_target_binding\":true,\"payload_budget\":true,\"response_loss_get_only\":true,\"storage_failure_zero_post\":true,\"local_agent_configuration\":true,\"local_gateway_deployment\":true,\"remote_gateway_plan\":true,\"remote_gateway_probe_cases\":\(probes)}")
     }
 }

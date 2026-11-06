@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "verified_at": "2026-11-05T23:53:01.176409+00:00",
+  "scope": "用户授权Ubuntu 22.04 amd64服务器；普通原生二进制、systemd、回环TLS HTTPS、所有者Cookie登录、设备mTLS、进程私钥隔离和重启保留；无公网/真机验收",
+  "sdk_revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25",
+  "sources": {
+    "tools/package-native-gateway.py": "1c800868d8a2d635c9b8c557a7d176ed3efbb22abd4e3b3e2257d83d1e0ee192",
+    "tools/native-gateway/install.py": "274802f35b57303564ae22c055d7fdb034d062b11556e26c4e93c6b8ae71ec35",
+    "tools/native-gateway/run.py": "616dcd6a9b047b7cec9b82f30c39e48acbb2748087479570545f8b6ff6d0d8a2",
+    "tools/test-native-gateway.py": "8f71a0b382a6ee453f520cc74cf8fdcbef1fd8f4b938392a6e70a6b8f0432e27",
+    "contracts/desktop.json": "43d19e24c54904d0ed8d5aca94c6ea564e7d9739ff6a815cae1873fae15ec348",
+    "contracts/iot-sdk.lock.json": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f"
+  },
+  "events": [
+    "agent_off_and_system_trust_unchanged",
+    "private_identity_permissions",
+    "limelink-broker.service_nonroot_running",
+    "limelink-broker.service_authority_ca.key_inaccessible",
+    "limelink-broker.service_device-authority_ca.key_inaccessible",
+    "limelink-broker.service_enrollment_desktop_private.key_inaccessible",
+    "limelink-gateway.service_nonroot_running",
+    "limelink-gateway.service_authority_ca.key_inaccessible",
+    "limelink-gateway.service_device-authority_ca.key_inaccessible",
+    "limelink-gateway.service_enrollment_desktop_private.key_inaccessible",
+    "verified_https_and_broker_health",
+    "owner_https_cookie_login",
+    "unique_space",
+    "only_registered_desktop_offline",
+    "enrolled_mtls_mqtt_connect",
+    "anonymous_device_tls_rejected",
+    "restart_preserved_space_identity_and_configuration"
+  ],
+  "docker_used": false,
+  "service_user": "limelink",
+  "glibc_minimum": "2.35",
+  "systemd_analyze_verify_exit_code": 0,
+  "local_initialization": {
+    "unique_space": true,
+    "only_real_desktop": true,
+    "not_auto_started": true,
+    "agent_disabled": true,
+    "system_trust_unchanged": true,
+    "private_files": true,
+    "broker_requires_client_certificate": true,
+    "no_simulated_device_acl": true
+  },
+  "archive_sha256": "337312f5d0f88f886878536bf17a18fb71aef2f356c34c9221d6ef778a406d4a",
+  "package_manifest_sha256": "bf889755e7e6fe522bc30da6249853b6b4434aa6556cf4ee0e2007509b64b551",
+  "package_sources": {
+    "repository": "https://github.com/limecloud/iot",
+    "revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25",
+    "worktree_overlay": false,
+    "archive_sha256": "d067fca55dc1eba77c1255c11ba5e672d41754fc24dfb39df52c71393473ca36",
+    "source_digest": "90ac4821bdc94d3696b2b35acb8037f410f8d9affb3722c0d4f95a2ed1b55893"
+  },
+  "origin_prepared": "https://gateway.link.limeai.run",
+  "public_endpoint_verified": false,
+  "public_dns_ready": false,
+  "public_certificate_installed": false,
+  "firewall_changed": false,
+  "physical_phone": false,
+  "agent_enabled": false,
+  "system_trust_changed": false,
+  "services_enabled": true,
+  "active_listeners": {
+    "http": "127.0.0.1:17880",
+    "mqtt_internal": "127.0.0.1:18884",
+    "device_mtls": "127.0.0.1:8883",
+    "validation_https": "127.0.0.1:18443"
+  },
+  "remaining": [
+    "确认公网域名和DNS记录",
+    "公网受信证书、Nginx站点与安全组/主机防火墙放行",
+    "完整远程桌面执行端/手机用户旅程",
+    "其他CPU架构与Linux发行版",
+    "正式签名包、更新回退和卸载"
+  ],
+  "previous_attempts": [
+    {
+      "stage": "local_initialization_path_validation",
+      "passed": false,
+      "exit_code": 2,
+      "reason": "初始化路径校验拒绝.dev中的点；修正为允许普通点路径并拒绝上级路径后通过",
+      "log_sha256": "4387de6ffb2e91f8e9b573b883d72514a3a2c359947f5d2262b3495e88c4ba3f"
+    }
+  ],
+  "logs": {
+    ".dev/native-gateway-amd64-build.log": "a148adfc56b02e67a21ebdbb67e662640b1f682e587aef6a6df47553a1ff2bbf",
+    ".dev/package-native-gateway-amd64-fixed.log": "cd34a364fb433e059d43df315c610ce298ad3364b4315159dcd429851bffeec4",
+    ".dev/native-gateway-initialization-check-fixed.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "check_count": 17
+}

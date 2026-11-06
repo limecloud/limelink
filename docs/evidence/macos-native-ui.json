@@ -1,8 +1,20 @@
 {
   "passed": true,
-  "verified_at": "2026-11-05T13:02:34.810Z",
+  "verified_at": "2026-11-05T22:28:14.660Z",
   "scope": "macOS 本机批准、原生卡片实际呈现及会话编辑；手机为 Node 签名夹具",
-  "sdk_revision": "e01581888d8be168481b85242c5835864674df3e",
+  "sdk_revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25",
+  "sources": {
+    "apps/macos/LocalTerminal.swift": "f70c63bc75d7f9999cc4fe091546d5ba266c340507d945157c6c07d470df3641",
+    "apps/macos/DesktopAgentSettings.swift": "c3d29d4884300cbf519b07174c703bc0c62a18857b8fcd26a08ef1af40fa92bd",
+    "packages/apple/Sources/LimeLinkCore/LocalAgentConfiguration.swift": "d4c0b238545abc3e1ba681156efa386ea06683969fba4411a92da20526bac0f7",
+    "packages/apple/Sources/LimeLinkCore/CodexExecutableDiscovery.swift": "d84a9ecbbb19c5b1abc7669cc4b1740a819f3a7c64abf6b572324fbfe7e54fce",
+    "runtime/src/lib.rs": "87f25d4a1b1cc7460a659b4f647cbce309d9e26f23d4d94508e37a4a2400cd54",
+    "runtime/src/main.rs": "42ae2f66d373e95c0e606e3666a87f8f639eb5c68cefd34f203690250d322305",
+    "runtime/Cargo.lock": "1893fa56859022cab8a681c8f9bc4ef2871a768dd1e50f29e1c6f866a83963e1",
+    "contracts/desktop.json": "43d19e24c54904d0ed8d5aca94c6ea564e7d9739ff6a815cae1873fae15ec348",
+    "contracts/iot-sdk.lock.json": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f",
+    "tools/test-macos-ui.mjs": "2980850e117ab54c2ffe808472d9859420c39b09eea01e3321549b5d3238cec3"
+  },
   "native_ui": true,
   "physical_phone": false,
   "user_https_ui": false,
@@ -10,6 +22,15 @@
   "approval_via_native_window": true,
   "presentation_via_native_window": true,
   "desktop_session_handoff": true,
-  "app_binary_sha256": "28d82ea3eefe7059fd36f7cecd8490e3fcab34244f9a1c7e85d0567c9dae2cd0",
-  "runtime_binary_sha256": "280f016ea1f775587f69049d7cb9d62728de944d0dfd7d35ea1466887b8c9971"
+  "app_binary_sha256": "310144c6e9c44ed78a158bf8eec3308f5af35e9598d6ff07eb03683c51c37b0b",
+  "runtime_binary_sha256": "ccc6376bb67b335dd2a54b7900546dc29150011bae7e588607c8f02a7f944fc0",
+  "historical_entry_point_sources": {
+    "apps/macos/DesktopWorkspace.swift": "315259fbedb29c014161760ec2a5239f1ee4f2ad27fa964a113418a042a272dc",
+    "apps/macos/LimeLinkApp.swift": "7787a77dd59160bba3dd855f9e03315df2b96ab8c3365c9e74c578b56c7d8b28",
+    "apps/macos/DesktopSettings.swift": "71cb91ceb1a8c9ba2b23558c1d0a24af2232badd09e96fed40f2a12a24697427"
+  },
+  "entry_point_revalidation": {
+    "evidence": "docs/evidence/gateway-management-macos-ui.json",
+    "scope": "当前入口、共享网关状态与Agent设置布局复验；本记录中的历史任务执行未重复运行"
+  }
 }

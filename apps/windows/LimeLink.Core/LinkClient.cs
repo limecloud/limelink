@@ -35,18 +35,32 @@ public sealed class LinkClient:IDisposable {
         var identity=LinkIdentity.Create();var data=JsonSerializer.Serialize(identity);await storage.SaveAsync(scope,data,cancellation);if(await storage.LoadAsync(scope,cancellation)!=data)throw new InvalidOperationException("identity_not_durable");return identity;
     }
     public async Task<string> FingerprintAsync(string space,string device,CancellationToken cancellation=default)=>(await IdentityAsync(space,device,cancellation)).Fingerprint;
-    public async Task<CommandReceipt> PerformAsync(string space,Device device,string kind,JsonObject payload,CancellationToken cancellation=default){
+    public async Task<CommandReceipt> PerformAsync(string space,Device device,string kind,JsonObject payload,CancellationToken cancellation=default,string path="link.exchange",Func<PendingAction,Task>? onPrepared=null){
         await gate.WaitAsync(cancellation);try{
+            if(path is not ("link.exchange" or "agent.exchange")||kind.StartsWith("agent.",StringComparison.Ordinal)!=(path=="agent.exchange"))throw new InvalidOperationException("invalid_exchange_path");
             if(this.space!=space||!device.Ready)throw new InvalidOperationException("refresh_target_required");if(await PendingAsync(cancellation)is not null)throw new InvalidOperationException("resolve_original_request_first");
             var snapshot=await Gateway.SnapshotAsync(space,cancellation);var current=snapshot.Devices.SingleOrDefault(d=>d.Id==device.Id&&d.Ready&&d.ModelRevision==device.ModelRevision)??throw new InvalidOperationException("target_changed");
-            if(snapshot.Models[current.ModelRevision]?["model_id"]?.GetValue<string>()!="urn:limelink:model:desktop:1")throw new InvalidOperationException("target_capability_changed");
-            var identity=await IdentityAsync(space,current.Id,cancellation);var input=identity.Exchange(space,current.Id,current.ModelRevision,kind,payload.ToJsonString());var intent=CommandIntent.Create(current,"link.exchange",input);
+            var model=snapshot.Models[current.ModelRevision];var parts=path.Split('.');
+            if(model?["model_id"]?.GetValue<string>()!="urn:limelink:model:desktop:1"||model["services"] is not JsonArray services||!services.Any(s=>s?["id"]?.GetValue<string>()==parts[0]&&s["actions"] is JsonArray actions&&actions.Any(a=>a?["id"]?.GetValue<string>()==parts[1])))throw new InvalidOperationException("target_capability_changed");
+            var identity=await IdentityAsync(space,current.Id,cancellation);var input=identity.Exchange(space,current.Id,current.ModelRevision,kind,payload.ToJsonString());var intent=CommandIntent.Create(current,path,input);
             var pending=new PendingAction(Gateway.Origin,space,intent);var data=JsonSerializer.Serialize(pending);await storage.SaveAsync(Scope,data,cancellation);if(await storage.LoadAsync(Scope,cancellation)!=data)throw new InvalidOperationException("intent_not_durable");
+            if(onPrepared is not null)await onPrepared(pending);cancellation.ThrowIfCancellationRequested();
             return await Gateway.CreateAsync(space,intent,cancellation);
         }finally{gate.Release();}
     }
     public async Task<CommandReceipt> ResolveAsync(CancellationToken cancellation=default){await gate.WaitAsync(cancellation);try{var pending=await PendingAsync(cancellation)??throw new InvalidOperationException("no_pending_request");return await Gateway.ResolveAsync(pending.Space,pending.Intent,cancellation);}finally{gate.Release();}}
     public async Task FinishAsync(CancellationToken cancellation=default){await gate.WaitAsync(cancellation);try{var pending=await PendingAsync(cancellation);if(pending is null)return;var receipt=await Gateway.ResolveAsync(pending.Space,pending.Intent,cancellation);if(!new[]{"confirmed","failed","expired","rejected"}.Contains(receipt.Status))throw new InvalidOperationException("original_request_unresolved");await storage.SaveAsync(Scope,null,cancellation);}finally{gate.Release();}}
+    public async Task<bool> FinishSuccessfulPairingAsync(CancellationToken cancellation=default){
+        await gate.WaitAsync(cancellation);try{
+            var pending=await PendingAsync(cancellation);if(pending is null)return false;
+            var operation=pending.Intent.Operation;
+            if(operation["path"]?.GetValue<string>()!="link.exchange"||operation["value"]?["kind"]?.GetValue<string>()!="pair")return false;
+            // 再次核实原配对回执；处理成功与电脑本机批准是两个状态。
+            var receipt=await Gateway.ResolveAsync(pending.Space,pending.Intent,cancellation);
+            if(Response(receipt)?["ok"] is not JsonValue ok||!ok.TryGetValue<bool>(out var success)||!success)return false;
+            cancellation.ThrowIfCancellationRequested();await storage.SaveAsync(Scope,null,cancellation);return true;
+        }finally{gate.Release();}
+    }
     public static JsonObject? Response(CommandReceipt command)=>command.Status=="confirmed"&&command.Document["evidence"]?["output"]?["response"] is JsonValue value?JsonNode.Parse(value.GetValue<string>())?.AsObject():null;
     public void Dispose(){Gateway.Dispose();gate.Dispose();}
 }

@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.ComponentModel;
 using System.Text.Json.Nodes;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -8,7 +9,7 @@ using LimeIoT.Client;
 using LimeLink.Core;
 
 namespace LimeLink.App;
-public sealed class MainWindow:Window {
+public sealed partial class MainWindow:Window {
     private readonly ComboBox route=new(){Header="连接入口",ItemsSource=new[]{"本地 LimeIoT 网关","LimeIoT 云控制面"},SelectedIndex=0,HorizontalAlignment=HorizontalAlignment.Stretch};
     private readonly StackPanel cloudControls=new(){Spacing=8,Visibility=Visibility.Collapsed};
     private readonly TextBlock authorizationView=new(){TextWrapping=TextWrapping.Wrap,IsTextSelectionEnabled=true};
@@ -27,7 +28,6 @@ public sealed class MainWindow:Window {
     private readonly TextBox cancelId=new(){Header="需要取消的原卡片 ID"};
     private readonly TextBlock result=new(){Text="连接网关后，请选择空间并刷新电脑。",TextWrapping=TextWrapping.Wrap,IsTextSelectionEnabled=true};
     private readonly TextBlock fingerprint=new(){TextWrapping=TextWrapping.Wrap,IsTextSelectionEnabled=true};
-    private readonly StackPanel form=new(){Spacing=12,Padding=new Thickness(24),MaxWidth=900};
     private readonly ContentControl controls=new();
     private readonly ScrollViewer scroll=new();
     private readonly StackPanel local=new(){Spacing=12};
@@ -45,51 +45,49 @@ public sealed class MainWindow:Window {
     private readonly Dictionary<string,string> sessionDrafts=new();
     private readonly Dictionary<string,FrameworkElement> visibleCards=new();
     private Process? runtime;
+    private bool runtimeInputClosed;
     private bool busy,active=true;
+    private sealed class CommandAvailability:INotifyPropertyChanged {
+        private bool enabled=true;
+        public bool Enabled{get=>enabled;set{if(enabled==value)return;enabled=value;PropertyChanged?.Invoke(this,new(nameof(Enabled)));}}
+        public event PropertyChangedEventHandler? PropertyChanged;
+    }
+    private readonly CommandAvailability commandAvailability=new();
     public MainWindow(){
         Title="LimeLink 柠联";
-        form.Children.Add(new TextBlock{Text="LimeLink 柠联",FontSize=30});form.Children.Add(new TextBlock{Text="手机的灵感，电脑接着做。"});
-        cloudControls.Children.Add(Button("发起 / 恢复原授权",BeginCloud));cloudControls.Children.Add(authorizationView);
-        cloudControls.Children.Add(Button("打开系统浏览器核对并批准",OpenAuthorization));cloudControls.Children.Add(Button("查询授权结果",PollCloud));cloudControls.Children.Add(Button("取消原授权",CancelCloud));cloudControls.Children.Add(cloudIdentity);
-        cloudControls.Children.Add(new TextBlock{Text="云入口只消费正式设备命令合同。授权由浏览器明确批准；云模型和媒体转发尚未提供。",TextWrapping=TextWrapping.Wrap});
-        foreach(var element in new UIElement[]{endpoint,token,Button("连接 / 恢复会话",Connect),spaces,Button("刷新电脑与真实能力",Refresh),targets,name,fingerprint,Button("请求配对",()=>Action("pair")),Button("检查配对及展示状态",()=>Action("status")),draft,Button("确认发送到所选电脑",()=>Action("card")),Button("系统语音草稿",Dictate),result,Button("查询原请求",Resolve),Button("完成已核实记录",Finish),cancelId,Button("请求取消待展示卡片",()=>Action("cancel")),session,revision,Button("从草稿建立会话",()=>Action("session_create")),Button("取得 30 秒输入资格",()=>Action("session_claim")),Button("提交草稿修订",()=>Action("session_write")),Button("释放输入资格",()=>Action("session_release")),contentId,Button("安装纯文本内容（1小时）",()=>Action("content_put")),Button("移除所选内容",()=>Action("content_remove")),Button("撤销此客户端协同",()=>Action("revoke")),Button("退出用户会话",Logout),new TextBlock{Text="本机执行端",FontSize=24},Button("选择设备配置并启动",StartRuntime),Button("停止本机执行端",StopRuntime),local,new TextBlock{Text="系统语音服务可能处理录音；语音只生成草稿。模型服务通过网关配置，不会自动获得设备执行权。",TextWrapping=TextWrapping.Wrap}})form.Children.Add(element);
-        var modelCommands=new StackPanel{Spacing=8};modelCommands.Children.Add(Button("网关模型生成草稿",()=>ModelDraft(false)));modelCommands.Children.Add(Button("查询原模型任务",()=>ModelDraft(true)));form.Children.Insert(form.Children.IndexOf(result),modelCommands);
-        form.Children.Add(Button("导出脱敏诊断",ExportDiagnostics));
-        form.Children.Insert(11,Button("重新申请已失效的配对",Reapply));
-        form.Children.Insert(2,route);form.Children.Insert(4,cloudControls);form.Children.Insert(form.Children.IndexOf(result)+1,records);
-        var reconcile=Button("核对原网关回执",()=>Resolve(true));reconcile.Visibility=Visibility.Collapsed;form.Children.Insert(form.Children.IndexOf(records)+1,reconcile);
+        BuildWorkspace(out var modelCommands,out var reconcile);
         endpoint.TextChanged+=(_,_)=>ResetRoute();
-        route.SelectionChanged+=(_,_)=>{cloudMode=route.SelectedIndex==1;ResetRoute();endpoint.Text="";endpoint.Header=cloudMode?"LimeIoT 控制面 HTTPS 地址":"LimeIoT 网关 HTTPS 地址";token.Visibility=modelCommands.Visibility=cloudMode?Visibility.Collapsed:Visibility.Visible;cloudControls.Visibility=records.Visibility=reconcile.Visibility=cloudMode?Visibility.Visible:Visibility.Collapsed;};
+        route.SelectionChanged+=(_,_)=>{cloudMode=route.SelectedIndex==1;ResetRoute();endpoint.Text="";endpoint.Header=cloudMode?"服务地址":"网关地址";token.Visibility=modelCommands.Visibility=cloudMode?Visibility.Collapsed:Visibility.Visible;cloudControls.Visibility=records.Visibility=reconcile.Visibility=cloudMode?Visibility.Visible:Visibility.Collapsed;};
         spaces.SelectionChanged+=(_,_)=>{ClearTargets();cloudSnapshot=null;cloudIdentity.Text="";};
         targets.SelectionChanged+=async(_,_)=>{ClearTargetFields();await Run(async()=>{if(targets.SelectedItem is not Device d||spaces.SelectedItem is not string s)return;var value=cloudMode?await Cloud().FingerprintAsync(d.Id,Cancellation):client is not null?await client.FingerprintAsync(s,d.Id):"";Cancellation.ThrowIfCancellationRequested();fingerprint.Text="本客户端指纹\n"+value;});};
-        controls.Content=form;scroll.Content=controls;Content=scroll;scroll.ViewChanged+=(_,_)=>ReportVisibleCards();Activated+=(_,args)=>{active=args.WindowActivationState!=WindowActivationState.Deactivated;if(active)ReportVisibleCards();else if(cloudMode)PauseCloud();};
-        Closed+=(_,_)=>{work?.Cancel();if(runtime is{HasExited:false})runtime.Kill();runtime?.Dispose();client?.Dispose();cloud?.Dispose();};
+        scroll.ViewChanged+=(_,_)=>ReportVisibleCards();Activated+=(_,args)=>{active=args.WindowActivationState!=WindowActivationState.Deactivated;if(active)ReportVisibleCards();else if(cloudMode)PauseCloud();else if(desktopPage=="assistant"){work?.Cancel();ClearAgentProjection();}};
+        Closed+=async(_,_)=>{agentPoll.Stop();work?.Cancel();await StopRuntime();client?.Dispose();cloud?.Dispose();};
     }
-    private Button Button(string label,Func<Task> action){var button=new Button{Content=label};button.Click+=async(_,_)=>await Run(action);return button;}
-    private void ClearTargetFields(){fingerprint.Text="";session.Text="";revision.Text="1";contentId.Text="";cancelId.Text="";aiKey=null;}
+    private Button Button(string label,Func<Task> action){var button=new Button{Content=label};button.SetBinding(Microsoft.UI.Xaml.Controls.Control.IsEnabledProperty,new Microsoft.UI.Xaml.Data.Binding{Source=commandAvailability,Path=new PropertyPath(nameof(CommandAvailability.Enabled)),Mode=Microsoft.UI.Xaml.Data.BindingMode.OneWay});button.Click+=async(_,_)=>await Run(action);return button;}
+    private void ClearTargetFields(){fingerprint.Text="";session.Text="";revision.Text="1";contentId.Text="";cancelId.Text="";aiKey=null;ClearAgent();}
     private void ClearTargets(){targets.ItemsSource=null;ClearTargetFields();}
     private void PauseCloud(){work?.Cancel();ClearTargets();cloudSnapshot=null;authorization=null;authorizationView.Text="";cloudIdentity.Text="";}
-    private void ResetRoute(){work?.Cancel();token.Password="";client?.Dispose();cloud?.Dispose();client=null;cloud=null;ai=null;spaces.ItemsSource=null;ClearTargets();cloudSnapshot=null;records.ItemsSource=null;authorization=null;authorizationView.Text="";cloudIdentity.Text="";draft.Text="";result.Text="连接入口已更改，请恢复会话或明确发起授权；原操作保留在原入口。";}
+    private void ResetRoute(){work?.Cancel();token.Password="";client?.Dispose();cloud?.Dispose();client=null;agentClient=null;agentIoTClient=null;cloud=null;ai=null;spaces.ItemsSource=null;ClearTargets();cloudSnapshot=null;records.ItemsSource=null;authorization=null;authorizationView.Text="";cloudIdentity.Text="";draft.Text="";result.Text="连接入口已更改，请恢复会话或明确发起授权；原操作保留在原入口。";UpdateWorkspaceState();}
     private CloudLinkClient Cloud()=>cloud??=new(endpoint.Text,secure);
     private async Task Run(Func<Task> action){
-        if(busy)return;busy=true;controls.IsEnabled=false;work=new();
+        if(busy)return;busy=true;commandAvailability.Enabled=false;work=new();
         try{await action();Cancellation.ThrowIfCancellationRequested();}
         catch(OperationCanceledException){ }
         catch(Exception error){if(!Cancellation.IsCancellationRequested){if(error is GatewayException{Code:"unauthenticated"}){spaces.ItemsSource=null;ClearTargets();cloudSnapshot=null;records.ItemsSource=null;cloudIdentity.Text="";draft.Text="";}result.Text=error is GatewayException gateway?gateway.Code:error.Message;}}
         finally{
-            if(cloudMode&&cloud is not null&&!Cancellation.IsCancellationRequested){try{var saved=await cloud.RecordsAsync(Cancellation);Cancellation.ThrowIfCancellationRequested();var key=(records.SelectedItem as RecordItem)?.Record.Id;records.ItemsSource=saved.Select(r=>new RecordItem(r,string.Join(" · ",r.Reference.SpaceId,r.Reference.Request.DeviceId,r.IsPrepared?"尚未提交":r.Result?.Status??r.Rejection??"未知",r.Id[..8]))).ToArray();records.SelectedItem=(records.ItemsSource as RecordItem[])?.FirstOrDefault(r=>r.Record.Id==key);}catch(OperationCanceledException){}catch(Exception error){result.Text+="\n原记录读取未完成："+error.Message;}}
-            work.Dispose();work=null;controls.IsEnabled=true;busy=false;
+            if(cloudMode&&cloud is not null&&!Cancellation.IsCancellationRequested){try{var saved=await cloud.RecordsAsync(Cancellation);Cancellation.ThrowIfCancellationRequested();var key=(records.SelectedItem as RecordItem)?.Record.Id;records.ItemsSource=saved.Select(r=>new RecordItem(r,string.Join("，",r.Reference.SpaceId,r.Reference.Request.DeviceId,r.IsPrepared?"尚未提交":r.Result?.Status??r.Rejection??"未知",r.Id[..8]))).ToArray();records.SelectedItem=(records.ItemsSource as RecordItem[])?.FirstOrDefault(r=>r.Record.Id==key);}catch(OperationCanceledException){}catch(Exception error){result.Text+="\n原记录读取未完成："+error.Message;}}
+            work.Dispose();work=null;commandAvailability.Enabled=true;busy=false;UpdateWorkspaceState();
         }
     }
-    private async Task LoadCloud(){var c=Cloud();var current=await c.Control.RestoreSessionAsync(Cancellation);var available=await c.Control.SpacesAsync(Cancellation);Cancellation.ThrowIfCancellationRequested();spaces.ItemsSource=null;ClearTargets();cloudSnapshot=null;spaces.ItemsSource=available.Select(s=>s.SpaceId).ToArray();authorization=null;authorizationView.Text="";cloudIdentity.Text="当前账号："+current.Principal.Name+" · "+current.Principal.PrincipalId;draft.Text="";result.Text="云会话已恢复，请明确选择空间并刷新；原操作可独立查询。";}
+    private async Task LoadCloud(){var c=Cloud();var current=await c.Control.RestoreSessionAsync(Cancellation);var available=await c.Control.SpacesAsync(Cancellation);Cancellation.ThrowIfCancellationRequested();spaces.ItemsSource=null;ClearTargets();cloudSnapshot=null;spaces.ItemsSource=available.Select(s=>s.SpaceId).ToArray();authorization=null;authorizationView.Text="";cloudIdentity.Text="当前账号："+current.Principal.Name+"，"+current.Principal.PrincipalId;draft.Text="";result.Text="云会话已恢复，请明确选择空间并刷新；原操作可独立查询。";}
     private async Task BeginCloud(){var login=await Cloud().Control.BeginAuthorizationAsync("windows",Cancellation);Cancellation.ThrowIfCancellationRequested();authorization=login;nextPoll=Environment.TickCount64+login.IntervalSeconds*1000L;authorizationView.Text="授权码："+login.UserCode+"\n到期："+login.ExpiresAt;result.Text="在系统浏览器核对授权码、平台和账号后批准。回到应用后明确恢复原授权并查询。";}
     private async Task OpenAuthorization(){if(authorization is null)throw new InvalidOperationException("begin_or_resume_authorization_first");await Windows.System.Launcher.LaunchUriAsync(new Uri(authorization.VerificationUri));}
     private async Task PollCloud(){if(authorization is null||Environment.TickCount64<nextPoll)throw new InvalidOperationException("resume_authorization_and_wait_interval");nextPoll=Environment.TickCount64+authorization.IntervalSeconds*1000L;var response=await Cloud().Control.PollAuthorizationAsync(Cancellation);Cancellation.ThrowIfCancellationRequested();if(response.Status=="approved")await LoadCloud();else result.Text="授权状态："+response.Status;}
     private async Task CancelCloud(){await Cloud().Control.CancelAuthorizationAsync(Cancellation);Cancellation.ThrowIfCancellationRequested();authorization=null;authorizationView.Text="";result.Text="原授权已取消。";}
-    private async Task Connect(){if(cloudMode){await LoadCloud();return;}client?.Dispose();client=null;ai=null;spaces.ItemsSource=null;ClearTargets();var next=new LinkClient(endpoint.Text,secure);try{if(token.Password.Length==0)await next.Gateway.RestoreAsync();else await next.Gateway.LoginAsync(token.Password);}catch{next.Dispose();throw;}token.Password="";client=next;ai=new(next.Gateway,secure);aiKey=null;spaces.ItemsSource=await next.Gateway.SpacesAsync();result.Text="已连接，请明确选择空间并刷新。";}
+    private async Task Connect(){if(cloudMode){await LoadCloud();return;}client?.Dispose();client=null;agentClient=null;agentIoTClient=null;ai=null;spaces.ItemsSource=null;ClearTargets();var next=new LinkClient(endpoint.Text,secure);try{if(token.Password.Length==0)await next.Gateway.RestoreAsync();else await next.Gateway.LoginAsync(token.Password);}catch{next.Dispose();throw;}token.Password="";client=next;agentClient=new(next,secure);agentIoTClient=new(next.Gateway,agentClient,secure);ai=new(next.Gateway,secure);aiKey=null;spaces.ItemsSource=await next.Gateway.SpacesAsync();result.Text="已连接，请明确选择空间并刷新。";}
     private async Task Refresh(){
         if(spaces.SelectedItem is not string space)throw new InvalidOperationException("select_space_first");ClearTargets();
-        if(cloudMode){var snapshot=await Cloud().SnapshotAsync(space,Cancellation);Cancellation.ThrowIfCancellationRequested();cloudSnapshot=snapshot;targets.ItemsSource=snapshot.Devices.Where(d=>snapshot.Models[d.ModelRevision]?["model_id"]?.GetValue<string>()=="urn:limelink:model:desktop:1").ToArray();cloudIdentity.Text=string.Join(" · ",snapshot.Principal,snapshot.Gateway.GatewayId,snapshot.Gateway.LocalSpaceId,snapshot.Gateway.Revision);}
+        if(cloudMode){var snapshot=await Cloud().SnapshotAsync(space,Cancellation);Cancellation.ThrowIfCancellationRequested();cloudSnapshot=snapshot;targets.ItemsSource=snapshot.Devices.Where(d=>snapshot.Models[d.ModelRevision]?["model_id"]?.GetValue<string>()=="urn:limelink:model:desktop:1").ToArray();cloudIdentity.Text=string.Join("，",snapshot.Principal,snapshot.Gateway.GatewayId,snapshot.Gateway.LocalSpaceId,snapshot.Gateway.Revision);}
         else{if(client is null)throw new InvalidOperationException("connect_first");var snapshot=await client.SnapshotAsync(space);targets.ItemsSource=snapshot.Devices.Where(d=>snapshot.Models[d.ModelRevision]?["model_id"]?.GetValue<string>()=="urn:limelink:model:desktop:1").ToArray();}
         result.Text="已读取真实终端能力，请核对目标与指纹。";
     }
@@ -111,8 +109,9 @@ public sealed class MainWindow:Window {
         if(kind=="pair"&&reapply)payload["reapply"]=true;
         if(cloudMode){var record=await Cloud().PerformAsync(space,device,kind,payload,Cancellation);Cancellation.ThrowIfCancellationRequested();ShowCloud(record);return;}
         if(client is null)throw new InvalidOperationException("connect_first");
-        var command=await client.PerformAsync(space,device,kind,payload);
-        for(var i=0;i<20&&command.Status is "accepted" or "dispatched";i++){await Task.Delay(200);command=await client.ResolveAsync();}Show(command);
+        var command=await client.PerformAsync(space,device,kind,payload,Cancellation);
+        for(var i=0;i<20&&command.Status is "accepted" or "dispatched";i++){await Task.Delay(200,Cancellation);command=await client.ResolveAsync(Cancellation);}Cancellation.ThrowIfCancellationRequested();Show(command);
+        if(kind=="pair"&&LinkClient.Response(command)?["ok"] is JsonValue ok&&ok.TryGetValue<bool>(out var success)&&success){if(!await client.FinishSuccessfulPairingAsync(Cancellation))throw new InvalidOperationException("original_request_unresolved");Cancellation.ThrowIfCancellationRequested();}
     }
     private void ShowCloud(ControlCommandRecord record){
         var response=CloudLinkClient.Response(record);result.Text=string.Join("\n","云原操作："+(record.IsPrepared?"尚未提交":record.Rejection??record.Result?.Status??"未知"),record.Id,response?.ToJsonString());
@@ -134,36 +133,74 @@ public sealed class MainWindow:Window {
     }
     private async Task Dictate(){using var recognizer=new SpeechRecognizer(new Windows.Globalization.Language("zh-CN"));recognizer.UIOptions.ExampleText="说出你的草稿";var recognized=await recognizer.RecognizeWithUIAsync();if(recognized.Status==SpeechRecognitionResultStatus.Success)draft.Text=recognized.Text;}
     private async Task StartRuntime(){
-        if(runtime is{HasExited:false})throw new InvalidOperationException("runtime_already_running");
-        var picker=new FileOpenPicker();picker.FileTypeFilter.Add(".json");WinRT.Interop.InitializeWithWindow.Initialize(picker,WinRT.Interop.WindowNative.GetWindowHandle(this));var file=await picker.PickSingleFileAsync();if(file is null)return;
-        var start=new ProcessStartInfo(Path.Combine(AppContext.BaseDirectory,"limelink-runtime.exe")){UseShellExecute=false,RedirectStandardInput=true,RedirectStandardOutput=true,RedirectStandardError=true,CreateNoWindow=true};start.ArgumentList.Add(file.Path);
-        runtime=Process.Start(start)??throw new InvalidOperationException("runtime_start_failed");configuration=file.Path;lastView=null;var process=runtime;
-        _=Task.Run(async()=>{while(await process.StandardOutput.ReadLineAsync() is string line){if(line.Length>1_000_000)break;try{var frame=JsonNode.Parse(line)?.AsObject();DispatcherQueue.TryEnqueue(()=>Render(frame));}catch(System.Text.Json.JsonException){}}});
-        _=Task.Run(async()=>{while(await process.StandardError.ReadLineAsync() is not null){}});
+        EnsureRuntimeStopped();if(localAgentSettingsBusy)throw new InvalidOperationException("runtime_already_running");
+        string? path=null;runtimeTransition=true;RefreshLocalAgentSettings();
+        try{var picker=new FileOpenPicker();picker.FileTypeFilter.Add(".json");WinRT.Interop.InitializeWithWindow.Initialize(picker,WinRT.Interop.WindowNative.GetWindowHandle(this));path=(await picker.PickSingleFileAsync())?.Path;}
+        finally{runtimeTransition=false;RefreshLocalAgentSettings();}
+        if(path is not null)StartConfiguredRuntime(path);
+    }
+    private void StartConfiguredRuntime(string path){
+        EnsureRuntimeStopped();
+        try{LoadLocalAgentSettings(path);}catch(Exception error)when(error is IOException or UnauthorizedAccessException or InvalidOperationException or System.Text.Json.JsonException){
+            localAgentDocument=null;configuration=path;localConfigurationName.Text=Path.GetFileName(path);localConfigurationMessage.Text=AgentConfigurationError(error);localAgentEnabled.IsChecked=false;
+        }
+        var start=new ProcessStartInfo(Path.Combine(AppContext.BaseDirectory,"limelink-runtime.exe")){UseShellExecute=false,RedirectStandardInput=true,RedirectStandardOutput=true,RedirectStandardError=true,CreateNoWindow=true};start.ArgumentList.Add(path);
+        var process=new Process{StartInfo=start};
+        try{if(!process.Start())throw new InvalidOperationException("runtime_start_failed");}catch{process.Dispose();throw;}
+        runtime=process;runtimeInputClosed=false;configuration=path;lastView=null;visibleCards.Clear();sessionDrafts.Clear();local.Children.Clear();localAgents.Children.Clear();
+        localRuntimeState="正在连接…";RefreshLocalAgentSettings();runtimeCompletion=ObserveRuntime(process);
         result.Text="本机设备通道正在连接。";
     }
-    private Task StopRuntime(){if(runtime is{HasExited:false})runtime.Kill();runtime?.Dispose();runtime=null;lastView=null;visibleCards.Clear();local.Children.Clear();return Task.CompletedTask;}
+    private async Task ObserveRuntime(Process process){
+        async Task Frames(){
+            while(await process.StandardOutput.ReadLineAsync().ConfigureAwait(false) is string line){
+                if(line.Length>1_000_000){process.StandardInput.Close();break;}
+                try{var frame=JsonNode.Parse(line)?.AsObject();DispatcherQueue.TryEnqueue(()=>{if(ReferenceEquals(runtime,process))Render(frame);});}catch(System.Text.Json.JsonException){}
+            }
+        }
+        async Task Errors(){while(await process.StandardError.ReadLineAsync().ConfigureAwait(false) is not null){}}
+        try{await Task.WhenAll(Frames(),Errors(),process.WaitForExitAsync()).ConfigureAwait(false);}
+        catch(Exception error)when(error is IOException or InvalidOperationException){}
+        finally{if(!DispatcherQueue.TryEnqueue(()=>{CompleteRuntime(process);process.Dispose();}))process.Dispose();}
+    }
+    private void CompleteRuntime(Process process){
+        if(!ReferenceEquals(runtime,process))return;
+        runtime=null;runtimeInputClosed=true;runtimeCompletion=null;lastView=null;visibleCards.Clear();sessionDrafts.Clear();local.Children.Clear();localAgents.Children.Clear();localRuntimeState="已断开";RefreshLocalAgentSettings();
+    }
+    private async Task StopRuntime(){
+        var process=runtime;var completion=runtimeCompletion;if(process is null||runtimeTransition)return;
+        runtimeTransition=true;localRuntimeState="正在断开，等待任务中断结果";RefreshLocalAgentSettings();
+        try{
+            runtimeInputClosed=true;
+            try{process.StandardInput.Close();}catch(Exception error)when(error is IOException or InvalidOperationException){}
+            using var deadline=new CancellationTokenSource(TimeSpan.FromSeconds(25));
+            try{if(completion is not null)await completion.WaitAsync(deadline.Token);else await process.WaitForExitAsync(deadline.Token);}
+            catch(OperationCanceledException){localRuntimeState="等待执行端退出";localConfigurationMessage.Text=result.Text="执行端尚未确认退出，任务结果需重新核实。";return;}
+            CompleteRuntime(process);
+        }finally{runtimeTransition=false;RefreshLocalAgentSettings();}
+    }
     private async Task ExportDiagnostics(){
         if(configuration is null)throw new InvalidOperationException("start_runtime_first");
         var picker=new FileSavePicker{SuggestedFileName="LimeLink-diagnostics"};picker.FileTypeChoices.Add("JSON",new List<string>{".json"});WinRT.Interop.InitializeWithWindow.Initialize(picker,WinRT.Interop.WindowNative.GetWindowHandle(this));var file=await picker.PickSaveFileAsync();if(file is null)return;
         var start=new ProcessStartInfo(Path.Combine(AppContext.BaseDirectory,"limelink-runtime.exe")){UseShellExecute=false,RedirectStandardOutput=true,CreateNoWindow=true};start.ArgumentList.Add("--diagnostics");start.ArgumentList.Add(configuration);
         using var process=Process.Start(start)??throw new InvalidOperationException("diagnostics_failed");var output=await process.StandardOutput.ReadToEndAsync();await process.WaitForExitAsync();if(process.ExitCode!=0||output.Length>100_000)throw new InvalidOperationException("diagnostics_failed");await File.WriteAllTextAsync(file.Path,output);result.Text="已导出计数与版本；不含正文、身份或凭据。";
     }
-    private void SendLocal(string type,string id,long? revision=null,string? text=null){var frame=new JsonObject{{"type",type},{"id",id}};if(revision is not null)frame["revision"]=revision;if(text is not null)frame["text"]=text;runtime?.StandardInput.WriteLine(frame.ToJsonString());runtime?.StandardInput.Flush();}
+    private void SendLocal(string type,string id,long? revision=null,string? text=null){if(runtimeTransition||runtimeInputClosed||runtime is null)throw new InvalidOperationException("本机执行端尚未连接或正在断开。");var frame=new JsonObject{{"type",type},{"id",id}};if(revision is not null)frame["revision"]=revision;if(text is not null)frame["text"]=text;runtime.StandardInput.WriteLine(frame.ToJsonString());runtime.StandardInput.Flush();}
     private void ReportVisibleCards(){foreach(var card in visibleCards)ReportPresented(card.Key,card.Value);}
     private void ReportPresented(string id,FrameworkElement block){
-        if(!active||!block.IsLoaded||block.ActualWidth<=0||block.ActualHeight<=0)return;
+        if(runtime is null||runtimeTransition||runtimeInputClosed||!visibleCards.TryGetValue(id,out var current)||!ReferenceEquals(current,block)||desktopPage!="terminal"||!active||!block.IsLoaded||block.ActualWidth<=0||block.ActualHeight<=0)return;
         var bounds=block.TransformToVisual(scroll).TransformBounds(new Windows.Foundation.Rect(0,0,block.ActualWidth,block.ActualHeight));
-        if(bounds.Bottom>0&&bounds.Top<scroll.ActualHeight&&bounds.Right>0&&bounds.Left<scroll.ActualWidth)SendLocal("presented",id);
+        if(bounds.Bottom>0&&bounds.Top<scroll.ActualHeight&&bounds.Right>0&&bounds.Left<scroll.ActualWidth){try{SendLocal("presented",id);}catch(Exception error)when(error is IOException or InvalidOperationException){result.Text="显示回执尚未确认，请核实执行端。";}}
     }
     private void Render(JsonObject? frame){
+        if(frame?["type"]?.GetValue<string>()=="connection"){if(!runtimeInputClosed)localRuntimeState=frame["state"]?.GetValue<string>()=="ready"?"已连接":"连接中断，正在重连";RefreshLocalAgentSettings();return;}
         if(frame?["type"]?.GetValue<string>()=="error"){result.Text="本机操作未完成："+frame["code"]?.GetValue<string>();return;}
-        if(frame?["type"]?.GetValue<string>()!="view")return;var view=frame.ToJsonString();if(lastView==view)return;lastView=view;visibleCards.Clear();local.Children.Clear();
+        if(frame?["type"]?.GetValue<string>()!="view")return;var view=frame.ToJsonString();if(lastView==view)return;lastView=view;RenderLocalAgents(frame);visibleCards.Clear();local.Children.Clear();
         foreach(var peer in frame["peers"]!.AsArray()){
             var id=peer!["id"]!.GetValue<string>();var state=peer["state"]!.GetValue<string>();
-            local.Children.Add(new TextBlock{Text=peer["name"]!.GetValue<string>()+" · "+state+"\n"+peer["fingerprint"]!.GetValue<string>(),TextWrapping=TextWrapping.Wrap,IsTextSelectionEnabled=true});
-            if(state=="pending"){local.Children.Add(Button("核对后批准",()=>{SendLocal("approve",id);return Task.CompletedTask;}));local.Children.Add(Button("拒绝",()=>{SendLocal("reject",id);return Task.CompletedTask;}));}
-            if(state=="approved")local.Children.Add(Button("撤销协同",()=>{SendLocal("revoke",id);return Task.CompletedTask;}));
+            local.Children.Add(new TextBlock{Text=peer["name"]!.GetValue<string>()+"，"+Status(state)+"\n"+peer["fingerprint"]!.GetValue<string>(),TextWrapping=TextWrapping.Wrap,IsTextSelectionEnabled=true});
+            if(state=="pending"){local.Children.Add(Button("允许配对",()=>{SendLocal("approve",id);return Task.CompletedTask;}));local.Children.Add(Button("拒绝",()=>{SendLocal("reject",id);return Task.CompletedTask;}));}
+            if(state=="approved")local.Children.Add(Button("取消配对",()=>{SendLocal("revoke",id);return Task.CompletedTask;}));
         }
         foreach(var card in frame["cards"]!.AsArray()){
             if(card!["state"]!.GetValue<string>() is not("queued" or "presented"))continue;
@@ -173,13 +210,13 @@ public sealed class MainWindow:Window {
         foreach(var item in frame["contents"]!.AsArray())local.Children.Add(new TextBlock{Text=item!["stale"]!.GetValue<bool>()?"内容已过期":item["text"]!.GetValue<string>(),TextWrapping=TextWrapping.Wrap});
         foreach(var item in frame["sessions"]!.AsArray()){
             var id=item!["id"]!.GetValue<string>();var revision=item["revision"]!.GetValue<long>();var expired=item["expired"]!.GetValue<bool>();
-            local.Children.Add(new TextBlock{Text=id+" · 修订 "+revision+(expired?" · 已过期":""),TextWrapping=TextWrapping.Wrap});if(expired)continue;
+            local.Children.Add(new TextBlock{Text=id+"，版本 "+revision+(expired?"，已过期":""),TextWrapping=TextWrapping.Wrap});if(expired)continue;
             local.Children.Add(new TextBlock{Text=item["text"]!.GetValue<string>(),TextWrapping=TextWrapping.Wrap,IsTextSelectionEnabled=true});
-            var edit=new TextBox{Header="本机会话草稿",Text=sessionDrafts.GetValueOrDefault(id)??item["text"]!.GetValue<string>(),AcceptsReturn=true,TextWrapping=TextWrapping.Wrap};edit.TextChanged+=(_,_)=>sessionDrafts[id]=edit.Text;local.Children.Add(edit);
-            local.Children.Add(Button("取得本机输入资格",()=>{SendLocal("session_claim",id,revision);return Task.CompletedTask;}));
+            var edit=new TextBox{Header="修改内容",Text=sessionDrafts.GetValueOrDefault(id)??item["text"]!.GetValue<string>(),AcceptsReturn=true,TextWrapping=TextWrapping.Wrap};edit.TextChanged+=(_,_)=>sessionDrafts[id]=edit.Text;local.Children.Add(edit);
+            local.Children.Add(Button("开始编辑",()=>{SendLocal("session_claim",id,revision);return Task.CompletedTask;}));
             if(item["writer"]?.GetValue<string>()=="local-desktop"){
-                local.Children.Add(Button("提交本机草稿",()=>{SendLocal("session_write",id,revision,edit.Text);return Task.CompletedTask;}));
-                local.Children.Add(Button("释放本机资格",()=>{SendLocal("session_release",id,revision);return Task.CompletedTask;}));
+                local.Children.Add(Button("保存修改",()=>{SendLocal("session_write",id,revision,edit.Text);return Task.CompletedTask;}));
+                local.Children.Add(Button("结束编辑",()=>{SendLocal("session_release",id,revision);return Task.CompletedTask;}));
             }
         }
     }

@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "verified_at": "2026-11-05T15:19:16.291658+00:00",
+  "scope": "macOS 控制台结构、原生网关发现候选、设置和视觉检查；不包含 Agent 执行、本机网关安装或完整接收旅程",
+  "native_ui": true,
+  "appearance_left_at": "light",
+  "checks": [
+    "顶部概览/设备/协同，网关/任务记录/齿轮入口独立",
+    "概览、网关、协同与接收页的导航下边界保持一致，源码固定高度72",
+    "真实 DNS-SD 测试公告出现在原生列表，显示名称、HTTPS入口与连接按钮；未执行登录",
+    "发送与接收在协同内切换，管理员配置默认折叠",
+    "设置窗口可切换浅色与深色，结束后恢复浅色渐变",
+    "概览主按钮文字和图标为白色，工作页未出现冗余眉题或中点分隔符"
+  ],
+  "sources": {
+    "apps/macos/DesktopWorkspace.swift": "2cabbe2b3311f4fc379621906958525fb946f530de27928afc44f2671f96c22b",
+    "apps/macos/LocalTerminal.swift": "13cc72451386b4bdf4afee82f30e49c7ac6d74df40ad6e6f5b4ab3f31578a371",
+    "apps/macos/DesktopSettings.swift": "a100062ec9ba533173f4d52a47809b4fd0f7f92bf95a8d16028297a90b7112ad",
+    "packages/apple/Sources/LimeLinkUI/WorkbenchModel.swift": "889d92f37ed4560a67bfed5ccd45db46b5a71e1601f0f896043167f0f718232f",
+    "packages/apple/Sources/LimeLinkUI/GatewayDiscovery.swift": "6c8b867c8d15d0980371fb2dd066d0bb3375c7dcca7b370c213dd9d9b577ff0c",
+    "tools/package-macos.py": "7b7966eb5831f62f5b2f51911e7163eb8dcded393fdf62a2a4dd100af3020a63",
+    "contracts/iot-sdk.lock.json": "d96e16ba4088a12fd03f4f076ade582558fec5099da885f2588b40dadc0c0ef3",
+    "apps/macos/DesktopColors.generated.swift": "5b923c2ff80074e774b957291e577dbc8f27178505a1522bbe721a5b3ec7a79c",
+    "assets/desktop/design/radix-colors.json": "aeadfa5544f2e5ba73aa37edb1f8ec7abded71a9f544b39461d41dc44fa3467e"
+  },
+  "screenshots": [
+    {
+      "path": "docs/evidence/screenshots/desktop-overview-light.png",
+      "sha256": "7a7c66e5fc803d6373b05b51b2da90453c6d71cef46e9ec52993ba8cf2de1cc0"
+    },
+    {
+      "path": "docs/evidence/screenshots/desktop-overview-dark.png",
+      "sha256": "a6f94499b723e55c9f6c1b54aa654be66ad260a9ec2da38d47dfee4fb8e2e7cd"
+    },
+    {
+      "path": "docs/evidence/screenshots/desktop-compose-light.png",
+      "sha256": "e6876d7d298dccde3878a31e92c9f44e58654bc014f971238a5c2717c09cf308"
+    },
+    {
+      "path": "docs/evidence/screenshots/desktop-gateway-discovery.png",
+      "sha256": "fbab50af95f7f829a5545e28845c912cbfcba75c9ee0bc0a1dfcb608c35aae69"
+    },
+    {
+      "path": "docs/evidence/screenshots/desktop-settings-light.png",
+      "sha256": "3fa7ffd759ff5638a1529f73452ee079452558496ff8c7054987900c9286c285"
+    }
+  ],
+  "limits": [
+    "未验收 Windows 窗口与移动真机",
+    "本轮未重跑卡片批准/实际呈现/共同编辑 E2E，历史专项证据保留其原范围",
+    "NAS 容器尚未运行验证，本机验证使用真实 Zeroconf 公告进程",
+    "设备页未在本轮真实网关登录后验收"
+  ]
+}

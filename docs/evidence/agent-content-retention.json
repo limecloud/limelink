@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "verified_at": "2026-11-06T03:23:47.802834+00:00",
+  "scope": "产品 Agent SQLite 到期内容的事务清理、旧空闲页和活动 WAL 维护；macOS Rust 核心，非原生窗口或物理擦除验收",
+  "sdk_revision": "1c77ef65e7af9c9036f82e278dfd84507a0f0e7d",
+  "sources": {
+    "runtime/src/lib.rs": "87f25d4a1b1cc7460a659b4f647cbce309d9e26f23d4d94508e37a4a2400cd54",
+    "runtime/src/agent.rs": "bfd2df51ca2f542b4e819dbe45d4e4b5c1b476a002312d23327e74a83ec76ab9",
+    "runtime/src/agent/tools.rs": "2233246d698c48e93d0fefb6949e6f33338d332943ca0c30569afef1e4cdad85",
+    "runtime/tests/agent.rs": "3bdcb5b93cd3abd445508f736b3640f927870c18c5be8ec90541d56eceea251d",
+    "runtime/Cargo.toml": "d38e52d755ab5e3b1cf5c8464236833f73e7eca31ed756c4e51d95a3b858bbd1",
+    "runtime/Cargo.lock": "1893fa56859022cab8a681c8f9bc4ef2871a768dd1e50f29e1c6f866a83963e1",
+    "contracts/iot-sdk.lock.json": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6"
+  },
+  "storage_schema_version": 2,
+  "agent_tests": 20,
+  "exit_code": 0,
+  "native_ui": false,
+  "real_agent": false,
+  "physical_device": false,
+  "command": [
+    "cargo",
+    "test",
+    "--manifest-path",
+    "runtime/Cargo.toml",
+    "--locked",
+    "--test",
+    "agent"
+  ],
+  "verified": [
+    "任务正文、事件、工具范围/参数/结果和缓存回执在同一事务内到期清理；损坏回执回滚整次清理",
+    "工具回传在清理事务提交后进行；原运行、命令 ID、输入摘要、游标和防重放记录保留",
+    "启用 secure_delete；旧 Agent v2 文件重开安排 VACUUM，不新增表格式或隐式降级",
+    "活跃只读事务固定 WAL 时不等待该读者；重启后继续 pending，释放后重试清理",
+    "已过期正文不能被迟到的消息事件重新写回",
+    "读者释放并完成维护后扫描活动 Agent DB/WAL，不含任务、回复及工具参数/结果夹具正文",
+    "旧版关闭安全删除产生的空闲页经重开整理后不含夹具正文；未过期已批准队列仍保留",
+    "原回执重放保持 command ID 和输入摘要，不重建或重新执行原任务"
+  ],
+  "logs": {
+    ".dev/revalidate-retention.log": "19b0f231e8b11f5cd3e54614da71891599cacd6bee788468c03d882124ee0a5e"
+  },
+  "initial_reproducer": {
+    "log_sha256": "08f20a00f78e4421fbdbd10842fc5a3aee0e4fd1929dc7220d257bc4434fe77e",
+    "expected_failure": true,
+    "fixed_by_current_checks": true
+  },
+  "limits": [
+    "旧读者释放前仍可能读取其旧快照；pending 不等于所有副本已清除",
+    "v2 无历史安全删除标记，因此每次重开既有库都安排整理；大容量性能仍需产品验收",
+    "不清理客户端意图、IoT 平台账本、Codex 会话/日志、备份、系统快照及存储介质副本",
+    "不包含统一清除界面、历史引用容量回收、目标系统升级/备份/回退及物理擦除"
+  ],
+  "current_run": {
+    "command": "cargo test --manifest-path runtime/Cargo.toml --locked --test collaboration --test agent",
+    "exit_code": 0,
+    "relevant_tests": 20,
+    "history": "docs/evidence/history/2026-11-06-before-sdk-revalidation/agent-content-retention.json"
+  }
+}

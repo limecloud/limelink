@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "started_at": "2026-11-05T22:44:59.935281+00:00",
+  "finished_at": "2026-11-05T22:45:13.903282+00:00",
+  "scope": "Android 网关候选解析核心检查与调试 APK 构建；未运行 Android 系统 NSD、原生窗口或真机",
+  "sdk_revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25",
+  "command": "python3 tools/verify-native.py --checks android --gradle apps/android/gradlew",
+  "sources": {
+    "contracts/iot-sdk.lock.json": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f",
+    "contracts/fixtures/gateway-discovery.json": "01a7a9bf1636ab8f524820355700b7984b9b1162beed4cb2b7ba66d786588ee6",
+    "apps/android/core/src/main/kotlin/run/limeai/link/core/GatewayCandidate.kt": "1fd8e20723bf0fc36c0fc611afae2cc6a6fbfc22f79f6354e4c14ad06d764ed1",
+    "apps/android/core/src/test/kotlin/run/limeai/link/core/GatewayCandidateTest.kt": "19d145d3a4a8ba05fa5fbde6210a07db1c6ab8ed69dd9c9ec18a11f6b2d53d7e",
+    "apps/android/app/src/main/kotlin/run/limeai/link/GatewayDiscovery.kt": "679820c3d20848d4d90f6f26e8e6165f5dca72075521ea54441234f42bae93d3",
+    "apps/android/app/build.gradle.kts": "0de4aa4ba49a98156ac4831d6cff920c4debede927ddb56e48eaeb2151358305",
+    "apps/android/core/build.gradle.kts": "1ea1aa2fc5247ab8285d6167f47165ceb734f36766e1f4e63a6d760eb0e34afc"
+  },
+  "checks": {
+    "shared_announcement_cases": 16,
+    "discovery_tests": {
+      "tests": 2,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "cases": [
+        "malformedUtf8AndBoundedDisplayNames()",
+        "sharedGatewayAnnouncements()"
+      ],
+      "covers": [
+        "16组跨端公告样例",
+        "无效UTF-8拒绝",
+        "origin字节预算",
+        "控制字符及Unicode格式字符过滤",
+        "显示名称80码点上限"
+      ]
+    },
+    "core_suite": {
+      "tests": 16,
+      "skipped": 3,
+      "failures": 0,
+      "errors": 0,
+      "executed": 13,
+      "skipped_tests": [
+        "run.limeai.link.core.AgentIoTLiveTest.gatewayDeviceConfirmationAndOriginalRecovery()",
+        "run.limeai.link.core.AgentLiveTest.gatewaySubmitQueryReplyAndExplicitResume()",
+        "run.limeai.link.core.CloudLinkClientTest.originalCloudOperationUsesLocalSpaceAndBlocksAcrossSelections()"
+      ]
+    },
+    "debug_apk_built": true,
+    "tls_policy": "原有HTTPS和证书校验保持；候选选择不发请求或凭据"
+  },
+  "artifacts": {
+    "apps/android/app/build/outputs/apk/debug/app-debug.apk": "4baea04a50e2f1a58b0ebcd7c5c07e1805491a0b95922bfc032f8842bcb8418a",
+    "apps/android/core/build/test-results/test/TEST-run.limeai.link.core.GatewayCandidateTest.xml": "4f75d6a7e7cedc2e0c12a637a81caf1c7d3f3c9fd5760762615da889952c11c4"
+  },
+  "logs": {
+    ".dev/verify-android.log": "0444cb0a0fb7cb3809a7a80341c4886acf0dc2705bc7d95971f9f34df4b39f9e"
+  },
+  "system_nsd_lifecycle": "not_run",
+  "native_window": "not_run",
+  "physical_device": false,
+  "emulator_setup": {
+    "status": "waiting_for_license_acceptance",
+    "installed": false,
+    "reason": "SDK Manager明确跳过未接受许可的Emulator、Platform-Tools和Android 36 ARM64镜像；零退出码不代表安装成功",
+    "log_sha256": "f52c5b730196675826b059efd24cfb2917df20c6ee75c32e8afa5f84a4dd7f91"
+  },
+  "remaining": [
+    "Android系统NSD发现、重复来源、撤回和重现",
+    "搜索失败、超时与迟到回调的系统行为",
+    "切换云入口、离开前台与返回的生命周期",
+    "发现列表、手动地址和HTTPS登录的原生窗口旅程",
+    "实际手机与网关互联、证书信任及Agent设备确认"
+  ],
+  "historical_check_entry_points": {
+    "tools/verify-native.py": "6f4c14ed5aabc4227f6fcdee6fd37dc6961d8011292f8929b42e463317b4d2d3"
+  },
+  "entry_point_revalidation": [
+    {
+      "evidence": "docs/evidence/native-validation.json",
+      "scope": "仅增加macOS打包离线包的显式参数；Android执行分支未变，本轮未重新构建Android"
+    },
+    {
+      "evidence": "docs/evidence/android-mobile-ui.json",
+      "build_evidence": "docs/evidence/native-validation.json",
+      "scope": "原记录覆盖候选解析核心与当时APK；Android入口后来增加连接链接并拆分页面，本轮源码构建与真机连接局部复验见新记录，NSD生命周期未重跑。",
+      "full_original_journey_repeated": false
+    }
+  ],
+  "historical_entry_point_sources": {
+    "apps/android/app/src/main/kotlin/run/limeai/link/MainActivity.kt": "1c300432f41c25806b559613200f5f5200f77ce70dc81dc7151879160d59e527",
+    "apps/android/app/src/main/AndroidManifest.xml": "3ae0b6372e597c20d40af8e4a68d83097fdde6b3978189e35b6b4ce227693125"
+  }
+}

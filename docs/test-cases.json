@@ -22,7 +22,7 @@
         "docs/evidence/native-validation.json",
         "docs/evidence/macos-native-ui.json"
       ],
-      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收；当前 macOS 原生卡片呈现回执、会话编辑/释放及软件手机接续已通过复验"
     },
     {
       "id": "TC-002",
@@ -34,16 +34,20 @@
       ],
       "environment": "隔离网关、iOS/Android 分别执行",
       "steps": [
-        "连接指定 origin",
-        "切换正确和错误空间并恢复 App"
+        "同一网络发现网关、核对并选择HTTPS origin，另验手动地址备用",
+        "检查服务撤回/重现、切换云入口及前后台后的候选列表",
+        "连接自己的会话，切换正确和错误空间并恢复App"
       ],
       "expected": [
-        "明确当前网关和空间；不越权读设备"
+        "发现只提供候选；不自动登录、不带凭据探测、不绕过TLS",
+        "明确当前网关和空间；不越权读设备；旧轮次回调不恢复已撤回候选"
       ],
       "evidence": [
-        "docs/evidence/native-validation.json"
+        "docs/evidence/native-validation.json",
+        "docs/evidence/android-gateway-discovery.json",
+        "docs/evidence/android-mobile-flow.json"
       ],
-      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+      "verification_note": "Android解析样例与APK有独立构建证据；小米13/Android16已完成公网会话恢复、唯一空间/电脑自动选择及真实配对。系统NSD发现、撤回/重现、多空间切换和完整前后台仍待验收；不由公网手工入口推定NSD通过。"
     },
     {
       "id": "TC-003",
@@ -108,7 +112,7 @@
         "docs/evidence/iot-runtime-mtls-integration.json",
         "docs/evidence/macos-native-ui.json"
       ],
-      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收；当前 macOS 原生卡片呈现回执、会话编辑/释放及软件手机接续已通过复验"
     },
     {
       "id": "TC-006",
@@ -129,7 +133,8 @@
       ],
       "evidence": [
         "docs/evidence/iot-runtime-mtls-integration.json",
-        "docs/evidence/native-validation.json"
+        "docs/evidence/native-validation.json",
+        "docs/evidence/pairing-receipt-recovery.json"
       ],
       "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
     },
@@ -175,7 +180,7 @@
         "docs/evidence/iot-runtime-mtls-integration.json",
         "docs/evidence/macos-native-ui.json"
       ],
-      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收；当前 macOS 原生卡片呈现回执、会话编辑/释放及软件手机接续已通过复验"
     },
     {
       "id": "TC-009",
@@ -351,7 +356,7 @@
         "docs/evidence/iot-runtime-mtls-integration.json",
         "docs/evidence/macos-native-ui.json"
       ],
-      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收；当前 macOS 原生卡片呈现回执、会话编辑/释放及软件手机接续已通过复验"
     },
     {
       "id": "TC-018",
@@ -372,7 +377,7 @@
         "docs/evidence/iot-runtime-mtls-integration.json",
         "docs/evidence/macos-native-ui.json"
       ],
-      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收；当前 macOS 原生卡片呈现回执、会话编辑/释放及软件手机接续已通过复验"
     },
     {
       "id": "TC-019",
@@ -463,9 +468,11 @@
         "无令牌/正文泄漏；保留策略明确；清除不删除无关文件"
       ],
       "evidence": [
-        "docs/evidence/native-validation.json"
+        "docs/evidence/native-validation.json",
+        "docs/evidence/content-retention.json",
+        "docs/evidence/agent-content-retention.json"
       ],
-      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+      "verification_note": "协同库 16 项检查覆盖正文/原缓存到期、明确 v1 迁移、回滚与 WAL 读者恢复。Agent 20 项检查另覆盖清理事务回滚、工具正文、迟到消息保护、旧空闲页和活动 WAL/重启恢复，两种数据库均扫描活动文件夹具正文；原引用保持。客户端、平台、Codex、备份/快照、容量回收和完整退出/清除旅程未验收，不构成完整安全擦除。"
     },
     {
       "id": "TC-024",
@@ -502,9 +509,10 @@
         "制品与证据同版本；回退保留必要数据；无秘密"
       ],
       "evidence": [
-        "docs/evidence/native-validation.json"
+        "docs/evidence/native-validation.json",
+        "docs/evidence/content-retention.json"
       ],
-      "verification_note": "仅完成证据中明确列出的范围；完整步骤/目标平台仍待验收"
+      "verification_note": "固定依赖构建与协同库明确 v1 到 v2 迁移 CLI 已局部检查；迁移遵守运行锁、保留身份，不连接网关且不创建 Agent 库。旧缓存正文清空的影响已记录；目标系统正式签名、安装升级、加密备份和失败回退未验收。"
     },
     {
       "id": "TC-026",
@@ -525,7 +533,7 @@
         "docs/evidence/cloud-clients.json",
         "docs/evidence/native-validation.json"
       ],
-      "verification_note": "三种产品云核心共享 HTTP 夹具、Apple 实际工作台模型的 7 组授权/路由/恢复/取消检查及 Android 构建通过；上游 SDK 有真实 HTTPS/WSS/MQTT 证据。四端完整目标系统云界面、正式云及完整跨网/越权产品旅程尚未验收。"
+      "verification_note": "三种产品云核心共享 HTTP 夹具、Apple 实际工作台模型的 8 组授权/路由/恢复/取消检查及 Android 构建通过；上游 SDK 有真实 HTTPS/WSS/MQTT 证据。四端完整目标系统云界面、正式云及完整跨网/越权产品旅程尚未验收。"
     },
     {
       "id": "TC-027",
@@ -558,6 +566,152 @@
       "expected": [
         "概念图不作为样机；无未实测参数；立项后独立验收"
       ]
+    },
+    {
+      "id": "TC-029",
+      "title": "Agent 独立批准、真实执行、恢复与中断",
+      "status": "partial",
+      "requirements": [
+        "FR-029"
+      ],
+      "environment": "隔离 IoT HTTP/MQTT/mTLS、macOS、Codex App Server 0.166.0；其他目标系统单独验收",
+      "steps": [
+        "在 macOS 设置中断开执行端，启用 Codex，自动查找兼容程序、选择目录及权限，保存重连；核对设备身份与证书路径不变",
+        "在 Windows 目标系统导入配置，核对原生程序查找、目录选择、保存重连、断开超时与当前用户专用 ACL；本轮仅执行核心与 C# 检查",
+        "核实成功配对处理回执后直接读取助手配置；丢响应、404、未知、失败、拒绝和取消保留原意图",
+        "配对后提交任务，确认未批准时不运行",
+        "在执行电脑核对目录和权限并批准",
+        "查询同一运行的进度与分页回复",
+        "断线只查原命令，明确恢复产品创建的成功会话",
+        "请求中断，确认与未知分别呈现",
+        "在各端完成原生输入、前后台和重启旅程",
+        "核对本次设备范围，检查重复工具、超时、取消和未知结果不能变成设备成功",
+        "在三种客户端核对设备范围、确认前零设备写入、确认后唯一原命令；Android/Windows 窗口仍需目标系统执行",
+        "分别丢失设备命令与工具回传响应，重建客户端后仅查询各自原键；检查 TTL 保留未知意图",
+        "延迟保存设备意图，使提案在保存期间过期，核对发送前再次拒绝且零设备写入"
+      ],
+      "expected": [
+        "配对不直接授予执行权，批准只能消费一次",
+        "真实模型完成任务，平台受理状态与 Agent 结果分开",
+        "丢响应与重启不自动重跑，中断需同一 turn 的确认",
+        "不同客户端和目标不可读取或覆盖彼此任务",
+        "工具只访问原任务选择的设备，续接不能扩权；模型完成不覆盖未知设备结果",
+        "逐次确认与当前模型校验不能绕过，设备和回传恢复均不产生第二次 POST",
+        "运行中不能保存；配置外部修改、未知 Agent 字段与符号链接入口拒绝覆盖。macOS 保存为 0600，Windows 从文件创建时设置当前用户专用且禁止继承的 ACL"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json",
+        "docs/evidence/agent-gateway-integration.json",
+        "docs/evidence/macos-agent-ui.json",
+        "docs/evidence/windows-source-check.json",
+        "docs/evidence/agent-tools-protocol.json",
+        "docs/evidence/agent-iot-apple-integration.json",
+        "docs/evidence/agent-iot-apple-live.json",
+        "docs/evidence/agent-iot-macos-ui.json",
+        "docs/evidence/agent-iot-android-integration.json",
+        "docs/evidence/agent-iot-android-live.json",
+        "docs/evidence/agent-iot-dotnet-integration.json",
+        "docs/evidence/agent-iot-dotnet-live.json",
+        "docs/evidence/pairing-receipt-recovery.json",
+        "docs/evidence/agent-settings-macos-ui.json",
+        "docs/evidence/agent-settings-windows-core.json",
+        "docs/evidence/agent-content-retention.json",
+        "docs/evidence/android-mobile-flow.json"
+      ],
+      "verification_note": "运行时 20 项、协议进程 8 项、协同 16 项及共享工具参数/结果检查通过；Apple/Android/.NET 各消费 57 组工具样例，设备代理、并发确认与原意图恢复通过。三种客户端均检查意图保存后再核对期限，延迟存储过期时零设备写入。真实 Codex 经三种产品核心与真实隔离网关控制独立模拟灯，macOS 原生窗口另完成本机批准与逐次设备确认；Android 是 JVM 核心集成与 APK 构建，Windows 是 .NET Core 集成与 C# 类型检查。iOS 本机因缺少完整 Xcode 阻塞，WinUI 目标构建受 Windows XAML 编译器阻塞。设备工具链路为回环开发鉴权，非 mTLS 或实物；无设备工具的三种产品核心另走 mTLS 回归。四端完整原生旅程、移动真机和真实中断仍未验收。 最新无设备工具真实模型三端 mTLS 整套回归未通过，出现执行期限未知与严格回复不匹配；夹具 mTLS 已通过，旧真实模型整套记录不作为当前通过依据。 本地配对收尾在 Android/.NET 各覆盖十一种结果，并重新完成无工具 mTLS 夹具和真实 Agent 设备工具核心旅程；不代表目标窗口。 macOS 本轮通过图形配置、自动选中 0.166.0 和保存重连，再完成真实 Agent 设备任务；核心另查超时与输出超限的程序探测。 Windows 本机助手设置源码已实现，18 组 .NET 核心和 C# 类型检查在 macOS 通过；Windows ACL 检查分支未执行，完整 XAML 构建、设置窗口与退出时序未验收。 新SDK下另完成Android真机经公网提交只读Codex任务、电脑原生批准、成功执行及手机结果展示；手机设备工具、真实中断和完整生命周期仍待验收。",
+      "historical_evidence": [
+        "docs/evidence/agent-gateway-live.json"
+      ],
+      "regressions": [
+        "docs/evidence/regression-2026-11-06.json"
+      ]
+    },
+    {
+      "id": "TC-030",
+      "title": "本机网关安装与停止恢复",
+      "status": "partial",
+      "requirements": [
+        "FR-030"
+      ],
+      "environment": "macOS宿主、独立本机Docker项目与Linux ARM64镜像；Windows和其他架构单独执行",
+      "steps": [
+        "从固定上游Git提交构建并核对离线部署包，拒绝旧制品和包篡改",
+        "通过桌面安装入口在新目录准备网关，核对本机Docker、监听地址与端口",
+        "独立所有者HTTPS登录，当前电脑以正式设备证书经mTLS上线",
+        "停止、重启、关闭控制台并核对身份、空间、原任务与服务状态",
+        "验证安装中断恢复、证书信任、正式更新回退和卸载保留"
+      ],
+      "expected": [
+        "不修改全局Docker、DNS或系统证书信任，不向远程Docker安装",
+        "用户和设备身份独立，Agent不随安装启用，CA私钥不挂载进运行服务",
+        "未知结果查询原安装，不清空重建，不覆盖既有身份",
+        "生命周期操作仅影响本安装项目；停止保留数据，状态不冒充用户登录或任务成功"
+      ],
+      "evidence": [
+        "docs/evidence/local-gateway-installation.json",
+        "docs/evidence/native-validation.json",
+        "docs/evidence/gateway-management-macos-ui.json"
+      ],
+      "verification_note": "Rust辅助程序与13项容器旅程已通过；本轮新增进程调用边界检查和macOS图形安装、最终入口启停/恢复、执行端连接、Agent关闭与远程引导复验。系统/手机信任、Windows、完整中断恢复、卸载和正式更新仍未验收，保持部分完成。"
+    },
+    {
+      "id": "TC-031",
+      "title": "远程普通安装与公网内网接入",
+      "status": "partial",
+      "requirements": [
+        "FR-031"
+      ],
+      "environment": "macOS原生引导，用户授权Ubuntu22.04 amd64/glibc2.35主机，systemd、Mosquitto与已有Nginx；无Docker部署",
+      "steps": [
+        "填写公网域名或内网IPv4，独立SSH地址、管理员、端口、准备目录和原生包，生成并导出引导",
+        "核对原生包完整性、固定上游与CPU/glibc，检查现有服务及端口后安装新目录",
+        "核对服务非root运行、内部回环监听、HTTPS认证和设备mTLS，拒绝匿名设备",
+        "验证服务不可读CA及设备私钥，重启后空间/身份保持",
+        "配置公网DNS与受信证书、主机/云防火墙，再完成真实桌面和手机连接"
+      ],
+      "expected": [
+        "远程服务器无需Docker或构建工具，SSH管理员与服务身份分离，已有服务和状态不被覆盖",
+        "引导生成与真实部署分别呈现，不保存SSH密码，不关闭HTTPS验证",
+        "HTTP及明文MQTT保持回环，设备连接强制mTLS，系统信任不隐式改变",
+        "失败保留原安装，停止/重启保留身份；公网就绪必须取得独立证据"
+      ],
+      "evidence": [
+        "docs/evidence/native-gateway-server.json",
+        "docs/evidence/gateway-management-macos-ui.json",
+        "docs/evidence/native-validation.json",
+        "docs/evidence/public-native-gateway.json",
+        "docs/evidence/remote-gateway-probe.json"
+      ],
+      "verification_note": "Ubuntu普通原生服务17项内部检查、受信公网DNS/TLS与真实桌面mTLS上线11项、远程探测三组正反例通过；Android真机已完成公网登录与在线电脑读取。真机配对、其他Linux/CPU、更新卸载仍未完整验收。"
+    },
+    {
+      "id": "TC-032",
+      "title": "Android与iPhone安装及网关联通",
+      "status": "partial",
+      "requirements": [
+        "FR-032"
+      ],
+      "environment": "macOS桌面，USB连接小米13/Android16，受信公网HTTPS网关；iPhone需完整Xcode、开发授权与签名",
+      "steps": [
+        "检测已授权USB设备并核对选中身份",
+        "显式附带并核验LimeLink APK，安装后由手机确认HTTPS地址",
+        "登录或恢复原会话，选择空间和电脑，配对后发送内容",
+        "验证面板完整展开、键盘、安全区与任务状态",
+        "分别在Android/iPhone验证签名、安装失败、前后台与原任务恢复"
+      ],
+      "expected": [
+        "失败不卸载或清数据，不自动重试，明确提示USB安装限制",
+        "连接URL不含访问密钥、会话或私钥，不替代手机授权",
+        "网关、用户和电脑执行端身份分离，结果以真实回执为准",
+        "主按钮可见，设置入口固定，界面不直接铺满协议编号",
+        "iOS缺失条件单独标记，不由Android结果推定通过"
+      ],
+      "evidence": [
+        "docs/evidence/android-mobile-ui.json",
+        "docs/evidence/native-validation.json",
+        "docs/evidence/android-mobile-flow.json"
+      ],
+      "verification_note": "小米13/Android16经USB覆盖安装、公网会话恢复、唯一空间/电脑选择、配对申请与原生电脑批准、真实卡片显示和手机提交的只读Codex任务已局部通过。最终包另完成桌面原生安装并打开、无凭据地址确认、一次连接恢复、协同键盘上方按钮、真实发送及成功后草稿清空；本次卡片在电脑前台显示并取得presented持久回执。助手键盘布局最终复验仍受镜像坐标点击工具限制；iOS与完整生命周期未验收，保持partial。"
     }
   ]
 }

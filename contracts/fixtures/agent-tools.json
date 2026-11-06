@@ -1,0 +1,1281 @@
+{
+  "schema_version": 1,
+  "reference": {
+    "origin": "https://gateway.example",
+    "space": "chosen",
+    "device": "desktop",
+    "revision": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "id": "11111111-1111-4111-8111-111111111111",
+    "iotDevices": [
+      "lamp"
+    ]
+  },
+  "call_id": "22222222-2222-4222-8222-222222222222",
+  "devices": [
+    "lamp"
+  ],
+  "cases": [
+    {
+      "name": "tools_enabled",
+      "kind": "capabilities",
+      "valid": true,
+      "value": {
+        "enabled": true,
+        "tools": [
+          "limeiot_read",
+          "limeiot_command"
+        ],
+        "approval_required": true,
+        "max_devices": 4
+      }
+    },
+    {
+      "name": "tools_disabled",
+      "kind": "capabilities",
+      "valid": true,
+      "value": {
+        "enabled": false,
+        "tools": [
+          "limeiot_read",
+          "limeiot_command"
+        ],
+        "approval_required": true,
+        "max_devices": 4
+      }
+    },
+    {
+      "name": "approval_required",
+      "kind": "capabilities",
+      "valid": false,
+      "value": {
+        "enabled": true,
+        "tools": [
+          "limeiot_read",
+          "limeiot_command"
+        ],
+        "approval_required": false,
+        "max_devices": 4
+      }
+    },
+    {
+      "name": "scope_limit",
+      "kind": "capabilities",
+      "valid": false,
+      "value": {
+        "enabled": true,
+        "tools": [
+          "limeiot_read",
+          "limeiot_command"
+        ],
+        "approval_required": true,
+        "max_devices": 5
+      }
+    },
+    {
+      "name": "unknown_tool",
+      "kind": "capabilities",
+      "valid": false,
+      "value": {
+        "enabled": true,
+        "tools": [
+          "shell"
+        ],
+        "approval_required": true,
+        "max_devices": 4
+      }
+    },
+    {
+      "name": "extra_capability",
+      "kind": "capabilities",
+      "valid": false,
+      "value": {
+        "enabled": true,
+        "tools": [
+          "limeiot_read",
+          "limeiot_command"
+        ],
+        "approval_required": true,
+        "max_devices": 4,
+        "shell": true
+      }
+    },
+    {
+      "name": "read",
+      "kind": "call",
+      "valid": true,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "write",
+      "kind": "call",
+      "valid": true,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "outside_scope",
+      "kind": "call",
+      "valid": false,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "other",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "null_scalar",
+      "kind": "call",
+      "valid": false,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": null
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "object_scalar",
+      "kind": "call",
+      "valid": false,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": {}
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "array_scalar",
+      "kind": "call",
+      "valid": false,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": []
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "uppercase_revision",
+      "kind": "call",
+      "valid": false,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "newline_path",
+      "kind": "call",
+      "valid": false,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power\n",
+          "value": true
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "revision_newline",
+      "kind": "call",
+      "valid": false,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "extra_arguments",
+      "kind": "call",
+      "valid": false,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true,
+          "action": "shell"
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "scalar_budget",
+      "kind": "call",
+      "valid": false,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "unsupported_call",
+      "kind": "call",
+      "valid": false,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "shell",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "scalar_utf8_boundary",
+      "kind": "call",
+      "valid": true,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": "灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯"
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "scalar_utf8_overflow",
+      "kind": "call",
+      "valid": false,
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": "灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯灯"
+        },
+        "expires_at": 2000000000
+      }
+    },
+    {
+      "name": "read_result",
+      "kind": "result",
+      "valid": true,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "ready": true,
+        "properties": [
+          {
+            "path": "light.power",
+            "schema": {
+              "type": "boolean"
+            },
+            "writable": true,
+            "value": false,
+            "observed_at": "2026-11-06T00:00:00Z",
+            "quality": "good"
+          }
+        ]
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "write_result_null_observation",
+      "kind": "result",
+      "valid": true,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "light.power",
+        "value": true,
+        "command_id": "command-1",
+        "status": "confirmed",
+        "observed_at": null
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "write_failed",
+      "kind": "result",
+      "valid": true,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "light.power",
+        "value": true,
+        "command_id": "command-1",
+        "status": "failed",
+        "observed_at": null
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": false
+    },
+    {
+      "name": "write_expired",
+      "kind": "result",
+      "valid": true,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "light.power",
+        "value": true,
+        "command_id": "command-1",
+        "status": "expired",
+        "observed_at": null
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": false
+    },
+    {
+      "name": "write_rejected",
+      "kind": "result",
+      "valid": true,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "light.power",
+        "value": true,
+        "command_id": "command-1",
+        "status": "rejected",
+        "observed_at": null
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": false
+    },
+    {
+      "name": "write_unknown",
+      "kind": "result",
+      "valid": true,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "light.power",
+        "value": true,
+        "command_id": "command-1",
+        "status": "unknown",
+        "observed_at": null
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": false
+    },
+    {
+      "name": "known_error",
+      "kind": "result",
+      "valid": true,
+      "value": {
+        "error": "agent_tool_device_unavailable"
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": false
+    },
+    {
+      "name": "success_error",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "error": "user_rejected"
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "newline_error",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "error": "user_rejected\n"
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": false
+    },
+    {
+      "name": "wrong_device",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "other",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "light.power",
+        "value": true,
+        "command_id": "command-1",
+        "status": "confirmed",
+        "observed_at": null
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "wrong_revision",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "path": "light.power",
+        "value": true,
+        "command_id": "command-1",
+        "status": "confirmed",
+        "observed_at": null
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "wrong_path",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "light.other",
+        "value": true,
+        "command_id": "command-1",
+        "status": "confirmed",
+        "observed_at": null
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "wrong_value",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "light.power",
+        "value": false,
+        "command_id": "command-1",
+        "status": "confirmed",
+        "observed_at": null
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "accepted_is_not_completion",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "light.power",
+        "value": true,
+        "command_id": "command-1",
+        "status": "accepted",
+        "observed_at": null
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "bad_observation",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "light.power",
+        "value": true,
+        "command_id": "command-1",
+        "status": "confirmed",
+        "observed_at": "tomorrow"
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "extra_result",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "light.power",
+        "value": true,
+        "command_id": "command-1",
+        "status": "confirmed",
+        "observed_at": null,
+        "shell": true
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "unknown_is_not_success",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "light.power",
+        "value": true,
+        "command_id": "command-1",
+        "status": "unknown",
+        "observed_at": null
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "confirmed_cannot_be_failure",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "light.power",
+        "value": true,
+        "command_id": "command-1",
+        "status": "confirmed",
+        "observed_at": null
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_command",
+        "arguments": {
+          "device_id": "lamp",
+          "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "path": "light.power",
+          "value": true
+        },
+        "expires_at": 2000000000
+      },
+      "success": false
+    },
+    {
+      "name": "duplicate_path",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "ready": true,
+        "properties": [
+          {
+            "path": "light.power",
+            "schema": {
+              "type": "boolean"
+            },
+            "writable": true,
+            "value": false,
+            "observed_at": "2026-11-06T00:00:00Z",
+            "quality": "good"
+          },
+          {
+            "path": "light.power",
+            "schema": {
+              "type": "boolean"
+            },
+            "writable": true,
+            "value": false,
+            "observed_at": "2026-11-06T00:00:00Z",
+            "quality": "good"
+          }
+        ]
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "schema_object",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "ready": true,
+        "properties": [
+          {
+            "path": "light.power",
+            "schema": {
+              "type": "object"
+            },
+            "writable": true,
+            "value": false,
+            "observed_at": "2026-11-06T00:00:00Z",
+            "quality": "good"
+          }
+        ]
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "schema_extra",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "ready": true,
+        "properties": [
+          {
+            "path": "light.power",
+            "schema": {
+              "type": "boolean",
+              "url": "https://example.invalid"
+            },
+            "writable": true,
+            "value": false,
+            "observed_at": "2026-11-06T00:00:00Z",
+            "quality": "good"
+          }
+        ]
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "schema_empty_enum",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "ready": true,
+        "properties": [
+          {
+            "path": "light.power",
+            "schema": {
+              "type": "boolean",
+              "enum": []
+            },
+            "writable": true,
+            "value": false,
+            "observed_at": "2026-11-06T00:00:00Z",
+            "quality": "good"
+          }
+        ]
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "schema_negative_length",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "ready": true,
+        "properties": [
+          {
+            "path": "light.power",
+            "schema": {
+              "type": "string",
+              "minLength": -1
+            },
+            "writable": true,
+            "value": false,
+            "observed_at": "2026-11-06T00:00:00Z",
+            "quality": "good"
+          }
+        ]
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "observation_number",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "ready": true,
+        "properties": [
+          {
+            "path": "light.power",
+            "schema": {
+              "type": "boolean"
+            },
+            "writable": true,
+            "value": false,
+            "observed_at": 123,
+            "quality": "good"
+          }
+        ]
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "invalid_quality",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "ready": true,
+        "properties": [
+          {
+            "path": "light.power",
+            "schema": {
+              "type": "boolean"
+            },
+            "writable": true,
+            "value": false,
+            "observed_at": "2026-11-06T00:00:00Z",
+            "quality": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          }
+        ]
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "invalid_path",
+      "kind": "result",
+      "valid": false,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "ready": true,
+        "properties": [
+          {
+            "path": "light.power\n",
+            "schema": {
+              "type": "boolean"
+            },
+            "writable": true,
+            "value": false,
+            "observed_at": "2026-11-06T00:00:00Z",
+            "quality": "good"
+          }
+        ]
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "write_only_property",
+      "kind": "result",
+      "valid": true,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "ready": true,
+        "properties": [
+          {
+            "path": "light.power",
+            "schema": {
+              "type": "boolean"
+            },
+            "writable": true,
+            "value": null,
+            "observed_at": null,
+            "quality": "unknown"
+          }
+        ]
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "bounded_string_schema",
+      "kind": "result",
+      "valid": true,
+      "value": {
+        "device_id": "lamp",
+        "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "ready": true,
+        "properties": [
+          {
+            "path": "light.power",
+            "schema": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 32,
+              "enum": [
+                "on",
+                "off"
+              ]
+            },
+            "writable": true,
+            "value": "on",
+            "observed_at": "2026-11-06T00:00:00Z",
+            "quality": "good"
+          }
+        ]
+      },
+      "call": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "tool": "limeiot_read",
+        "arguments": {
+          "device_id": "lamp"
+        },
+        "expires_at": 2000000000
+      },
+      "success": true
+    },
+    {
+      "name": "pending_write",
+      "kind": "pending",
+      "valid": true,
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "devices": [
+          "lamp"
+        ],
+        "calls": [
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "tool": "limeiot_command",
+            "arguments": {
+              "device_id": "lamp",
+              "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "path": "light.power",
+              "value": true
+            },
+            "expires_at": 2000000000
+          }
+        ],
+        "expires_at": 2000003600
+      }
+    },
+    {
+      "name": "pending_empty",
+      "kind": "pending",
+      "valid": true,
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "devices": [
+          "lamp"
+        ],
+        "calls": [],
+        "expires_at": 2000003600
+      }
+    },
+    {
+      "name": "changed_grant",
+      "kind": "pending",
+      "valid": false,
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "devices": [
+          "lamp",
+          "other"
+        ],
+        "calls": [
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "tool": "limeiot_command",
+            "arguments": {
+              "device_id": "lamp",
+              "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "path": "light.power",
+              "value": true
+            },
+            "expires_at": 2000000000
+          }
+        ],
+        "expires_at": 2000003600
+      }
+    },
+    {
+      "name": "duplicate_pending",
+      "kind": "pending",
+      "valid": false,
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "devices": [
+          "lamp"
+        ],
+        "calls": [
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "tool": "limeiot_command",
+            "arguments": {
+              "device_id": "lamp",
+              "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "path": "light.power",
+              "value": true
+            },
+            "expires_at": 2000000000
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "tool": "limeiot_command",
+            "arguments": {
+              "device_id": "lamp",
+              "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "path": "light.power",
+              "value": true
+            },
+            "expires_at": 2000000000
+          }
+        ],
+        "expires_at": 2000003600
+      }
+    },
+    {
+      "name": "call_after_run_expiry",
+      "kind": "pending",
+      "valid": false,
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "devices": [
+          "lamp"
+        ],
+        "calls": [
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "tool": "limeiot_command",
+            "arguments": {
+              "device_id": "lamp",
+              "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "path": "light.power",
+              "value": true
+            },
+            "expires_at": 2000003601
+          }
+        ],
+        "expires_at": 2000003600
+      }
+    },
+    {
+      "name": "expired_content",
+      "kind": "pending",
+      "valid": true,
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "devices": [],
+        "calls": [],
+        "expires_at": 1,
+        "content_expired": true
+      }
+    },
+    {
+      "name": "expired_retains_proposal",
+      "kind": "pending",
+      "valid": false,
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "devices": [
+          "lamp"
+        ],
+        "calls": [
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "tool": "limeiot_command",
+            "arguments": {
+              "device_id": "lamp",
+              "model_revision": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "path": "light.power",
+              "value": true
+            },
+            "expires_at": 2000000000
+          }
+        ],
+        "expires_at": 2000003600,
+        "content_expired": true
+      }
+    },
+    {
+      "name": "completion",
+      "kind": "completion",
+      "valid": true,
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "call_id": "22222222-2222-4222-8222-222222222222",
+        "recorded": true
+      }
+    },
+    {
+      "name": "wrong_completion_call",
+      "kind": "completion",
+      "valid": false,
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "call_id": "11111111-1111-4111-8111-111111111111",
+        "recorded": true
+      }
+    }
+  ]
+}

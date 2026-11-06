@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "sdk_revision": "1c77ef65e7af9c9036f82e278dfd84507a0f0e7d",
+  "started_at": "2026-11-06T03:37:39.615508+00:00",
+  "finished_at": "2026-11-06T03:38:34.580001+00:00",
+  "scope": "当前SDK的Android公告解析核心、20项Core套件（17执行、3在线专项跳过）与调试APK构建；系统NSD生命周期未运行",
+  "sources": {
+    "contracts/iot-sdk.lock.json": "81fdbad843efef068d2a2fcdb8ad4d19174dc60d99712b011591bb15d883faf6",
+    "contracts/fixtures/gateway-discovery.json": "01a7a9bf1636ab8f524820355700b7984b9b1162beed4cb2b7ba66d786588ee6",
+    "apps/android/core/src/main/kotlin/run/limeai/link/core/GatewayCandidate.kt": "1fd8e20723bf0fc36c0fc611afae2cc6a6fbfc22f79f6354e4c14ad06d764ed1",
+    "apps/android/core/src/test/kotlin/run/limeai/link/core/GatewayCandidateTest.kt": "19d145d3a4a8ba05fa5fbde6210a07db1c6ab8ed69dd9c9ec18a11f6b2d53d7e",
+    "apps/android/app/src/main/kotlin/run/limeai/link/GatewayDiscovery.kt": "679820c3d20848d4d90f6f26e8e6165f5dca72075521ea54441234f42bae93d3",
+    "apps/android/app/build.gradle.kts": "0de4aa4ba49a98156ac4831d6cff920c4debede927ddb56e48eaeb2151358305",
+    "apps/android/core/build.gradle.kts": "1ea1aa2fc5247ab8285d6167f47165ceb734f36766e1f4e63a6d760eb0e34afc"
+  },
+  "checks": {
+    "shared_announcement_cases": 16,
+    "discovery_tests": {
+      "tests": 2,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "report": "apps/android/core/build/test-results/test/TEST-run.limeai.link.core.GatewayCandidateTest.xml",
+      "sha256": "78e1da3285fc4c992c09309b69890c0685db8064ab092bcb50c5360770a38640"
+    },
+    "core_suite": {
+      "tests": 20,
+      "skipped": 3,
+      "failures": 0,
+      "errors": 0
+    },
+    "debug_apk_built": true
+  },
+  "artifacts": {
+    "apps/android/app/build/outputs/apk/debug/app-debug.apk": "039f6f54cf3c2f82ce924bb7ee70169a8e5a6264f4f91f87b844c162057de579"
+  },
+  "build_evidence": "docs/evidence/native-validation.json",
+  "logs": {
+    ".dev/verify-android.log": "75f423a1971f64b7ce5ba4fb029f732c1994999e4cb30cbcfdf35b6a11a28ed6"
+  },
+  "system_nsd_lifecycle": "not_run",
+  "native_window": false,
+  "physical_device": false,
+  "remaining": [
+    "系统NSD发现、撤回和重现",
+    "NSD前后台及迟到回调行为"
+  ],
+  "related_physical_journey": "docs/evidence/android-mobile-flow.json",
+  "previous_evidence": "docs/evidence/history/2026-11-06-sdk-core-revalidation/android-gateway-discovery.json"
+}

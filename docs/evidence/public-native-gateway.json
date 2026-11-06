@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "verified_at": "2026-11-06T00:26:05.840609+00:00",
+  "scope": "服务器外部macOS主机，公网DNS、系统受信HTTPS、所有者登录、设备mTLS和实际桌面运行时上线；无手机或Agent任务",
+  "origin": "https://gateway.link.limeai.run",
+  "events": [
+    "public_dns_matches_authorized_server",
+    "public_https_system_trust_and_broker_health",
+    "anonymous_https_owner_api_rejected",
+    "public_owner_login_secure_httponly_cookie",
+    "public_owner_unique_space",
+    "reserved_desktop_offline_before_test",
+    "public_device_mtls_and_mqtt_connack",
+    "public_device_without_client_certificate_rejected",
+    "actual_desktop_runtime_online_over_public_mtls",
+    "desktop_agent_remains_disabled",
+    "test_owner_session_logged_out"
+  ],
+  "docker_used": false,
+  "physical_phone": false,
+  "agent_enabled": false,
+  "system_trust_changed": false,
+  "runtime_binary_sha256": "15a073a963943f9249521d9f9bfb91ddab765691a7bc6f8552609e3a897cceef",
+  "sdk_revision": "53f07b21d9fd0bb6c414e62496f10b8eb99aab25",
+  "public_endpoint_verified": true,
+  "configuration": {
+    "public_site_installed": true,
+    "certificate": "LetsEncrypt",
+    "mqtt_bind": "0.0.0.0:8883",
+    "internal_ports_loopback": true,
+    "firewall": "UFW",
+    "firewall_added_tcp": [
+      8883
+    ],
+    "https_443_already_allowed": true,
+    "other_nginx_sites_unchanged": true,
+    "renewal": "existing acme.sh daily cron with nginx reload",
+    "docker_used": false,
+    "nginx_sha256": "b36838fb057fc83b2dd88a3ede6400ccf61745dd48c63079381e3964e68477c9",
+    "mosquitto_sha256": "4f04228e731a3a1058185239ae83f1fc990762f0ea652746d6e7635a00ecacd7"
+  },
+  "cloud_security_group_changed": false,
+  "cloud_path_reachable": true,
+  "device_identity_material_local_only": true,
+  "sources": {
+    "tools/test-public-native-gateway.py": "5adccfc2e0f45fb157190774056a565211bd17e824da19d364cf593fe1f6b632",
+    "runtime/src/main.rs": "42ae2f66d373e95c0e606e3666a87f8f639eb5c68cefd34f203690250d322305",
+    "runtime/src/lib.rs": "87f25d4a1b1cc7460a659b4f647cbce309d9e26f23d4d94508e37a4a2400cd54",
+    "contracts/desktop.json": "43d19e24c54904d0ed8d5aca94c6ea564e7d9739ff6a815cae1873fae15ec348",
+    "contracts/iot-sdk.lock.json": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f"
+  },
+  "previous_attempts": [
+    {
+      "passed": false,
+      "stage": "verification_script",
+      "reason": "退出登录HTTP 204空响应的测试解析错误；实际退出请求成功，修正为空响应并按上游合同核对204"
+    },
+    {
+      "passed": false,
+      "stage": "verification_script",
+      "reason": "私有配置文件创建误用Path.open的opener参数，改为内置open"
+    },
+    {
+      "passed": false,
+      "stage": "runtime_launch",
+      "reason": "验收进程未保持stdin，执行端按正常EOF生命周期退出；修正为持有输入管道",
+      "log_sha256": "dc3846f68a8bf12c20ada3029af0526ce76f0672f28d223f7ac4a02cef71292d"
+    }
+  ],
+  "remaining": [
+    "Android/iOS真机登录、配对及任务联合调试",
+    "执行端自主CSR入网",
+    "正式签名、升级回退与卸载"
+  ]
+}

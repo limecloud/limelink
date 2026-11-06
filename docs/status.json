@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-05",
+  "as_of": "2026-11-06",
   "runtime_implemented": true,
   "product_tests_run": true,
   "phases": [
@@ -20,7 +20,10 @@
       "evidence": [
         "docs/evidence/native-validation.json",
         "docs/evidence/iot-runtime-mtls-integration.json",
-        "docs/evidence/macos-native-ui.json"
+        "docs/evidence/macos-native-ui.json",
+        "docs/evidence/android-gateway-discovery.json",
+        "docs/evidence/android-mobile-ui.json",
+        "docs/evidence/android-mobile-flow.json"
       ]
     },
     {
@@ -33,7 +36,10 @@
       "evidence": [
         "docs/evidence/native-validation.json",
         "docs/evidence/iot-runtime-mtls-integration.json",
-        "docs/evidence/macos-native-ui.json"
+        "docs/evidence/macos-native-ui.json",
+        "docs/evidence/pairing-receipt-recovery.json",
+        "docs/evidence/content-retention.json",
+        "docs/evidence/android-mobile-flow.json"
       ]
     },
     {
@@ -46,9 +52,9 @@
       "evidence": [
         "docs/evidence/native-validation.json",
         "docs/evidence/iot-runtime-mtls-integration.json",
-        "docs/evidence/macos-native-ui.json",
         "docs/evidence/cloud-clients.json",
-        "docs/evidence/cloud-workbench-ui.json"
+        "docs/evidence/cloud-workbench-ui.json",
+        "docs/evidence/macos-native-ui.json"
       ]
     },
     {
@@ -61,7 +67,8 @@
       "evidence": [
         "docs/evidence/native-validation.json",
         "docs/evidence/iot-runtime-mtls-integration.json",
-        "docs/evidence/macos-native-ui.json"
+        "docs/evidence/macos-native-ui.json",
+        "docs/evidence/content-retention.json"
       ]
     },
     {
@@ -72,6 +79,41 @@
         "P2"
       ],
       "evidence": []
+    },
+    {
+      "id": "P6",
+      "title": "Agent 控制台与执行",
+      "status": "in_progress",
+      "depends_on": [
+        "P2"
+      ],
+      "evidence": [
+        "docs/evidence/native-validation.json",
+        "docs/evidence/macos-agent-ui.json",
+        "docs/evidence/agent-tools-protocol.json",
+        "docs/evidence/agent-iot-apple-integration.json",
+        "docs/evidence/agent-iot-apple-live.json",
+        "docs/evidence/agent-iot-macos-ui.json",
+        "docs/evidence/agent-iot-android-integration.json",
+        "docs/evidence/agent-iot-android-live.json",
+        "docs/evidence/agent-iot-dotnet-integration.json",
+        "docs/evidence/agent-iot-dotnet-live.json",
+        "docs/evidence/pairing-receipt-recovery.json",
+        "docs/evidence/agent-settings-macos-ui.json",
+        "docs/evidence/agent-settings-windows-core.json",
+        "docs/evidence/agent-content-retention.json",
+        "docs/evidence/local-gateway-installation.json",
+        "docs/evidence/gateway-management-macos-ui.json",
+        "docs/evidence/native-gateway-server.json",
+        "docs/evidence/public-native-gateway.json",
+        "docs/evidence/remote-gateway-probe.json",
+        "docs/evidence/android-mobile-ui.json",
+        "docs/evidence/android-mobile-flow.json",
+        "docs/evidence/agent-gateway-live.json"
+      ],
+      "historical_evidence": [
+        "docs/evidence/history/2026-11-06-before-current-agent-live/agent-gateway-live.json"
+      ]
     }
   ],
   "website": {
@@ -97,12 +139,30 @@
       "二维码、自主入网与完整产品授权",
       "完整云界面/跨网验收、跨电脑接续及媒体",
       "历史正文保留与安全清除",
-      "签名、安装更新回退、可访问性和性能"
-    ]
+      "签名、安装更新回退、可访问性和性能",
+      "Agent 移动真机、Windows 目标构建与窗口、云路径及本机安装管理",
+      "无设备工具真实模型的实际中断与完整生命周期验收",
+      "本机网关图形安装、证书信任引导、安装中断恢复、卸载及正式更新",
+      "SDK与入口变更后旧证据修订/摘要不匹配，独立文档校验待真实复验"
+    ],
+    "snapshot": {
+      "tag": "v0.1.0",
+      "kind": "development_milestone",
+      "formal_distribution": false,
+      "full_acceptance": false
+    }
   },
   "upstream": {
     "repository": "https://github.com/limecloud/iot",
-    "revision": "e01581888d8be168481b85242c5835864674df3e",
+    "revision": "1c77ef65e7af9c9036f82e278dfd84507a0f0e7d",
     "worktree_overlay": false
+  },
+  "regressions": [
+    "docs/evidence/regression-2026-11-06.json"
+  ],
+  "development": {
+    "status": "paused",
+    "as_of": "2026-11-06",
+    "reason": "用户要求当前阶段先告一段落并提交、打Tag、推送GitHub"
   }
 }

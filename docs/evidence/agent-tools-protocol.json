@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "real_gateway": false,
+  "real_model": true,
+  "runs": [
+    {
+      "calls": [
+        "limeiot_read",
+        "limeiot_command"
+      ],
+      "error": null,
+      "expected_reply": true,
+      "passed": true,
+      "resumed": false,
+      "state": "succeeded"
+    },
+    {
+      "calls": [
+        "limeiot_read"
+      ],
+      "error": null,
+      "expected_reply": true,
+      "passed": true,
+      "resumed": true,
+      "state": "succeeded"
+    }
+  ],
+  "scope": "真实 Codex 动态工具调用与会话恢复；设备结果为合成夹具，不证明网关、授权界面或真实设备可用",
+  "synthetic_device_results": true,
+  "started_at": "2026-11-05T22:29:01.214509+00:00",
+  "verified_at": "2026-11-05T22:29:28.684863+00:00",
+  "exit_code": 0,
+  "cli_version": "codex-cli 0.166.0",
+  "sources": {
+    "runtime/Cargo.toml": "d38e52d755ab5e3b1cf5c8464236833f73e7eca31ed756c4e51d95a3b858bbd1",
+    "runtime/Cargo.lock": "1893fa56859022cab8a681c8f9bc4ef2871a768dd1e50f29e1c6f866a83963e1",
+    "runtime/src/agent.rs": "bfd2df51ca2f542b4e819dbe45d4e4b5c1b476a002312d23327e74a83ec76ab9",
+    "runtime/src/agent/codex.rs": "0f5f70faca7053374cee40ccf594790d570e0ade07afa1ed08f949c76fc5d03d",
+    "runtime/src/agent/tools.rs": "2233246d698c48e93d0fefb6949e6f33338d332943ca0c30569afef1e4cdad85",
+    "runtime/examples/agent_tools_probe.rs": "777f8da03748d018ffd6a8bfdd26fc6b92d556596ad2a95b53345bf26d3edfe4",
+    "tools/test-agent-tools.py": "1c5a6ab0d648ffce5ad2cc92e187168bb173e2586079d270718f43c98309b0e7",
+    "contracts/desktop.json": "43d19e24c54904d0ed8d5aca94c6ea564e7d9739ff6a815cae1873fae15ec348"
+  },
+  "native_ui": false,
+  "physical_device": false,
+  "official_reference": "https://developers.openai.com/codex/app-server/"
+}

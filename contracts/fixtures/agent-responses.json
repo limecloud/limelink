@@ -1,0 +1,723 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "name": "awaiting_approval",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "awaiting_approval",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": true,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "running",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "running",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": true,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "succeeded",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": true,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "cancelled",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "cancelled",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": true,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "unknown",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "unknown",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": true,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "empty_page_after_four",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [],
+        "cursor": 4,
+        "content_expired": true
+      },
+      "valid": true,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 4
+    },
+    {
+      "name": "invalid_id",
+      "kind": "run",
+      "value": {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "invalid_state",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "completed",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "invalid_sandbox",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "danger-full-access",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "invalid_cursor",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 2
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "invalid_events",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "invalid_session_id",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": false,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "invalid_content_expired",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1,
+        "content_expired": "yes"
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "invalid_extra",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1,
+        "extra": true
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "missing_session_id",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "missing_error",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "missing_expires_at",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "duplicate_seq",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "ok"
+          },
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "ok"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "reverse_seq",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 2,
+            "kind": "message",
+            "text": "ok"
+          },
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "ok"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "too_many_events",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "ok"
+          },
+          {
+            "seq": 2,
+            "kind": "message",
+            "text": "ok"
+          },
+          {
+            "seq": 3,
+            "kind": "message",
+            "text": "ok"
+          },
+          {
+            "seq": 4,
+            "kind": "message",
+            "text": "ok"
+          },
+          {
+            "seq": 5,
+            "kind": "message",
+            "text": "ok"
+          }
+        ],
+        "cursor": 5
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "old_page",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "ok"
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 1
+    },
+    {
+      "name": "out_of_range",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 257,
+            "kind": "message",
+            "text": "ok"
+          }
+        ],
+        "cursor": 257
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "extra_event_field",
+      "kind": "run",
+      "value": {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "state": "succeeded",
+        "workspace_id": "work",
+        "sandbox": "read-only",
+        "session_id": null,
+        "error": null,
+        "expires_at": 2000000000,
+        "events": [
+          {
+            "seq": 1,
+            "kind": "message",
+            "text": "你好",
+            "extra": true
+          }
+        ],
+        "cursor": 1
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "capabilities",
+      "kind": "capabilities",
+      "value": {
+        "adapter": "codex-app-server",
+        "configured": true,
+        "authentication": "managed_by_codex",
+        "local_approval_required": true,
+        "workspaces": [
+          {
+            "id": "work",
+            "name": "工作目录",
+            "allow_write": false
+          }
+        ]
+      },
+      "valid": true,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "invalid_capabilities_local_approval_required24",
+      "kind": "capabilities",
+      "value": {
+        "adapter": "codex-app-server",
+        "configured": true,
+        "authentication": "managed_by_codex",
+        "local_approval_required": false,
+        "workspaces": [
+          {
+            "id": "work",
+            "name": "工作目录",
+            "allow_write": false
+          }
+        ]
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "invalid_capabilities_adapter25",
+      "kind": "capabilities",
+      "value": {
+        "adapter": "shell",
+        "configured": true,
+        "authentication": "managed_by_codex",
+        "local_approval_required": true,
+        "workspaces": [
+          {
+            "id": "work",
+            "name": "工作目录",
+            "allow_write": false
+          }
+        ]
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "invalid_capabilities_workspaces26",
+      "kind": "capabilities",
+      "value": {
+        "adapter": "codex-app-server",
+        "configured": true,
+        "authentication": "managed_by_codex",
+        "local_approval_required": true,
+        "workspaces": []
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "invalid_capabilities_workspaces27",
+      "kind": "capabilities",
+      "value": {
+        "adapter": "codex-app-server",
+        "configured": true,
+        "authentication": "managed_by_codex",
+        "local_approval_required": true,
+        "workspaces": [
+          {
+            "id": "work",
+            "name": "工作目录",
+            "allow_write": false
+          },
+          {
+            "id": "work",
+            "name": "工作目录",
+            "allow_write": false
+          }
+        ]
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "invalid_capabilities_extra28",
+      "kind": "capabilities",
+      "value": {
+        "adapter": "codex-app-server",
+        "configured": true,
+        "authentication": "managed_by_codex",
+        "local_approval_required": true,
+        "workspaces": [
+          {
+            "id": "work",
+            "name": "工作目录",
+            "allow_write": false
+          }
+        ],
+        "extra": true
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    },
+    {
+      "name": "extra_workspace_field",
+      "kind": "capabilities",
+      "value": {
+        "adapter": "codex-app-server",
+        "configured": true,
+        "authentication": "managed_by_codex",
+        "local_approval_required": true,
+        "workspaces": [
+          {
+            "id": "work",
+            "name": "工作目录",
+            "allow_write": false,
+            "extra": true
+          }
+        ]
+      },
+      "valid": false,
+      "id": "11111111-1111-4111-8111-111111111111",
+      "after": 0
+    }
+  ]
+}

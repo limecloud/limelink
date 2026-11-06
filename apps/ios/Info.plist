@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
   <key>CFBundleDisplayName</key><string>柠联</string>
+  <key>CFBundleURLTypes</key><array><dict><key>CFBundleURLName</key><string>run.limeai.limelink.connect</string><key>CFBundleURLSchemes</key><array><string>limelink</string></array></dict></array>
   <key>NSMicrophoneUsageDescription</key><string>仅在你主动创建语音草稿时录音。</string>
   <key>NSSpeechRecognitionUsageDescription</key><string>将你选择的录音识别为可编辑草稿；系统语音服务可能处理录音。</string>
-  <key>NSLocalNetworkUsageDescription</key><string>连接你明确选择的本地 LimeIoT 网关。</string>
+  <key>NSLocalNetworkUsageDescription</key><string>发现同一网络中的 LimeIoT 网关，并连接你选择的网关。</string>
+  <key>NSBonjourServices</key><array><string>_limeiot._tcp</string></array>
   <key>UILaunchScreen</key><dict/>
 </dict></plist>

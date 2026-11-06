@@ -2,6 +2,13 @@ using System.Security.Cryptography;
 using System.Text;
 using LimeLink.Core;
 
+// 本检查程序也是程序发现测试的进程夹具，不连接模型或认证服务。
+if(args.SequenceEqual(new[]{"--version"})){Console.WriteLine("codex-cli 0.166.0");return;}
+if(args.SequenceEqual(new[]{"app-server","--help"})){Console.WriteLine("Usage: codex app-server [OPTIONS] [COMMAND]\n  generate-json-schema");return;}
+
+if(Environment.GetEnvironmentVariable("LIMELINK_AGENT_IOT_ENDPOINT") is string iotEndpoint){await AgentIoTLiveChecks.Run(iotEndpoint);return;}
+if(Environment.GetEnvironmentVariable("LIMELINK_AGENT_CHECK_ENDPOINT") is string agentEndpoint){await AgentLiveChecks.Run(agentEndpoint);return;}
+
 var identity=LinkIdentity.Create();var payload="{\"text\":\"你好\",\"ttl\":60}";var exchange=identity.Exchange("space-a","desktop-a","sha256:test","card",payload,DateTimeOffset.FromUnixTimeSeconds(100));
 var publicKey=Convert.FromHexString(identity.PublicKey);using var verifier=ECDsa.Create(new ECParameters{Curve=ECCurve.NamedCurves.nistP256,Q=new ECPoint{X=publicKey[1..33],Y=publicKey[33..65]}});
 var message=string.Join('\n',"limelink.exchange/v1","space-a","desktop-a","sha256:test",identity.Id,"card",exchange["nonce"]!.GetValue<string>(),"120",LinkIdentity.Hash(payload));
@@ -10,6 +17,10 @@ if(!verifier.VerifyData(Encoding.UTF8.GetBytes(message),signature,HashAlgorithmN
 if(verifier.VerifyData(Encoding.UTF8.GetBytes(message.Replace("desktop-a","desktop-b",StringComparison.Ordinal)),signature,HashAlgorithmName.SHA256,DSASignatureFormat.Rfc3279DerSequence))throw new Exception("target not bound");
 try{identity.Exchange("s","d","r","card",new string('x',4097));throw new Exception("budget bypass");}catch(InvalidOperationException error)when(error.Message=="payload_too_large"){}
 await RecoveryChecks.Run();
+await PairingReceiptChecks.Run();
+await AgentChecks.Run();
+await AgentIoTChecks.Run();
+await LocalAgentConfigurationChecks.Run();
 await CloudChecks.Run();
 await CloudLiveChecks.Run();
-Console.WriteLine("{\"passed\":true,\"groups\":16,\"p256_der_signature\":true,\"target_binding\":true,\"payload_budget\":true,\"response_loss_get_only\":true,\"storage_failure_zero_post\":true,\"cloud_product_contract\":true,\"windows_ui\":false}");
+Console.WriteLine("{\"passed\":true,\"groups\":18,\"p256_der_signature\":true,\"target_binding\":true,\"payload_budget\":true,\"response_loss_get_only\":true,\"storage_failure_zero_post\":true,\"cloud_product_contract\":true,\"pairing_receipt_checks\":true,\"local_agent_configuration\":true,\"windows_ui\":false}");

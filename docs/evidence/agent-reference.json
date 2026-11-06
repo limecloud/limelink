@@ -1,0 +1,25 @@
+{
+  "scope": "首个 Codex App Server 适配器的接口依据，不代表其他版本兼容验收",
+  "cli_version": "codex-cli 0.166.0",
+  "official_sources": [
+    "https://developers.openai.com/codex/app-server/",
+    "https://developers.openai.com/codex/config-reference/"
+  ],
+  "schema_generation": "codex app-server generate-json-schema --out .dev/codex-protocol",
+  "schema_sha256": "9b6d53647b00d68a04181b826599025a810cfa78acb3ec4d518c68b4120499c0",
+  "tested_model_task": "固定无工具任务，以及真实动态工具/恢复配合合成设备结果；隔离空目录，不发送用户项目内容",
+  "notes": [
+    "authentication 归执行主机管理，不读取隐藏凭据",
+    "只读不等于只能读取选中目录",
+    "真实中断的协议确认已由进程夹具验收，真实 Codex 中断仍待专项验收"
+  ],
+  "dynamic_tools": {
+    "status": "experimental",
+    "initialize": "capabilities.experimentalApi=true，仅有设备授权的任务开启",
+    "declaration": "thread/start.dynamicTools",
+    "request": "item/tool/call",
+    "response": "contentItems/inputText 与 success",
+    "resume": "原 thread 元数据恢复工具；产品再次核对相同设备范围",
+    "verification": "docs/evidence/agent-tools-protocol.json"
+  }
+}

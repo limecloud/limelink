@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "exit_code": 0,
+  "scope": "WinUI C# 类型检查，消费真实 SDK 引用；不运行 XAML 编译器，不证明完整 WinUI 构建或原生窗口",
+  "started_at": "2026-11-05T21:40:54.272305+00:00",
+  "verified_at": "2026-11-05T21:40:58.305143+00:00",
+  "sources": {
+    "apps/windows/LimeLink.App/DesktopAgentSettings.cs": "a4e2c6d1669ddc6f78885c8eab09a9a94024e14cca28349baeda85ee57b890ba",
+    "apps/windows/LimeLink.App/DesktopAssistant.cs": "bf97c159975d26d35fa148302de7547d028a3e7dba287c6fe07186cb2d956b40",
+    "apps/windows/LimeLink.App/DesktopWorkspace.cs": "a5a0f15537e9ed6871e3640de0edafa93f8365b01e331bcd0a96b87e67ac4dab",
+    "apps/windows/LimeLink.App/LimeLink.App.csproj": "2ba80037523035b26f2923eca5ebc92c09df7cf6d2643f1cac75b68a26dbc239",
+    "apps/windows/LimeLink.App/MainWindow.cs": "7af61ff3f327855a8a0a6a40d1a40ddf4abfd568217846a805e425efb50828ec",
+    "apps/windows/LimeLink.App/SecretStore.cs": "6a839ddb663fe1b33f09a487bee37bfef2be02fc3814bcc144feedc2de61f075",
+    "apps/windows/LimeLink.Core/AgentClient.cs": "bf84c4846487e66b7b16dc8d6980e650c73e51b24d484fc9e9d7766876115ab7",
+    "apps/windows/LimeLink.Core/AgentIoTClient.cs": "e163463ab155eb2732ef0be5b548cccbaf7f65c8b4a489ab3f459121d9c3c906",
+    "apps/windows/LimeLink.Core/AgentToolProtocol.cs": "7409af6377750ed109825612f2f75e5b782145c64cb29a335164091f89de07ee",
+    "apps/windows/LimeLink.Core/CloudLinkClient.cs": "d86b5e964a3d7aa756b1382474626cebdb1e8ee0a4c6ff08e7ea8514181a10d3",
+    "apps/windows/LimeLink.Core/CodexExecutableDiscovery.cs": "426959bb45002d90d62804d2ef7fc94244caa1ea1682a992cdbff6b78d8dc195",
+    "apps/windows/LimeLink.Core/LimeLink.Core.csproj": "4a4b4f24e91e7f956bab26d84615357b2738814a41a0a76eb5d9748304be46ed",
+    "apps/windows/LimeLink.Core/LinkClient.cs": "db94c430e4e964f5a4345e191346a9e9501e1aeafc60374ade6b3b6f63035b49",
+    "apps/windows/LimeLink.Core/LocalAgentConfiguration.cs": "8869f430f77013511c610ebb158ef2155d9b31235f34875ebc40068c04148826",
+    "contracts/iot-sdk.lock.json": "2aa0b1c5353bd77be39f46b615155d0825a7e8895fa48cf82d6adf4b804aa05f",
+    "tools/check-windows-sources.py": "909e268d093dabc1af2fae712a5c63a9339640c9b12a56e0b35f5959b1c7009a"
+  },
+  "log_sha256": "687bb583aec6300d3035b7b527b4da7deb142011eeaf4367e46feedfa3a5cf14",
+  "generated_project_sha256": "5162bac267cfb24926fcdc29f0903d1c2b3642780fe3bdd3921797106c71bc30",
+  "xaml_compiled": false,
+  "native_ui": false,
+  "package_created": false
+}
